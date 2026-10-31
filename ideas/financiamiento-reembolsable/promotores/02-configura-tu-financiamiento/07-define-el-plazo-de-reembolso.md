@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-10-31"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/elige-la-modalidad-de-campana/
 prev_title: "Elige la modalidad de campaña"
+next_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-la-tna-que-ofreceras/
+next_title: "Define la TNA que ofrecerás"
 ---
 
 # Define el plazo de reembolso
@@ -52,4 +54,4 @@ Define el número de meses que propondrás como plazo de reembolso, teniendo en 
 
 ## Siguiente paso
 
-**Define la TNA que ofrecerás.**
+[Define la TNA que ofrecerás]({{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-la-tna-que-ofreceras/' | relative_url }}).
