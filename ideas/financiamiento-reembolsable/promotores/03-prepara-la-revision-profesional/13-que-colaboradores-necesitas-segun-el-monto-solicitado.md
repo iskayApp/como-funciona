@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-debes-saber-sobre-la-garantia-hipotecaria/
 prev_title: "Qué debes saber sobre la garantía hipotecaria"
+next_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-analista-de-riesgos-financieros/
+next_title: "Qué hace el analista de riesgos financieros"
 ---
 
 # Qué colaboradores necesitas según el monto solicitado
@@ -55,4 +57,4 @@ Identifica el rango correspondiente a tu monto objetivo solicitado e incorpora, 
 
 ## Siguiente paso
 
-**Qué hace el analista de riesgos financieros.**
+[Qué hace el analista de riesgos financieros]({{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-analista-de-riesgos-financieros/' | relative_url }}).
