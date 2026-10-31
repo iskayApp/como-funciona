@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-valuador-de-garantias/
 prev_title: "Qué hace el Valuador de Garantías"
+next_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-cambia-desde-usd-200000/
+next_title: "Qué cambia desde USD 200.000"
 ---
 
 # Cuándo necesitas revisión contable, tributaria y financiera
@@ -83,4 +85,4 @@ Si tu monto objetivo solicitado es de **USD 60.000,00 o superior**, incorpora es
 
 ## Siguiente paso
 
-**Qué cambia desde USD 200.000.**
+[Qué cambia desde USD 200.000]({{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-cambia-desde-usd-200000/' | relative_url }}).
