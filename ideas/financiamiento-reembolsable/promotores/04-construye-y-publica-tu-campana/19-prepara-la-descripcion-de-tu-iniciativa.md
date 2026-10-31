@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-cambia-desde-usd-200000/
 prev_title: "Qué cambia desde USD 200.000"
+next_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/prepara-el-contenido-visual-de-tu-campana/
+next_title: "Prepara el contenido visual de tu campaña"
 ---
 
 # Prepara la descripción de tu iniciativa
@@ -75,4 +77,4 @@ Después, desarrolla la descripción completa explicando la iniciativa, la final
 
 ## Siguiente paso
 
-**Prepara el contenido visual de tu campaña.**
+[Prepara el contenido visual de tu campaña]({{ '/financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/prepara-el-contenido-visual-de-tu-campana/' | relative_url }}).
