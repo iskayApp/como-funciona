@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/prepara-la-descripcion-de-tu-iniciativa/
 prev_title: "Prepara la descripción de tu iniciativa"
+next_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/organiza-la-documentacion/
+next_title: "Organiza la documentación"
 ---
 
 # Prepara el contenido visual de tu campaña
@@ -59,4 +61,4 @@ Selecciona y añade al menos una imagen o un video que represente de forma clara
 
 ## Siguiente paso
 
-**Organiza la documentación.**
+[Organiza la documentación]({{ '/financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/organiza-la-documentacion/' | relative_url }}).
