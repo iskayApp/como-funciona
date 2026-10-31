@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-10-31"
 prev_url: /financiamiento-reembolsable/promotores/antes-de-solicitar/define-cuanto-necesitas-financiar/
 prev_title: "Define cuánto necesitas financiar"
+next_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/elige-la-modalidad-de-campana/
+next_title: "Elige la modalidad de campaña"
 ---
 
 # Define el período de campaña
@@ -47,4 +49,4 @@ Define la fecha de inicio y la fecha de finalización de tu campaña antes de co
 
 ## Siguiente paso
 
-**Elige la modalidad de campaña.**
+[Elige la modalidad de campaña]({{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/elige-la-modalidad-de-campana/' | relative_url }}).
