@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-debe-cumplir-el-aval-solidario/
 prev_title: "Qué debe cumplir el aval solidario"
+next_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-colaboradores-necesitas-segun-el-monto-solicitado/
+next_title: "Qué colaboradores necesitas según el monto solicitado"
 ---
 
 # Qué debes saber sobre la garantía hipotecaria
@@ -65,4 +67,4 @@ Si tu financiamiento se encuentra entre USD 10.000,00 y USD 470.000,00, prepara 
 
 ## Siguiente paso
 
-La siguiente etapa será **03 · Prepara la revisión profesional**, comenzando por **Qué colaboradores necesitas según el monto solicitado**.
+[Qué colaboradores necesitas según el monto solicitado]({{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-colaboradores-necesitas-segun-el-monto-solicitado/' | relative_url }}).
