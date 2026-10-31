@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-10-31"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-el-plazo-de-reembolso/
 prev_title: "Define el plazo de reembolso"
+next_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/como-seran-los-pagos-a-los-inversionistas/
+next_title: "Cómo serán los pagos a los inversionistas"
 ---
 
 # Define la TNA que ofrecerás
@@ -54,4 +56,4 @@ Define la TNA que ofrecerás a los inversionistas teniendo en cuenta tu capacida
 
 ## Siguiente paso
 
-**Cómo serán los pagos a los inversionistas.**
+[Cómo serán los pagos a los inversionistas]({{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/como-seran-los-pagos-a-los-inversionistas/' | relative_url }}).
