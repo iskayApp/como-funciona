@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-10-31"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/como-seran-los-pagos-a-los-inversionistas/
 prev_title: "Cómo serán los pagos a los inversionistas"
+next_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-debe-cumplir-el-aval-solidario/
+next_title: "Qué debe cumplir el aval solidario"
 ---
 
 # Qué garantía necesitas según el monto
@@ -49,4 +51,4 @@ Identifica el rango de tu monto objetivo solicitado y prepara la garantía que c
 
 ## Siguiente paso
 
-**Qué debe cumplir el aval solidario.**
+[Qué debe cumplir el aval solidario]({{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-debe-cumplir-el-aval-solidario/' | relative_url }}).
