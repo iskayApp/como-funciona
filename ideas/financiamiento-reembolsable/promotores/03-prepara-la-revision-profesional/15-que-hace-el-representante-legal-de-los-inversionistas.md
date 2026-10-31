@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-analista-de-riesgos-financieros/
 prev_title: "Qué hace el analista de riesgos financieros"
+next_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-valuador-de-garantias/
+next_title: "Qué hace el Valuador de Garantías"
 ---
 
 # Qué hace el representante legal de los inversionistas
@@ -84,4 +86,4 @@ Si la campaña cierra exitosamente, deberás continuar con este profesional para
 
 ## Siguiente paso
 
-**Qué hace el Valuador de Garantías.**
+[Qué hace el Valuador de Garantías]({{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-valuador-de-garantias/' | relative_url }}).
