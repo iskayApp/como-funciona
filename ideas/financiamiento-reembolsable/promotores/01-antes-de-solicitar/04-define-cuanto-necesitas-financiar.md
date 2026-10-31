@@ -1,3 +1,20 @@
+---
+layout: default
+title: "Define cuánto necesitas financiar"
+description: "Define el monto solicitado y conoce cómo influye en garantías, colaboradores y comisión."
+permalink: /financiamiento-reembolsable/promotores/antes-de-solicitar/define-cuanto-necesitas-financiar/
+eyebrow: "04 · Antes de solicitar"
+category: "Financiamiento Reembolsable"
+stage: "Antes de solicitar"
+code: "FR-PRO-04"
+source: "1 FinanciamientoReembolsable(2).docx — 3.1 Comisión al financiamiento (promotor); 4 Colaboradores obligatorios; 6 Inicio de campaña > 1. Datos generales > Monto solicitado"
+guide_version: "No identificada expresamente en el documento consultado"
+status: "Borrador para revisión"
+reviewed: "2026-10-31"
+prev_url: /financiamiento-reembolsable/promotores/antes-de-solicitar/comprueba-tu-capacidad-de-reembolso/
+prev_title: "Comprueba tu capacidad de reembolso"
+---
+
 # Define cuánto necesitas financiar
 
 ## Respuesta breve
@@ -53,17 +70,4 @@ Antes de avanzar, ten presente que el monto elegido también determinará la gar
 
 ## Siguiente paso
 
-**Define el período de campaña.**
-
-<!--
-DATOS INTERNOS DE MANTENIMIENTO
-Categoría: Financiamiento Reembolsable
-Rol: Promotor
-Etapa: 01 · Antes de solicitar
-Código de ficha: FR-PRO-04
-Fuente: 1 FinanciamientoReembolsable(2).docx — 3.1 Comisión al financiamiento (promotor); 4 Colaboradores obligatorios; 6 Inicio de campaña > 1. Datos generales > Monto solicitado
-Versión de guía: No identificada expresamente en el documento consultado
-Estado: Borrador para revisión
-Fecha última revisión: 2026-10-31
-URL pública estable: Pendiente de definición
--->
+La siguiente etapa será **02 · Configura tu financiamiento**. Se publicará cuando esté desarrollada.

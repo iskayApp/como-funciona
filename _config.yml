@@ -1,0 +1,26 @@
+title: "Cómo funciona · iskay.app"
+description: "Guías claras y directas para entender y utilizar iskay.app."
+lang: es
+url: "https://iskayapp.github.io"
+baseurl: "/como-funciona"
+markdown: kramdown
+kramdown:
+  input: GFM
+permalink: pretty
+noindex: true
+
+exclude:
+  - README.md
+  - PLANTILLA_FICHA.md
+  - ideas/index.md
+  - ideas/donacion
+  - ideas/recompensa
+  - ideas/precompra
+  - ideas/inversion-en-acciones
+  - ideas/financiamiento-reembolsable/index.md
+  - ideas/financiamiento-reembolsable/promotores/index.md
+  - ideas/financiamiento-reembolsable/promotores/02-configura-tu-financiamiento
+  - ideas/financiamiento-reembolsable/promotores/03-prepara-la-revision-profesional
+  - ideas/financiamiento-reembolsable/promotores/04-construye-y-publica-tu-campana
+  - ideas/financiamiento-reembolsable/promotores/05-cierre-formalizacion-transferencia
+  - ideas/financiamiento-reembolsable/promotores/06-cumple-y-da-seguimiento

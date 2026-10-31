@@ -1,3 +1,22 @@
+---
+layout: default
+title: "Antes de empezar: comprueba tu capacidad de reembolso"
+description: "Revisa tu fuente de reembolso, ingresos, flujo de caja y endeudamiento antes de solicitar financiamiento."
+permalink: /financiamiento-reembolsable/promotores/antes-de-solicitar/comprueba-tu-capacidad-de-reembolso/
+eyebrow: "03 · Antes de solicitar"
+category: "Financiamiento Reembolsable"
+stage: "Antes de solicitar"
+code: "FR-PRO-03"
+source: "1 FinanciamientoReembolsable(2).docx — 2.3 Promotores; 4 Colaboradores obligatorios; 6 Inicio de campaña > 2. Descripción completa > Fuente de reembolso"
+guide_version: "No identificada expresamente en el documento consultado"
+status: "Borrador para revisión"
+reviewed: "2026-10-31"
+prev_url: /financiamiento-reembolsable/promotores/antes-de-solicitar/quien-puede-solicitar-financiamiento-reembolsable/
+prev_title: "Quién puede solicitarlo"
+next_url: /financiamiento-reembolsable/promotores/antes-de-solicitar/define-cuanto-necesitas-financiar/
+next_title: "Define cuánto necesitas financiar"
+---
+
 # Antes de empezar: comprueba tu capacidad de reembolso
 
 ## Respuesta breve
@@ -42,17 +61,4 @@ Identifica y documenta tu fuente de reembolso y revisa tus ingresos, flujos disp
 
 ## Siguiente paso
 
-**Define cuánto necesitas financiar.**
-
-<!--
-DATOS INTERNOS DE MANTENIMIENTO
-Categoría: Financiamiento Reembolsable
-Rol: Promotor
-Etapa: 01 · Antes de solicitar
-Código de ficha: FR-PRO-03
-Fuente: 1 FinanciamientoReembolsable(2).docx — 2.3 Promotores; 4 Colaboradores obligatorios; 6 Inicio de campaña > 2. Descripción completa > Fuente de reembolso
-Versión de guía: No identificada expresamente en el documento consultado
-Estado: Borrador para revisión
-Fecha última revisión: 2026-10-31
-URL pública estable: Pendiente de definición
--->
+[Define cuánto necesitas financiar]({{ '/financiamiento-reembolsable/promotores/antes-de-solicitar/define-cuanto-necesitas-financiar/' | relative_url }}).

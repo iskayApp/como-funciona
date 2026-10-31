@@ -1,3 +1,22 @@
+---
+layout: default
+title: "¿Quién puede solicitar Financiamiento Reembolsable?"
+description: "Revisa qué personas y entidades pueden solicitar Financiamiento Reembolsable en iskay.app."
+permalink: /financiamiento-reembolsable/promotores/antes-de-solicitar/quien-puede-solicitar-financiamiento-reembolsable/
+eyebrow: "02 · Antes de solicitar"
+category: "Financiamiento Reembolsable"
+stage: "Antes de solicitar"
+code: "FR-PRO-02"
+source: "1 FinanciamientoReembolsable(2).docx — 2.3 Promotores"
+guide_version: "No identificada expresamente en el documento consultado"
+status: "Borrador para revisión"
+reviewed: "2026-10-31"
+prev_url: /financiamiento-reembolsable/promotores/antes-de-solicitar/que-es-el-financiamiento-reembolsable/
+prev_title: "Qué es el Financiamiento Reembolsable"
+next_url: /financiamiento-reembolsable/promotores/antes-de-solicitar/comprueba-tu-capacidad-de-reembolso/
+next_title: "Comprueba tu capacidad de reembolso"
+---
+
 # ¿Quién puede solicitar Financiamiento Reembolsable?
 
 ## Respuesta breve
@@ -35,17 +54,4 @@ Antes de continuar con la solicitud, identifica la iniciativa que deseas financi
 
 ## Siguiente paso
 
-**Antes de empezar: comprueba tu capacidad de reembolso.**
-
-<!--
-DATOS INTERNOS DE MANTENIMIENTO
-Categoría: Financiamiento Reembolsable
-Rol: Promotor
-Etapa: 01 · Antes de solicitar
-Código de ficha: FR-PRO-02
-Fuente: 1 FinanciamientoReembolsable(2).docx — 2.3 Promotores
-Versión de guía: No identificada expresamente en el documento consultado
-Estado: Borrador para revisión
-Fecha última revisión: 2026-10-31
-URL pública estable: Pendiente de definición
--->
+[Antes de empezar: comprueba tu capacidad de reembolso]({{ '/financiamiento-reembolsable/promotores/antes-de-solicitar/comprueba-tu-capacidad-de-reembolso/' | relative_url }}).

@@ -1,3 +1,22 @@
+---
+layout: default
+title: "¿Qué es el Financiamiento Reembolsable?"
+description: "Conoce cómo funciona el Financiamiento Reembolsable de iskay.app y qué obligación asume el promotor."
+permalink: /financiamiento-reembolsable/promotores/antes-de-solicitar/que-es-el-financiamiento-reembolsable/
+eyebrow: "01 · Antes de solicitar"
+category: "Financiamiento Reembolsable"
+stage: "Antes de solicitar"
+code: "FR-PRO-01"
+source: "1 FinanciamientoReembolsable(2).docx — 1 Definición legal; 2.3 Promotores"
+guide_version: "No identificada expresamente en el documento consultado"
+status: "Borrador para revisión"
+reviewed: "2026-10-31"
+prev_url: /financiamiento-reembolsable/promotores/antes-de-solicitar/
+prev_title: "Antes de solicitar"
+next_url: /financiamiento-reembolsable/promotores/antes-de-solicitar/quien-puede-solicitar-financiamiento-reembolsable/
+next_title: "Quién puede solicitarlo"
+---
+
 # ¿Qué es el Financiamiento Reembolsable?
 
 ## Respuesta breve
@@ -31,17 +50,4 @@ Antes de solicitar financiamiento, comprueba que cuentas con una **fuente de ree
 
 ## Siguiente paso
 
-**Quién puede solicitar Financiamiento Reembolsable.**
-
-<!--
-DATOS INTERNOS DE MANTENIMIENTO
-Categoría: Financiamiento Reembolsable
-Rol: Promotor
-Etapa: 01 · Antes de solicitar
-Código de ficha: FR-PRO-01
-Fuente: 1 FinanciamientoReembolsable(2).docx — 1 Definición legal; 2.3 Promotores
-Versión de guía: No identificada expresamente en el documento consultado
-Estado: Borrador para revisión
-Fecha última revisión: 2026-10-31
-URL pública estable: Pendiente de definición
--->
+[Quién puede solicitar Financiamiento Reembolsable]({{ '/financiamiento-reembolsable/promotores/antes-de-solicitar/quien-puede-solicitar-financiamiento-reembolsable/' | relative_url }}).
