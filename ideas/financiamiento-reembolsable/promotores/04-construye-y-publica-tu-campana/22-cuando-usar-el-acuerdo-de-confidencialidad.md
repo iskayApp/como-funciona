@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/organiza-la-documentacion/
 prev_title: "Organiza la documentación"
+next_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/que-ocurre-durante-la-campana/
+next_title: "Qué ocurre durante la campaña"
 ---
 
 # Cuándo usar el acuerdo de confidencialidad
@@ -64,4 +66,4 @@ Ten en cuenta que la aceptación del acuerdo no modifica automáticamente los pe
 
 ## Siguiente paso
 
-**Qué ocurre durante la campaña.**
+[Qué ocurre durante la campaña]({{ '/financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/que-ocurre-durante-la-campana/' | relative_url }}).
