@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/cuando-necesitas-revision-contable-tributaria-y-financiera/
 prev_title: "Cuándo necesitas revisión contable, tributaria y financiera"
+next_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/prepara-la-descripcion-de-tu-iniciativa/
+next_title: "Prepara la descripción de tu iniciativa"
 ---
 
 # Qué cambia desde USD 200.000
@@ -64,4 +66,4 @@ Si tu monto objetivo solicitado se encuentra entre **USD 200.000,00 y USD 470.00
 
 ## Siguiente paso
 
-La siguiente etapa será **04 · Construye y publica tu campaña**, comenzando por **Prepara la descripción de tu iniciativa**.
+[Prepara la descripción de tu iniciativa]({{ '/financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/prepara-la-descripcion-de-tu-iniciativa/' | relative_url }}).
