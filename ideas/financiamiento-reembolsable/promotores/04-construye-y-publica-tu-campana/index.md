@@ -17,8 +17,9 @@ Esta etapa reúne la información y los contenidos que debes preparar para const
   <li><a href="{{ '/financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/prepara-la-descripcion-de-tu-iniciativa/' | relative_url }}"><span class="topic-number">19</span><strong>Prepara la descripción de tu iniciativa</strong></a></li>
   <li><a href="{{ '/financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/prepara-el-contenido-visual-de-tu-campana/' | relative_url }}"><span class="topic-number">20</span><strong>Prepara el contenido visual de tu campaña</strong></a></li>
   <li><a href="{{ '/financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/organiza-la-documentacion/' | relative_url }}"><span class="topic-number">21</span><strong>Organiza la documentación</strong></a></li>
+  <li><a href="{{ '/financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/cuando-usar-el-acuerdo-de-confidencialidad/' | relative_url }}"><span class="topic-number">22</span><strong>Cuándo usar el acuerdo de confidencialidad</strong></a></li>
 </ul>
 
 Las fichas restantes de esta etapa se publicarán en orden a medida que sean desarrolladas y revisadas.
 
-**Siguiente ficha:** 22 · Cuándo usar el acuerdo de confidencialidad.
+**Siguiente ficha:** 23 · Qué ocurre durante la campaña.
