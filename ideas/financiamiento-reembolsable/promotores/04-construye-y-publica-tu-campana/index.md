@@ -1,11 +1,22 @@
+---
+layout: default
+title: "Construye y publica tu campaña"
+description: "Cuarta etapa para promotores: prepara la información y los contenidos necesarios para publicar tu campaña."
+permalink: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/
+eyebrow: "Financiamiento Reembolsable · Promotores"
+category: "Financiamiento Reembolsable"
+---
+
 # 04 · Construye y publica tu campaña
 
-Temas previstos para esta etapa:
+Esta etapa reúne la información y los contenidos que debes preparar para construir y publicar tu campaña de Financiamiento Reembolsable.
 
-1. Prepara la descripción de tu iniciativa.
-2. Prepara el contenido visual de tu campaña.
-3. Organiza la documentación.
-4. Cuándo usar el acuerdo de confidencialidad.
-5. Qué ocurre durante la campaña.
+## Ficha disponible
 
-Cada tema se convertirá en una ficha independiente.
+<ul class="topic-list">
+  <li><a href="{{ '/financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/prepara-la-descripcion-de-tu-iniciativa/' | relative_url }}"><span class="topic-number">19</span><strong>Prepara la descripción de tu iniciativa</strong></a></li>
+</ul>
+
+Las fichas restantes de esta etapa se publicarán en orden a medida que sean desarrolladas y revisadas.
+
+**Siguiente ficha:** 20 · Prepara el contenido visual de tu campaña.
