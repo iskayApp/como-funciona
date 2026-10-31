@@ -33,9 +33,13 @@ Estamos validando la experiencia pública y móvil antes de integrar esta docume
   </li>
   <li>
     <a href="{{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/' | relative_url }}">
-      <span class="topic-number">Etapa 03 · En desarrollo</span>
+      <span class="topic-number">Etapa 03 · Completa</span>
       <strong>Prepara la revisión profesional</strong><br>
-      Identifica qué colaboradores profesionales debes incorporar según el monto objetivo solicitado.
+      Identifica qué colaboradores profesionales debes incorporar y qué revisión corresponde según el monto objetivo solicitado.
     </a>
   </li>
 </ul>
+
+## Siguiente etapa
+
+**04 · Construye y publica tu campaña**, comenzando por **19 · Prepara la descripción de tu iniciativa**.
