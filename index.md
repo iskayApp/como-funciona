@@ -40,9 +40,13 @@ Estamos validando la experiencia pública y móvil antes de integrar esta docume
   </li>
   <li>
     <a href="{{ '/financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/' | relative_url }}">
-      <span class="topic-number">Etapa 04 · En desarrollo</span>
+      <span class="topic-number">Etapa 04 · Completa</span>
       <strong>Construye y publica tu campaña</strong><br>
-      Prepara la descripción y los contenidos necesarios para construir y publicar tu campaña.
+      Prepara la descripción, contenido visual, documentación y condiciones de acceso para publicar tu campaña.
     </a>
   </li>
 </ul>
+
+## Siguiente etapa
+
+**05 · Cierre, formalización y transferencia**, comenzando por **24 · Qué ocurre cuando termina la campaña**.
