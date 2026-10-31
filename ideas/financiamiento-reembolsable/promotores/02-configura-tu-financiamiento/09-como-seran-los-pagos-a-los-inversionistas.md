@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-10-31"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-la-tna-que-ofreceras/
 prev_title: "Define la TNA que ofrecerás"
+next_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-garantia-necesitas-segun-el-monto/
+next_title: "Qué garantía necesitas según el monto"
 ---
 
 # Cómo serán los pagos a los inversionistas
@@ -50,4 +52,4 @@ Cumple cada cuota mensual mediante la orden de depósito y el mecanismo operativ
 
 ## Siguiente paso
 
-**Qué garantía necesitas según el monto.**
+[Qué garantía necesitas según el monto]({{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-garantia-necesitas-segun-el-monto/' | relative_url }}).
