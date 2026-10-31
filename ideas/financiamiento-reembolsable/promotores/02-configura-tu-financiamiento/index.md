@@ -20,8 +20,9 @@ Esta etapa reúne las condiciones que debes definir para configurar tu Financiam
   <li><a href="{{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-la-tna-que-ofreceras/' | relative_url }}"><span class="topic-number">08</span><strong>Define la TNA que ofrecerás</strong></a></li>
   <li><a href="{{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/como-seran-los-pagos-a-los-inversionistas/' | relative_url }}"><span class="topic-number">09</span><strong>Cómo serán los pagos a los inversionistas</strong></a></li>
   <li><a href="{{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-garantia-necesitas-segun-el-monto/' | relative_url }}"><span class="topic-number">10</span><strong>Qué garantía necesitas según el monto</strong></a></li>
+  <li><a href="{{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-debe-cumplir-el-aval-solidario/' | relative_url }}"><span class="topic-number">11</span><strong>Qué debe cumplir el aval solidario</strong></a></li>
 </ul>
 
 Las fichas restantes de esta etapa se publicarán en orden a medida que sean desarrolladas y revisadas.
 
-**Siguiente ficha:** 11 · Qué debe cumplir el aval solidario.
+**Siguiente ficha:** 12 · Qué debes saber sobre la garantía hipotecaria.
