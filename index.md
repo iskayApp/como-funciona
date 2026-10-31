@@ -31,8 +31,11 @@ Estamos validando la experiencia pública y móvil antes de integrar esta docume
       Define el período y modalidad de campaña, plazo, TNA, pagos y garantías aplicables.
     </a>
   </li>
+  <li>
+    <a href="{{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/' | relative_url }}">
+      <span class="topic-number">Etapa 03 · En desarrollo</span>
+      <strong>Prepara la revisión profesional</strong><br>
+      Identifica qué colaboradores profesionales debes incorporar según el monto objetivo solicitado.
+    </a>
+  </li>
 </ul>
-
-## Siguiente etapa
-
-**03 · Prepara la revisión profesional**, comenzando por **Qué colaboradores necesitas según el monto solicitado**.
