@@ -16,8 +16,9 @@ Esta etapa reúne las condiciones que debes definir para configurar tu Financiam
 <ul class="topic-list">
   <li><a href="{{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-el-periodo-de-campana/' | relative_url }}"><span class="topic-number">05</span><strong>Define el período de campaña</strong></a></li>
   <li><a href="{{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/elige-la-modalidad-de-campana/' | relative_url }}"><span class="topic-number">06</span><strong>Elige la modalidad de campaña</strong></a></li>
+  <li><a href="{{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-el-plazo-de-reembolso/' | relative_url }}"><span class="topic-number">07</span><strong>Define el plazo de reembolso</strong></a></li>
 </ul>
 
 Las fichas restantes de esta etapa se publicarán en orden a medida que sean desarrolladas y revisadas.
 
-**Siguiente ficha:** 07 · Define el plazo de reembolso.
+**Siguiente ficha:** 08 · Define la TNA que ofrecerás.

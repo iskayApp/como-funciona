@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-10-31"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-el-periodo-de-campana/
 prev_title: "Define el período de campaña"
+next_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-el-plazo-de-reembolso/
+next_title: "Define el plazo de reembolso"
 ---
 
 # Elige la modalidad de campaña
@@ -54,4 +56,4 @@ Selecciona la modalidad que corresponda a la forma en que deseas configurar la r
 
 ## Siguiente paso
 
-**Define el plazo de reembolso.**
+[Define el plazo de reembolso]({{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-el-plazo-de-reembolso/' | relative_url }}).
