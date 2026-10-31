@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-colaboradores-necesitas-segun-el-monto-solicitado/
 prev_title: "Qué colaboradores necesitas según el monto solicitado"
+next_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-representante-legal-de-los-inversionistas/
+next_title: "Qué hace el representante legal de los inversionistas"
 ---
 
 # Qué hace el analista de riesgos financieros
@@ -76,4 +78,4 @@ Facilita al colaborador la información necesaria para que pueda analizar tu fue
 
 ## Siguiente paso
 
-**Qué hace el representante legal de los inversionistas.**
+[Qué hace el representante legal de los inversionistas]({{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-representante-legal-de-los-inversionistas/' | relative_url }}).
