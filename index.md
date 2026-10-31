@@ -26,9 +26,13 @@ Estamos validando la experiencia pública y móvil antes de integrar esta docume
   </li>
   <li>
     <a href="{{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/' | relative_url }}">
-      <span class="topic-number">Etapa 02 · En desarrollo</span>
+      <span class="topic-number">Etapa 02 · Completa</span>
       <strong>Configura tu financiamiento</strong><br>
-      Comienza por definir el período durante el cual tu campaña estará abierta para recibir inversiones.
+      Define el período y modalidad de campaña, plazo, TNA, pagos y garantías aplicables.
     </a>
   </li>
 </ul>
+
+## Siguiente etapa
+
+**03 · Prepara la revisión profesional**, comenzando por **Qué colaboradores necesitas según el monto solicitado**.
