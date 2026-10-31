@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/prepara-el-contenido-visual-de-tu-campana/
 prev_title: "Prepara el contenido visual de tu campaña"
+next_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/cuando-usar-el-acuerdo-de-confidencialidad/
+next_title: "Cuándo usar el acuerdo de confidencialidad"
 ---
 
 # Organiza la documentación
@@ -69,4 +71,4 @@ Comprueba también que la identificación del promotor esté correctamente regis
 
 ## Siguiente paso
 
-**Cuándo usar el acuerdo de confidencialidad.**
+[Cuándo usar el acuerdo de confidencialidad]({{ '/financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/cuando-usar-el-acuerdo-de-confidencialidad/' | relative_url }}).
