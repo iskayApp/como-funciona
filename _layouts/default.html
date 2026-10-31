@@ -27,7 +27,7 @@
     <nav class="breadcrumbs" aria-label="Ruta">
       <a href="{{ '/' | relative_url }}">Cómo funciona</a>
       {% if page.category %}<span aria-hidden="true">/</span><span>{{ page.category }}</span>{% endif %}
-      {% if page.stage %}<span aria-hidden="true">/</span><a href="{{ '/financiamiento-reembolsable/promotores/antes-de-solicitar/' | relative_url }}">{{ page.stage }}</a>{% endif %}
+      {% if page.stage %}<span aria-hidden="true">/</span><a href="{{ page.stage_url | default: '/financiamiento-reembolsable/promotores/antes-de-solicitar/' | relative_url }}">{{ page.stage }}</a>{% endif %}
     </nav>
 
     {% if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>{% endif %}

@@ -1,14 +1,22 @@
+---
+layout: default
+title: "Configura tu financiamiento"
+description: "Segunda etapa para promotores: define las condiciones de tu Financiamiento Reembolsable."
+permalink: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/
+eyebrow: "Financiamiento Reembolsable · Promotores"
+category: "Financiamiento Reembolsable"
+---
+
 # 02 · Configura tu financiamiento
 
-Temas previstos para esta etapa:
+Esta etapa reúne las condiciones que debes definir para configurar tu Financiamiento Reembolsable.
 
-1. Define el período de campaña.
-2. Elige la modalidad de campaña.
-3. Define el plazo de reembolso.
-4. Define la TNA que ofrecerás.
-5. Cómo serán los pagos a los inversionistas.
-6. Qué garantía necesitas según el monto.
-7. Qué debe cumplir el aval solidario.
-8. Qué debes saber sobre la garantía hipotecaria.
+## Ficha disponible
 
-Cada tema se convertirá en una ficha independiente.
+<ul class="topic-list">
+  <li><a href="{{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-el-periodo-de-campana/' | relative_url }}"><span class="topic-number">05</span><strong>Define el período de campaña</strong></a></li>
+</ul>
+
+Las fichas restantes de esta etapa se publicarán en orden a medida que sean desarrolladas y revisadas.
+
+**Siguiente ficha:** 06 · Elige la modalidad de campaña.

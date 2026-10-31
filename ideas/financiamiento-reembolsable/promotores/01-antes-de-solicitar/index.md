@@ -20,4 +20,4 @@ Empieza por estos cuatro temas, en orden:
 
 **Etapa 01 completada.**
 
-La siguiente etapa será **02 · Configura tu financiamiento** y se publicará cuando esté desarrollada.
+[Continúa con 02 · Configura tu financiamiento]({{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/' | relative_url }}), comenzando por **Define el período de campaña**.

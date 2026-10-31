@@ -13,6 +13,8 @@ status: "Borrador para revisión"
 reviewed: "2026-10-31"
 prev_url: /financiamiento-reembolsable/promotores/antes-de-solicitar/comprueba-tu-capacidad-de-reembolso/
 prev_title: "Comprueba tu capacidad de reembolso"
+next_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-el-periodo-de-campana/
+next_title: "Define el período de campaña"
 ---
 
 # Define cuánto necesitas financiar
@@ -70,4 +72,4 @@ Antes de avanzar, ten presente que el monto elegido también determinará la gar
 
 ## Siguiente paso
 
-La siguiente etapa será **02 · Configura tu financiamiento**. Se publicará cuando esté desarrollada.
+[Define el período de campaña]({{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-el-periodo-de-campana/' | relative_url }}).
