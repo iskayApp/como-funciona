@@ -17,8 +17,9 @@ Esta etapa organiza la revisión profesional obligatoria que corresponde a tu Fi
   <li><a href="{{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-colaboradores-necesitas-segun-el-monto-solicitado/' | relative_url }}"><span class="topic-number">13</span><strong>Qué colaboradores necesitas según el monto solicitado</strong></a></li>
   <li><a href="{{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-analista-de-riesgos-financieros/' | relative_url }}"><span class="topic-number">14</span><strong>Qué hace el analista de riesgos financieros</strong></a></li>
   <li><a href="{{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-representante-legal-de-los-inversionistas/' | relative_url }}"><span class="topic-number">15</span><strong>Qué hace el representante legal de los inversionistas</strong></a></li>
+  <li><a href="{{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-valuador-de-garantias/' | relative_url }}"><span class="topic-number">16</span><strong>Qué hace el Valuador de Garantías</strong></a></li>
 </ul>
 
 Las fichas restantes de esta etapa se publicarán en orden a medida que sean desarrolladas y revisadas.
 
-**Siguiente ficha:** 16 · Qué hace el Valuador de Garantías.
+**Siguiente ficha:** 17 · Cuándo necesitas revisión contable, tributaria y financiera.
