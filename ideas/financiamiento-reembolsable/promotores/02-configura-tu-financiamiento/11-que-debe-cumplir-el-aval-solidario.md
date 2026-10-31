@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-garantia-necesitas-segun-el-monto/
 prev_title: "Qué garantía necesitas según el monto"
+next_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-debes-saber-sobre-la-garantia-hipotecaria/
+next_title: "Qué debes saber sobre la garantía hipotecaria"
 ---
 
 # Qué debe cumplir el aval solidario
@@ -61,4 +63,4 @@ Si tu financiamiento requiere garantía personal, incorpora un aval solidario qu
 
 ## Siguiente paso
 
-**Qué debes saber sobre la garantía hipotecaria.**
+[Qué debes saber sobre la garantía hipotecaria]({{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-debes-saber-sobre-la-garantia-hipotecaria/' | relative_url }}).
