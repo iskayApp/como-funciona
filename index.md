@@ -38,8 +38,11 @@ Estamos validando la experiencia pública y móvil antes de integrar esta docume
       Identifica qué colaboradores profesionales debes incorporar y qué revisión corresponde según el monto objetivo solicitado.
     </a>
   </li>
+  <li>
+    <a href="{{ '/financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/' | relative_url }}">
+      <span class="topic-number">Etapa 04 · En desarrollo</span>
+      <strong>Construye y publica tu campaña</strong><br>
+      Prepara la descripción y los contenidos necesarios para construir y publicar tu campaña.
+    </a>
+  </li>
 </ul>
-
-## Siguiente etapa
-
-**04 · Construye y publica tu campaña**, comenzando por **19 · Prepara la descripción de tu iniciativa**.
