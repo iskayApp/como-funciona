@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/cuando-usar-el-acuerdo-de-confidencialidad/
 prev_title: "Cuándo usar el acuerdo de confidencialidad"
+next_url: /financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/que-ocurre-cuando-termina-la-campana/
+next_title: "Qué ocurre cuando termina la campaña"
 ---
 
 # Qué ocurre durante la campaña
@@ -63,4 +65,4 @@ Ten presente que el resultado de la recaudación se evaluará según la modalida
 
 ## Siguiente paso
 
-La siguiente etapa será **05 · Cierre, formalización y transferencia**, comenzando por **Qué ocurre cuando termina la campaña**.
+[Qué ocurre cuando termina la campaña]({{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/que-ocurre-cuando-termina-la-campana/' | relative_url }}).
