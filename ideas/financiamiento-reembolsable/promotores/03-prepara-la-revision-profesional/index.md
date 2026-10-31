@@ -1,12 +1,22 @@
+---
+layout: default
+title: "Prepara la revisión profesional"
+description: "Tercera etapa para promotores: incorpora los colaboradores profesionales obligatorios según el monto solicitado."
+permalink: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/
+eyebrow: "Financiamiento Reembolsable · Promotores"
+category: "Financiamiento Reembolsable"
+---
+
 # 03 · Prepara la revisión profesional
 
-Temas previstos para esta etapa:
+Esta etapa organiza la revisión profesional obligatoria que corresponde a tu Financiamiento Reembolsable según el monto objetivo solicitado.
 
-1. Qué colaboradores necesitas según el monto solicitado.
-2. Qué hace el analista de riesgos financieros.
-3. Qué hace el representante legal de los inversionistas.
-4. Qué hace el Valuador de Garantías.
-5. Cuándo necesitas revisión contable, tributaria y financiera.
-6. Qué cambia desde USD 200.000.
+## Ficha disponible
 
-La primera ficha piloto del repositorio será **«¿Qué colaboradores necesito según el monto solicitado?»**.
+<ul class="topic-list">
+  <li><a href="{{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-colaboradores-necesitas-segun-el-monto-solicitado/' | relative_url }}"><span class="topic-number">13</span><strong>Qué colaboradores necesitas según el monto solicitado</strong></a></li>
+</ul>
+
+Las fichas restantes de esta etapa se publicarán en orden a medida que sean desarrolladas y revisadas.
+
+**Siguiente ficha:** 14 · Qué hace el analista de riesgos financieros.
