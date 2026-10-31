@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-representante-legal-de-los-inversionistas/
 prev_title: "Qué hace el representante legal de los inversionistas"
+next_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/cuando-necesitas-revision-contable-tributaria-y-financiera/
+next_title: "Cuándo necesitas revisión contable, tributaria y financiera"
 ---
 
 # Qué hace el Valuador de Garantías
@@ -76,4 +78,4 @@ Asegúrate de que el informe incluya la información exigida, esté firmado y fe
 
 ## Siguiente paso
 
-**Cuándo necesitas revisión contable, tributaria y financiera.**
+[Cuándo necesitas revisión contable, tributaria y financiera]({{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/cuando-necesitas-revision-contable-tributaria-y-financiera/' | relative_url }}).
