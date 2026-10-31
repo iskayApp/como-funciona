@@ -19,8 +19,9 @@ Esta etapa organiza la revisión profesional obligatoria que corresponde a tu Fi
   <li><a href="{{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-representante-legal-de-los-inversionistas/' | relative_url }}"><span class="topic-number">15</span><strong>Qué hace el representante legal de los inversionistas</strong></a></li>
   <li><a href="{{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-valuador-de-garantias/' | relative_url }}"><span class="topic-number">16</span><strong>Qué hace el Valuador de Garantías</strong></a></li>
   <li><a href="{{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/cuando-necesitas-revision-contable-tributaria-y-financiera/' | relative_url }}"><span class="topic-number">17</span><strong>Cuándo necesitas revisión contable, tributaria y financiera</strong></a></li>
+  <li><a href="{{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-cambia-desde-usd-200000/' | relative_url }}"><span class="topic-number">18</span><strong>Qué cambia desde USD 200.000</strong></a></li>
 </ul>
 
-Las fichas restantes de esta etapa se publicarán en orden a medida que sean desarrolladas y revisadas.
+**Etapa 03 completada.**
 
-**Siguiente ficha:** 18 · Qué cambia desde USD 200.000.
+La siguiente etapa será **04 · Construye y publica tu campaña**, comenzando por **19 · Prepara la descripción de tu iniciativa**.
