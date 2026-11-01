@@ -8,57 +8,61 @@ eyebrow: "Mantenimiento · Cómo funciona"
 
 # Centro de mantenimiento
 
-Esta vista se genera automáticamente durante la publicación. Sirve para comprobar **vigencia de versiones, enlaces internos, archivos multimedia y videos externos**.
+La vista sigue la misma estructura de **Cómo funciona**: **Etapa → Ficha → Capa multimedia**. Los recursos todavía sin ficha se mantienen aparte como pendientes de vinculación.
 
 <div id="maintenance-dashboard" class="maintenance-dashboard" aria-live="polite">
   <p>Cargando estado del sistema…</p>
 </div>
 
 <style>
-.maintenance-dashboard { margin-top: 24px; }
+.maintenance-dashboard { margin-top:24px; }
 .maint-summary { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin:18px 0 28px; }
-.maint-card { border:1px solid var(--line); background:var(--surface); border-radius:12px; padding:14px; }
+.maint-card,.maint-service,.maint-ficha,.maint-unlinked-card { border:1px solid var(--line); background:var(--surface); border-radius:12px; }
+.maint-card { padding:14px; }
 .maint-card strong { display:block; font-size:1.45rem; }
-.maint-card span { color:var(--muted); font-size:.82rem; }
-.maint-services { margin:0 0 28px; }
-.maint-service { border:1px solid var(--line); background:var(--surface); border-radius:12px; padding:14px; }
-.maint-service-head { display:flex; justify-content:space-between; gap:12px; align-items:center; }
-.maint-filters { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 18px; }
-.maint-filters button { min-height:42px; border:1px solid var(--line); background:var(--surface); color:var(--text); border-radius:999px; padding:8px 13px; font:inherit; cursor:pointer; }
-.maint-filters button[aria-pressed="true"] { border-color:var(--accent); }
-.maint-item { border-top:1px solid var(--line); padding:18px 0; }
-.maint-head { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
-.maint-head > div { min-width:0; }
-.maint-code { color:var(--muted); font-size:.8rem; font-weight:700; }
-.maint-status { white-space:nowrap; border:1px solid var(--line); border-radius:999px; padding:4px 9px; font-size:.78rem; font-weight:800; }
-.maint-status[data-status="OK"] { border-color:#8DBA99; }
-.maint-status[data-status="REVISAR"] { border-color:#D0A85B; }
+.maint-card span,.maint-meta { color:var(--muted); font-size:.82rem; }
+.maint-service { padding:14px; margin-bottom:28px; }
+.maint-service-head,.maint-ficha-head,.maint-layer-head { display:flex; justify-content:space-between; gap:14px; align-items:flex-start; }
+.maint-status { white-space:nowrap; border:1px solid var(--line); border-radius:999px; padding:4px 9px; font-size:.76rem; font-weight:800; }
+.maint-status[data-status="OK"],.maint-status[data-status="VINCULADO"] { border-color:#8DBA99; }
+.maint-status[data-status="REVISAR"],.maint-status[data-status="SIN VINCULAR"] { border-color:#D0A85B; }
 .maint-status[data-status="ROTO"] { border-color:#D78787; }
 .maint-status[data-status="SIN COMPROBAR"] { border-color:#AEB7B7; }
-.maint-meta { color:var(--muted); font-size:.84rem; margin-top:5px; }
-.maint-resource { margin:10px 0 0; padding:10px 12px; background:var(--soft); border-radius:9px; font-size:.88rem; }
-.maint-resource b { margin-right:6px; }
-.maint-empty { color:var(--muted); }
-.maint-warning { margin-top:10px; padding:10px 12px; background:var(--soft); border-radius:9px; font-size:.88rem; }
-.maint-inventory { margin: 30px 0 36px; }
-.maint-inventory-head { display:flex; justify-content:space-between; gap:12px; align-items:flex-end; margin-bottom:12px; }
-.maint-video { border-top:1px solid var(--line); padding:15px 0; }
-.maint-video:first-of-type { border-top:0; }
-.maint-video-title { font-weight:750; line-height:1.4; margin:4px 0; }
-.maint-video-id { color:var(--muted); font-size:.78rem; word-break:break-all; }
-.maint-video-links { margin-top:7px; font-size:.86rem; }
-.maint-asset-grid { display:grid; grid-template-columns:minmax(150px, .7fr) minmax(0, 1.8fr); gap:7px 16px; margin-top:12px; font-size:.88rem; }
-.maint-asset-label { color:var(--muted); font-weight:700; }
-.maint-asset-value { min-width:0; overflow-wrap:anywhere; }
-.maint-asset-actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:12px; }
-.maint-asset-actions a { font-size:.88rem; }
-.maint-status[data-status="VINCULADO"] { border-color:#8DBA99; }
-.maint-status[data-status="SIN VINCULAR"] { border-color:#D0A85B; }
+
+.maint-stage { margin:28px 0 34px; }
+.maint-stage > summary { list-style:none; cursor:pointer; padding:14px 0; border-bottom:1px solid var(--line); }
+.maint-stage > summary::-webkit-details-marker { display:none; }
+.maint-stage-title { font-size:1.28rem; font-weight:800; }
+.maint-stage-meta { color:var(--muted); font-size:.82rem; margin-top:3px; }
+
+.maint-ficha { padding:16px; margin:14px 0; }
+.maint-code { color:var(--muted); font-size:.78rem; font-weight:800; }
+.maint-ficha-title { font-weight:800; margin-top:3px; line-height:1.35; }
+.maint-ficha-actions { margin-top:7px; font-size:.86rem; }
+
+.maint-layer { margin-top:16px; padding-top:14px; border-top:1px solid var(--line); }
+.maint-layer h4 { margin:0; font-size:.96rem; }
+.maint-layer-group { margin-top:12px; }
+.maint-layer-group-title { color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:.05em; font-weight:800; margin-bottom:6px; }
+.maint-resource { background:var(--soft); border-radius:9px; padding:11px 12px; margin:7px 0; font-size:.86rem; }
+.maint-resource-head { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+.maint-resource-name { font-weight:750; }
+.maint-resource-meta { color:var(--muted); font-size:.8rem; margin-top:4px; overflow-wrap:anywhere; }
+.maint-resource-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:7px; }
+
+.maint-checks { margin-top:12px; }
+.maint-check { font-size:.82rem; color:var(--muted); margin:4px 0; }
+.maint-empty { color:var(--muted); font-size:.85rem; }
+
+.maint-pending { margin-top:38px; padding-top:22px; border-top:2px solid var(--line); }
+.maint-pending h2 { margin-bottom:5px; }
+.maint-unlinked-card { padding:13px; margin:9px 0; }
+.maint-unlinked-title { font-weight:750; line-height:1.4; }
+.maint-unlinked-id { color:var(--muted); font-size:.78rem; margin-top:5px; overflow-wrap:anywhere; }
+
 @media(max-width:620px){
   .maint-summary{grid-template-columns:1fr 1fr;}
-  .maint-head,.maint-service-head,.maint-inventory-head{flex-direction:column;align-items:flex-start;}
-  .maint-asset-grid{grid-template-columns:1fr;gap:3px;}
-  .maint-asset-label{margin-top:8px;}
+  .maint-service-head,.maint-ficha-head,.maint-resource-head{flex-direction:column;}
 }
 </style>
 
@@ -67,135 +71,160 @@ Esta vista se genera automáticamente durante la publicación. Sirve para compro
   const root = document.getElementById('maintenance-dashboard');
   const statusUrl = "{{ '/mantenimiento/status.json' | relative_url }}";
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
-  const state = { filter: 'TODOS', data: null };
 
-  function render() {
-    const d = state.data;
-    if (!d) return;
-    const s = d.summary;
-    const tik = d.services?.tiktok || {status:'SIN COMPROBAR',detail:'Sin información'};
-    const inv = d.tiktok_inventory || {total:0,linked:0,unlinked:0,videos:[]};
-    const rows = d.items.filter(i => state.filter === 'TODOS' || i.status === state.filter);
-    root.innerHTML = `
-      <p class="maint-meta">Última comprobación: ${esc(new Date(d.generated_at).toLocaleString('es-ES'))}</p>
-      <div class="maint-summary">
-        <div class="maint-card"><strong>${s.fichas}</strong><span>Fichas</span></div>
-        <div class="maint-card"><strong>${s.recursos}</strong><span>Recursos</span></div>
-        <div class="maint-card"><strong>${s.videos_tiktok || 0}</strong><span>TikTok registrados</span></div>
-        <div class="maint-card"><strong>${s.rotos}</strong><span>Con error</span></div>
-        <div class="maint-card"><strong>${s.revisar}</strong><span>Por revisar</span></div>
-      </div>
-      <div class="maint-services">
-        <div class="maint-service">
-          <div class="maint-service-head">
-            <div>
-              <strong>TikTok API</strong>
-              <div class="maint-meta">${esc(tik.detail || '')}</div>
-              <div class="maint-meta">Videos recientes comprobados: ${esc(tik.recent_videos_checked ?? 0)}</div>
-            </div>
-            <span class="maint-status" data-status="${esc(tik.status)}">${esc(tik.status)}</span>
-          </div>
-          ${tik.rotation_required ? '<div class="maint-warning"><strong>Atención:</strong> TikTok devolvió un refresh token nuevo. Conviene habilitar la rotación automática del Secret de GitHub.</div>' : ''}
-        </div>
-      </div>
-      <section class="maint-inventory">
-        <div class="maint-inventory-head">
-          <div>
-            <h2>Inventario TikTok</h2>
-            <div class="maint-meta">Detectados: ${esc(inv.total)} · Vinculados: ${esc(inv.linked)} · Sin vincular: ${esc(inv.unlinked)}</div>
-          </div>
-        </div>
-        <div>
-          ${inv.videos.length ? inv.videos.map(v => {
-            const safeUrl = (v.share_url && String(v.share_url).startsWith('https://www.tiktok.com/'))
-              ? v.share_url
-              : ((v.embed_link && String(v.embed_link).startsWith('https://www.tiktok.com/')) ? v.embed_link : '');
-            const primary = v.links?.[0] || null;
-            const editorialStatus = primary
-              ? ((primary.content_version != null && primary.derived_from_version != null && primary.content_version === primary.derived_from_version) ? 'OK' : 'REVISAR')
-              : 'SIN VINCULAR';
-            return `
-              <article class="maint-video">
-                <div class="maint-head">
-                  <div style="min-width:0;flex:1">
-                    <div class="maint-video-title">${esc(v.title || 'Sin título')}</div>
-                    <div class="maint-asset-grid">
-                      <div class="maint-asset-label">Ficha canónica</div>
-                      <div class="maint-asset-value">${primary ? esc(primary.title || 'Sin título de ficha') : 'Sin vincular'}</div>
+  const socialProviders = new Set(['youtube','facebook','instagram','tiktok','x','linkedin']);
 
-                      <div class="maint-asset-label">Código de ficha / pieza</div>
-                      <div class="maint-asset-value">${primary ? esc(primary.code || 'Sin código') : 'Sin vincular'}</div>
-
-                      <div class="maint-asset-label">Red social</div>
-                      <div class="maint-asset-value">TikTok</div>
-
-                      <div class="maint-asset-label">ID interno del recurso</div>
-                      <div class="maint-asset-value">${primary ? esc(primary.asset_id || 'Sin ID interno') : 'Pendiente de asignación'}</div>
-
-                      <div class="maint-asset-label">Video ID</div>
-                      <div class="maint-asset-value">${esc(v.video_id)}</div>
-
-                      <div class="maint-asset-label">Estado técnico</div>
-                      <div class="maint-asset-value"><span class="maint-status" data-status="${esc(v.status === 'VINCULADO' ? 'OK' : 'SIN COMPROBAR')}">${esc(v.status === 'VINCULADO' ? 'OK' : 'SIN COMPROBAR')}</span></div>
-
-                      <div class="maint-asset-label">Estado editorial</div>
-                      <div class="maint-asset-value"><span class="maint-status" data-status="${esc(editorialStatus)}">${esc(editorialStatus)}</span></div>
-
-                      <div class="maint-asset-label">Versión ficha / derivada</div>
-                      <div class="maint-asset-value">${primary ? esc((primary.content_version ?? '—') + ' / ' + (primary.derived_from_version ?? '—')) : '—'}</div>
-
-                      <div class="maint-asset-label">Última revisión</div>
-                      <div class="maint-asset-value">${primary ? esc(primary.reviewed || 'Sin fecha') : 'Pendiente'}</div>
-                    </div>
-                    <div class="maint-asset-actions">
-                      ${primary?.canonical_url ? `<a href="{{ site.baseurl }}${esc(primary.canonical_url)}">Abrir ficha canónica</a>` : ''}
-                      ${safeUrl ? `<a href="${esc(safeUrl)}" target="_blank" rel="noopener noreferrer">Abrir video en TikTok</a>` : ''}
-                    </div>
-                  </div>
-                  <span class="maint-status" data-status="${esc(v.status)}">${esc(v.status)}</span>
-                </div>
-              </article>`;
-          }).join('') : '<p class="maint-empty">No se pudieron recuperar videos de TikTok.</p>'}
-        </div>
-      </section>
-      <div class="maint-filters">
-        ${['TODOS','OK','REVISAR','ROTO','SIN COMPROBAR'].map(x => `<button type="button" data-filter="${x}" aria-pressed="${state.filter===x}">${x}</button>`).join('')}
-      </div>
-      <div>
-        ${rows.length ? rows.map(item => {
-          const resources = [...(item.media || []), ...(item.checks || []).filter(c => c.status !== 'OK')];
-          return `
-            <section class="maint-item">
-              <div class="maint-head">
-                <div>
-                  <div class="maint-code">${esc(item.code)}</div>
-                  <strong>${esc(item.title)}</strong>
-                  <div class="maint-meta">Versión canónica: ${esc(item.content_version ?? 'sin definir')} · Revisada: ${esc(item.reviewed || 'sin fecha')}</div>
-                  ${item.canonical_url ? `<a href="{{ site.baseurl }}${esc(item.canonical_url)}">Abrir ficha</a>` : ''}
-                </div>
-                <span class="maint-status" data-status="${esc(item.status)}">${esc(item.status)}</span>
-              </div>
-              ${resources.length ? resources.map(r => `
-                <div class="maint-resource">
-                  <b>${esc(r.id || r.label || r.kind || 'Recurso')}</b>
-                  <span class="maint-status" data-status="${esc(r.status)}">${esc(r.status)}</span><br>
-                  ${esc(r.detail || '')}
-                </div>`).join('') : '<p class="maint-empty">Sin incidencias registradas.</p>'}
-            </section>`;
-        }).join('') : '<p class="maint-empty">No hay elementos con este estado.</p>'}
-      </div>`;
-
-    root.querySelectorAll('[data-filter]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        state.filter = btn.dataset.filter;
-        render();
-      });
-    });
+  function resourceUrl(r) {
+    if (r?.url && /^https?:\/\//.test(String(r.url))) return r.url;
+    if (r?.src && /^https?:\/\//.test(String(r.src))) return r.src;
+    return '';
   }
 
-  fetch(statusUrl, { cache: 'no-store' })
+  function providerLabel(r) {
+    if (r.storage === 'internal') return r.type || 'Recurso propio';
+    const p = String(r.provider || '').toLowerCase();
+    const names = {youtube:'YouTube',facebook:'Facebook',instagram:'Instagram',tiktok:'TikTok',x:'X',linkedin:'LinkedIn'};
+    return names[p] || r.provider || r.type || 'Recurso externo';
+  }
+
+  function renderResource(r) {
+    const url = resourceUrl(r);
+    const version = [r.version ?? '—', r.derived_from_version ?? '—'].join(' / ');
+    return `
+      <div class="maint-resource">
+        <div class="maint-resource-head">
+          <div>
+            <div class="maint-resource-name">${esc(providerLabel(r))} · ${esc(r.id || 'Sin ID')}</div>
+            ${r.title ? `<div class="maint-resource-meta">${esc(r.title)}</div>` : ''}
+            ${r.video_id ? `<div class="maint-resource-meta">Video ID: ${esc(r.video_id)}</div>` : ''}
+            <div class="maint-resource-meta">Versión recurso / derivada: ${esc(version)}</div>
+            ${r.detail ? `<div class="maint-resource-meta">${esc(r.detail)}</div>` : ''}
+          </div>
+          <span class="maint-status" data-status="${esc(r.status)}">${esc(r.status)}</span>
+        </div>
+        ${url ? `<div class="maint-resource-actions"><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">Abrir recurso</a></div>` : ''}
+      </div>`;
+  }
+
+  function renderFicha(item) {
+    const media = item.media || [];
+    const own = media.filter(r => r.storage === 'internal');
+    const social = media.filter(r => socialProviders.has(String(r.provider || '').toLowerCase()));
+    const other = media.filter(r => r.storage !== 'internal' && !socialProviders.has(String(r.provider || '').toLowerCase()));
+    const issues = (item.checks || []).filter(c => c.status !== 'OK');
+
+    return `
+      <article class="maint-ficha">
+        <div class="maint-ficha-head">
+          <div>
+            <div class="maint-code">${esc(item.code)}</div>
+            <div class="maint-ficha-title">${esc(item.title)}</div>
+            <div class="maint-meta">Versión canónica: ${esc(item.content_version ?? 'sin definir')} · Revisada: ${esc(item.reviewed || 'sin fecha')}</div>
+            ${item.canonical_url ? `<div class="maint-ficha-actions"><a href="{{ site.baseurl }}${esc(item.canonical_url)}">Abrir ficha canónica</a></div>` : ''}
+          </div>
+          <span class="maint-status" data-status="${esc(item.status)}">${esc(item.status)}</span>
+        </div>
+
+        <div class="maint-layer">
+          <div class="maint-layer-head"><h4>Capa multimedia</h4></div>
+
+          <div class="maint-layer-group">
+            <div class="maint-layer-group-title">Recursos propios</div>
+            ${own.length ? own.map(renderResource).join('') : '<div class="maint-empty">Sin recursos propios asociados.</div>'}
+          </div>
+
+          <div class="maint-layer-group">
+            <div class="maint-layer-group-title">Redes sociales</div>
+            ${social.length ? social.map(renderResource).join('') : '<div class="maint-empty">Sin publicaciones sociales vinculadas.</div>'}
+          </div>
+
+          ${other.length ? `
+          <div class="maint-layer-group">
+            <div class="maint-layer-group-title">Otros recursos externos</div>
+            ${other.map(renderResource).join('')}
+          </div>` : ''}
+        </div>
+
+        ${issues.length ? `
+        <div class="maint-checks">
+          <div class="maint-layer-group-title">Comprobaciones de la ficha</div>
+          ${issues.map(c => `<div class="maint-check"><span class="maint-status" data-status="${esc(c.status)}">${esc(c.status)}</span> ${esc(c.label || c.kind || 'Comprobación')}: ${esc(c.detail || '')}</div>`).join('')}
+        </div>` : ''}
+      </article>`;
+  }
+
+  function render() {
+    const d = window.__maintenanceData;
+    if (!d) return;
+    const s = d.summary || {};
+    const tik = d.services?.tiktok || {status:'SIN COMPROBAR',detail:'Sin información'};
+    const inv = d.tiktok_inventory || {total:0,linked:0,unlinked:0,videos:[]};
+
+    const stageMap = new Map();
+    (d.items || []).forEach(item => {
+      const key = String(item.stage_order ?? 999).padStart(3,'0') + '|' + (item.stage || 'Sin etapa');
+      if (!stageMap.has(key)) stageMap.set(key, {order:item.stage_order ?? 999, name:item.stage || 'Sin etapa', items:[]});
+      stageMap.get(key).items.push(item);
+    });
+    const stages = [...stageMap.values()].sort((a,b) => a.order - b.order);
+
+    const unlinked = (inv.videos || []).filter(v => v.status === 'SIN VINCULAR');
+
+    root.innerHTML = `
+      <p class="maint-meta">Última comprobación: ${esc(new Date(d.generated_at).toLocaleString('es-ES'))}</p>
+
+      <div class="maint-summary">
+        <div class="maint-card"><strong>${s.fichas || 0}</strong><span>Fichas</span></div>
+        <div class="maint-card"><strong>${s.recursos || 0}</strong><span>Recursos propios</span></div>
+        <div class="maint-card"><strong>${s.videos_tiktok || 0}</strong><span>TikTok vinculados</span></div>
+        <div class="maint-card"><strong>${s.rotos || 0}</strong><span>Con error</span></div>
+        <div class="maint-card"><strong>${s.revisar || 0}</strong><span>Por revisar</span></div>
+      </div>
+
+      <div class="maint-service">
+        <div class="maint-service-head">
+          <div>
+            <strong>TikTok API</strong>
+            <div class="maint-meta">${esc(tik.detail || '')}</div>
+            <div class="maint-meta">Videos públicos detectados: ${esc(tik.recent_videos_checked ?? 0)}</div>
+          </div>
+          <span class="maint-status" data-status="${esc(tik.status)}">${esc(tik.status)}</span>
+        </div>
+      </div>
+
+      <h2>Mantenimiento por recorrido</h2>
+      ${stages.map((stage, idx) => `
+        <details class="maint-stage" ${idx === 0 ? 'open' : ''}>
+          <summary>
+            <div class="maint-stage-title">${String(stage.order).padStart(2,'0')} · ${esc(stage.name)}</div>
+            <div class="maint-stage-meta">${stage.items.length} fichas</div>
+          </summary>
+          ${stage.items.map(renderFicha).join('')}
+        </details>
+      `).join('')}
+
+      <section class="maint-pending">
+        <h2>Pendientes de vinculación</h2>
+        <p class="maint-meta">Recursos detectados en redes sociales que todavía no tienen una ficha canónica asignada.</p>
+        <h3>TikTok</h3>
+        ${unlinked.length ? unlinked.map(v => {
+          const safeUrl = (v.share_url && String(v.share_url).startsWith('https://www.tiktok.com/'))
+            ? v.share_url
+            : ((v.embed_link && String(v.embed_link).startsWith('https://www.tiktok.com/')) ? v.embed_link : '');
+          return `
+            <div class="maint-unlinked-card">
+              <div class="maint-unlinked-title">${esc(v.title || 'Sin título')}</div>
+              <div class="maint-unlinked-id">Video ID: ${esc(v.video_id)}</div>
+              ${safeUrl ? `<div class="maint-resource-actions"><a href="${esc(safeUrl)}" target="_blank" rel="noopener noreferrer">Abrir en TikTok</a></div>` : ''}
+            </div>`;
+        }).join('') : '<div class="maint-empty">No hay videos TikTok pendientes de vinculación.</div>'}
+      </section>
+    `;
+  }
+
+  fetch(statusUrl, {cache:'no-store'})
     .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .then(d => { state.data = d; render(); })
+    .then(d => { window.__maintenanceData = d; render(); })
     .catch(err => { root.innerHTML = '<p>No se pudo cargar el reporte de mantenimiento: ' + esc(err.message) + '</p>'; });
 })();
 </script>
