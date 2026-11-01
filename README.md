@@ -1,6 +1,6 @@
 # Cómo funciona · iskay.app
 
-Documentación de iskay.app para explicar sus categorías, recorridos y procedimientos de forma clara, accesible desde móvil y mantenible mediante control de versiones.
+Documentación pública de iskay.app para explicar sus categorías, recorridos y procedimientos de forma clara, accesible desde móvil y mantenible mediante control de versiones.
 
 ## Principio de arquitectura
 
@@ -8,24 +8,34 @@ La categoría es la unidad funcional principal. La navegación se organiza por c
 
 Las cinco categorías de Ideas son Donación, Recompensa, Precompra, Inversión en Acciones y Financiamiento Reembolsable.
 
-## Alcance inicial
+## Alcance actual
 
-- Preparar la arquitectura de las cinco categorías y el recorrido Promotores.
-- Desarrollar primero Financiamiento Reembolsable para Promotores.
-- Organizar ese recorrido en seis etapas: antes de solicitar; configura tu financiamiento; prepara la revisión profesional; construye y publica tu campaña; cierre, formalización y transferencia; cumple y da seguimiento.
-- Validar el patrón con la ficha piloto «¿Qué colaboradores necesito según el monto solicitado?» antes de desarrollar las 33 fichas previstas.
-- Mantener el apartado Recursos fuera del alcance inicial.
+- El recorrido **Financiamiento Reembolsable · Promotores** está desarrollado por completo.
+- El recorrido contiene **33 fichas organizadas en 6 etapas**.
+- Cada ficha dispone de una URL pública estable y navegación anterior/siguiente.
+- Las demás categorías conservan su estructura base, pero todavía no forman parte de la publicación pública activa.
+- El apartado Recursos permanece fuera del alcance actual.
 
 ## Criterios editoriales
 
-La guía aprobada es la fuente de verdad del contenido funcional. Las fichas simplifican y explican sin inventar requisitos, modificar montos ni crear obligaciones nuevas. Las diferencias entre fuentes y las decisiones pendientes deben quedar identificadas para revisión.
+La guía aprobada es la fuente de verdad del contenido funcional. Las fichas simplifican y explican sin inventar requisitos, modificar montos ni crear obligaciones nuevas.
 
-Cada ficha debe conservar categoría, rol, etapa, código, fuente, versión de guía, estado, fecha de revisión y URL estable. El contenido tendrá una única ubicación canónica.
+Google Drive funciona como fuente maestra editorial y este repositorio actúa como espejo técnico y publicable. Cada ficha conserva categoría, rol, etapa, código, fuente, versión de guía, estado, fecha de revisión y URL estable.
 
-## Publicación prevista
+## Publicación
 
-La documentación deberá permitir acceso directo a cada ficha, sin iniciar sesión ni descargar archivos, con lectura adecuada desde móvil. La tecnología de publicación y el dominio están pendientes de definición.
+El sitio se publica mediante GitHub Pages:
+
+https://iskayapp.github.io/como-funciona/
+
+Las fichas permiten acceso directo sin iniciar sesión ni descargar archivos y están preparadas para lectura desde móvil.
+
+Durante esta fase de prueba pública, el sitio mantiene `noindex: true` para evitar indexación en buscadores hasta que se apruebe su integración definitiva.
 
 ## Estado
 
-Repositorio privado con rama principal `main`. Este README establece el propósito y alcance; la estructura de navegación y la ficha piloto se incorporarán en los siguientes pasos. El sitio todavía no está publicado.
+- Repositorio: **público**.
+- Rama principal: `main`.
+- GitHub Pages: **activo**.
+- Financiamiento Reembolsable · Promotores: **33/33 fichas desarrolladas · PRUEBA PÚBLICA**.
+- Etapas 01 a 06: **completas**.

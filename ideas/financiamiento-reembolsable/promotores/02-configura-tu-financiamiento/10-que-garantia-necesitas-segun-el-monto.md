@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/
 code: "FR-PRO-10"
 source: "1 FinanciamientoReembolsable(2).docx — 6 Inicio de campaña > 1. Datos generales > Garantías; 7.1 Presentación de Documentos Obligatorios > Garantías"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-10-31"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/como-seran-los-pagos-a-los-inversionistas/
 prev_title: "Cómo serán los pagos a los inversionistas"

@@ -11,8 +11,6 @@ category: "Financiamiento Reembolsable"
 
 Esta etapa reúne los pasos que debes completar después del cierre de la campaña y antes de la transferencia efectiva de los fondos.
 
-## Fichas disponibles
-
 <ul class="topic-list">
   <li><a href="{{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/que-ocurre-cuando-termina-la-campana/' | relative_url }}"><span class="topic-number">24</span><strong>Qué ocurre cuando termina la campaña</strong></a></li>
   <li><a href="{{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/documentos-que-debes-completar-antes-de-recibir-los-fondos/' | relative_url }}"><span class="topic-number">25</span><strong>Documentos que debes completar antes de recibir los fondos</strong></a></li>

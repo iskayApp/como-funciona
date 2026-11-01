@@ -9,7 +9,7 @@ stage: "Antes de solicitar"
 code: "FR-PRO-03"
 source: "1 FinanciamientoReembolsable(2).docx — 2.3 Promotores; 4 Colaboradores obligatorios; 6 Inicio de campaña > 2. Descripción completa > Fuente de reembolso"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-10-31"
 prev_url: /financiamiento-reembolsable/promotores/antes-de-solicitar/quien-puede-solicitar-financiamiento-reembolsable/
 prev_title: "Quién puede solicitarlo"

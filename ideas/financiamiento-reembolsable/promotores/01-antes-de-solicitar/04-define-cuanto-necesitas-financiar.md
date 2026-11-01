@@ -9,7 +9,7 @@ stage: "Antes de solicitar"
 code: "FR-PRO-04"
 source: "1 FinanciamientoReembolsable(2).docx — 3.1 Comisión al financiamiento (promotor); 4 Colaboradores obligatorios; 6 Inicio de campaña > 1. Datos generales > Monto solicitado"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-10-31"
 prev_url: /financiamiento-reembolsable/promotores/antes-de-solicitar/comprueba-tu-capacidad-de-reembolso/
 prev_title: "Comprueba tu capacidad de reembolso"

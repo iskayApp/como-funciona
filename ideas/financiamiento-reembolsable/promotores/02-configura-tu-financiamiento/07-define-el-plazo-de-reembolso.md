@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/
 code: "FR-PRO-07"
 source: "1 FinanciamientoReembolsable(2).docx — 2.3 Promotores; 6 Inicio de campaña > 1. Datos generales > Plazo de reembolso; Frecuencia de pagos"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-10-31"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/elige-la-modalidad-de-campana/
 prev_title: "Elige la modalidad de campaña"

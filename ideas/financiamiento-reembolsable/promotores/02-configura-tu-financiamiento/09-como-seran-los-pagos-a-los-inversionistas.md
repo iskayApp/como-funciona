@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/
 code: "FR-PRO-09"
 source: "1 FinanciamientoReembolsable(2).docx — 6 Inicio de campaña > 1. Datos generales > Frecuencia de pagos; Pagos a inversionistas"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-10-31"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-la-tna-que-ofreceras/
 prev_title: "Define la TNA que ofrecerás"

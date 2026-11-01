@@ -11,8 +11,6 @@ category: "Financiamiento Reembolsable"
 
 Esta etapa reúne las condiciones que debes definir para configurar tu Financiamiento Reembolsable.
 
-## Fichas disponibles
-
 <ul class="topic-list">
   <li><a href="{{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-el-periodo-de-campana/' | relative_url }}"><span class="topic-number">05</span><strong>Define el período de campaña</strong></a></li>
   <li><a href="{{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/elige-la-modalidad-de-campana/' | relative_url }}"><span class="topic-number">06</span><strong>Elige la modalidad de campaña</strong></a></li>

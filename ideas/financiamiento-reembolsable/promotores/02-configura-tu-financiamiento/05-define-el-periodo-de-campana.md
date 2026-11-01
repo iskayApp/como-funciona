@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/
 code: "FR-PRO-05"
 source: "1 FinanciamientoReembolsable(2).docx — 6 Inicio de campaña > 1. Datos generales > Período de campaña; Plazo de reembolso"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-10-31"
 prev_url: /financiamiento-reembolsable/promotores/antes-de-solicitar/define-cuanto-necesitas-financiar/
 prev_title: "Define cuánto necesitas financiar"

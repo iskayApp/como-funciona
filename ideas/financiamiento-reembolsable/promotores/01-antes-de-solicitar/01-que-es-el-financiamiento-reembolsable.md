@@ -9,7 +9,7 @@ stage: "Antes de solicitar"
 code: "FR-PRO-01"
 source: "1 FinanciamientoReembolsable(2).docx — 1 Definición legal; 2.3 Promotores"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-10-31"
 prev_url: /financiamiento-reembolsable/promotores/antes-de-solicitar/
 prev_title: "Antes de solicitar"
