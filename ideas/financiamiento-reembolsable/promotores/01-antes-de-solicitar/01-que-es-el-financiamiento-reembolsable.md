@@ -7,10 +7,21 @@ eyebrow: "01 · Antes de solicitar"
 category: "Financiamiento Reembolsable"
 stage: "Antes de solicitar"
 code: "FR-PRO-01"
+content_version: 1
 source: "1 FinanciamientoReembolsable(2).docx — 1 Definición legal; 2.3 Promotores"
 guide_version: "No identificada expresamente en el documento consultado"
 status: "DESARROLLADA · PRUEBA PÚBLICA"
-reviewed: "2026-10-31"
+reviewed: "2026-11-01"
+distribution:
+  tiktok:
+    - id: "fr-pro-01-tiktok-01"
+      video_id: "7701409317936844054"
+      visibility: "public"
+      version: 1
+      derived_from_version: 1
+      source: "1 FinanciamientoReembolsable(2).docx — 1 Definición legal; 2.3 Promotores"
+      status: "approved"
+      reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/antes-de-solicitar/
 prev_title: "Antes de solicitar"
 next_url: /financiamiento-reembolsable/promotores/antes-de-solicitar/quien-puede-solicitar-financiamiento-reembolsable/
