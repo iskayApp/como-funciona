@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesion
 code: "FR-PRO-13"
 source: "1 FinanciamientoReembolsable(2).docx — 4 Colaboradores obligatorios"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-debes-saber-sobre-la-garantia-hipotecaria/
 prev_title: "Qué debes saber sobre la garantía hipotecaria"

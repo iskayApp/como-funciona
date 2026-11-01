@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campan
 code: "FR-PRO-20"
 source: "1 FinanciamientoReembolsable(2).docx — 6 Inicio de campaña > 3. Multimedia"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/prepara-la-descripcion-de-tu-iniciativa/
 prev_title: "Prepara la descripción de tu iniciativa"

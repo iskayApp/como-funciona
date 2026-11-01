@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesion
 code: "FR-PRO-15"
 source: "1 FinanciamientoReembolsable(2).docx — 4 Colaboradores obligatorios > Representación legal de los inversionistas; 6 Inicio de campaña > Colaboradores; 7.1 Presentación de Documentos Obligatorios > Garantías"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-analista-de-riesgos-financieros/
 prev_title: "Qué hace el analista de riesgos financieros"

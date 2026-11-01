@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campan
 code: "FR-PRO-19"
 source: "1 FinanciamientoReembolsable(2).docx — 6 Inicio de campaña > 1. Datos generales > Descripción corta; 2. Descripción completa"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-cambia-desde-usd-200000/
 prev_title: "Qué cambia desde USD 200.000"

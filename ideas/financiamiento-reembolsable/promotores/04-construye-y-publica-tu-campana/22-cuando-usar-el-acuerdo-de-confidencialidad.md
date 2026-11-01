@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campan
 code: "FR-PRO-22"
 source: "1 FinanciamientoReembolsable(2).docx — 2.3 Promotores > Mayor exposición; 6 Inicio de campaña > 1. Datos generales > Acuerdo de confidencialidad"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/organiza-la-documentacion/
 prev_title: "Organiza la documentación"

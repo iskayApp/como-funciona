@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesion
 code: "FR-PRO-14"
 source: "1 FinanciamientoReembolsable(2).docx — 4 Colaboradores obligatorios > Análisis de riesgos financieros y rentabilidad ofrecida a los inversionistas"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-colaboradores-necesitas-segun-el-monto-solicitado/
 prev_title: "Qué colaboradores necesitas según el monto solicitado"

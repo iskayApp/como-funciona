@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campan
 code: "FR-PRO-21"
 source: "1 FinanciamientoReembolsable(2).docx — 6 Inicio de campaña > 5. Documentación"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/prepara-el-contenido-visual-de-tu-campana/
 prev_title: "Prepara el contenido visual de tu campaña"

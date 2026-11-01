@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesion
 code: "FR-PRO-16"
 source: "1 FinanciamientoReembolsable(2).docx — 4 Colaboradores obligatorios > Valuador de Garantías; 6 Inicio de campaña > Colaboradores; 7.1 Presentación de Documentos Obligatorios > Garantía Real"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-representante-legal-de-los-inversionistas/
 prev_title: "Qué hace el representante legal de los inversionistas"

@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesion
 code: "FR-PRO-18"
 source: "1 FinanciamientoReembolsable(2).docx — 4 Colaboradores obligatorios > Rango USD 200.000,00 a USD 470.000,00"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/cuando-necesitas-revision-contable-tributaria-y-financiera/
 prev_title: "Cuándo necesitas revisión contable, tributaria y financiera"

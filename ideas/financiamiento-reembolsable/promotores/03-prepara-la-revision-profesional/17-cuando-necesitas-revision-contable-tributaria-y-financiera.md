@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesion
 code: "FR-PRO-17"
 source: "1 FinanciamientoReembolsable(2).docx — 4 Colaboradores obligatorios > Revisión contable, tributaria y financiera"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-valuador-de-garantias/
 prev_title: "Qué hace el Valuador de Garantías"

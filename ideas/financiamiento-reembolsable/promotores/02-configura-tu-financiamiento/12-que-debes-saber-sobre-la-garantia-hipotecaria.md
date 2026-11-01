@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/
 code: "FR-PRO-12"
 source: "1 FinanciamientoReembolsable(2).docx — 4 Colaboradores obligatorios > Valuador de Garantías; 7.1 Presentación de Documentos Obligatorios > Garantía Real"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-debe-cumplir-el-aval-solidario/
 prev_title: "Qué debe cumplir el aval solidario"
