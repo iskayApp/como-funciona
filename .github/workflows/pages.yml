@@ -32,7 +32,25 @@ jobs:
         run: python -m pip install --disable-pip-version-check PyYAML
 
       - name: Generate maintenance report
+        env:
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
         run: python scripts/maintenance_check.py
+
+      - name: Persist rotated TikTok refresh token when updater credential exists
+        env:
+          GH_TOKEN: ${{ secrets.GH_SECRET_UPDATE_TOKEN }}
+        run: |
+          if [ -f mantenimiento/tiktok_refresh_token.next ]; then
+            if [ -n "$GH_TOKEN" ]; then
+              gh secret set TIKTOK_REFRESH_TOKEN < mantenimiento/tiktok_refresh_token.next
+              echo "TikTok refresh token rotated and repository secret was updated."
+            else
+              echo "::warning::TikTok returned a rotated refresh token. Add GH_SECRET_UPDATE_TOKEN to enable automatic secret rotation."
+            fi
+            rm -f mantenimiento/tiktok_refresh_token.next
+          fi
 
       - name: Setup Pages
         id: pages
