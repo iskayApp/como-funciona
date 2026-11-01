@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/documentos-que-debes-completar-antes-de-recibir-los-fondos/
 prev_title: "Documentos que debes completar antes de recibir los fondos"
+next_url: /financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/formalizacion-de-la-garantia/
+next_title: "Formalización de la garantía"
 ---
 
 # Registra tu cuenta bancaria
@@ -56,4 +58,4 @@ Comprueba que la cuenta esté habilitada para recibir los fondos antes de contin
 
 ## Siguiente paso
 
-**Formalización de la garantía.**
+[Formalización de la garantía]({{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/formalizacion-de-la-garantia/' | relative_url }}).
