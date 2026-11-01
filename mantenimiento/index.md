@@ -16,10 +16,13 @@ Esta vista se genera automáticamente durante la publicación. Sirve para compro
 
 <style>
 .maintenance-dashboard { margin-top: 24px; }
-.maint-summary { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin:18px 0 28px; }
+.maint-summary { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin:18px 0 28px; }
 .maint-card { border:1px solid var(--line); background:var(--surface); border-radius:12px; padding:14px; }
 .maint-card strong { display:block; font-size:1.45rem; }
 .maint-card span { color:var(--muted); font-size:.82rem; }
+.maint-services { margin:0 0 28px; }
+.maint-service { border:1px solid var(--line); background:var(--surface); border-radius:12px; padding:14px; }
+.maint-service-head { display:flex; justify-content:space-between; gap:12px; align-items:center; }
 .maint-filters { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 18px; }
 .maint-filters button { min-height:42px; border:1px solid var(--line); background:var(--surface); color:var(--text); border-radius:999px; padding:8px 13px; font:inherit; cursor:pointer; }
 .maint-filters button[aria-pressed="true"] { border-color:var(--accent); }
@@ -31,11 +34,13 @@ Esta vista se genera automáticamente durante la publicación. Sirve para compro
 .maint-status[data-status="OK"] { border-color:#8DBA99; }
 .maint-status[data-status="REVISAR"] { border-color:#D0A85B; }
 .maint-status[data-status="ROTO"] { border-color:#D78787; }
+.maint-status[data-status="SIN COMPROBAR"] { border-color:#AEB7B7; }
 .maint-meta { color:var(--muted); font-size:.84rem; margin-top:5px; }
 .maint-resource { margin:10px 0 0; padding:10px 12px; background:var(--soft); border-radius:9px; font-size:.88rem; }
 .maint-resource b { margin-right:6px; }
 .maint-empty { color:var(--muted); }
-@media(max-width:620px){ .maint-summary{grid-template-columns:1fr 1fr;} .maint-head{flex-direction:column;} }
+.maint-warning { margin-top:10px; padding:10px 12px; background:var(--soft); border-radius:9px; font-size:.88rem; }
+@media(max-width:620px){ .maint-summary{grid-template-columns:1fr 1fr;} .maint-head,.maint-service-head{flex-direction:column;align-items:flex-start;} }
 </style>
 
 <script>
@@ -49,14 +54,29 @@ Esta vista se genera automáticamente durante la publicación. Sirve para compro
     const d = state.data;
     if (!d) return;
     const s = d.summary;
+    const tik = d.services?.tiktok || {status:'SIN COMPROBAR',detail:'Sin información'};
     const rows = d.items.filter(i => state.filter === 'TODOS' || i.status === state.filter);
     root.innerHTML = `
       <p class="maint-meta">Última comprobación: ${esc(new Date(d.generated_at).toLocaleString('es-ES'))}</p>
       <div class="maint-summary">
         <div class="maint-card"><strong>${s.fichas}</strong><span>Fichas</span></div>
         <div class="maint-card"><strong>${s.recursos}</strong><span>Recursos</span></div>
+        <div class="maint-card"><strong>${s.videos_tiktok || 0}</strong><span>TikTok registrados</span></div>
         <div class="maint-card"><strong>${s.rotos}</strong><span>Con error</span></div>
         <div class="maint-card"><strong>${s.revisar}</strong><span>Por revisar</span></div>
+      </div>
+      <div class="maint-services">
+        <div class="maint-service">
+          <div class="maint-service-head">
+            <div>
+              <strong>TikTok API</strong>
+              <div class="maint-meta">${esc(tik.detail || '')}</div>
+              <div class="maint-meta">Videos recientes comprobados: ${esc(tik.recent_videos_checked ?? 0)}</div>
+            </div>
+            <span class="maint-status" data-status="${esc(tik.status)}">${esc(tik.status)}</span>
+          </div>
+          ${tik.rotation_required ? '<div class="maint-warning"><strong>Atención:</strong> TikTok devolvió un refresh token nuevo. Conviene habilitar la rotación automática del Secret de GitHub.</div>' : ''}
+        </div>
       </div>
       <div class="maint-filters">
         ${['TODOS','OK','REVISAR','ROTO','SIN COMPROBAR'].map(x => `<button type="button" data-filter="${x}" aria-pressed="${state.filter===x}">${x}</button>`).join('')}
