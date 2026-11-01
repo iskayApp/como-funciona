@@ -46,15 +46,24 @@ Patrón editorial aprobado para redactar las fichas. Los campos entre corchetes 
 | Rol | [Rol] |
 | Etapa | [Etapa del recorrido] |
 | Código | [Pendiente de asignación] |
+| Versión canónica | [content_version: 1] |
 | Fuente | [Documento y apartado de respaldo] |
 | Versión de guía | [Versión identificada; no deducirla del nombre del archivo] |
 | Estado | Borrador para revisión |
 | Fecha de revisión | [AAAA-MM-DD] |
 | URL estable | [Pendiente de definición antes de publicar] |
 | Multimedia | [Sin recursos / IDs de recursos asociados] |
+| Distribución | [Sin activos / YouTube / Facebook / Instagram / TikTok / otros] |
 
 ## Criterio de revisión
 
 No completar vacíos funcionales con supuestos. Registrar las dudas o discrepancias para resolverlas en la fuente antes de publicar la ficha.
 
 La capa multimedia es complementaria. La ficha debe seguir siendo comprensible si un recurso no carga o no puede reproducirse.
+
+
+## Metadatos de trazabilidad
+
+Toda ficha publicada debe mantener un campo `content_version`. Los recursos multimedia y activos distribuidos asociados deben registrar `derived_from_version`, además de `source`, `version`, `status` y `reviewed`.
+
+Si `derived_from_version` no coincide con `content_version`, el recurso debe considerarse pendiente de revisión. Consultar `TRAZABILIDAD.md`.
