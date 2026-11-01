@@ -162,6 +162,27 @@ th {
   text-align: left;
 }
 
+.media-block {
+  margin: 24px 0 30px;
+}
+
+.media-block img,
+.media-block video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.media-block figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: .86rem;
+  line-height: 1.5;
+}
+
 .topic-list {
   list-style: none;
   padding: 0;
