@@ -165,6 +165,8 @@ Fuente modificada
 
 Esto permite revisar y actualizar el contenido distribuido sin depender de búsquedas manuales ni mantener copias desconectadas.
 
+La detección de desactualización se basa en la comparación entre `content_version` de la ficha y `derived_from_version` de cada recurso. La especificación completa está en [TRAZABILIDAD.md](./TRAZABILIDAD.md).
+
 ## Arquitectura híbrida de almacenamiento
 
 La política predeterminada de **Cómo funciona** será híbrida:
@@ -192,7 +194,9 @@ media:
     purpose: explicacion
     placement: after-summary
     version: 1
+    derived_from_version: 1
     status: approved
+    reviewed: "AAAA-MM-DD"
 ```
 
 El campo `visibility` podrá utilizar, entre otros, valores como `public` o `unlisted`.
@@ -216,8 +220,10 @@ media:
     caption: Colaboradores requeridos según el rango de financiamiento.
     placement: after-summary
     version: 1
+    derived_from_version: 1
     source: guia-fr
     status: approved
+    reviewed: "AAAA-MM-DD"
 ```
 
 Ejemplo de recurso externo:
@@ -249,8 +255,10 @@ media:
 | `caption` | Texto visible opcional asociado al recurso. |
 | `placement` | Ubicación lógica dentro de la ficha. |
 | `version` | Versión del recurso. |
+| `derived_from_version` | Versión de la ficha canónica utilizada para producir o revisar el recurso. |
 | `source` | Fuente funcional o editorial que respalda su contenido. |
 | `status` | Estado editorial del recurso. |
+| `reviewed` | Fecha de última revisión del recurso. |
 
 Cada tipo podrá incorporar propiedades específicas adicionales sin alterar estos campos comunes.
 
