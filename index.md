@@ -1,9 +1,9 @@
 ---
 layout: default
 title: "Financiamiento Reembolsable para Promotores"
-description: "Prueba pública de Cómo funciona para promotores de Financiamiento Reembolsable en iskay.app."
+description: "Prueba pública del recorrido Cómo funciona para promotores de Financiamiento Reembolsable en iskay.app."
 permalink: /
-eyebrow: "Prueba de publicación · Recorrido en desarrollo"
+eyebrow: "Prueba de publicación · Recorrido completo"
 ---
 
 # Financiamiento Reembolsable para Promotores
@@ -54,9 +54,13 @@ Estamos validando la experiencia pública y móvil antes de integrar esta docume
   </li>
   <li>
     <a href="{{ '/financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/' | relative_url }}">
-      <span class="topic-number">Etapa 06 · En desarrollo</span>
+      <span class="topic-number">Etapa 06 · Completa</span>
       <strong>Cumple y da seguimiento</strong><br>
       Consulta el estado de las cuotas y conoce qué ocurre ante retrasos, mora o incumplimientos.
     </a>
   </li>
 </ul>
+
+## Recorrido completo
+
+**33 fichas desarrolladas y organizadas en 6 etapas.**
