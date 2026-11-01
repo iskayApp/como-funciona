@@ -16,8 +16,9 @@ Esta etapa reúne los pasos que debes completar después del cierre de la campa�
 <ul class="topic-list">
   <li><a href="{{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/que-ocurre-cuando-termina-la-campana/' | relative_url }}"><span class="topic-number">24</span><strong>Qué ocurre cuando termina la campaña</strong></a></li>
   <li><a href="{{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/documentos-que-debes-completar-antes-de-recibir-los-fondos/' | relative_url }}"><span class="topic-number">25</span><strong>Documentos que debes completar antes de recibir los fondos</strong></a></li>
+  <li><a href="{{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/registra-tu-cuenta-bancaria/' | relative_url }}"><span class="topic-number">26</span><strong>Registra tu cuenta bancaria</strong></a></li>
 </ul>
 
 Las fichas restantes de esta etapa se publicarán en orden a medida que sean desarrolladas y revisadas.
 
-**Siguiente ficha:** 26 · Registra tu cuenta bancaria.
+**Siguiente ficha:** 27 · Formalización de la garantía.
