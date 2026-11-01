@@ -11,12 +11,13 @@ category: "Financiamiento Reembolsable"
 
 Esta etapa reúne la información necesaria para dar seguimiento al cumplimiento del financiamiento después de la transferencia de los fondos.
 
-## Ficha disponible
+## Fichas disponibles
 
 <ul class="topic-list">
   <li><a href="{{ '/financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/como-consultar-el-cumplimiento-del-financiamiento/' | relative_url }}"><span class="topic-number">29</span><strong>Cómo consultar el cumplimiento del financiamiento</strong></a></li>
+  <li><a href="{{ '/financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/que-ocurre-si-te-retrasas-en-una-cuota/' | relative_url }}"><span class="topic-number">30</span><strong>Qué ocurre si te retrasas en una cuota</strong></a></li>
 </ul>
 
 Las fichas restantes de esta etapa se publicarán en orden a medida que sean desarrolladas y revisadas.
 
-**Siguiente ficha:** 30 · Qué ocurre si te retrasas en una cuota.
+**Siguiente ficha:** 31 · Qué ocurre si existe incumplimiento.
