@@ -106,7 +106,10 @@ Esta vista se genera automáticamente durante la publicación. Sirve para compro
                   <div>
                     <div class="maint-video-id">TikTok ID: ${esc(v.video_id)}</div>
                     <div class="maint-video-title">${esc(v.title || 'Sin título')}</div>
-                    ${v.links?.length ? `<div class="maint-video-links">Ficha: ${v.links.map(l => `<a href="{{ site.baseurl }}${esc(l.canonical_url || '')}">${esc(l.code || l.title || 'Ficha')}</a>`).join(', ')}</div>` : '<div class="maint-video-links">Todavía no asociado a una ficha canónica.</div>'}
+                    ${v.links?.length ? `<div class="maint-video-links">Ficha canónica: ${v.links.map(l => {
+  const label = [l.code, l.title].filter(Boolean).join(' · ') || 'Ficha';
+  return `<a href="{{ site.baseurl }}${esc(l.canonical_url || '')}">${esc(label)}</a>`;
+}).join(', ')}</div>` : '<div class="maint-video-links">Todavía no asociado a una ficha canónica.</div>'}
                     ${safeUrl ? `<div class="maint-video-links"><a href="${esc(safeUrl)}" target="_blank" rel="noopener noreferrer">Abrir video en TikTok</a></div>` : ''}
                   </div>
                   <span class="maint-status" data-status="${esc(v.status)}">${esc(v.status)}</span>
