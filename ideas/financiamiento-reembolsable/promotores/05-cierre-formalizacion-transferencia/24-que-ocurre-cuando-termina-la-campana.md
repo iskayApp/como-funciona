@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/que-ocurre-durante-la-campana/
 prev_title: "Qué ocurre durante la campaña"
+next_url: /financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/documentos-que-debes-completar-antes-de-recibir-los-fondos/
+next_title: "Documentos que debes completar antes de recibir los fondos"
 ---
 
 # Qué ocurre cuando termina la campaña
@@ -60,4 +62,4 @@ Al terminar la campaña, verifica el resultado de la recaudación según la moda
 
 ## Siguiente paso
 
-**Documentos que debes completar antes de recibir los fondos.**
+[Documentos que debes completar antes de recibir los fondos]({{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/documentos-que-debes-completar-antes-de-recibir-los-fondos/' | relative_url }}).
