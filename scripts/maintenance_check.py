@@ -2,11 +2,10 @@
 import json
 import os
 import re
-import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.error import HTTPError, URLError
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
 import yaml
@@ -15,10 +14,15 @@ ROOT = Path(__file__).resolve().parents[1]
 IDEAS = ROOT / "ideas"
 OUT_DIR = ROOT / "mantenimiento"
 OUT_FILE = OUT_DIR / "status.json"
+TIKTOK_NEXT_REFRESH_FILE = OUT_DIR / "tiktok_refresh_token.next"
 BASEURL = "/como-funciona"
 
 RELATIVE_URL_RE = re.compile(r"""\{\{\s*['"]([^'"]+)['"]\s*\|\s*relative_url\s*\}\}""")
 MARKDOWN_LINK_RE = re.compile(r"""\[[^\]]*\]\(([^)]+)\)""")
+
+TIKTOK_TOKEN_URL = "https://open.tiktokapis.com/v2/oauth/token/"
+TIKTOK_LIST_URL = "https://open.tiktokapis.com/v2/video/list/?fields=id,title,embed_link,share_url"
+TIKTOK_QUERY_URL = "https://open.tiktokapis.com/v2/video/query/?fields=id,title,embed_link,share_url"
 
 def read_front_matter(path):
     text = path.read_text(encoding="utf-8")
@@ -47,6 +51,11 @@ def normalize_url(value):
     if value != "/" and not value.endswith("/") and not Path(value).suffix:
         value += "/"
     return value
+
+def request_json(url, *, method="GET", headers=None, data=None, timeout=15):
+    req = Request(url, headers=headers or {}, data=data, method=method)
+    with urlopen(req, timeout=timeout) as r:
+        return json.loads(r.read().decode("utf-8")), getattr(r, "status", 200)
 
 def check_http(url, timeout=10):
     headers = {"User-Agent": "iskay-como-funciona-maintenance/1.0"}
@@ -83,6 +92,127 @@ def check_youtube(video_id):
     except (URLError, TimeoutError, OSError) as e:
         return False, None, str(e)
 
+def refresh_tiktok_access():
+    client_key = os.getenv("TIKTOK_CLIENT_KEY", "").strip()
+    client_secret = os.getenv("TIKTOK_CLIENT_SECRET", "").strip()
+    refresh_token = os.getenv("TIKTOK_REFRESH_TOKEN", "").strip()
+
+    service = {
+        "status": "SIN COMPROBAR",
+        "detail": "Credenciales TikTok no configuradas.",
+        "rotation_required": False,
+        "recent_videos_checked": 0,
+    }
+
+    if not client_key or not client_secret or not refresh_token:
+        return None, service
+
+    payload = urlencode({
+        "client_key": client_key,
+        "client_secret": client_secret,
+        "grant_type": "refresh_token",
+        "refresh_token": refresh_token,
+    }).encode("utf-8")
+
+    try:
+        data, code = request_json(
+            TIKTOK_TOKEN_URL,
+            method="POST",
+            headers={
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Cache-Control": "no-cache",
+                "User-Agent": "iskay-como-funciona-maintenance/1.0",
+            },
+            data=payload,
+        )
+    except HTTPError as e:
+        body = ""
+        try:
+            body = e.read().decode("utf-8")
+        except Exception:
+            pass
+        service.update(status="ROTO", detail=f"No se pudo renovar TikTok ({e.code}). {body[:220]}")
+        return None, service
+    except (URLError, TimeoutError, OSError) as e:
+        service.update(status="SIN COMPROBAR", detail=f"No se pudo conectar con TikTok: {e}")
+        return None, service
+
+    access_token = data.get("access_token")
+    new_refresh = data.get("refresh_token")
+    if not access_token:
+        service.update(status="ROTO", detail="TikTok no devolvió access_token al renovar.")
+        return None, service
+
+    if new_refresh and new_refresh != refresh_token:
+        OUT_DIR.mkdir(parents=True, exist_ok=True)
+        TIKTOK_NEXT_REFRESH_FILE.write_text(new_refresh, encoding="utf-8")
+        service["rotation_required"] = True
+
+    service.update(
+        status="OK",
+        detail="Autorización TikTok renovada correctamente.",
+        expires_in=data.get("expires_in"),
+        refresh_expires_in=data.get("refresh_expires_in"),
+        scope=data.get("scope"),
+    )
+    return access_token, service
+
+def list_tiktok_recent(access_token):
+    headers = {
+        "Authorization": f"Bearer {access_token}",
+        "Content-Type": "application/json",
+        "User-Agent": "iskay-como-funciona-maintenance/1.0",
+    }
+    try:
+        data, _ = request_json(
+            TIKTOK_LIST_URL,
+            method="POST",
+            headers=headers,
+            data=json.dumps({"max_count": 20}).encode("utf-8"),
+        )
+    except Exception as e:
+        return [], str(e)
+
+    error = data.get("error") or {}
+    if error.get("code") not in (None, "", "ok", 0):
+        return [], f"{error.get('code')}: {error.get('message', '')}"
+
+    return (data.get("data") or {}).get("videos") or [], None
+
+def query_tiktok_videos(access_token, video_ids):
+    result = {}
+    if not access_token or not video_ids:
+        return result, None
+
+    headers = {
+        "Authorization": f"Bearer {access_token}",
+        "Content-Type": "application/json",
+        "User-Agent": "iskay-como-funciona-maintenance/1.0",
+    }
+
+    ids = list(dict.fromkeys(str(v) for v in video_ids if v))
+    for i in range(0, len(ids), 20):
+        batch = ids[i:i+20]
+        try:
+            data, _ = request_json(
+                TIKTOK_QUERY_URL,
+                method="POST",
+                headers=headers,
+                data=json.dumps({"filters": {"video_ids": batch}}).encode("utf-8"),
+            )
+        except Exception as e:
+            return result, str(e)
+
+        error = data.get("error") or {}
+        if error.get("code") not in (None, "", "ok", 0):
+            return result, f"{error.get('code')}: {error.get('message', '')}"
+
+        for video in (data.get("data") or {}).get("videos") or []:
+            if video.get("id"):
+                result[str(video["id"])] = video
+
+    return result, None
+
 def status_rank(status):
     return {"ROTO": 4, "REVISAR": 3, "SIN COMPROBAR": 2, "OK": 1}.get(status, 0)
 
@@ -90,10 +220,21 @@ def worst_status(statuses):
     statuses = [s for s in statuses if s]
     return max(statuses, key=status_rank) if statuses else "OK"
 
+def normalize_distribution_items(value):
+    if isinstance(value, dict):
+        return [value]
+    if isinstance(value, list):
+        return [x for x in value if isinstance(x, dict)]
+    return []
+
 def main():
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    if TIKTOK_NEXT_REFRESH_FILE.exists():
+        TIKTOK_NEXT_REFRESH_FILE.unlink()
+
     pages = []
     permalink_map = {}
-    file_map = {}
+    tiktok_ids = []
 
     for path in sorted(IDEAS.rglob("*.md")):
         data, body = read_front_matter(path)
@@ -103,15 +244,42 @@ def main():
         permalink = normalize_url(data.get("permalink"))
         rec = {"path": rel, "data": data, "body": body}
         pages.append(rec)
-        file_map[rel] = rec
         if permalink:
             permalink_map[permalink] = rec
+
+        for media in data.get("media") or []:
+            if isinstance(media, dict) and media.get("provider") == "tiktok" and media.get("video_id"):
+                tiktok_ids.append(str(media["video_id"]))
+
+        distribution = data.get("distribution") or {}
+        if isinstance(distribution, dict):
+            for item in normalize_distribution_items(distribution.get("tiktok")):
+                if item.get("video_id"):
+                    tiktok_ids.append(str(item["video_id"]))
+
+    access_token, tiktok_service = refresh_tiktok_access()
+    recent_tiktok = []
+    tiktok_query = {}
+    tiktok_query_error = None
+
+    if access_token:
+        recent_tiktok, recent_error = list_tiktok_recent(access_token)
+        if recent_error:
+            tiktok_service.update(status="ROTO", detail=f"Token válido, pero video.list falló: {recent_error}")
+        else:
+            tiktok_service["recent_videos_checked"] = len(recent_tiktok)
+            tiktok_service["detail"] = f"TikTok conectado. Se pudieron leer {len(recent_tiktok)} videos recientes."
+
+        tiktok_query, tiktok_query_error = query_tiktok_videos(access_token, tiktok_ids)
+        if tiktok_query_error and tiktok_ids:
+            tiktok_service.update(status="ROTO", detail=f"video.query falló: {tiktok_query_error}")
 
     items = []
     totals = {
         "fichas": 0,
         "recursos": 0,
         "videos_youtube": 0,
+        "videos_tiktok": 0,
         "ok": 0,
         "revisar": 0,
         "rotos": 0,
@@ -217,6 +385,24 @@ def main():
                         f"YouTube responde ({http_code})." if ok
                         else f"YouTube no responde correctamente ({http_code or 'sin código'}): {error or 'error desconocido'}"
                     )
+                elif provider == "tiktok":
+                    totals["videos_tiktok"] += 1
+                    vid = str(media.get("video_id") or "")
+                    if not vid:
+                        mstatus.append("ROTO")
+                        detail.append("video_id TikTok ausente.")
+                    elif not access_token:
+                        mstatus.append(tiktok_service["status"])
+                        detail.append(tiktok_service["detail"])
+                    elif tiktok_query_error:
+                        mstatus.append("SIN COMPROBAR")
+                        detail.append(f"No se pudo consultar TikTok: {tiktok_query_error}")
+                    elif vid in tiktok_query:
+                        mstatus.append("OK")
+                        detail.append("Video TikTok encontrado para la cuenta autorizada.")
+                    else:
+                        mstatus.append("ROTO")
+                        detail.append("TikTok no devolvió este video_id para la cuenta autorizada.")
                 else:
                     src = media.get("src")
                     if src and src.startswith(("http://", "https://")):
@@ -247,16 +433,14 @@ def main():
             page_statuses.append(st)
 
         distribution = data.get("distribution") or {}
-        youtube = distribution.get("youtube") if isinstance(distribution, dict) else None
-        youtube_items = []
-        if isinstance(youtube, dict):
-            youtube_items = [youtube]
-        elif isinstance(youtube, list):
-            youtube_items = youtube
+        if isinstance(distribution, dict):
+            youtube_items = normalize_distribution_items(distribution.get("youtube"))
+            tiktok_items = normalize_distribution_items(distribution.get("tiktok"))
+        else:
+            youtube_items = []
+            tiktok_items = []
 
         for y in youtube_items:
-            if not isinstance(y, dict):
-                continue
             totals["videos_youtube"] += 1
             derived = y.get("derived_from_version")
             ystatuses = []
@@ -280,6 +464,48 @@ def main():
                 "provider": "youtube",
                 "storage": "external",
                 "version": y.get("version"),
+                "derived_from_version": derived,
+                "status": st,
+                "detail": " ".join(detail),
+            })
+            page_statuses.append(st)
+
+        for t in tiktok_items:
+            totals["videos_tiktok"] += 1
+            derived = t.get("derived_from_version")
+            tstatuses = []
+            detail = []
+            if content_version is not None and derived is not None and derived != content_version:
+                tstatuses.append("REVISAR")
+                detail.append(f"Derivado de versión {derived}; ficha en versión {content_version}.")
+            elif content_version is not None and derived is None:
+                tstatuses.append("REVISAR")
+                detail.append("Falta derived_from_version.")
+
+            vid = str(t.get("video_id") or "")
+            if not vid:
+                tstatuses.append("ROTO")
+                detail.append("video_id TikTok ausente.")
+            elif not access_token:
+                tstatuses.append(tiktok_service["status"])
+                detail.append(tiktok_service["detail"])
+            elif tiktok_query_error:
+                tstatuses.append("SIN COMPROBAR")
+                detail.append(f"No se pudo consultar TikTok: {tiktok_query_error}")
+            elif vid in tiktok_query:
+                tstatuses.append("OK")
+                detail.append("Video TikTok encontrado para la cuenta autorizada.")
+            else:
+                tstatuses.append("ROTO")
+                detail.append("TikTok no devolvió este video_id para la cuenta autorizada.")
+
+            st = worst_status(tstatuses)
+            media_rows.append({
+                "id": t.get("id") or vid or "tiktok",
+                "type": "video",
+                "provider": "tiktok",
+                "storage": "external",
+                "version": t.get("version"),
                 "derived_from_version": derived,
                 "status": st,
                 "detail": " ".join(detail),
@@ -310,12 +536,12 @@ def main():
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "summary": totals,
+        "services": {"tiktok": tiktok_service},
         "items": items,
     }
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
     OUT_FILE.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(json.dumps(totals, ensure_ascii=False))
+    print(json.dumps({"summary": totals, "tiktok": tiktok_service}, ensure_ascii=False))
 
 if __name__ == "__main__":
     main()
