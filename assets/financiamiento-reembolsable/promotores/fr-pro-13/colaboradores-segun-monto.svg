@@ -1,42 +1,105 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1120" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 1540" role="img" aria-labelledby="title desc">
   <title id="title">Colaboradores obligatorios según el monto objetivo solicitado</title>
-  <desc id="desc">Diagrama de cuatro rangos acumulativos. De 1 a 9.999,99 dólares se requieren análisis de riesgos financieros y representación legal. Desde 10.000 dólares se añade valuador de garantías. Desde 60.000 dólares se añade revisión contable, tributaria y financiera. Desde 200.000 hasta 470.000 dólares se mantienen los cuatro colaboradores y el análisis de riesgos tiene alcance reforzado.</desc>
+  <desc id="desc">Diagrama vertical optimizado para móvil. Hasta 9.999,99 dólares se requieren análisis de riesgos financieros y representación legal. Desde 10.000 dólares se añade valuador de garantías. Desde 60.000 dólares se añade revisión contable, tributaria y financiera. Desde 200.000 hasta 470.000 dólares se mantienen los cuatro colaboradores y el análisis de riesgos financieros tiene alcance reforzado.</desc>
 
-  <rect width="1200" height="1120" rx="32" fill="#FAFAF7"/>
-  <text x="72" y="88" font-family="Inter, system-ui, sans-serif" font-size="42" font-weight="750" fill="#252A2B">Colaboradores según el monto solicitado</text>
-  <text x="72" y="132" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#687171">Se incorporan de forma progresiva y acumulativa.</text>
+  <rect width="760" height="1540" rx="28" fill="#FAFAF7"/>
 
-  <g transform="translate(72 190)">
-    <rect width="1056" height="190" rx="24" fill="#FFFFFF" stroke="#DDE2E2" stroke-width="2"/>
-    <rect width="12" height="190" rx="6" fill="#0086FF"/>
-    <text x="42" y="52" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="750" fill="#252A2B">USD 1,00 – USD 9.999,99</text>
-    <text x="42" y="94" font-family="Inter, system-ui, sans-serif" font-size="21" fill="#252A2B">1. Análisis de riesgos financieros y rentabilidad ofrecida</text>
-    <text x="42" y="128" font-family="Inter, system-ui, sans-serif" font-size="21" fill="#252A2B">2. Representación legal de los inversionistas</text>
-    <text x="42" y="164" font-family="Inter, system-ui, sans-serif" font-size="19" fill="#687171">Garantía personal: pagaré a la orden con aval solidario</text>
+  <text x="48" y="72" font-family="Inter, system-ui, sans-serif" font-size="34" font-weight="800" fill="#252A2B">
+    Colaboradores según el monto solicitado
+  </text>
+  <text x="48" y="112" font-family="Inter, system-ui, sans-serif" font-size="22" fill="#687171">
+    Se incorporan de forma progresiva y acumulativa.
+  </text>
+
+  <g transform="translate(48 154)">
+    <rect width="664" height="272" rx="22" fill="#FFFFFF" stroke="#DDE2E2" stroke-width="2"/>
+    <rect width="10" height="272" rx="5" fill="#0086FF"/>
+    <text x="30" y="52" font-family="Inter, system-ui, sans-serif" font-size="30" font-weight="800" fill="#252A2B">
+      Hasta USD 9.999,99
+    </text>
+    <text x="30" y="104" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#252A2B">
+      1. Análisis de riesgos financieros
+    </text>
+    <text x="30" y="138" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#252A2B">
+      y rentabilidad ofrecida
+    </text>
+    <text x="30" y="188" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#252A2B">
+      2. Representación legal
+    </text>
+    <text x="30" y="222" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#252A2B">
+      de los inversionistas
+    </text>
+    <text x="30" y="252" font-family="Inter, system-ui, sans-serif" font-size="19" fill="#687171">
+      Garantía personal: pagaré a la orden con aval solidario
+    </text>
   </g>
 
-  <g transform="translate(72 410)">
-    <rect width="1056" height="190" rx="24" fill="#FFFFFF" stroke="#DDE2E2" stroke-width="2"/>
-    <rect width="12" height="190" rx="6" fill="#0086FF"/>
-    <text x="42" y="52" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="750" fill="#252A2B">USD 10.000,00 – USD 59.999,99</text>
-    <text x="42" y="98" font-family="Inter, system-ui, sans-serif" font-size="21" fill="#252A2B">Los anteriores + 3. Valuador de Garantías</text>
-    <text x="42" y="148" font-family="Inter, system-ui, sans-serif" font-size="19" fill="#687171">Garantía real: hipoteca sobre bien inmueble</text>
+  <g transform="translate(380 448)">
+    <path d="M0 0 V38" stroke="#0086FF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M-12 26 L0 42 L12 26" fill="none" stroke="#0086FF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 
-  <g transform="translate(72 630)">
-    <rect width="1056" height="190" rx="24" fill="#FFFFFF" stroke="#DDE2E2" stroke-width="2"/>
-    <rect width="12" height="190" rx="6" fill="#0086FF"/>
-    <text x="42" y="52" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="750" fill="#252A2B">USD 60.000,00 – USD 199.999,99</text>
-    <text x="42" y="98" font-family="Inter, system-ui, sans-serif" font-size="21" fill="#252A2B">Los anteriores + 4. Revisión contable, tributaria y financiera</text>
-    <text x="42" y="148" font-family="Inter, system-ui, sans-serif" font-size="19" fill="#687171">Garantía real: hipoteca sobre bien inmueble</text>
+  <g transform="translate(48 506)">
+    <rect width="664" height="218" rx="22" fill="#FFFFFF" stroke="#DDE2E2" stroke-width="2"/>
+    <rect width="10" height="218" rx="5" fill="#0086FF"/>
+    <text x="30" y="52" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="800" fill="#252A2B">
+      USD 10.000,00 – USD 59.999,99
+    </text>
+    <text x="30" y="110" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#252A2B">
+      Los anteriores + 3. Valuador de Garantías
+    </text>
+    <text x="30" y="176" font-family="Inter, system-ui, sans-serif" font-size="19" fill="#687171">
+      Garantía real: hipoteca sobre bien inmueble
+    </text>
   </g>
 
-  <g transform="translate(72 850)">
-    <rect width="1056" height="206" rx="24" fill="#FFFFFF" stroke="#DDE2E2" stroke-width="2"/>
-    <rect width="12" height="206" rx="6" fill="#0086FF"/>
-    <text x="42" y="52" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="750" fill="#252A2B">USD 200.000,00 – USD 470.000,00</text>
-    <text x="42" y="98" font-family="Inter, system-ui, sans-serif" font-size="21" fill="#252A2B">Se mantienen los mismos cuatro colaboradores.</text>
-    <text x="42" y="134" font-family="Inter, system-ui, sans-serif" font-size="21" fill="#252A2B">El análisis de riesgos financieros tiene alcance reforzado.</text>
-    <text x="42" y="178" font-family="Inter, system-ui, sans-serif" font-size="19" fill="#687171">Garantía real: hipoteca sobre bien inmueble</text>
+  <g transform="translate(380 746)">
+    <path d="M0 0 V38" stroke="#0086FF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M-12 26 L0 42 L12 26" fill="none" stroke="#0086FF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g transform="translate(48 804)">
+    <rect width="664" height="250" rx="22" fill="#FFFFFF" stroke="#DDE2E2" stroke-width="2"/>
+    <rect width="10" height="250" rx="5" fill="#0086FF"/>
+    <text x="30" y="52" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="800" fill="#252A2B">
+      USD 60.000,00 – USD 199.999,99
+    </text>
+    <text x="30" y="110" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#252A2B">
+      Los anteriores + 4. Revisión contable,
+    </text>
+    <text x="30" y="144" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#252A2B">
+      tributaria y financiera
+    </text>
+    <text x="30" y="208" font-family="Inter, system-ui, sans-serif" font-size="19" fill="#687171">
+      Garantía real: hipoteca sobre bien inmueble
+    </text>
+  </g>
+
+  <g transform="translate(380 1076)">
+    <path d="M0 0 V38" stroke="#0086FF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M-12 26 L0 42 L12 26" fill="none" stroke="#0086FF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g transform="translate(48 1134)">
+    <rect width="664" height="340" rx="22" fill="#FFFFFF" stroke="#DDE2E2" stroke-width="2"/>
+    <rect width="10" height="340" rx="5" fill="#0086FF"/>
+    <text x="30" y="52" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="800" fill="#252A2B">
+      USD 200.000,00 – USD 470.000,00
+    </text>
+    <text x="30" y="112" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#252A2B">
+      Se mantienen los mismos cuatro
+    </text>
+    <text x="30" y="146" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#252A2B">
+      colaboradores.
+    </text>
+    <text x="30" y="204" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#252A2B">
+      El análisis de riesgos financieros
+    </text>
+    <text x="30" y="238" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#252A2B">
+      tiene alcance reforzado.
+    </text>
+    <text x="30" y="304" font-family="Inter, system-ui, sans-serif" font-size="19" fill="#687171">
+      Garantía real: hipoteca sobre bien inmueble
+    </text>
   </g>
 </svg>
