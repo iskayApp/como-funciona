@@ -21,7 +21,7 @@ RELATIVE_URL_RE = re.compile(r"""\{\{\s*['"]([^'"]+)['"]\s*\|\s*relative_url\s*\
 MARKDOWN_LINK_RE = re.compile(r"""\[[^\]]*\]\(([^)]+)\)""")
 
 TIKTOK_TOKEN_URL = "https://open.tiktokapis.com/v2/oauth/token/"
-TIKTOK_LIST_URL = "https://open.tiktokapis.com/v2/video/list/?fields=id,title,embed_link,share_url"
+TIKTOK_LIST_URL = "https://open.tiktokapis.com/v2/video/list/?fields=id,title,embed_link,share_url,create_time"
 TIKTOK_QUERY_URL = "https://open.tiktokapis.com/v2/video/query/?fields=id,title,embed_link,share_url"
 
 def read_front_matter(path):
@@ -157,27 +157,46 @@ def refresh_tiktok_access():
     )
     return access_token, service
 
-def list_tiktok_recent(access_token):
+def list_tiktok_all(access_token, max_pages=100):
     headers = {
         "Authorization": f"Bearer {access_token}",
         "Content-Type": "application/json",
         "User-Agent": "iskay-como-funciona-maintenance/1.0",
     }
-    try:
-        data, _ = request_json(
-            TIKTOK_LIST_URL,
-            method="POST",
-            headers=headers,
-            data=json.dumps({"max_count": 20}).encode("utf-8"),
-        )
-    except Exception as e:
-        return [], str(e)
+    videos = []
+    cursor = None
 
-    error = data.get("error") or {}
-    if error.get("code") not in (None, "", "ok", 0):
-        return [], f"{error.get('code')}: {error.get('message', '')}"
+    for _ in range(max_pages):
+        body = {"max_count": 20}
+        if cursor is not None:
+            body["cursor"] = cursor
 
-    return (data.get("data") or {}).get("videos") or [], None
+        try:
+            data, _ = request_json(
+                TIKTOK_LIST_URL,
+                method="POST",
+                headers=headers,
+                data=json.dumps(body).encode("utf-8"),
+            )
+        except Exception as e:
+            return videos, str(e)
+
+        error = data.get("error") or {}
+        if error.get("code") not in (None, "", "ok", 0):
+            return videos, f"{error.get('code')}: {error.get('message', '')}"
+
+        page = data.get("data") or {}
+        videos.extend(page.get("videos") or [])
+
+        if not page.get("has_more"):
+            return videos, None
+
+        next_cursor = page.get("cursor")
+        if next_cursor is None or next_cursor == cursor:
+            return videos, "TikTok indicó más páginas pero no devolvió un cursor nuevo."
+        cursor = next_cursor
+
+    return videos, f"Se alcanzó el límite de seguridad de {max_pages} páginas."
 
 def query_tiktok_videos(access_token, video_ids):
     result = {}
@@ -235,6 +254,7 @@ def main():
     pages = []
     permalink_map = {}
     tiktok_ids = []
+    tiktok_links = {}
 
     for path in sorted(IDEAS.rglob("*.md")):
         data, body = read_front_matter(path)
@@ -249,26 +269,44 @@ def main():
 
         for media in data.get("media") or []:
             if isinstance(media, dict) and media.get("provider") == "tiktok" and media.get("video_id"):
-                tiktok_ids.append(str(media["video_id"]))
+                vid = str(media["video_id"])
+                tiktok_ids.append(vid)
+                tiktok_links.setdefault(vid, []).append({
+                    "code": data.get("code"),
+                    "title": data.get("title"),
+                    "canonical_url": permalink,
+                    "relation": "media",
+                    "asset_id": media.get("id"),
+                    "derived_from_version": media.get("derived_from_version"),
+                })
 
         distribution = data.get("distribution") or {}
         if isinstance(distribution, dict):
             for item in normalize_distribution_items(distribution.get("tiktok")):
                 if item.get("video_id"):
-                    tiktok_ids.append(str(item["video_id"]))
+                    vid = str(item["video_id"])
+                    tiktok_ids.append(vid)
+                    tiktok_links.setdefault(vid, []).append({
+                        "code": data.get("code"),
+                        "title": data.get("title"),
+                        "canonical_url": permalink,
+                        "relation": "distribution",
+                        "asset_id": item.get("id"),
+                        "derived_from_version": item.get("derived_from_version"),
+                    })
 
     access_token, tiktok_service = refresh_tiktok_access()
-    recent_tiktok = []
+    all_tiktok = []
     tiktok_query = {}
     tiktok_query_error = None
 
     if access_token:
-        recent_tiktok, recent_error = list_tiktok_recent(access_token)
-        if recent_error:
-            tiktok_service.update(status="ROTO", detail=f"Token válido, pero video.list falló: {recent_error}")
+        all_tiktok, list_error = list_tiktok_all(access_token)
+        if list_error:
+            tiktok_service.update(status="ROTO", detail=f"Token válido, pero video.list falló: {list_error}")
         else:
-            tiktok_service["recent_videos_checked"] = len(recent_tiktok)
-            tiktok_service["detail"] = f"TikTok conectado. Se pudieron leer {len(recent_tiktok)} videos recientes."
+            tiktok_service["recent_videos_checked"] = len(all_tiktok)
+            tiktok_service["detail"] = f"TikTok conectado. Se pudieron leer {len(all_tiktok)} videos públicos."
 
         tiktok_query, tiktok_query_error = query_tiktok_videos(access_token, tiktok_ids)
         if tiktok_query_error and tiktok_ids:
@@ -532,11 +570,33 @@ def main():
             "media": media_rows,
         })
 
+    tiktok_inventory_videos = []
+    for video in all_tiktok:
+        vid = str(video.get("id") or "")
+        links = tiktok_links.get(vid, [])
+        tiktok_inventory_videos.append({
+            "video_id": vid,
+            "title": video.get("title") or "",
+            "create_time": video.get("create_time"),
+            "embed_link": video.get("embed_link"),
+            "share_url": video.get("share_url"),
+            "status": "VINCULADO" if links else "SIN VINCULAR",
+            "links": links,
+        })
+
+    tiktok_inventory = {
+        "total": len(tiktok_inventory_videos),
+        "linked": sum(1 for x in tiktok_inventory_videos if x["status"] == "VINCULADO"),
+        "unlinked": sum(1 for x in tiktok_inventory_videos if x["status"] == "SIN VINCULAR"),
+        "videos": tiktok_inventory_videos,
+    }
+
     items.sort(key=lambda x: (status_rank(x["status"]) * -1, x["code"]))
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "summary": totals,
         "services": {"tiktok": tiktok_service},
+        "tiktok_inventory": tiktok_inventory,
         "items": items,
     }
 
