@@ -262,7 +262,9 @@ def main():
             continue
         rel = path.relative_to(ROOT).as_posix()
         permalink = normalize_url(data.get("permalink"))
-        rec = {"path": rel, "data": data, "body": body}
+        stage_match = re.search(r"/promotores/(\d{2})-", "/" + rel)
+        stage_order = int(stage_match.group(1)) if stage_match else 999
+        rec = {"path": rel, "data": data, "body": body, "stage_order": stage_order}
         pages.append(rec)
         if permalink:
             permalink_map[permalink] = rec
@@ -464,6 +466,7 @@ def main():
                 detail.append("storage no definido.")
 
             st = worst_status(mstatus)
+            resolved_video = tiktok_query.get(str(media.get("video_id") or "")) if provider == "tiktok" else None
             media_rows.append({
                 "id": mid,
                 "type": media.get("type"),
@@ -473,6 +476,10 @@ def main():
                 "derived_from_version": derived,
                 "status": st,
                 "detail": " ".join(detail),
+                "src": media.get("src"),
+                "video_id": media.get("video_id"),
+                "title": (resolved_video or {}).get("title") if resolved_video else None,
+                "url": ((resolved_video or {}).get("share_url") or (resolved_video or {}).get("embed_link")) if resolved_video else media.get("src"),
             })
             page_statuses.append(st)
 
@@ -511,6 +518,9 @@ def main():
                 "derived_from_version": derived,
                 "status": st,
                 "detail": " ".join(detail),
+                "video_id": y.get("video_id"),
+                "title": y.get("title"),
+                "url": y.get("url"),
             })
             page_statuses.append(st)
 
@@ -544,6 +554,7 @@ def main():
                 detail.append("TikTok no devolvió este video_id para la cuenta autorizada.")
 
             st = worst_status(tstatuses)
+            resolved = tiktok_query.get(vid) or {}
             media_rows.append({
                 "id": t.get("id") or vid or "tiktok",
                 "type": "video",
@@ -553,6 +564,9 @@ def main():
                 "derived_from_version": derived,
                 "status": st,
                 "detail": " ".join(detail),
+                "video_id": vid,
+                "title": resolved.get("title") or t.get("title"),
+                "url": resolved.get("share_url") or resolved.get("embed_link") or t.get("url"),
             })
             page_statuses.append(st)
 
@@ -568,6 +582,9 @@ def main():
         items.append({
             "code": code,
             "title": title,
+            "stage": data.get("stage") or "Sin etapa",
+            "stage_order": rec.get("stage_order", 999),
+            "stage_url": normalize_url(data.get("stage_url")),
             "canonical_url": canonical,
             "content_version": content_version,
             "reviewed": data.get("reviewed"),
@@ -597,7 +614,7 @@ def main():
         "videos": tiktok_inventory_videos,
     }
 
-    items.sort(key=lambda x: (status_rank(x["status"]) * -1, x["code"]))
+    items.sort(key=lambda x: (x.get("stage_order", 999), x["code"]))
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "summary": totals,
