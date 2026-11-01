@@ -11,7 +11,18 @@ code: "FR-PRO-09"
 source: "1 FinanciamientoReembolsable(2).docx — 6 Inicio de campaña > 1. Datos generales > Frecuencia de pagos; Pagos a inversionistas"
 guide_version: "No identificada expresamente en el documento consultado"
 status: "DESARROLLADA · PRUEBA PÚBLICA"
-reviewed: "2026-10-31"
+reviewed: "2026-11-01"
+media:
+  - id: "fr-pro-09-flujo-pagos"
+    type: "animation"
+    src: "/assets/financiamiento-reembolsable/promotores/fr-pro-09/flujo-pagos.svg"
+    storage: "internal"
+    purpose: "demostracion"
+    alt: "Animación del flujo mensual de una cuota: orden de depósito, pago, validación, pendiente de distribución y distribución a los inversionistas"
+    placement: "after-summary"
+    version: 1
+    source: "1 FinanciamientoReembolsable(2).docx — 6 Inicio de campaña > 1. Datos generales > Frecuencia de pagos; Pagos a inversionistas"
+    status: "approved"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-la-tna-que-ofreceras/
 prev_title: "Define la TNA que ofrecerás"
 next_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-garantia-necesitas-segun-el-monto/
@@ -25,6 +36,15 @@ next_title: "Qué garantía necesitas según el monto"
 En Financiamiento Reembolsable, los pagos a los inversionistas son **mensuales** y deben realizarse mediante el mecanismo operativo definido por iskay.app.
 
 Para cada cuota se genera una **orden de depósito**. Una vez validado el pago completo, el valor queda registrado como **pendiente de distribución** y posteriormente se distribuye automáticamente a los inversionistas.
+
+
+<figure class="media-block media-animation">
+  <img
+    src="{{ '/assets/financiamiento-reembolsable/promotores/fr-pro-09/flujo-pagos.svg' | relative_url }}"
+    alt="Animación del flujo mensual de una cuota: orden de depósito, pago, validación, pendiente de distribución y distribución a los inversionistas"
+    loading="lazy"
+    decoding="async">
+</figure>
 
 ## Cómo funciona cada cuota
 
