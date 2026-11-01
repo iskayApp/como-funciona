@@ -18,8 +18,9 @@ Esta etapa reúne los pasos que debes completar después del cierre de la campa�
   <li><a href="{{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/documentos-que-debes-completar-antes-de-recibir-los-fondos/' | relative_url }}"><span class="topic-number">25</span><strong>Documentos que debes completar antes de recibir los fondos</strong></a></li>
   <li><a href="{{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/registra-tu-cuenta-bancaria/' | relative_url }}"><span class="topic-number">26</span><strong>Registra tu cuenta bancaria</strong></a></li>
   <li><a href="{{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/formalizacion-de-la-garantia/' | relative_url }}"><span class="topic-number">27</span><strong>Formalización de la garantía</strong></a></li>
+  <li><a href="{{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/como-se-concreta-la-tabla-de-amortizacion/' | relative_url }}"><span class="topic-number">28</span><strong>Cómo se concreta la tabla de amortización</strong></a></li>
 </ul>
 
-Las fichas restantes de esta etapa se publicarán en orden a medida que sean desarrolladas y revisadas.
+**Etapa 05 completada.**
 
-**Siguiente ficha:** 28 · Cómo se concreta la tabla de amortización.
+La siguiente etapa será **06 · Cumple y da seguimiento**, comenzando por **29 · Cómo consultar el cumplimiento del financiamiento**.
