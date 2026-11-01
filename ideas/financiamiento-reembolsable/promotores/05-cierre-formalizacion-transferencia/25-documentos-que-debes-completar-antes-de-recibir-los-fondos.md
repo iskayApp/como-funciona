@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/cierre-formalizacion-transfer
 code: "FR-PRO-25"
 source: "1 FinanciamientoReembolsable(2).docx — 7.1 Presentación de Documentos Obligatorios (Garantías y compromisos); 8 Criterios para la Reversión de Fondos"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/que-ocurre-cuando-termina-la-campana/
 prev_title: "Qué ocurre cuando termina la campaña"

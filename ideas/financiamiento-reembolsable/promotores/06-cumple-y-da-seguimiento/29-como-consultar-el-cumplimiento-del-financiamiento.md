@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/
 code: "FR-PRO-29"
 source: "1 FinanciamientoReembolsable(2).docx — 5 Procedimiento para reclamaciones y riesgo de pérdida; 6 Inicio de campaña > Penalizaciones por mora o incumplimiento; 7 Transferencia de fondos > Tabla de amortización"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/como-se-concreta-la-tabla-de-amortizacion/
 prev_title: "Cómo se concreta la tabla de amortización"

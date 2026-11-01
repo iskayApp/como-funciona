@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/
 code: "FR-PRO-31"
 source: "1 FinanciamientoReembolsable(2).docx — 5 Procedimiento para reclamaciones y riesgo de pérdida; 6 Inicio de campaña > Penalizaciones por mora o incumplimiento; 4 Colaboradores obligatorios > Representación legal de los inversionistas"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/que-ocurre-si-te-retrasas-en-una-cuota/
 prev_title: "Qué ocurre si te retrasas en una cuota"

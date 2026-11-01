@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/
 code: "FR-PRO-33"
 source: "1 FinanciamientoReembolsable(2).docx — 5 Procedimiento para reclamaciones y riesgo de pérdida; 6 Inicio de campaña > Pagos a inversionistas; Compromiso de actualización; 2. Descripción completa > Tiempo estimado de ejecución"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/que-situaciones-pueden-provocar-una-reversion-de-fondos/
 prev_title: "Qué situaciones pueden provocar una reversión de fondos"

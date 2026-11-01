@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/cierre-formalizacion-transfer
 code: "FR-PRO-26"
 source: "1 FinanciamientoReembolsable(2).docx — 7 Transferencia de fondos > Registro de la cuenta bancaria"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/documentos-que-debes-completar-antes-de-recibir-los-fondos/
 prev_title: "Documentos que debes completar antes de recibir los fondos"

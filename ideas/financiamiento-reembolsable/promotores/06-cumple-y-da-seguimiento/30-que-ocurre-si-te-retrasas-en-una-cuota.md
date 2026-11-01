@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/
 code: "FR-PRO-30"
 source: "1 FinanciamientoReembolsable(2).docx — 6 Inicio de campaña > Penalizaciones por mora o incumplimiento; 7 Transferencia de fondos > Tabla de amortización"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/como-consultar-el-cumplimiento-del-financiamiento/
 prev_title: "Cómo consultar el cumplimiento del financiamiento"

@@ -10,7 +10,7 @@ stage_url: /financiamiento-reembolsable/promotores/cierre-formalizacion-transfer
 code: "FR-PRO-27"
 source: "1 FinanciamientoReembolsable(2).docx — 4 Colaboradores obligatorios > Representación legal de los inversionistas; 7.1 Presentación de Documentos Obligatorios > Garantías"
 guide_version: "No identificada expresamente en el documento consultado"
-status: "Borrador para revisión"
+status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/registra-tu-cuenta-bancaria/
 prev_title: "Registra tu cuenta bancaria"
