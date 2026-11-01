@@ -16,8 +16,9 @@ Esta etapa reúne la información necesaria para dar seguimiento al cumplimiento
 <ul class="topic-list">
   <li><a href="{{ '/financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/como-consultar-el-cumplimiento-del-financiamiento/' | relative_url }}"><span class="topic-number">29</span><strong>Cómo consultar el cumplimiento del financiamiento</strong></a></li>
   <li><a href="{{ '/financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/que-ocurre-si-te-retrasas-en-una-cuota/' | relative_url }}"><span class="topic-number">30</span><strong>Qué ocurre si te retrasas en una cuota</strong></a></li>
+  <li><a href="{{ '/financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/que-ocurre-si-existe-incumplimiento/' | relative_url }}"><span class="topic-number">31</span><strong>Qué ocurre si existe incumplimiento</strong></a></li>
 </ul>
 
 Las fichas restantes de esta etapa se publicarán en orden a medida que sean desarrolladas y revisadas.
 
-**Siguiente ficha:** 31 · Qué ocurre si existe incumplimiento.
+**Siguiente ficha:** 32 · Qué situaciones pueden provocar una reversión de fondos.
