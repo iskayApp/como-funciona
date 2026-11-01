@@ -49,7 +49,6 @@ jobs:
           fi
 
       - name: Create temporary GitHub App token
-        if: steps.tiktok-rotation.outputs.required == 'true'
         id: maintenance-app-token
         uses: actions/create-github-app-token@v3
         with:
