@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/como-se-concreta-la-tabla-de-amortizacion/
 prev_title: "Cómo se concreta la tabla de amortización"
+next_url: /financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/que-ocurre-si-te-retrasas-en-una-cuota/
+next_title: "Qué ocurre si te retrasas en una cuota"
 ---
 
 # Cómo consultar el cumplimiento del financiamiento
@@ -66,4 +68,4 @@ Revisa el estado de las cuotas y mantén seguimiento de cualquier retraso, mora 
 
 ## Siguiente paso
 
-**Qué ocurre si te retrasas en una cuota.**
+[Qué ocurre si te retrasas en una cuota]({{ '/financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/que-ocurre-si-te-retrasas-en-una-cuota/' | relative_url }}).
