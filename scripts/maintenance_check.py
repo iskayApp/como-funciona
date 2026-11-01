@@ -278,6 +278,9 @@ def main():
                     "relation": "media",
                     "asset_id": media.get("id"),
                     "derived_from_version": media.get("derived_from_version"),
+                    "content_version": data.get("content_version"),
+                    "reviewed": media.get("reviewed") or data.get("reviewed"),
+                    "platform": "TikTok",
                 })
 
         distribution = data.get("distribution") or {}
@@ -293,6 +296,9 @@ def main():
                         "relation": "distribution",
                         "asset_id": item.get("id"),
                         "derived_from_version": item.get("derived_from_version"),
+                        "content_version": data.get("content_version"),
+                        "reviewed": item.get("reviewed") or data.get("reviewed"),
+                        "platform": "TikTok",
                     })
 
     access_token, tiktok_service = refresh_tiktok_access()
