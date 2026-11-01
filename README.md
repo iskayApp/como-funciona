@@ -22,6 +22,14 @@ La guía aprobada es la fuente de verdad del contenido funcional. Las fichas sim
 
 Google Drive funciona como fuente maestra editorial y este repositorio actúa como espejo técnico y publicable. Cada ficha conserva categoría, rol, etapa, código, fuente, versión de guía, estado, fecha de revisión y URL estable.
 
+## Capa multimedia
+
+Las fichas admiten una capa multimedia complementaria y extensible. No está limitada a imágenes o videos: el modelo puede incorporar diagramas, animaciones, audio, contenidos interactivos, recursos embebidos, documentos, descargables, galerías, modelos 3D y futuros formatos sin reorganizar la arquitectura.
+
+El texto continúa siendo la fuente principal de cada ficha. Los recursos multimedia no pueden introducir reglas distintas de las respaldadas por la documentación aprobada y deben disponer de comportamiento accesible y fallback.
+
+La especificación se encuentra en [MULTIMEDIA.md](./MULTIMEDIA.md).
+
 ## Publicación
 
 El sitio se publica mediante GitHub Pages:
