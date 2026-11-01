@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/registra-tu-cuenta-bancaria/
 prev_title: "Registra tu cuenta bancaria"
+next_url: /financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/como-se-concreta-la-tabla-de-amortizacion/
+next_title: "Cómo se concreta la tabla de amortización"
 ---
 
 # Formalización de la garantía
@@ -71,4 +73,4 @@ Después del cierre exitoso de la campaña, coordina con el Representante Legal 
 
 ## Siguiente paso
 
-**Cómo se concreta la tabla de amortización.**
+[Cómo se concreta la tabla de amortización]({{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/como-se-concreta-la-tabla-de-amortizacion/' | relative_url }}).
