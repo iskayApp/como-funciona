@@ -8,6 +8,7 @@ category: "Financiamiento Reembolsable"
 stage: "Configura tu financiamiento"
 stage_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/
 code: "FR-PRO-09"
+content_version: 1
 source: "1 FinanciamientoReembolsable(2).docx — 6 Inicio de campaña > 1. Datos generales > Frecuencia de pagos; Pagos a inversionistas"
 guide_version: "No identificada expresamente en el documento consultado"
 status: "DESARROLLADA · PRUEBA PÚBLICA"
@@ -21,8 +22,10 @@ media:
     alt: "Animación del flujo mensual de una cuota: orden de depósito, pago, validación, pendiente de distribución y distribución a los inversionistas"
     placement: "after-summary"
     version: 1
+    derived_from_version: 1
     source: "1 FinanciamientoReembolsable(2).docx — 6 Inicio de campaña > 1. Datos generales > Frecuencia de pagos; Pagos a inversionistas"
     status: "approved"
+    reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/define-la-tna-que-ofreceras/
 prev_title: "Define la TNA que ofrecerás"
 next_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-garantia-necesitas-segun-el-monto/
