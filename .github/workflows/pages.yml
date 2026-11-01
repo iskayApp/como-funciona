@@ -4,6 +4,8 @@ on:
   push:
     branches: ["main"]
   workflow_dispatch:
+  schedule:
+    - cron: "17 6 * * *"
 
 permissions:
   contents: read
@@ -20,6 +22,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Install maintenance dependencies
+        run: python -m pip install --disable-pip-version-check PyYAML
+
+      - name: Generate maintenance report
+        run: python scripts/maintenance_check.py
 
       - name: Setup Pages
         id: pages
