@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/como-consultar-el-cumplimiento-del-financiamiento/
 prev_title: "Cómo consultar el cumplimiento del financiamiento"
+next_url: /financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/que-ocurre-si-existe-incumplimiento/
+next_title: "Qué ocurre si existe incumplimiento"
 ---
 
 # Qué ocurre si te retrasas en una cuota
@@ -70,4 +72,4 @@ Si existe una cuota vencida, revisa el valor pendiente, los días de atraso y la
 
 ## Siguiente paso
 
-**Qué ocurre si existe incumplimiento.**
+[Qué ocurre si existe incumplimiento]({{ '/financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/que-ocurre-si-existe-incumplimiento/' | relative_url }}).
