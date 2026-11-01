@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/que-ocurre-si-te-retrasas-en-una-cuota/
 prev_title: "Qué ocurre si te retrasas en una cuota"
+next_url: /financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/que-situaciones-pueden-provocar-una-reversion-de-fondos/
+next_title: "Qué situaciones pueden provocar una reversión de fondos"
 ---
 
 # Qué ocurre si existe incumplimiento
@@ -82,4 +84,4 @@ Si existe un incumplimiento, revisa las obligaciones pendientes, los registros d
 
 ## Siguiente paso
 
-**Qué situaciones pueden provocar una reversión de fondos.**
+[Qué situaciones pueden provocar una reversión de fondos]({{ '/financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/que-situaciones-pueden-provocar-una-reversion-de-fondos/' | relative_url }}).
