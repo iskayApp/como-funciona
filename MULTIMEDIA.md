@@ -92,6 +92,40 @@ Cuando el video se aloje en un proveedor externo, la ficha deberá utilizar una 
 
 La arquitectura no queda vinculada a un proveedor concreto. Podrá utilizar almacenamiento propio, CDN, plataforma de video o cualquier infraestructura posterior que cumpla los requisitos de disponibilidad, rendimiento, privacidad y accesibilidad.
 
+## Arquitectura híbrida de almacenamiento
+
+La política predeterminada de **Cómo funciona** será híbrida:
+
+- **Repositorio `como-funciona`**: imágenes optimizadas, diagramas, SVG, animaciones ligeras y otros recursos estáticos o de poco peso.
+- **Canal oficial de YouTube de iskay.app**: proveedor externo preferente para videos educativos públicos vinculados a las fichas.
+- **YouTube no listado u otro proveedor**: opción para videos especiales que no deban ser públicos o que requieran un tratamiento distinto.
+
+Para los videos educativos destinados a explicar el funcionamiento de iskay.app, la opción predeterminada será **público**, siempre que el contenido haya sido aprobado para difusión abierta. Esto permite aprovechar descubrimiento, búsqueda y recomendaciones sin convertir el repositorio en un almacén masivo de video.
+
+YouTube es el proveedor preferente, pero **no exclusivo**. La arquitectura conservará la posibilidad de migrar en el futuro a CDN propio, almacenamiento especializado u otra plataforma sin reconstruir las fichas ni cambiar sus URLs canónicas.
+
+### Metadatos recomendados para YouTube
+
+Los recursos alojados en YouTube deben conservar una referencia estructurada, no solo una URL completa:
+
+```yaml
+media:
+  - id: fr-pro-09-video-pagos
+    type: video
+    storage: external
+    provider: youtube
+    video_id: "[ID del video]"
+    visibility: public
+    purpose: explicacion
+    placement: after-summary
+    version: 1
+    status: approved
+```
+
+El campo `visibility` podrá utilizar, entre otros, valores como `public` o `unlisted`.
+
+La ficha seguirá siendo la fuente canónica del contenido funcional. YouTube y otras redes serán canales de distribución y descubrimiento, no fuentes normativas independientes.
+
 ## Modelo de metadatos
 
 Cada ficha podrá declarar cero, uno o varios recursos mediante una colección `media`.
