@@ -38,19 +38,53 @@ jobs:
           TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
         run: python scripts/maintenance_check.py
 
-      - name: Persist rotated TikTok refresh token when updater credential exists
-        env:
-          GH_TOKEN: ${{ secrets.GH_SECRET_UPDATE_TOKEN }}
+      - name: Detect TikTok refresh-token rotation
+        id: tiktok-rotation
+        shell: bash
         run: |
           if [ -f mantenimiento/tiktok_refresh_token.next ]; then
-            if [ -n "$GH_TOKEN" ]; then
-              gh secret set TIKTOK_REFRESH_TOKEN < mantenimiento/tiktok_refresh_token.next
-              echo "TikTok refresh token rotated and repository secret was updated."
-            else
-              echo "::warning::TikTok returned a rotated refresh token. Add GH_SECRET_UPDATE_TOKEN to enable automatic secret rotation."
-            fi
-            rm -f mantenimiento/tiktok_refresh_token.next
+            echo "required=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "required=false" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Create temporary GitHub App token
+        if: steps.tiktok-rotation.outputs.required == 'true'
+        id: maintenance-app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ vars.MAINTENANCE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.MAINTENANCE_APP_PRIVATE_KEY }}
+
+      - name: Persist rotated TikTok refresh token
+        if: steps.tiktok-rotation.outputs.required == 'true'
+        env:
+          GH_TOKEN: ${{ steps.maintenance-app-token.outputs.token }}
+        shell: bash
+        run: |
+          gh secret set TIKTOK_REFRESH_TOKEN             --repo "$GITHUB_REPOSITORY"             < mantenimiento/tiktok_refresh_token.next
+
+          rm -f mantenimiento/tiktok_refresh_token.next
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("mantenimiento/status.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          service = data.setdefault("services", {}).setdefault("tiktok", {})
+          service["rotation_required"] = False
+          detail = service.get("detail", "").rstrip()
+          suffix = " Refresh token rotado y actualizado automáticamente en GitHub Secrets."
+          if suffix.strip() not in detail:
+              service["detail"] = (detail + suffix).strip()
+          path.write_text(
+              json.dumps(data, ensure_ascii=False, indent=2),
+              encoding="utf-8"
+          )
+          PY
+
+          echo "TikTok refresh token rotated and TIKTOK_REFRESH_TOKEN was updated automatically."
 
       - name: Setup Pages
         id: pages
