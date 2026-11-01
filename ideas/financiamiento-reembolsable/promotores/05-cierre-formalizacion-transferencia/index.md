@@ -1,11 +1,22 @@
+---
+layout: default
+title: "Cierre, formalización y transferencia"
+description: "Quinta etapa para promotores: completa los pasos posteriores al cierre de la campaña antes de recibir los fondos."
+permalink: /financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/
+eyebrow: "Financiamiento Reembolsable · Promotores"
+category: "Financiamiento Reembolsable"
+---
+
 # 05 · Cierre, formalización y transferencia
 
-Temas previstos para esta etapa:
+Esta etapa reúne los pasos que debes completar después del cierre de la campaña y antes de la transferencia efectiva de los fondos.
 
-1. Qué ocurre cuando termina la campaña.
-2. Documentos que debes completar antes de recibir los fondos.
-3. Registra tu cuenta bancaria.
-4. Formalización de la garantía.
-5. Cómo se concreta la tabla de amortización.
+## Ficha disponible
 
-Cada tema se convertirá en una ficha independiente.
+<ul class="topic-list">
+  <li><a href="{{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/que-ocurre-cuando-termina-la-campana/' | relative_url }}"><span class="topic-number">24</span><strong>Qué ocurre cuando termina la campaña</strong></a></li>
+</ul>
+
+Las fichas restantes de esta etapa se publicarán en orden a medida que sean desarrolladas y revisadas.
+
+**Siguiente ficha:** 25 · Documentos que debes completar antes de recibir los fondos.
