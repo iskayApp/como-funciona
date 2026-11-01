@@ -47,9 +47,19 @@ Esta vista se genera automáticamente durante la publicación. Sirve para compro
 .maint-video-title { font-weight:750; line-height:1.4; margin:4px 0; }
 .maint-video-id { color:var(--muted); font-size:.78rem; word-break:break-all; }
 .maint-video-links { margin-top:7px; font-size:.86rem; }
+.maint-asset-grid { display:grid; grid-template-columns:minmax(150px, .7fr) minmax(0, 1.8fr); gap:7px 16px; margin-top:12px; font-size:.88rem; }
+.maint-asset-label { color:var(--muted); font-weight:700; }
+.maint-asset-value { min-width:0; overflow-wrap:anywhere; }
+.maint-asset-actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:12px; }
+.maint-asset-actions a { font-size:.88rem; }
 .maint-status[data-status="VINCULADO"] { border-color:#8DBA99; }
 .maint-status[data-status="SIN VINCULAR"] { border-color:#D0A85B; }
-@media(max-width:620px){ .maint-summary{grid-template-columns:1fr 1fr;} .maint-head,.maint-service-head,.maint-inventory-head{flex-direction:column;align-items:flex-start;} }
+@media(max-width:620px){
+  .maint-summary{grid-template-columns:1fr 1fr;}
+  .maint-head,.maint-service-head,.maint-inventory-head{flex-direction:column;align-items:flex-start;}
+  .maint-asset-grid{grid-template-columns:1fr;gap:3px;}
+  .maint-asset-label{margin-top:8px;}
+}
 </style>
 
 <script>
@@ -100,17 +110,47 @@ Esta vista se genera automáticamente durante la publicación. Sirve para compro
             const safeUrl = (v.share_url && String(v.share_url).startsWith('https://www.tiktok.com/'))
               ? v.share_url
               : ((v.embed_link && String(v.embed_link).startsWith('https://www.tiktok.com/')) ? v.embed_link : '');
+            const primary = v.links?.[0] || null;
+            const editorialStatus = primary
+              ? ((primary.content_version != null && primary.derived_from_version != null && primary.content_version === primary.derived_from_version) ? 'OK' : 'REVISAR')
+              : 'SIN VINCULAR';
             return `
               <article class="maint-video">
                 <div class="maint-head">
-                  <div>
-                    <div class="maint-video-id">TikTok ID: ${esc(v.video_id)}</div>
+                  <div style="min-width:0;flex:1">
                     <div class="maint-video-title">${esc(v.title || 'Sin título')}</div>
-                    ${v.links?.length ? `<div class="maint-video-links">Ficha canónica: ${v.links.map(l => {
-  const label = [l.code, l.title].filter(Boolean).join(' · ') || 'Ficha';
-  return `<a href="{{ site.baseurl }}${esc(l.canonical_url || '')}">${esc(label)}</a>`;
-}).join(', ')}</div>` : '<div class="maint-video-links">Todavía no asociado a una ficha canónica.</div>'}
-                    ${safeUrl ? `<div class="maint-video-links"><a href="${esc(safeUrl)}" target="_blank" rel="noopener noreferrer">Abrir video en TikTok</a></div>` : ''}
+                    <div class="maint-asset-grid">
+                      <div class="maint-asset-label">Ficha canónica</div>
+                      <div class="maint-asset-value">${primary ? esc(primary.title || 'Sin título de ficha') : 'Sin vincular'}</div>
+
+                      <div class="maint-asset-label">Código de ficha / pieza</div>
+                      <div class="maint-asset-value">${primary ? esc(primary.code || 'Sin código') : 'Sin vincular'}</div>
+
+                      <div class="maint-asset-label">Red social</div>
+                      <div class="maint-asset-value">TikTok</div>
+
+                      <div class="maint-asset-label">ID interno del recurso</div>
+                      <div class="maint-asset-value">${primary ? esc(primary.asset_id || 'Sin ID interno') : 'Pendiente de asignación'}</div>
+
+                      <div class="maint-asset-label">Video ID</div>
+                      <div class="maint-asset-value">${esc(v.video_id)}</div>
+
+                      <div class="maint-asset-label">Estado técnico</div>
+                      <div class="maint-asset-value"><span class="maint-status" data-status="${esc(v.status === 'VINCULADO' ? 'OK' : 'SIN COMPROBAR')}">${esc(v.status === 'VINCULADO' ? 'OK' : 'SIN COMPROBAR')}</span></div>
+
+                      <div class="maint-asset-label">Estado editorial</div>
+                      <div class="maint-asset-value"><span class="maint-status" data-status="${esc(editorialStatus)}">${esc(editorialStatus)}</span></div>
+
+                      <div class="maint-asset-label">Versión ficha / derivada</div>
+                      <div class="maint-asset-value">${primary ? esc((primary.content_version ?? '—') + ' / ' + (primary.derived_from_version ?? '—')) : '—'}</div>
+
+                      <div class="maint-asset-label">Última revisión</div>
+                      <div class="maint-asset-value">${primary ? esc(primary.reviewed || 'Sin fecha') : 'Pendiente'}</div>
+                    </div>
+                    <div class="maint-asset-actions">
+                      ${primary?.canonical_url ? `<a href="{{ site.baseurl }}${esc(primary.canonical_url)}">Abrir ficha canónica</a>` : ''}
+                      ${safeUrl ? `<a href="${esc(safeUrl)}" target="_blank" rel="noopener noreferrer">Abrir video en TikTok</a>` : ''}
+                    </div>
                   </div>
                   <span class="maint-status" data-status="${esc(v.status)}">${esc(v.status)}</span>
                 </div>
