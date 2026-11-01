@@ -19,9 +19,8 @@ media:
     storage: "internal"
     purpose: "resumen"
     alt: "Diagrama de los colaboradores obligatorios según el monto objetivo solicitado"
-    caption: "Los colaboradores se incorporan de forma progresiva y acumulativa según el monto objetivo solicitado."
     placement: "after-summary"
-    version: 1
+    version: 2
     source: "1 FinanciamientoReembolsable(2).docx — 4 Colaboradores obligatorios"
     status: "approved"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-debes-saber-sobre-la-garantia-hipotecaria/
@@ -44,7 +43,6 @@ A mayor monto solicitado, se añaden nuevas áreas de revisión profesional.
     alt="Diagrama de los colaboradores obligatorios según el monto objetivo solicitado"
     loading="lazy"
     decoding="async">
-  <figcaption>Los colaboradores se incorporan de forma progresiva y acumulativa según el monto objetivo solicitado.</figcaption>
 </figure>
 
 ## Qué colaboradores necesitas según el monto
