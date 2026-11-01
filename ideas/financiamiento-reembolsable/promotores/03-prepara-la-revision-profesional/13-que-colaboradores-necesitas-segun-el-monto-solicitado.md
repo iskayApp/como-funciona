@@ -12,6 +12,18 @@ source: "1 FinanciamientoReembolsable(2).docx — 4 Colaboradores obligatorios"
 guide_version: "No identificada expresamente en el documento consultado"
 status: "DESARROLLADA · PRUEBA PÚBLICA"
 reviewed: "2026-11-01"
+media:
+  - id: "fr-pro-13-colaboradores-monto"
+    type: "diagram"
+    src: "/assets/financiamiento-reembolsable/promotores/fr-pro-13/colaboradores-segun-monto.svg"
+    storage: "internal"
+    purpose: "resumen"
+    alt: "Diagrama de los colaboradores obligatorios según el monto objetivo solicitado"
+    caption: "Los colaboradores se incorporan de forma progresiva y acumulativa según el monto objetivo solicitado."
+    placement: "after-summary"
+    version: 1
+    source: "1 FinanciamientoReembolsable(2).docx — 4 Colaboradores obligatorios"
+    status: "approved"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-debes-saber-sobre-la-garantia-hipotecaria/
 prev_title: "Qué debes saber sobre la garantía hipotecaria"
 next_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-analista-de-riesgos-financieros/
@@ -25,6 +37,15 @@ next_title: "Qué hace el analista de riesgos financieros"
 Los colaboradores profesionales obligatorios dependen del **monto objetivo solicitado** y se incorporan de forma **progresiva y acumulativa**.
 
 A mayor monto solicitado, se añaden nuevas áreas de revisión profesional.
+
+<figure class="media-block media-diagram">
+  <img
+    src="{{ '/assets/financiamiento-reembolsable/promotores/fr-pro-13/colaboradores-segun-monto.svg' | relative_url }}"
+    alt="Diagrama de los colaboradores obligatorios según el monto objetivo solicitado"
+    loading="lazy"
+    decoding="async">
+  <figcaption>Los colaboradores se incorporan de forma progresiva y acumulativa según el monto objetivo solicitado.</figcaption>
+</figure>
 
 ## Qué colaboradores necesitas según el monto
 
