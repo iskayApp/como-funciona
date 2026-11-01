@@ -92,6 +92,79 @@ Cuando el video se aloje en un proveedor externo, la ficha deberá utilizar una 
 
 La arquitectura no queda vinculada a un proveedor concreto. Podrá utilizar almacenamiento propio, CDN, plataforma de video o cualquier infraestructura posterior que cumpla los requisitos de disponibilidad, rendimiento, privacidad y accesibilidad.
 
+## Sistema de contenidos reutilizables y distribuibles
+
+**Cómo funciona** se concibe como un sistema de contenidos reutilizables y distribuibles, no únicamente como un conjunto de páginas web.
+
+La **ficha canónica** es la unidad central de publicación. Su contenido funcional deriva de la guía aprobada y mantiene una URL estable. A partir de esa ficha pueden generarse distintos recursos y canales sin duplicar ni modificar la regla funcional.
+
+Flujo principal:
+
+```text
+Guía aprobada
+→ Ficha canónica
+→ Multimedia
+→ YouTube
+→ Redes sociales
+→ iskay.app
+```
+
+El sistema también funciona en sentido inverso como mecanismo de descubrimiento:
+
+```text
+YouTube / Facebook / Instagram / TikTok / Google
+→ enlace
+→ ficha exacta
+→ siguiente paso dentro de iskay.app
+```
+
+### Principios
+
+1. **Una sola fuente funcional.** La guía aprobada respalda el contenido; la ficha canónica lo explica y publica.
+2. **Una sola URL canónica por tema.** Los canales externos enlazan a la ficha correspondiente en lugar de crear destinos paralelos.
+3. **Múltiples formas de consumo.** Una misma explicación puede disponer de texto, diagrama, animación, video, audio, contenido interactivo u otros formatos.
+4. **Distribución sin contradicción.** YouTube y las redes sociales son canales de distribución y descubrimiento, no fuentes funcionales independientes.
+5. **Reutilización controlada.** Un recurso aprobado puede utilizarse en diferentes superficies siempre que conserve su vínculo con la ficha y la fuente que lo respalda.
+6. **Trazabilidad.** Los recursos derivados deben poder identificarse para saber qué materiales revisar cuando cambie una ficha o su fuente.
+7. **Navegación hacia la acción.** Los contenidos externos deben poder conducir al usuario a la ficha exacta y, desde ella, al siguiente paso lógico dentro de iskay.app.
+
+### Distribución asociada a una ficha
+
+Cuando corresponda, una ficha podrá registrar los canales y activos derivados mediante metadatos de distribución.
+
+Ejemplo:
+
+```yaml
+distribution:
+  canonical_url: /financiamiento-reembolsable/...
+  youtube:
+    video_id: "[ID]"
+    visibility: public
+  social_assets:
+    - platform: facebook
+      asset_id: "[ID interno]"
+    - platform: instagram
+      asset_id: "[ID interno]"
+    - platform: tiktok
+      asset_id: "[ID interno]"
+```
+
+Estos metadatos no convierten las redes sociales en parte de la fuente funcional. Su objetivo es mantener la relación entre la ficha y sus representaciones distribuidas.
+
+### Impacto de cambios
+
+Cuando cambie una regla, condición o explicación en la fuente aprobada, debe poder identificarse:
+
+```text
+Fuente modificada
+→ ficha afectada
+→ recursos multimedia asociados
+→ videos asociados
+→ piezas sociales asociadas
+```
+
+Esto permite revisar y actualizar el contenido distribuido sin depender de búsquedas manuales ni mantener copias desconectadas.
+
 ## Arquitectura híbrida de almacenamiento
 
 La política predeterminada de **Cómo funciona** será híbrida:
