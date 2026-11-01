@@ -47,9 +47,13 @@ Estamos validando la experiencia pública y móvil antes de integrar esta docume
   </li>
   <li>
     <a href="{{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/' | relative_url }}">
-      <span class="topic-number">Etapa 05 · En desarrollo</span>
+      <span class="topic-number">Etapa 05 · Completa</span>
       <strong>Cierre, formalización y transferencia</strong><br>
       Completa los requisitos posteriores al cierre antes de recibir los fondos.
     </a>
   </li>
 </ul>
+
+## Siguiente etapa
+
+**06 · Cumple y da seguimiento**, comenzando por **29 · Cómo consultar el cumplimiento del financiamiento**.
