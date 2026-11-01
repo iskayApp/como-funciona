@@ -52,8 +52,11 @@ Estamos validando la experiencia pública y móvil antes de integrar esta docume
       Completa los requisitos posteriores al cierre antes de recibir los fondos.
     </a>
   </li>
+  <li>
+    <a href="{{ '/financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/' | relative_url }}">
+      <span class="topic-number">Etapa 06 · En desarrollo</span>
+      <strong>Cumple y da seguimiento</strong><br>
+      Consulta el estado de las cuotas y conoce qué ocurre ante retrasos, mora o incumplimientos.
+    </a>
+  </li>
 </ul>
-
-## Siguiente etapa
-
-**06 · Cumple y da seguimiento**, comenzando por **29 · Cómo consultar el cumplimiento del financiamiento**.
