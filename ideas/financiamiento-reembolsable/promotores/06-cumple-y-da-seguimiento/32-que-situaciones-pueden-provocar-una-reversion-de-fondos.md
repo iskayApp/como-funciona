@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/que-ocurre-si-existe-incumplimiento/
 prev_title: "Qué ocurre si existe incumplimiento"
+next_url: /financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/que-responsabilidades-mantiene-el-promotor-despues-de-recibir-los-fondos/
+next_title: "Qué responsabilidades mantiene el promotor después de recibir los fondos"
 ---
 
 # Qué situaciones pueden provocar una reversión de fondos
@@ -84,4 +86,4 @@ Proporciona la información y documentación necesaria, atiende las observacione
 
 ## Siguiente paso
 
-**Qué responsabilidades mantiene el promotor después de recibir los fondos.**
+[Qué responsabilidades mantiene el promotor después de recibir los fondos]({{ '/financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/que-responsabilidades-mantiene-el-promotor-despues-de-recibir-los-fondos/' | relative_url }}).
