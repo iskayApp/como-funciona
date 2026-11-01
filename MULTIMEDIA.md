@@ -147,6 +147,65 @@ media:
 
 Cada tipo podrá incorporar propiedades específicas adicionales sin alterar estos campos comunes.
 
+## Composición por bloques y ubicación flexible
+
+Las fichas de **Cómo funciona** no deben diseñarse como una plantilla rígida con un espacio fijo reservado para imagen, video u otro recurso. Cada ficha se concibe como una **composición de bloques de contenido** que pueden organizarse de acuerdo con la función didáctica del tema.
+
+Entre esos bloques pueden existir, según corresponda:
+
+- título;
+- respuesta breve;
+- explicación;
+- tabla, lista o pasos;
+- ejemplo práctico;
+- recurso multimedia;
+- advertencia;
+- acción que debe realizar el usuario;
+- siguiente paso;
+- futuros bloques que se incorporen sin alterar la arquitectura general.
+
+La propiedad `placement` expresa una **ubicación lógica** y no una coordenada fija de diseño. El mismo tipo de recurso puede aparecer en posiciones diferentes según dónde ayude mejor a comprender el contenido.
+
+Por ejemplo, una ficha puede seguir:
+
+```text
+Título
+→ Respuesta breve
+→ Representación visual
+→ Tabla o detalle estructurado
+→ Explicación
+→ Qué debes hacer
+→ Siguiente paso
+```
+
+mientras otra puede organizarse como:
+
+```text
+Título
+→ Respuesta breve
+→ Explicación
+→ Video demostrativo
+→ Ejemplo
+→ Qué debes hacer
+→ Siguiente paso
+```
+
+y otra como:
+
+```text
+Título
+→ Respuesta breve
+→ Pasos
+→ Diagrama interactivo
+→ Explicación
+→ Qué debes hacer
+→ Siguiente paso
+```
+
+La decisión de ubicación debe responder al **mayor valor didáctico**, no a una regla visual uniforme.
+
+Este principio permite incorporar en el futuro nuevos bloques, tipos de recurso y experiencias interactivas sin reconstruir las fichas ni modificar sus URLs canónicas.
+
 ## Ubicaciones lógicas
 
 Como valores iniciales de `placement`:
