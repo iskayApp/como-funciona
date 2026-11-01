@@ -10,6 +10,10 @@ Patrón editorial aprobado para redactar las fichas. Los campos entre corchetes 
 
 [Una o dos frases que resuelven lo esencial.]
 
+### Recurso multimedia opcional
+
+[Puede incorporarse uno o varios recursos cuando ayuden a comprender mejor la respuesta. El formato no está limitado a imagen o video. Consultar `MULTIMEDIA.md`.]
+
 ## 3. Explicación
 
 [Desarrollo breve, claro y didáctico, fiel a la guía aprobada y sin repeticiones innecesarias.]
@@ -47,7 +51,10 @@ Patrón editorial aprobado para redactar las fichas. Los campos entre corchetes 
 | Estado | Borrador para revisión |
 | Fecha de revisión | [AAAA-MM-DD] |
 | URL estable | [Pendiente de definición antes de publicar] |
+| Multimedia | [Sin recursos / IDs de recursos asociados] |
 
 ## Criterio de revisión
 
 No completar vacíos funcionales con supuestos. Registrar las dudas o discrepancias para resolverlas en la fuente antes de publicar la ficha.
+
+La capa multimedia es complementaria. La ficha debe seguir siendo comprensible si un recurso no carga o no puede reproducirse.
