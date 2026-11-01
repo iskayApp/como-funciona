@@ -14,6 +14,8 @@ status: "Borrador para revisión"
 reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/que-ocurre-cuando-termina-la-campana/
 prev_title: "Qué ocurre cuando termina la campaña"
+next_url: /financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/registra-tu-cuenta-bancaria/
+next_title: "Registra tu cuenta bancaria"
 ---
 
 # Documentos que debes completar antes de recibir los fondos
@@ -64,4 +66,4 @@ Asegúrate de que la documentación esté completa antes de continuar con los pa
 
 ## Siguiente paso
 
-**Registra tu cuenta bancaria.**
+[Registra tu cuenta bancaria]({{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/registra-tu-cuenta-bancaria/' | relative_url }}).
