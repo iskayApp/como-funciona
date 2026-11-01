@@ -8,6 +8,7 @@ category: "Financiamiento Reembolsable"
 stage: "Prepara la revisión profesional"
 stage_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/
 code: "FR-PRO-13"
+content_version: 1
 source: "1 FinanciamientoReembolsable(2).docx — 4 Colaboradores obligatorios"
 guide_version: "No identificada expresamente en el documento consultado"
 status: "DESARROLLADA · PRUEBA PÚBLICA"
@@ -21,8 +22,10 @@ media:
     alt: "Diagrama de los colaboradores obligatorios según el monto objetivo solicitado"
     placement: "after-summary"
     version: 2
+    derived_from_version: 1
     source: "1 FinanciamientoReembolsable(2).docx — 4 Colaboradores obligatorios"
     status: "approved"
+    reviewed: "2026-11-01"
 prev_url: /financiamiento-reembolsable/promotores/configura-tu-financiamiento/que-debes-saber-sobre-la-garantia-hipotecaria/
 prev_title: "Qué debes saber sobre la garantía hipotecaria"
 next_url: /financiamiento-reembolsable/promotores/prepara-la-revision-profesional/que-hace-el-analista-de-riesgos-financieros/
