@@ -45,8 +45,11 @@ Estamos validando la experiencia pública y móvil antes de integrar esta docume
       Prepara la descripción, contenido visual, documentación y condiciones de acceso para publicar tu campaña.
     </a>
   </li>
+  <li>
+    <a href="{{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/' | relative_url }}">
+      <span class="topic-number">Etapa 05 · En desarrollo</span>
+      <strong>Cierre, formalización y transferencia</strong><br>
+      Completa los requisitos posteriores al cierre antes de recibir los fondos.
+    </a>
+  </li>
 </ul>
-
-## Siguiente etapa
-
-**05 · Cierre, formalización y transferencia**, comenzando por **24 · Qué ocurre cuando termina la campaña**.
