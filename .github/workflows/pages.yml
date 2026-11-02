@@ -45,6 +45,7 @@ jobs:
         run: |
           node --check assets/js/maintenance-search.js
           node --check assets/js/public-search.js
+          node --test tests/public-search.test.cjs
           python -m unittest discover -s tests -p 'test_*.py'
 
       - name: Detect TikTok refresh-token rotation
