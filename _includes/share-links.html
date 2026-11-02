@@ -1,0 +1,70 @@
+{% comment %}
+Componente transversal de enlaces de una ficha.
+Las URLs se derivan de page.url y de page.media; no se escriben manualmente.
+{% endcomment %}
+{% if page.code and page.permalink %}
+<section class="share-links" aria-labelledby="share-links-heading">
+  <h2 id="share-links-heading">Enlaces para compartir</h2>
+  <p class="share-links-help">Copia el enlace del concepto completo o de un recurso vinculado. Todos los destinos se generan desde los metadatos de esta ficha.</p>
+
+  <div class="share-link-entry">
+    <div class="share-link-description">
+      <strong>Ficha completa</strong>
+      <span>Abre este concepto y su explicación.</span>
+      <a id="share-ficha" class="share-link-destination" href="{{ page.url | absolute_url }}">Ver destino</a>
+    </div>
+    <button type="button" class="copy-link-button" data-copy-target="share-ficha">Copiar enlace de la ficha</button>
+  </div>
+
+  {% for media in page.media %}
+    {% if media.id and media.status == 'approved' and media.visibility != 'private' %}
+      {% assign anchor_id = media.id | prepend: 'media-' | slugify %}
+      {% assign media_key = media.id | slugify %}
+      {% assign media_title = media.title | default: media.caption | default: media.id %}
+      {% assign resource_url = media.original_url | default: media.share_url | default: media.url %}
+      {% if resource_url == nil or resource_url == '' %}
+        {% if media.provider == 'youtube' and media.video_id %}
+          {% assign encoded_video_id = media.video_id | url_encode %}
+          {% assign resource_url = 'https://www.youtube.com/watch?v=' | append: encoded_video_id %}
+        {% elsif media.storage == 'internal' and media.src %}
+          {% assign resource_url = media.src | absolute_url %}
+        {% elsif media.storage == 'external' and media.src %}
+          {% assign resource_url = media.src %}
+        {% endif %}
+      {% endif %}
+      {% assign resource_protocol = resource_url | slice: 0, 8 %}
+      {% assign resource_protocol_short = resource_url | slice: 0, 7 %}
+
+      <div class="share-media-group">
+        <h3>{{ media_title | escape }}</h3>
+        <p class="share-media-type">Recurso {{ media.type | default: 'multimedia' | escape }} · {{ media.id | escape }}</p>
+        <div class="share-link-entry">
+          <div class="share-link-description">
+            <strong>Multimedia dentro de la ficha</strong>
+            <span>Va directamente a este recurso, sin perder el contexto.</span>
+            <a id="share-media-{{ media_key }}" class="share-link-destination" href="{{ page.url | absolute_url }}#{{ anchor_id }}">Ver destino</a>
+          </div>
+          <button type="button" class="copy-link-button" data-copy-target="share-media-{{ media_key }}">Copiar enlace de la multimedia</button>
+        </div>
+        <div class="share-link-entry">
+          <div class="share-link-description">
+            <strong>Recurso original</strong>
+            <span>Abre el archivo o la publicación de origen autorizada.</span>
+            {% if resource_protocol == 'https://' or resource_protocol_short == 'http://' %}
+              <a id="share-original-{{ media_key }}" class="share-link-destination" href="{{ resource_url | escape }}" target="_blank" rel="noopener noreferrer">Ver origen</a>
+            {% else %}
+              <span class="share-link-unavailable">Origen no disponible en los metadatos</span>
+            {% endif %}
+          </div>
+          {% if resource_protocol == 'https://' or resource_protocol_short == 'http://' %}
+            <button type="button" class="copy-link-button" data-copy-target="share-original-{{ media_key }}">Copiar enlace del recurso original</button>
+          {% else %}
+            <button type="button" class="copy-link-button" disabled title="Falta un enlace de origen válido">Origen no disponible</button>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+  <p class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></p>
+</section>
+{% endif %}
