@@ -3,7 +3,7 @@
  */
 (() => {
   "use strict";
-  const root = document.getElementById("public-search");
+  const root = document.getElementById("buscar");
   if (!root) return;
 
   const input = root.querySelector("#public-search-query");
