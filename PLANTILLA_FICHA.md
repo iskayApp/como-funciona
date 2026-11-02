@@ -54,6 +54,7 @@ Patrón editorial aprobado para redactar las fichas. Los campos entre corchetes 
 | URL estable | [Pendiente de definición antes de publicar] |
 | Multimedia | [Sin recursos / IDs de recursos asociados] |
 | Distribución | [Sin activos / YouTube / Facebook / Instagram / TikTok / otros] |
+| Piezas publicitarias vinculadas | [Códigos oficiales confirmados, título, categoría y asset_ids, si se han comprobado] |
 
 ## Criterio de revisión
 
@@ -67,3 +68,7 @@ La capa multimedia es complementaria. La ficha debe seguir siendo comprensible s
 Toda ficha publicada debe mantener un campo `content_version`. Los recursos multimedia y activos distribuidos asociados deben registrar `derived_from_version`, además de `source`, `version`, `status` y `reviewed`.
 
 Si `derived_from_version` no coincide con `content_version`, el recurso debe considerarse pendiente de revisión. Consultar `TRAZABILIDAD.md`.
+
+## Correspondencia con producción publicitaria
+
+Una ficha puede relacionarse con varias piezas publicitarias, y una pieza con varias fichas. Declarar `marketing_pieces` solamente cuando el calendario o documento de producción permita verificar el código oficial y la relación conceptual. Usar `asset_ids` para señalar publicaciones/referencias reales de esa pieza ya registradas en `media` o `distribution`. No derivar códigos publicitarios de `FR-PRO-*` ni del identificador técnico del recurso. Ver [ENLACES_COMPARTIBLES.md](./ENLACES_COMPARTIBLES.md).
