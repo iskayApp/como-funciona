@@ -39,7 +39,7 @@ En cada despliegue se genera `mantenimiento/share_catalog.json`, con fichas y re
 
 ## Buscador público
 
-La portada de `Cómo funciona` incluye una búsqueda por concepto, pregunta, título o código de ficha y filtros por categoría y rol. El usuario obtiene un enlace directo a la ficha canónica y puede encontrar temas sin recorrer todas las etapas. La cabecera ofrece un acceso «Buscar» desde cualquier ficha.
+La portada de `Cómo funciona` incluye una barra de búsqueda principal por concepto, pregunta, título o código de ficha. Al introducir un término aparecen resultados compactos; después se pueden desplegar filtros de categoría y rol. Las fichas enlazan directamente a la URL canónica, sin mostrar códigos de marketing ni campos de mantenimiento. La cabecera ofrece un icono de lupa para acceder al buscador desde cualquier ficha, sin duplicar títulos en móviles.
 
 La interfaz pública reutiliza `mantenimiento/share_catalog.json` **sin un segundo catálogo** y solo muestra título, categoría, rol, etapa y código de ficha. No expone en los resultados códigos de piezas publicitarias, enlaces originales de marketing, versiones, estados internos o verificaciones técnicas. Solo se ofrecen fichas marcadas como `public_searchable` y con URL del mismo sitio.
 
