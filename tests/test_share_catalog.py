@@ -205,5 +205,36 @@ marketing_pieces:
         self.assertEqual(len(data["items"][0]["unassigned_assets"]), 1)
 
 
+    def test_public_search_uses_the_existing_catalog_and_can_hide_drafts(self):
+        cases = [
+            ("", True),
+            ("published: false", False),
+            ("visibility: private", False),
+            ("status: draft", False),
+            ("status: review", False),
+            ("status: archived", False),
+            ("status: approved", True),
+        ]
+        for extra, expected in cases:
+            with self.subTest(extra=extra):
+                metadata = (
+                    "code: FR-PRO-01\n"
+                    "title: ¿Qué es el financiamiento?\n"
+                    "permalink: /pregunta-publica/\n"
+                    "category: Financiamiento Reembolsable\n"
+                    "role: promotores\n"
+                    "stage: Antes de solicitar\n"
+                    + extra
+                )
+                code, data = self.build_with(metadata)
+                self.assertEqual(code, 0)
+                item = data["items"][0]
+                self.assertEqual(item["public_searchable"], expected)
+                self.assertEqual(item["code"], "FR-PRO-01")
+                self.assertEqual(item["stage"], "Antes de solicitar")
+                self.assertTrue(item["canonical_url"].endswith("/pregunta-publica/"))
+
+
+
 if __name__ == "__main__":
     unittest.main()
