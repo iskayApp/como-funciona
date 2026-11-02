@@ -16,13 +16,26 @@ Estamos validando la experiencia pública y móvil antes de integrar esta docume
 
 <section id="buscar" class="public-search" data-catalog-url="{{ '/mantenimiento/share_catalog.json' | relative_url }}" data-site-root="{{ '/' | absolute_url }}" aria-labelledby="public-search-title">
   <h2 id="public-search-title">¿Qué necesitas saber?</h2>
-  <p class="public-search-description">Encuentra una explicación sobre cómo utilizar iskay.app. Escribe un tema o filtra las guías disponibles.</p>
+  <p class="public-search-description">Busca una explicación y encuentra la respuesta que necesitas.</p>
 
-  <div class="public-search-controls" role="search" aria-label="Buscar explicaciones de Cómo funciona">
-    <div class="public-search-field public-search-wide">
-      <label for="public-search-query">Buscar una explicación</label>
-      <input id="public-search-query" type="search" placeholder="Ej. garantías, pagos, ¿quién puede solicitar?" autocomplete="off" disabled>
-    </div>
+  <form id="public-search-form" class="public-search-form" role="search" aria-label="Buscar en Cómo funciona">
+    <label class="public-search-sr-only" for="public-search-query">Buscar una explicación</label>
+    <span class="public-search-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg>
+    </span>
+    <input id="public-search-query" type="search" placeholder="Buscar temas, preguntas o códigos…" autocomplete="off" enterkeyhint="search" disabled>
+    <button id="public-search-submit" class="public-search-submit" type="submit" disabled>Buscar</button>
+  </form>
+
+  <div id="public-search-tools" class="public-search-tools" hidden>
+    <button id="public-search-filter-toggle" class="public-search-filter-toggle" type="button" aria-expanded="false" aria-controls="public-search-filters" disabled>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M7 12h10M10 17h4"></path></svg>
+      Filtrar resultados
+    </button>
+    <button id="public-search-clear" class="public-search-clear" type="button" disabled>Limpiar búsqueda</button>
+  </div>
+
+  <div id="public-search-filters" class="public-search-filters" hidden>
     <div class="public-search-field">
       <label for="public-search-category">Categoría</label>
       <select id="public-search-category" disabled><option value="">Todas las categorías</option></select>
@@ -31,15 +44,15 @@ Estamos validando la experiencia pública y móvil antes de integrar esta docume
       <label for="public-search-role">Dirigido a</label>
       <select id="public-search-role" disabled><option value="">Todos los roles</option></select>
     </div>
-    <button id="public-search-clear" class="public-search-clear" type="button" disabled>Limpiar</button>
   </div>
-  <p id="public-search-count" class="public-search-count" role="status" aria-live="polite">Cargando búsqueda…</p>
+
+  <p id="public-search-count" class="public-search-count" role="status" aria-live="polite"></p>
   <div id="public-search-results" class="public-search-results"></div>
   <button id="public-search-more" class="public-search-more" type="button" hidden>Mostrar más resultados</button>
   <noscript><p>Para consultar las explicaciones sin JavaScript, utiliza el recorrido por etapas que aparece a continuación.</p></noscript>
 </section>
 
-<script src="{{ '/assets/js/public-search.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/public-search.js' | relative_url }}?v=20261102-estandar" defer></script>
 
 ## Etapas disponibles
 
