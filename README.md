@@ -37,6 +37,14 @@ Las fichas disponen de un componente común para copiar su URL canónica y, cuan
 En cada despliegue se genera `mantenimiento/share_catalog.json`, con fichas y recursos ordenados por categoría, rol, etapa y código, para facilitar la distribución editorial. **El Centro de mantenimiento** (`/mantenimiento/`) incluye una consulta de concepto/título/código, categoría y rol, que muestra las piezas publicables asociadas y permite copiar los tres enlaces disponibles sin trabajar con JSON. Las piezas de distribución que no están insertadas en la ficha no reciben anclas ficticias. Las piezas publicitarias con código oficial se vinculan mediante metadatos `marketing_pieces` y `asset_ids` comprobados; los activos sin vínculo siguen consultables como «sin pieza publicitaria identificada», sin inferir relaciones por coincidencia numérica. Ver [ENLACES_COMPARTIBLES.md](./ENLACES_COMPARTIBLES.md).
 
 
+## Orientación guiada (sin datos personales)
+
+La portada ofrece **«¿No sabes por dónde empezar? Recibir orientación»** como entrada secundaria, sin alterar el buscador público. Una secuencia breve de preguntas con botones permite identificar la categoría, el rol, la etapa y la explicación concreta. La salida dirige **únicamente a la URL canónica** de una ficha pública del catálogo compartido `mantenimiento/share_catalog.json`. No existe otro catálogo ni se copian contenidos entre fichas.
+
+La orientación no es un formulario de registro: no requiere nombre, correo, teléfono, identificación, importes ni información económica; no crea perfiles, no guarda respuestas y no envía las selecciones a un servidor. El único acceso de red es la lectura del catálogo público ya utilizado por el buscador. Se puede volver atrás, comenzar de nuevo o cerrar la orientación en cualquier momento.
+
+La cobertura se limita a recorridos con fichas efectivamente publicadas. Si una modalidad o rol no tiene fichas públicas, se informa con claridad y se facilita el acceso al buscador, **sin recomendar fichas de otro rol como equivalentes**. Los nuevos recorridos se harán accesibles al publicarse sus fichas con metadatos correctos en el mismo catálogo.
+
 ## Buscador público
 
 La portada de `Cómo funciona` incluye una barra de búsqueda principal por concepto, pregunta, título o código de ficha. Al introducir un término aparecen resultados compactos; después se pueden desplegar filtros de categoría y rol. Las fichas enlazan directamente a la URL canónica, sin mostrar códigos de marketing ni campos de mantenimiento. La cabecera ofrece un icono de lupa para acceder al buscador desde cualquier ficha, sin duplicar títulos en móviles.

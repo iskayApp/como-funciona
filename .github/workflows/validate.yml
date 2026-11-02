@@ -29,7 +29,8 @@ jobs:
         run: |
           node --check assets/js/maintenance-search.js
           node --check assets/js/public-search.js
-          node --test tests/public-search.test.cjs
+          node --check assets/js/guidance.js
+          node --test tests/public-search.test.cjs tests/guidance.test.cjs
 
       - name: Generate and validate share catalog
         run: python scripts/build_share_catalog.py
