@@ -1,12 +1,17 @@
-/* Buscador público de Cómo funciona.
- * Reutiliza el catálogo canónico del mantenimiento; presenta solo metadatos funcionales.
+/* Buscador público de Cómo funciona: una barra y filtros progresivos.
+ * Fuente única: catálogo canónico compartido con mantenimiento.
  */
 (() => {
   "use strict";
   const root = document.getElementById("buscar");
   if (!root) return;
 
+  const form = root.querySelector("#public-search-form");
   const input = root.querySelector("#public-search-query");
+  const submit = root.querySelector("#public-search-submit");
+  const tools = root.querySelector("#public-search-tools");
+  const toggle = root.querySelector("#public-search-filter-toggle");
+  const filters = root.querySelector("#public-search-filters");
   const category = root.querySelector("#public-search-category");
   const role = root.querySelector("#public-search-role");
   const clear = root.querySelector("#public-search-clear");
@@ -32,9 +37,9 @@
     try {
       const base = new URL(root.dataset.siteRoot);
       const url = new URL(value);
-      if (url.origin !== base.origin || !url.pathname.startsWith(base.pathname)) return "";
-      if (url.protocol !== "https:" && url.protocol !== "http:") return "";
-      return url.href;
+      return ["https:", "http:"].includes(url.protocol) &&
+        url.origin === base.origin && url.pathname.startsWith(base.pathname)
+        ? url.href : "";
     } catch (_error) {
       return "";
     }
@@ -57,10 +62,8 @@
 
   function score(item, query) {
     if (!query) return 0;
-    const code = normalize(item.code);
-    const title = normalize(item.title);
-    const stage = normalize(item.stage);
-    if (code === query || title === query) return 100;
+    const code = normalize(item.code), title = normalize(item.title), stage = normalize(item.stage);
+    if (title === query || code === query) return 100;
     if (title.startsWith(query)) return 80;
     if (code.startsWith(query)) return 75;
     if (title.includes(query)) return 65;
@@ -69,104 +72,121 @@
   }
 
   function match(item, tokens) {
-    const fields = [item.title, item.code, item.category, item.role, item.stage];
-    const haystack = normalize(fields.filter(Boolean).join(" "));
+    const haystack = normalize([item.title, item.code, item.category, item.role, item.stage]
+      .filter(Boolean).join(" "));
     return tokens.every(token => haystack.includes(token));
   }
 
   function resultCard(item) {
-    const article = element("article", "public-search-result");
     const url = safeCanonicalUrl(item.canonical_url);
-    const heading = element("h3", "public-search-result-title");
-    const link = element("a", "public-search-result-link", item.title || "Explicación");
+    const link = element("a", "public-search-result");
     link.href = url;
-    heading.appendChild(link);
-    article.appendChild(heading);
-    article.appendChild(element("p", "public-search-result-context",
+
+    const text = element("span", "public-search-result-content");
+    text.appendChild(element("strong", "public-search-result-title", item.title || "Explicación"));
+    text.appendChild(element("span", "public-search-result-context",
       [item.category, item.role, item.stage].filter(Boolean).join(" · ")));
-    const footer = element("div", "public-search-result-footer");
-    if (item.code) footer.appendChild(element("span", "public-search-code", "Ficha " + item.code));
-    const action = element("a", "public-search-open", "Leer explicación");
-    action.href = url;
-    footer.appendChild(action);
-    article.appendChild(footer);
-    return article;
+    link.appendChild(text);
+    link.appendChild(element("span", "public-search-result-arrow", "›"));
+    return link;
   }
 
   function render(resetLimit) {
     if (resetLimit) visibleLimit = pageSize;
     const query = normalize(input.value);
     const hasCriteria = Boolean(query || category.value || role.value);
+    tools.hidden = !hasCriteria;
+
     if (!hasCriteria) {
-      count.textContent = "Escribe lo que necesitas saber o elige un filtro.";
+      filters.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+      count.textContent = "";
       results.replaceChildren();
       more.hidden = true;
       return;
     }
 
-    const tokens = query ? query.split(/\s+/).filter(Boolean) : [];
+    const tokens = query.split(/\s+/).filter(Boolean);
     const found = items.filter(item =>
       (!category.value || item.category === category.value) &&
-      (!role.value || item.role === role.value) &&
-      match(item, tokens));
+      (!role.value || item.role === role.value) && match(item, tokens));
     if (query) found.sort((a, b) => score(b, query) - score(a, query));
 
-    const visible = found.slice(0, visibleLimit);
     const fragment = document.createDocumentFragment();
+    found.slice(0, visibleLimit).forEach(item => fragment.appendChild(resultCard(item)));
     if (!found.length) {
       fragment.appendChild(element("p", "public-search-empty",
-        "No encontramos una explicación con esos criterios. Prueba con otras palabras o explora las etapas."));
-    } else {
-      visible.forEach(item => fragment.appendChild(resultCard(item)));
+        "No encontramos una explicación. Prueba con otras palabras o modifica los filtros."));
     }
     results.replaceChildren(fragment);
+    const showing = Math.min(found.length, visibleLimit);
     count.textContent = found.length
-      ? ("Mostrando " + visible.length + " de " + found.length +
-        (found.length === 1 ? " explicación encontrada" : " explicaciones encontradas"))
+      ? (found.length === showing
+          ? found.length + (found.length === 1 ? " resultado" : " resultados")
+          : "Mostrando " + showing + " de " + found.length + " resultados")
       : "Sin resultados";
-    more.hidden = visible.length >= found.length;
+    more.hidden = showing >= found.length;
   }
 
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    render(true);
+  });
+  // La búsqueda también responde mientras se escribe, sin obligar a pulsar el botón.
   input.addEventListener("input", () => render(true));
   category.addEventListener("change", updateRoles);
   role.addEventListener("change", () => render(true));
+
+  toggle.addEventListener("click", () => {
+    filters.hidden = !filters.hidden;
+    toggle.setAttribute("aria-expanded", String(!filters.hidden));
+    if (!filters.hidden) category.focus();
+  });
+
   clear.addEventListener("click", () => {
     input.value = "";
     category.value = "";
     updateRoles();
     role.value = "";
+    filters.hidden = true;
+    toggle.setAttribute("aria-expanded", "false");
     render(true);
     input.focus();
   });
+
   more.addEventListener("click", () => {
     visibleLimit += pageSize;
     render(false);
   });
 
-  fetch(root.dataset.catalogUrl, { cache: "no-store" })
+  fetch(root.dataset.catalogUrl, {cache: "no-store"})
     .then(response => {
       if (!response.ok) throw new Error("HTTP " + response.status);
       return response.json();
     })
     .then(data => {
-      if (!data || !Array.isArray(data.items)) throw new Error("Formato de catálogo inválido");
-      items = data.items.filter(item =>
-        item.public_searchable !== false &&
-        item.title &&
-        safeCanonicalUrl(item.canonical_url));
+      if (!data || !Array.isArray(data.items)) throw new Error("Catálogo no válido");
+      items = data.items.filter(item => item.public_searchable !== false &&
+        item.title && safeCanonicalUrl(item.canonical_url));
       fillOptions(category, items.map(item => item.category), "Todas las categorías");
       updateRoles();
+      input.disabled = false;
+      submit.disabled = false;
+      toggle.disabled = false;
       category.disabled = false;
       role.disabled = false;
-      input.disabled = false;
       clear.disabled = false;
-      count.textContent = "Escribe lo que necesitas saber o elige un filtro.";
+      render(true);
     })
     .catch(_error => {
-      count.textContent = "No se pudo cargar la búsqueda. Puedes navegar por las etapas disponibles.";
+      count.textContent = "La búsqueda no está disponible. Puedes navegar por las etapas.";
+      tools.hidden = true;
+      filters.hidden = true;
       results.replaceChildren();
       more.hidden = true;
       input.disabled = true;
+      submit.disabled = true;
+      toggle.disabled = true;
       category.disabled = true;
       role.disabled = true;
       clear.disabled = true;
