@@ -77,6 +77,14 @@ La identidad de la ficha es `code`, su destino público es `permalink` y cada re
 
 La comprobación automática de la rama valida códigos/URLs no duplicados, identificadores seguros y únicos y anclas presentes. Enlaces inexistentes o privados no deben compartirse. No se registra contenido sensible en el catálogo público.
 
+## Consulta visual en el mantenimiento
+
+El equipo de marketing puede entrar al [Centro de mantenimiento](https://iskayapp.github.io/como-funciona/mantenimiento/) y filtrar por texto (concepto, título, código o pieza asociada), categoría y rol. La búsqueda usa el mismo archivo generado `mantenimiento/share_catalog.json`; no hay otro catálogo ni otra fuente de datos.
+
+Cada pieza visible ofrece tres acciones: **Copiar ficha**, **Copiar multimedia** y **Copiar original**. Un botón queda deshabilitado cuando no existe su enlace válido. Las publicaciones registradas únicamente en `distribution` pueden tener enlace a la ficha y a la publicación original, pero **no** un enlace directo al interior de la ficha hasta que realmente estén incorporadas allí.
+
+Solo aparecen multimedia con estado `approved` y piezas distribuidas con estado `approved` o `published`, siempre que no sean privadas. Las fichas sin piezas publicables también se pueden localizar y compartir.
+
 ## Uso práctico
 
 Marketing podrá seleccionar una ficha por su código, consultar el enlace canónico y compartir la multimedia o publicación original cuando exista. La ficha continúa respaldada por la guía aprobada; los videos y piezas derivadas conservan la relación `derived_from_version` para identificar cambios que necesitan revisión.
