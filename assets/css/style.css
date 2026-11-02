@@ -281,3 +281,95 @@ th {
     justify-content: center;
   }
 }
+
+
+/* Enlaces generados desde los metadatos de cada ficha */
+[id^="media-"] { scroll-margin-top: 100px; }
+
+.share-links {
+  margin-top: 48px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.share-links h2 { margin-top: 0; }
+
+.share-links-help {
+  color: var(--muted);
+  font-size: .92rem;
+  margin-bottom: 20px;
+}
+
+.share-media-group {
+  padding-top: 16px;
+  margin-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.share-media-group h3 { margin: 0 0 3px; }
+
+.share-media-type {
+  font-size: .78rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.share-link-entry {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+
+.share-link-description {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.share-link-description strong { font-size: .95rem; }
+
+.share-link-description span { font-size: .85rem; color: var(--muted); }
+
+.share-link-destination {
+  display: inline-block;
+  font-size: .83rem;
+  margin-top: 4px;
+}
+
+.copy-link-button {
+  flex: 0 0 auto;
+  max-width: 220px;
+  min-height: 42px;
+  border: 1px solid #A3AEAE;
+  background: var(--surface);
+  color: var(--text);
+  padding: 9px 13px;
+  border-radius: 9px;
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 700;
+  line-height: 1.3;
+  cursor: pointer;
+}
+
+.copy-link-button:hover:not(:disabled) { background: var(--soft); }
+.copy-link-button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.copy-link-button:disabled { opacity: .55; cursor: not-allowed; }
+
+.copy-feedback {
+  min-height: 1.5em;
+  font-size: .85rem;
+  color: var(--muted);
+  margin: 12px 0 0;
+}
+
+@media (max-width: 620px) {
+  .share-link-entry { flex-direction: column; align-items: stretch; }
+  .copy-link-button { width: 100%; max-width: none; }
+}
