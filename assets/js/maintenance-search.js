@@ -82,41 +82,68 @@
     return button;
   }
 
+  function linkActions(canonicalUrl, asset) {
+    const actions = node("div", "maint-search-buttons");
+    actions.appendChild(copyButton("Copiar ficha", canonicalUrl));
+    actions.appendChild(copyButton("Copiar multimedia", asset && asset.media_url,
+      "El recurso no está insertado en la ficha"));
+    actions.appendChild(copyButton("Copiar original", asset && asset.original_url,
+      "No consta una URL verificable de la publicación o archivo original"));
+    return actions;
+  }
+
+  function assetRow(asset, canonicalUrl) {
+    const row = node("div", "maint-search-piece maint-search-asset");
+    const label = asset.provider || asset.type || "Recurso";
+    row.appendChild(node("h5", "maint-search-piece-title", label + " · " + (asset.title || asset.id || "Sin título")));
+    row.appendChild(node("p", "maint-search-meta", "ID técnico: " + (asset.id || "Sin ID") +
+      (asset.media_url ? " · Multimedia dentro de la ficha" : " · Publicación distribuida")));
+    row.appendChild(linkActions(canonicalUrl, asset));
+    return row;
+  }
+
   function resultCard(item) {
     const card = node("article", "maint-search-result");
-    const heading = node("h3", "maint-search-heading", (item.code || "Sin código") + " · " + (item.title || "Sin título"));
-    card.appendChild(heading);
-    const metadata = [item.category, item.role, item.stage].filter(Boolean).join(" · ");
-    card.appendChild(node("p", "maint-search-meta", metadata));
+    card.appendChild(node("p", "maint-search-ficha-code", "Ficha canónica · " + (item.code || "Sin código")));
+    card.appendChild(node("h3", "maint-search-heading", item.title || "Sin título"));
+    card.appendChild(node("p", "maint-search-meta", [item.category, item.role, item.stage].filter(Boolean).join(" · ")));
 
-    const pieces = [...(Array.isArray(item.media) ? item.media : []),
+    // Sólo los metadatos editoriales explícitos crean una relación con la producción.
+    const linkedPieces = Array.isArray(item.marketing_pieces) ? item.marketing_pieces : [];
+    const fallbackAssets = [...(Array.isArray(item.media) ? item.media : []),
       ...(Array.isArray(item.distribution) ? item.distribution : [])];
-    if (!pieces.length) {
-      card.appendChild(node("p", "maint-search-empty", "Sin piezas publicables asociadas todavía."));
-      const actions = node("div", "maint-search-buttons");
-      actions.appendChild(copyButton("Copiar ficha", item.canonical_url));
-      actions.appendChild(copyButton("Copiar multimedia", null, "Esta ficha todavía no tiene multimedia aprobada"));
-      actions.appendChild(copyButton("Copiar original", null, "Esta ficha todavía no tiene recursos originales aprobados"));
-      card.appendChild(actions);
-      return card;
-    }
+    const unassigned = Array.isArray(item.unassigned_assets) ? item.unassigned_assets : fallbackAssets;
 
-    const summary = node("p", "maint-search-meta", pieces.length + (pieces.length === 1 ? " pieza asociada" : " piezas asociadas"));
-    card.appendChild(summary);
-    pieces.forEach(piece => {
-      const row = node("div", "maint-search-piece");
-      const title = piece.title || piece.id || "Recurso sin título";
-      row.appendChild(node("h4", "maint-search-piece-title", title));
-      const description = [piece.provider || piece.type || "Multimedia", piece.id || "", piece.media_url ? "Dentro de la ficha" : "Publicación distribuida"]
-        .filter(Boolean).join(" · ");
-      row.appendChild(node("div", "maint-search-meta", description));
-      const actions = node("div", "maint-search-buttons");
-      actions.appendChild(copyButton("Copiar ficha", item.canonical_url));
-      actions.appendChild(copyButton("Copiar multimedia", piece.media_url, "Esta publicación no está insertada en la ficha"));
-      actions.appendChild(copyButton("Copiar original", piece.original_url, "La publicación o el archivo de origen no tiene URL verificable"));
-      row.appendChild(actions);
-      card.appendChild(row);
+    card.appendChild(node("p", "maint-search-meta", linkedPieces.length
+      ? linkedPieces.length + (linkedPieces.length === 1 ? " pieza publicitaria vinculada" : " piezas publicitarias vinculadas")
+      : "Sin pieza publicitaria identificada en los metadatos"));
+
+    linkedPieces.forEach(piece => {
+      const group = node("section", "maint-search-piece maint-search-production");
+      const officialCode = (piece.code || "Sin código") +
+        (piece.category_code ? " (" + piece.category_code + ")" : "");
+      group.appendChild(node("h4", "maint-search-piece-title", "Pieza publicitaria · " + officialCode));
+      group.appendChild(node("p", "maint-search-meta", piece.title || "Título no registrado"));
+      const assets = Array.isArray(piece.assets) ? piece.assets : [];
+      if (!assets.length) {
+        group.appendChild(node("p", "maint-search-empty", "Aún no hay publicaciones aprobadas vinculadas a esta pieza."));
+        group.appendChild(linkActions(item.canonical_url, null));
+      } else {
+        assets.forEach(asset => group.appendChild(assetRow(asset, item.canonical_url)));
+      }
+      card.appendChild(group);
     });
+
+    if (unassigned.length) {
+      const group = node("section", "maint-search-piece maint-search-unassigned");
+      group.appendChild(node("h4", "maint-search-piece-title", "Recursos y publicaciones sin pieza publicitaria identificada"));
+      group.appendChild(node("p", "maint-search-meta", "Se conserva su vínculo con la ficha, pero no se presupone un código de producción."));
+      unassigned.forEach(asset => group.appendChild(assetRow(asset, item.canonical_url)));
+      card.appendChild(group);
+    } else if (!linkedPieces.length) {
+      card.appendChild(node("p", "maint-search-empty", "Esta ficha no tiene publicaciones aprobadas asociadas."));
+      card.appendChild(linkActions(item.canonical_url, null));
+    }
     return card;
   }
 
@@ -126,8 +153,10 @@
     if (!query) return true;
     const pieces = [...(Array.isArray(item.media) ? item.media : []),
       ...(Array.isArray(item.distribution) ? item.distribution : [])];
+    const marketing = Array.isArray(item.marketing_pieces) ? item.marketing_pieces : [];
     const haystack = normalize([
       item.code, item.title, item.category, item.role, item.stage,
+      ...marketing.flatMap(piece => [piece.code, piece.title, piece.category_code]),
       ...pieces.flatMap(piece => [piece.title, piece.id, piece.provider, piece.type])
     ].filter(Boolean).join(" "));
     return normalize(query).split(/\s+/).every(token => haystack.includes(token));

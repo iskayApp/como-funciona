@@ -79,6 +79,61 @@ def distribution_items(value):
             yield str(provider), asset
 
 
+def visible_marketing_pieces(data, entry, path, errors):
+    """Asociación editorial explícita; nunca deduce códigos publicitarios de la ficha."""
+    pieces = data.get("marketing_pieces") or []
+    if not isinstance(pieces, list):
+        errors.append(f"{path}: marketing_pieces debe ser una lista")
+        return [], list(entry["media"]) + list(entry["distribution"])
+
+    assets = list(entry["media"]) + list(entry["distribution"])
+    by_id = {}
+    for asset in assets:
+        by_id.setdefault(str(asset["id"]), []).append(asset)
+
+    associations = []
+    associated_ids = set()
+    seen_codes = set()
+    for piece in pieces:
+        if not isinstance(piece, dict):
+            errors.append(f"{path}: entrada marketing_pieces inválida")
+            continue
+        if piece.get("status") not in ("approved", "published") or piece.get("visibility") == "private":
+            continue
+        code = piece.get("code")
+        if not isinstance(code, str) or not code.strip():
+            errors.append(f"{path}: pieza publicitaria publicada sin código oficial")
+            continue
+        code = code.strip()
+        if code in seen_codes:
+            errors.append(f"{path}: código de pieza publicitaria repetido en ficha: {code}")
+            continue
+        seen_codes.add(code)
+        refs = piece.get("asset_ids") or []
+        if not isinstance(refs, list) or any(not isinstance(ref, str) for ref in refs):
+            errors.append(f"{path}: {code} requiere asset_ids como lista de IDs")
+            continue
+        linked = []
+        for ref in dict.fromkeys(refs):
+            found = by_id.get(ref, [])
+            if len(found) != 1:
+                errors.append(
+                    f"{path}: {code} referencia asset_id '{ref}' que no identifica "
+                    "exactamente un recurso/publicación aprobada de la ficha"
+                )
+                continue
+            linked.append(found[0])
+            associated_ids.add(ref)
+        associations.append({
+            "code": code,
+            "category_code": piece.get("category_code"),
+            "title": piece.get("title") or code,
+            "assets": linked,
+        })
+    unassigned = [asset for asset in assets if str(asset["id"]) not in associated_ids]
+    return associations, unassigned
+
+
 def build_catalog():
     config = yaml.safe_load((ROOT / "_config.yml").read_text(encoding="utf-8"))
     catalog = []
@@ -182,6 +237,11 @@ def build_catalog():
                 "original_url": origin,
                 "original_available": bool(origin),
             })
+        # Una pieza de marketing puede asociar varios recursos y varias fichas pueden
+        # remitir al mismo código publicitario sin renombrar ninguno de sus IDs.
+        marketing_pieces, unassigned_assets = visible_marketing_pieces(data, entry, path, errors)
+        entry["marketing_pieces"] = marketing_pieces
+        entry["unassigned_assets"] = unassigned_assets
         catalog.append(entry)
 
     output = {
@@ -189,6 +249,8 @@ def build_catalog():
         "total_fichas": len(catalog),
         "total_media": sum(len(entry["media"]) for entry in catalog),
         "total_distribution": sum(len(entry["distribution"]) for entry in catalog),
+        "total_marketing_pieces": sum(len(entry["marketing_pieces"]) for entry in catalog),
+        "total_unassigned_assets": sum(len(entry["unassigned_assets"]) for entry in catalog),
         "items": catalog,
     }
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)

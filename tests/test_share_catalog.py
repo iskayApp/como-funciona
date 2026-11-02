@@ -105,6 +105,105 @@ distribution:
         self.assertFalse(resource["original_available"])
         self.assertIsNone(resource["media_url"])
 
+    def test_explicit_production_code_groups_approved_assets(self):
+        metadata = """
+code: FR-PRO-07
+title: Una ficha con dos piezas
+permalink: /ficha-07/
+distribution:
+  facebook:
+    - id: fb-01
+      status: published
+      url: https://www.facebook.com/reel/123456
+    - id: fb-02
+      status: approved
+      url: https://www.facebook.com/reel/987654
+  tiktok:
+    - id: tt-01
+      status: published
+      share_url: https://www.tiktok.com/@iskay/video/123
+    - id: tt-sin-relacion
+      status: published
+      share_url: https://www.tiktok.com/@iskay/video/999
+marketing_pieces:
+  - code: PRO-EDU-02
+    category_code: FR
+    title: Algunas condiciones dependen del monto
+    status: approved
+    asset_ids: [fb-01, tt-01]
+  - code: PRO-INS-02
+    category_code: FR
+    title: Historia de un promotor
+    status: approved
+    asset_ids: [fb-02]
+"""
+        code, data = self.build_with(metadata)
+        self.assertEqual(code, 0)
+        item = data["items"][0]
+        self.assertEqual(data["total_marketing_pieces"], 2)
+        self.assertEqual(data["total_unassigned_assets"], 1)
+        self.assertEqual([piece["code"] for piece in item["marketing_pieces"]],
+                         ["PRO-EDU-02", "PRO-INS-02"])
+        self.assertEqual([asset["id"] for asset in item["marketing_pieces"][0]["assets"]],
+                         ["fb-01", "tt-01"])
+        self.assertEqual(item["unassigned_assets"][0]["id"], "tt-sin-relacion")
+        self.assertEqual(item["marketing_pieces"][0]["category_code"], "FR")
+
+    def test_does_not_infer_marketing_code_from_asset_id(self):
+        metadata = """
+code: FR-PRO-01
+title: Identificadores diferentes
+permalink: /concepto/
+distribution:
+  tiktok:
+    - id: fr-pro-01-tiktok-01
+      status: published
+      share_url: https://www.tiktok.com/@iskay/video/123
+"""
+        code, data = self.build_with(metadata)
+        self.assertEqual(code, 0)
+        item = data["items"][0]
+        self.assertEqual(item["marketing_pieces"], [])
+        self.assertEqual(item["unassigned_assets"][0]["id"], "fr-pro-01-tiktok-01")
+
+    def test_invalid_explicit_link_fails_build_instead_of_inventing_relation(self):
+        metadata = """
+code: FR-PRO-05
+title: Referencia inexistente
+permalink: /otro/
+marketing_pieces:
+  - code: PRO-EDU-01
+    category_code: FR
+    title: Un ejemplo
+    status: approved
+    asset_ids: [publicacion-que-no-existe]
+"""
+        code, data = self.build_with(metadata)
+        self.assertEqual(code, 1)
+        self.assertEqual(data["items"][0]["marketing_pieces"][0]["assets"], [])
+
+    def test_unpublished_piece_never_leaks_to_public_catalog(self):
+        metadata = """
+code: FR-PRO-04
+title: Una ficha
+permalink: /ficha/
+distribution:
+  facebook:
+    - id: fb-public
+      status: approved
+      url: https://www.facebook.com/reel/123456
+marketing_pieces:
+  - code: PRO-EDU-15
+    category_code: FR
+    title: Reservada
+    status: draft
+    asset_ids: [fb-public]
+"""
+        code, data = self.build_with(metadata)
+        self.assertEqual(code, 0)
+        self.assertEqual(data["items"][0]["marketing_pieces"], [])
+        self.assertEqual(len(data["items"][0]["unassigned_assets"]), 1)
+
 
 if __name__ == "__main__":
     unittest.main()
