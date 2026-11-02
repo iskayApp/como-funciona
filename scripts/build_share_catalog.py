@@ -60,6 +60,25 @@ def original_url(media, config):
     return None
 
 
+
+def distribution_items(value):
+    """Normaliza canales de distribución dict/list sin imponer un rol o proveedor."""
+    if not isinstance(value, dict):
+        return
+    for channel, assets in value.items():
+        if channel in ("canonical_url", "source", "version"):
+            continue
+        if isinstance(assets, dict):
+            rows = [assets]
+        elif isinstance(assets, list):
+            rows = [asset for asset in assets if isinstance(asset, dict)]
+        else:
+            continue
+        for asset in rows:
+            provider = asset.get("provider") or asset.get("platform") or channel
+            yield str(provider), asset
+
+
 def build_catalog():
     config = yaml.safe_load((ROOT / "_config.yml").read_text(encoding="utf-8"))
     catalog = []
@@ -94,8 +113,11 @@ def build_catalog():
             "content_version": data.get("content_version"),
             "canonical_url": canonical,
             "media": [],
+            "distribution": [],
         }
 
+        referenced_ids = set()
+        referenced_videos = set()
         for media in data.get("media") or []:
             if not isinstance(media, dict) or media.get("status") != "approved" or media.get("visibility") == "private":
                 continue
@@ -115,6 +137,9 @@ def build_catalog():
             origin = original_url(media, config)
             if not origin:
                 warnings.append(f"{code}/{media_id}: sin recurso original enlazable")
+            referenced_ids.add(str(media_id))
+            if media.get("video_id"):
+                referenced_videos.add((str(media.get("provider") or ""), str(media["video_id"])))
             entry["media"].append({
                 "id": media_id,
                 "type": media.get("type"),
@@ -125,12 +150,45 @@ def build_catalog():
                 "original_url": origin,
                 "original_available": bool(origin),
             })
+
+        # Las publicaciones derivadas no son anclas dentro de una ficha.
+        # Se muestran como piezas vinculadas con URL original, sin inventar media_url.
+        seen_distribution = set()
+        for provider, asset in distribution_items(data.get("distribution") or {}):
+            if asset.get("status") not in ("approved", "published") or asset.get("visibility") == "private":
+                continue
+            asset_id = asset.get("id") or asset.get("asset_id") or asset.get("video_id")
+            if not asset_id:
+                warnings.append(f"{code}/{provider}: distribución sin identificador estable")
+                continue
+            asset_id = str(asset_id)
+            video_id = str(asset.get("video_id") or "")
+            if asset_id in referenced_ids or (video_id and (provider, video_id) in referenced_videos):
+                continue
+            duplicate_key = (provider, asset_id)
+            if duplicate_key in seen_distribution:
+                continue
+            seen_distribution.add(duplicate_key)
+            origin = original_url({**asset, "provider": provider}, config)
+            if not origin:
+                warnings.append(f"{code}/{asset_id}: publicación sin URL original verificable")
+            entry["distribution"].append({
+                "id": asset_id,
+                "type": asset.get("type") or "publicacion",
+                "title": asset.get("title") or asset.get("caption") or asset_id,
+                "provider": provider,
+                "derived_from_version": asset.get("derived_from_version"),
+                "media_url": None,
+                "original_url": origin,
+                "original_available": bool(origin),
+            })
         catalog.append(entry)
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "total_fichas": len(catalog),
         "total_media": sum(len(entry["media"]) for entry in catalog),
+        "total_distribution": sum(len(entry["distribution"]) for entry in catalog),
         "items": catalog,
     }
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)

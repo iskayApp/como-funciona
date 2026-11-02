@@ -10,6 +10,31 @@ eyebrow: "Mantenimiento · Cómo funciona"
 
 La vista sigue la misma estructura de **Cómo funciona**: **Etapa → Ficha → Capa multimedia**. Los recursos todavía sin ficha se mantienen aparte como pendientes de vinculación.
 
+<section id="maintenance-search" class="maint-search" data-catalog-url="{{ '/mantenimiento/share_catalog.json' | relative_url }}" aria-labelledby="maint-search-title">
+  <h2 id="maint-search-title">Buscar conceptos y piezas para compartir</h2>
+  <p class="maint-meta">Consulta las mismas fichas y recursos aprobados del catálogo automático, sin abrir archivos JSON. Los enlaces se generan desde los metadatos de cada ficha.</p>
+  <div class="maint-search-controls">
+    <div class="maint-search-field maint-search-wide">
+      <label for="maint-search-text">Concepto, título o código</label>
+      <input id="maint-search-text" type="search" placeholder="Ej. FR-PRO-01, garantías, pagos" autocomplete="off">
+    </div>
+    <div class="maint-search-field">
+      <label for="maint-search-category">Categoría</label>
+      <select id="maint-search-category"><option value="">Todas las categorías</option></select>
+    </div>
+    <div class="maint-search-field">
+      <label for="maint-search-role">Rol</label>
+      <select id="maint-search-role"><option value="">Todos los roles</option></select>
+    </div>
+    <button type="button" id="maint-search-clear" class="maint-search-clear">Limpiar filtros</button>
+  </div>
+  <p id="maint-search-count" class="maint-meta" role="status" aria-live="polite">Cargando fichas…</p>
+  <p id="maint-search-feedback" class="maint-search-feedback" role="status" aria-live="polite"></p>
+  <div id="maint-search-results" class="maint-search-results">
+    <p class="maint-meta">Cargando el catálogo actual…</p>
+  </div>
+</section>
+
 <div id="maintenance-dashboard" class="maintenance-dashboard" aria-live="polite">
   <p>Cargando estado del sistema…</p>
 </div>
@@ -64,6 +89,30 @@ La vista sigue la misma estructura de **Cómo funciona**: **Etapa → Ficha → 
   .maint-summary{grid-template-columns:1fr 1fr;}
   .maint-service-head,.maint-ficha-head,.maint-resource-head{flex-direction:column;}
 }
+
+/* Consulta de enlaces para marketing dentro del mismo mantenimiento. */
+.maint-search { margin:26px 0 34px; }
+.maint-search h2 { margin-bottom:6px; }
+.maint-search-controls { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr) auto; gap:12px; align-items:end; margin:18px 0 14px; }
+.maint-search-field { display:flex; flex-direction:column; min-width:0; gap:5px; }
+.maint-search-field label { font-size:.82rem; font-weight:750; }
+.maint-search-field input,.maint-search-field select { font:inherit; width:100%; min-width:0; padding:10px; color:var(--text,#252A2B); background:var(--surface,#fff); border:1px solid var(--line,#d8dedd); border-radius:9px; }
+.maint-search-copy,.maint-search-clear { font:inherit; font-size:.82rem; font-weight:700; padding:9px 11px; border:1px solid var(--line,#d8dedd); background:var(--surface,#fff); color:var(--text,#252A2B); border-radius:8px; cursor:pointer; }
+.maint-search-copy:not(:disabled):hover,.maint-search-clear:hover { border-color:#0086FF; }
+.maint-search-copy:focus-visible,.maint-search-clear:focus-visible,.maint-search-field :focus-visible { outline:2px solid #0086FF; outline-offset:2px; }
+.maint-search-copy:disabled { opacity:.45; cursor:not-allowed; }
+.maint-search-results { display:grid; gap:12px; }
+.maint-search-result { padding:15px 17px; border:1px solid var(--line,#d8dedd); border-radius:10px; background:var(--surface,#fff); }
+.maint-search-heading { margin:0 0 4px; font-size:1rem; line-height:1.4; }
+.maint-search-meta,.maint-search-empty { margin:4px 0 10px; color:var(--muted,#687171); font-size:.83rem; overflow-wrap:anywhere; }
+.maint-search-piece { margin-top:11px; padding-top:12px; border-top:1px solid var(--line,#d8dedd); }
+.maint-search-piece-title { margin:0; font-size:.94rem; }
+.maint-search-buttons { display:flex; flex-wrap:wrap; gap:8px; margin-top:9px; }
+.maint-search-feedback { font-size:.82rem; overflow-wrap:anywhere; }
+.maint-search-feedback:empty { display:none; }
+@media(max-width:850px) { .maint-search-controls { grid-template-columns:repeat(2,minmax(0,1fr)); } .maint-search-wide { grid-column:1/-1; } }
+@media(max-width:520px) { .maint-search-controls { grid-template-columns:1fr; } .maint-search-wide { grid-column:auto; } .maint-search-clear { justify-self:start; } }
+
 </style>
 
 <script>
@@ -228,3 +277,5 @@ La vista sigue la misma estructura de **Cómo funciona**: **Etapa → Ficha → 
     .catch(err => { root.innerHTML = '<p>No se pudo cargar el reporte de mantenimiento: ' + esc(err.message) + '</p>'; });
 })();
 </script>
+
+<script src="{{ '/assets/js/maintenance-search.js' | relative_url }}" defer></script>

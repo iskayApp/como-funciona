@@ -41,6 +41,11 @@ jobs:
       - name: Generate and validate share links catalog
         run: python scripts/build_share_catalog.py
 
+      - name: Validate maintenance search and sharing catalogue
+        run: |
+          node --check assets/js/maintenance-search.js
+          python -m unittest discover -s tests -p 'test_*.py'
+
       - name: Detect TikTok refresh-token rotation
         id: tiktok-rotation
         shell: bash

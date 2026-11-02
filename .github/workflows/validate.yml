@@ -25,6 +25,9 @@ jobs:
       - name: Run share-link tests
         run: python -m unittest discover -s tests -v
 
+      - name: Check maintenance search JavaScript
+        run: node --check assets/js/maintenance-search.js
+
       - name: Generate and validate share catalog
         run: python scripts/build_share_catalog.py
 
