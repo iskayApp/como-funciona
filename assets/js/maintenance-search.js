@@ -134,8 +134,17 @@
   }
 
   function render() {
+    const hasCriteria = Boolean(normalize(search.value) || category.value || role.value);
+    if (!hasCriteria) {
+      // No mostrar el catálogo completo por defecto: la vista es un buscador, no un listado.
+      results.replaceChildren();
+      count.textContent = "Escribe un concepto o selecciona un filtro para buscar.";
+      feedback.textContent = "";
+      return;
+    }
+
     const found = items.filter(item => matches(item, search.value, category.value, role.value));
-    count.textContent = found.length + " de " + items.length + " fichas";
+    count.textContent = found.length + (found.length === 1 ? " ficha encontrada" : " fichas encontradas");
     const fragment = document.createDocumentFragment();
     if (!found.length) {
       fragment.appendChild(node("p", "maint-search-empty", "No hay fichas con estos criterios. Prueba con otro concepto, código, categoría o rol."));

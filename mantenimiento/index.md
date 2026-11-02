@@ -8,7 +8,7 @@ eyebrow: "Mantenimiento · Cómo funciona"
 
 # Centro de mantenimiento
 
-La vista sigue la misma estructura de **Cómo funciona**: **Etapa → Ficha → Capa multimedia**. Los recursos todavía sin ficha se mantienen aparte como pendientes de vinculación.
+Busca por concepto, título, código, categoría o rol y copia los enlaces de las piezas asociadas. El diagnóstico técnico se mantiene disponible en un apartado desplegable.
 
 <section id="maintenance-search" class="maint-search" data-catalog-url="{{ '/mantenimiento/share_catalog.json' | relative_url }}" aria-labelledby="maint-search-title">
   <h2 id="maint-search-title">Buscar conceptos y piezas para compartir</h2>
@@ -41,6 +41,11 @@ La vista sigue la misma estructura de **Cómo funciona**: **Etapa → Ficha → 
 
 <style>
 .maintenance-dashboard { margin-top:24px; }
+.maint-technical { border-top:1px solid var(--line); margin-top:18px; }
+.maint-technical-toggle { display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px 16px; padding:14px 0; cursor:pointer; color:var(--text,#252A2B); }
+.maint-technical-toggle span { font-size:.83rem; color:var(--muted,#687171); }
+.maint-technical-toggle:focus-visible { outline:2px solid #0086FF; outline-offset:2px; }
+.maint-technical-body { padding-top:6px; }
 .maint-summary { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin:18px 0 28px; }
 .maint-card,.maint-service,.maint-ficha,.maint-unlinked-card { border:1px solid var(--line); background:var(--surface); border-radius:12px; }
 .maint-card { padding:14px; }
@@ -220,6 +225,12 @@ La vista sigue la misma estructura de **Cómo funciona**: **Etapa → Ficha → 
     const unlinked = (inv.videos || []).filter(v => v.status === 'SIN VINCULAR');
 
     root.innerHTML = `
+      <details class="maint-technical">
+        <summary class="maint-technical-toggle">
+          <strong>Ver mantenimiento técnico</strong>
+          <span>Estado de fichas, recursos, servicios y pendientes</span>
+        </summary>
+        <div class="maint-technical-body">
       <p class="maint-meta">Última comprobación: ${esc(new Date(d.generated_at).toLocaleString('es-ES'))}</p>
 
       <div class="maint-summary">
@@ -268,6 +279,8 @@ La vista sigue la misma estructura de **Cómo funciona**: **Etapa → Ficha → 
             </div>`;
         }).join('') : '<div class="maint-empty">No hay videos TikTok pendientes de vinculación.</div>'}
       </section>
+        </div>
+      </details>
     `;
   }
 
