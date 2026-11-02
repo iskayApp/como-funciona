@@ -37,6 +37,14 @@ Las fichas disponen de un componente común para copiar su URL canónica y, cuan
 En cada despliegue se genera `mantenimiento/share_catalog.json`, con fichas y recursos ordenados por categoría, rol, etapa y código, para facilitar la distribución editorial. **El Centro de mantenimiento** (`/mantenimiento/`) incluye una consulta de concepto/título/código, categoría y rol, que muestra las piezas publicables asociadas y permite copiar los tres enlaces disponibles sin trabajar con JSON. Las piezas de distribución que no están insertadas en la ficha no reciben anclas ficticias. Las piezas publicitarias con código oficial se vinculan mediante metadatos `marketing_pieces` y `asset_ids` comprobados; los activos sin vínculo siguen consultables como «sin pieza publicitaria identificada», sin inferir relaciones por coincidencia numérica. Ver [ENLACES_COMPARTIBLES.md](./ENLACES_COMPARTIBLES.md).
 
 
+## Buscador público
+
+La portada de `Cómo funciona` incluye una búsqueda por concepto, pregunta, título o código de ficha y filtros por categoría y rol. El usuario obtiene un enlace directo a la ficha canónica y puede encontrar temas sin recorrer todas las etapas. La cabecera ofrece un acceso «Buscar» desde cualquier ficha.
+
+La interfaz pública reutiliza `mantenimiento/share_catalog.json` **sin un segundo catálogo** y solo muestra título, categoría, rol, etapa y código de ficha. No expone en los resultados códigos de piezas publicitarias, enlaces originales de marketing, versiones, estados internos o verificaciones técnicas. Solo se ofrecen fichas marcadas como `public_searchable` y con URL del mismo sitio.
+
+Por defecto no se presenta un listado completo: hay resultados después de escribir o seleccionar filtros. La vista muestra seis coincidencias por tanda, con opción de ampliar. La navegación por las seis etapas se conserva como alternativa, incluso si falla la carga del buscador.
+
 ## Publicación
 
 El sitio se publica mediante GitHub Pages:
