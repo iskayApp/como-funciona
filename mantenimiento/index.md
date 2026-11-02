@@ -8,11 +8,11 @@ eyebrow: "Mantenimiento · Cómo funciona"
 
 # Centro de mantenimiento
 
-Busca por concepto, título, código, categoría o rol y copia los enlaces de las piezas asociadas. El diagnóstico técnico se mantiene disponible en un apartado desplegable.
+Busca por ficha, concepto o código oficial de producción. Las piezas publicitarias verificadas aparecen agrupadas con sus publicaciones; los recursos sin asociación editorial se identifican por separado. El diagnóstico técnico está disponible en el apartado desplegable.
 
 <section id="maintenance-search" class="maint-search" data-catalog-url="{{ '/mantenimiento/share_catalog.json' | relative_url }}" aria-labelledby="maint-search-title">
   <h2 id="maint-search-title">Buscar conceptos y piezas para compartir</h2>
-  <p class="maint-meta">Consulta las mismas fichas y recursos aprobados del catálogo automático, sin abrir archivos JSON. Los enlaces se generan desde los metadatos de cada ficha.</p>
+  <p class="maint-meta">Consulta por concepto, código de ficha o código oficial de pieza publicitaria. Los resultados distinguen producción y publicaciones; no se asignan correspondencias sin verificar.</p>
   <div class="maint-search-controls">
     <div class="maint-search-field maint-search-wide">
       <label for="maint-search-text">Concepto, título o código</label>
@@ -109,6 +109,12 @@ Busca por concepto, título, código, categoría o rol y copia los enlaces de la
 .maint-search-results { display:grid; gap:12px; }
 .maint-search-result { padding:15px 17px; border:1px solid var(--line,#d8dedd); border-radius:10px; background:var(--surface,#fff); }
 .maint-search-heading { margin:0 0 4px; font-size:1rem; line-height:1.4; }
+.maint-search-ficha-code { color:var(--muted,#687171); font-size:.82rem; font-weight:800; margin:0 0 4px; }
+.maint-search-production { padding:10px 12px; border:1px solid var(--line,#d8dedd); border-radius:9px; }
+.maint-search-asset { margin-top:10px; padding-top:10px; }
+.maint-search-unassigned { margin-top:14px; }
+.maint-search-asset h5 { font-size:.87rem; }
+
 .maint-search-meta,.maint-search-empty { margin:4px 0 10px; color:var(--muted,#687171); font-size:.83rem; overflow-wrap:anywhere; }
 .maint-search-piece { margin-top:11px; padding-top:12px; border-top:1px solid var(--line,#d8dedd); }
 .maint-search-piece-title { margin:0; font-size:.94rem; }
