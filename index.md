@@ -14,6 +14,33 @@ Esta prueba publica el recorrido **Cómo funciona** para promotores.
 Estamos validando la experiencia pública y móvil antes de integrar esta documentación al dominio institucional de iskay.app.
 </div>
 
+<section id="buscar" class="public-search" data-catalog-url="{{ '/mantenimiento/share_catalog.json' | relative_url }}" data-site-root="{{ '/' | absolute_url }}" aria-labelledby="public-search-title">
+  <h2 id="public-search-title">¿Qué necesitas saber?</h2>
+  <p class="public-search-description">Encuentra una explicación sobre cómo utilizar iskay.app. Escribe un tema o filtra las guías disponibles.</p>
+
+  <div class="public-search-controls" role="search" aria-label="Buscar explicaciones de Cómo funciona">
+    <div class="public-search-field public-search-wide">
+      <label for="public-search-query">Buscar una explicación</label>
+      <input id="public-search-query" type="search" placeholder="Ej. garantías, pagos, ¿quién puede solicitar?" autocomplete="off" disabled>
+    </div>
+    <div class="public-search-field">
+      <label for="public-search-category">Categoría</label>
+      <select id="public-search-category" disabled><option value="">Todas las categorías</option></select>
+    </div>
+    <div class="public-search-field">
+      <label for="public-search-role">Dirigido a</label>
+      <select id="public-search-role" disabled><option value="">Todos los roles</option></select>
+    </div>
+    <button id="public-search-clear" class="public-search-clear" type="button" disabled>Limpiar</button>
+  </div>
+  <p id="public-search-count" class="public-search-count" role="status" aria-live="polite">Cargando búsqueda…</p>
+  <div id="public-search-results" class="public-search-results"></div>
+  <button id="public-search-more" class="public-search-more" type="button" hidden>Mostrar más resultados</button>
+  <noscript><p>Para consultar las explicaciones sin JavaScript, utiliza el recorrido por etapas que aparece a continuación.</p></noscript>
+</section>
+
+<script src="{{ '/assets/js/public-search.js' | relative_url }}" defer></script>
+
 ## Etapas disponibles
 
 <ul class="topic-list">
