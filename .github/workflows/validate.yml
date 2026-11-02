@@ -1,0 +1,35 @@
+name: Validar enlaces y fichas
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Install metadata dependencies
+        run: python -m pip install --disable-pip-version-check PyYAML
+
+      - name: Run share-link tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Generate and validate share catalog
+        run: python scripts/build_share_catalog.py
+
+      - name: Validate Jekyll rendering
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site

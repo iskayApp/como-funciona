@@ -38,6 +38,9 @@ jobs:
           TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
         run: python scripts/maintenance_check.py
 
+      - name: Generate and validate share links catalog
+        run: python scripts/build_share_catalog.py
+
       - name: Detect TikTok refresh-token rotation
         id: tiktok-rotation
         shell: bash

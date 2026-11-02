@@ -41,7 +41,7 @@ En Financiamiento Reembolsable, los pagos a los inversionistas son **mensuales**
 Para cada cuota se genera una **orden de depósito**. Una vez validado el pago completo, el valor queda registrado como **pendiente de distribución** y posteriormente se distribuye automáticamente a los inversionistas.
 
 
-<figure class="media-block media-animation">
+<figure id="media-fr-pro-09-flujo-pagos" class="media-block media-animation">
   <img
     src="{{ '/assets/financiamiento-reembolsable/promotores/fr-pro-09/flujo-pagos.svg' | relative_url }}"
     alt="Animación del flujo mensual de una cuota: orden de depósito, pago, validación, pendiente de distribución y distribución a los inversionistas"

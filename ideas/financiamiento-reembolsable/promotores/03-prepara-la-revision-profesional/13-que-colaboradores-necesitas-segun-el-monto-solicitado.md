@@ -40,7 +40,7 @@ Los colaboradores profesionales obligatorios dependen del **monto objetivo solic
 
 A mayor monto solicitado, se añaden nuevas áreas de revisión profesional.
 
-<figure class="media-block media-diagram">
+<figure id="media-fr-pro-13-colaboradores-monto" class="media-block media-diagram">
   <img
     src="{{ '/assets/financiamiento-reembolsable/promotores/fr-pro-13/colaboradores-segun-monto.svg' | relative_url }}"
     alt="Diagrama de los colaboradores obligatorios según el monto objetivo solicitado"

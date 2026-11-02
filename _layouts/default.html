@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="iskay.app · Cómo funciona">
   <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <script src="{{ '/assets/js/share-links.js' | relative_url }}" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -34,6 +35,8 @@
     <article class="content">
       {{ content }}
     </article>
+
+    {% include share-links.html %}
 
     {% if page.prev_url or page.next_url %}
     <nav class="page-nav" aria-label="Navegación entre fichas">

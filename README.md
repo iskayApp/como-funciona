@@ -30,6 +30,13 @@ El texto continúa siendo la fuente principal de cada ficha. Los recursos multim
 
 La especificación se encuentra en [MULTIMEDIA.md](./MULTIMEDIA.md).
 
+## Enlaces compartibles y catálogo para marketing
+
+Las fichas disponen de un componente común para copiar su URL canónica y, cuando tengan multimedia aprobada, el enlace directo al recurso dentro de la ficha y el enlace al archivo o publicación original. Los destinos se construyen automáticamente a partir de los metadatos; no se escriben a mano ni dependen de un rol específico.
+
+En cada despliegue se genera `mantenimiento/share_catalog.json`, con fichas y recursos ordenados por categoría, rol, etapa y código, para facilitar la distribución editorial. Ver [ENLACES_COMPARTIBLES.md](./ENLACES_COMPARTIBLES.md).
+
+
 ## Publicación
 
 El sitio se publica mediante GitHub Pages:

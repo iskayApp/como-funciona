@@ -12,7 +12,7 @@ Patrón editorial aprobado para redactar las fichas. Los campos entre corchetes 
 
 ### Recurso multimedia opcional
 
-[Puede incorporarse uno o varios recursos cuando ayuden a comprender mejor la respuesta. El formato no está limitado a imagen o video. Consultar `MULTIMEDIA.md`.]
+[Puede incorporarse uno o varios recursos cuando ayuden a comprender mejor la respuesta. El formato no está limitado a imagen o video. Consultar `MULTIMEDIA.md`. Cada multimedia aprobada debe conservar un `id` permanente y una ancla HTML `id="media-<id>"` en el bloque que la representa para permitir el acceso directo automático. Consultar `ENLACES_COMPARTIBLES.md`.]
 
 ## 3. Explicación
 

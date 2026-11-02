@@ -241,6 +241,10 @@ media:
     status: approved
 ```
 
+## Enlaces automáticos de ficha y multimedia
+
+El componente común de las fichas genera automáticamente tres destinos: ficha completa, multimedia en la ficha (mediante un ancla permanente derivada de `media.id`) y recurso original (a partir de `original_url`, `share_url`, `url`, identificador de YouTube o `src`). No se deben duplicar URLs en textos manuales. Los identificadores publicados no deben cambiar al actualizar contenido, títulos o proveedores. Para TikTok no basta el identificador del video sin un enlace real de publicación. Detalles y validación en [ENLACES_COMPARTIBLES.md](./ENLACES_COMPARTIBLES.md).
+
 ## Campos comunes
 
 | Campo | Función |
