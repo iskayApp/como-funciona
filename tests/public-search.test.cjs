@@ -124,7 +124,7 @@ test("carga vacía, búsqueda acotada, paginación, enlaces seguros y limpiar fi
   category.dispatch("change");
   assert.equal(results.children.length, 6);
   assert.equal(role.options.length, 2);
-  assert.match(results.children[0].href, /como-funciona\\/tema-/);
+  assert.ok(results.children[0].href.includes('/como-funciona/tema-'));
   category.value = "";
   category.dispatch("change");
   assert.equal(more.hidden, false);
