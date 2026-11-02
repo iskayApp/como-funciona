@@ -52,7 +52,32 @@ Estamos validando la experiencia pública y móvil antes de integrar esta docume
   <noscript><p>Para consultar las explicaciones sin JavaScript, utiliza el recorrido por etapas que aparece a continuación.</p></noscript>
 </section>
 
+<section id="orientacion" class="guidance" data-catalog-url="{{ '/mantenimiento/share_catalog.json' | relative_url }}" data-site-root="{{ '/' | absolute_url }}" aria-labelledby="guidance-invite-heading">
+  <div class="guidance-invite">
+    <div>
+      <h3 id="guidance-invite-heading">¿No sabes por dónde empezar?</h3>
+      <p>Te ayudamos a identificar qué modalidad de iskay.app puede corresponder a lo que quieres hacer.</p>
+    </div>
+    <button id="guidance-start" class="guidance-start" type="button" aria-expanded="false" aria-controls="guidance-panel">Recibir orientación</button>
+  </div>
+  <div id="guidance-panel" class="guidance-panel" hidden>
+    <div class="guidance-panel-heading">
+      <strong>Orientación breve</strong>
+      <button id="guidance-close" class="guidance-close" type="button">Cerrar</button>
+    </div>
+    <p id="guidance-question" class="guidance-question" role="status" aria-live="polite" tabindex="-1"></p>
+    <div id="guidance-options" class="guidance-options"></div>
+    <div id="guidance-result" class="guidance-result"></div>
+    <div class="guidance-navigation">
+      <button id="guidance-back" type="button" hidden>Volver</button>
+      <button id="guidance-restart" type="button" hidden>Empezar de nuevo</button>
+    </div>
+    <p class="guidance-privacy">Sin registro ni datos personales. Tus respuestas no se guardan.</p>
+  </div>
+</section>
+
 <script src="{{ '/assets/js/public-search.js' | relative_url }}?v=20261102-estandar" defer></script>
+<script src="{{ '/assets/js/guidance.js' | relative_url }}?v=20261102-orientacion" defer></script>
 
 ## Etapas disponibles
 
