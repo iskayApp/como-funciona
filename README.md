@@ -34,7 +34,7 @@ La especificación se encuentra en [MULTIMEDIA.md](./MULTIMEDIA.md).
 
 Las fichas disponen de un componente común para copiar su URL canónica y, cuando tengan multimedia aprobada, el enlace directo al recurso dentro de la ficha y el enlace al archivo o publicación original. Los destinos se construyen automáticamente a partir de los metadatos; no se escriben a mano ni dependen de un rol específico.
 
-En cada despliegue se genera `mantenimiento/share_catalog.json`, con fichas y recursos ordenados por categoría, rol, etapa y código, para facilitar la distribución editorial. Ver [ENLACES_COMPARTIBLES.md](./ENLACES_COMPARTIBLES.md).
+En cada despliegue se genera `mantenimiento/share_catalog.json`, con fichas y recursos ordenados por categoría, rol, etapa y código, para facilitar la distribución editorial. **El Centro de mantenimiento** (`/mantenimiento/`) incluye una consulta de concepto/título/código, categoría y rol, que muestra las piezas publicables asociadas y permite copiar los tres enlaces disponibles sin trabajar con JSON. Las piezas de distribución que no están insertadas en la ficha no reciben anclas ficticias. Ver [ENLACES_COMPARTIBLES.md](./ENLACES_COMPARTIBLES.md).
 
 
 ## Publicación
