@@ -167,6 +167,13 @@ def build_catalog():
             "stage": data.get("stage"),
             "content_version": data.get("content_version"),
             "canonical_url": canonical,
+            # Solo las fichas publicables deben aparecer en la búsqueda de usuarios;
+            # el mantenimiento mantiene el inventario completo.
+            "public_searchable": (
+                data.get("published") is not False
+                and data.get("visibility") != "private"
+                and data.get("status") not in ("draft", "review", "archived")
+            ),
             "media": [],
             "distribution": [],
         }
