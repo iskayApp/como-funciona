@@ -9,9 +9,9 @@ FR = ROOT / "ideas" / "financiamiento-reembolsable"
 
 def metadata(path):
     text = path.read_text(encoding="utf-8")
-    if not text.startswith("---\\n"):
+    if not text.startswith("---\n"):
         return {}, text
-    _, front, body = text.split("---\\n", 2)
+    _, front, body = text.split("---\n", 2)
     return yaml.safe_load(front) or {}, body
 
 
