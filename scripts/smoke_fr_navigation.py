@@ -58,7 +58,7 @@ def main():
                 assert menu.get_attribute('open') is None
                 assert summary.evaluate('(node) => node === document.activeElement')
                 summary.click()
-                page.locator('h1').click()
+                page.mouse.click(4, 80)
                 assert menu.get_attribute('open') is None
                 page.screenshot(path=str(ARTIFACTS / f'home-{width}.png'), full_page=True)
                 for slug, role, count, sections in ROLES:
