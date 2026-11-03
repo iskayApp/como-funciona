@@ -1,0 +1,33 @@
+{%- comment -%}
+Navigation is derived from the canonical pages, not from a second content catalog.
+Legacy Promotores pages do not have role metadata; their existing URL is authoritative.
+{%- endcomment -%}
+{%- assign fr_root = '/financiamiento-reembolsable/' -%}
+{%- assign fr_roles = 'Promotores|Inversores|Colaboradores' | split: '|' -%}
+{%- assign fr_slugs = 'promotores|inversores|colaboradores' | split: '|' -%}
+{%- assign fr_descriptions = 'Quiero solicitar financiamiento.|Quiero conocer cómo invertir.|Quiero aportar criterios técnicos.' | split: '|' -%}
+{%- assign fr_all_pages = site.pages | where: 'category', 'Financiamiento Reembolsable' | sort: 'path' -%}
+{%- assign fr_topics = fr_all_pages | where_exp: 'entry', 'entry.code != nil' | where_exp: 'entry', 'entry.published != false' -%}
+{%- assign fr_current_role = '' -%}
+{%- assign fr_current_url = '' -%}
+{%- assign fr_current_description = '' -%}
+{%- assign fr_is_page = false -%}
+{%- if page.url contains fr_root -%}
+  {%- assign fr_is_page = true -%}
+  {%- for fr_role in fr_roles -%}
+    {%- assign fr_candidate_url = fr_root | append: fr_slugs[forloop.index0] | append: '/' -%}
+    {%- if page.url contains fr_candidate_url -%}
+      {%- assign fr_current_role = fr_role -%}
+      {%- assign fr_current_url = fr_candidate_url -%}
+      {%- assign fr_current_description = fr_descriptions[forloop.index0] -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- assign fr_is_stage = false -%}
+{%- if fr_current_role != '' -%}
+  {%- assign fr_current_topics = fr_topics | where_exp: 'entry', 'entry.url contains fr_current_url' -%}
+  {%- assign fr_sections = fr_current_topics | group_by: 'stage_url' -%}
+  {%- if page.code == nil and page.url != fr_current_url -%}
+    {%- assign fr_is_stage = true -%}
+  {%- endif -%}
+{%- endif -%}

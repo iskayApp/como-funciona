@@ -1,18 +1,18 @@
 ---
 layout: default
 title: "Financiamiento Reembolsable"
+description: "Explora los recorridos de Promotores, Inversores y Colaboradores."
 permalink: /financiamiento-reembolsable/
 category: "Financiamiento Reembolsable"
 ---
 
 # Financiamiento Reembolsable
 
-Consulta la categoría desde el rol que corresponda a lo que necesitas comprender.
+Encuentra la explicación que necesitas según tu participación en iskay.app.
 
-- [Promotores]({{ '/financiamiento-reembolsable/promotores/' | relative_url }}) — 33 fichas desarrolladas.
-- [Inversores]({{ '/financiamiento-reembolsable/inversores/' | relative_url }}) — 37 fichas, con revisión editorial parcial pendiente.
-- [Colaboradores]({{ '/financiamiento-reembolsable/colaboradores/' | relative_url }}) — 29 fichas con base común y cuatro áreas de colaboración.
+{% include fr-context.html %}
+{% include fr-role-cards.html %}
 
-**Publicación de prueba:** las fichas pendientes están identificadas como tales. El sitio conserva la directiva de no indexación durante esta fase.
+[Buscar una explicación]({{ '/' | relative_url }}#buscar) · [Recibir orientación]({{ '/' | relative_url }}#orientacion)
 
-[Buscar en Cómo funciona]({{ '/#buscar' | relative_url }})
+<div class="fr-editorial-note">Publicación de prueba. Las fichas pendientes de revisión editorial mantienen su advertencia; su publicación no equivale a aprobación.</div>

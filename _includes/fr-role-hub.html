@@ -1,0 +1,63 @@
+<div class="fr-hub" data-fr-role="{{ fr_current_role }}">
+  <div class="fr-hub-heading">
+    <p class="fr-overline">Financiamiento Reembolsable</p>
+    <h1>{{ fr_current_role }}</h1>
+    <p class="fr-hub-intro">{{ page.description }}</p>
+    <p class="fr-hub-meta">{{ fr_current_topics.size }} fichas · {% if fr_current_role == 'Colaboradores' %}Base común y cuatro áreas de colaboración{% else %}{{ fr_sections.size }} etapas{% endif %}</p>
+    <div class="fr-hub-actions">
+      <a class="fr-start" href="{{ fr_current_topics.first.url | relative_url }}">Empezar por la primera ficha <span aria-hidden="true">→</span></a>
+      <a href="{{ '/' | relative_url }}#buscar">Buscar una explicación</a>
+    </div>
+  </div>
+  <div class="fr-explorer-heading">
+    <h2>Explora a tu ritmo</h2>
+    <p class="fr-muted">Despliega una sección y elige la explicación que necesitas. No es necesario seguir todo el recorrido.</p>
+  </div>
+  {% assign fr_previous_group = '' %}
+  {% assign fr_common_number = 0 %}
+  {% assign fr_area_number = 0 %}
+  {% for fr_section in fr_sections %}
+    {% assign fr_section_group = 'Etapas' %}
+    {% assign fr_section_label = 'Etapa' %}
+    {% assign fr_section_number = forloop.index %}
+    {% if fr_current_role == 'Colaboradores' %}
+      {% assign fr_section_group = 'Base común' %}
+      {% assign fr_section_label = 'Base común' %}
+      {% assign fr_common_number = fr_common_number | plus: 1 %}
+      {% assign fr_section_number = fr_common_number %}
+      {% if fr_section.name contains '/areas/' %}
+        {% assign fr_section_group = 'Elige tu área de colaboración' %}
+        {% assign fr_section_label = 'Área de colaboración' %}
+        {% assign fr_area_number = fr_area_number | plus: 1 %}
+        {% assign fr_section_number = fr_area_number %}
+      {% endif %}
+      {% if fr_section_group != fr_previous_group %}
+        <h3 class="fr-group-title">{{ fr_section_group }}</h3>
+        {% if fr_area_number == 1 %}<p class="fr-muted">Consulta el área que corresponda a tu participación. Las demás están disponibles como referencia.</p>{% endif %}
+      {% endif %}
+    {% endif %}
+    {% assign fr_previous_group = fr_section_group %}
+    <details class="fr-section" id="seccion-{{ forloop.index }}" data-section-kind="{% if fr_section.name contains '/areas/' %}area{% else %}common{% endif %}">
+      <summary>
+        <span class="fr-section-number" aria-hidden="true">{{ fr_section_number | prepend: '0' | slice: -2, 2 }}</span>
+        <span class="fr-section-heading"><span class="fr-section-label">{{ fr_section_label }}</span><strong>{{ fr_section.items.first.stage }}</strong></span>
+        <span class="fr-section-count">{{ fr_section.items.size }} {% if fr_section.items.size == 1 %}ficha{% else %}fichas{% endif %}</span>
+        <span class="fr-chevron" aria-hidden="true"></span>
+      </summary>
+      <div class="fr-section-body">
+        <a class="fr-section-overview" href="{{ fr_section.name | relative_url }}">Ver esta sección <span aria-hidden="true">→</span></a>
+        <ul class="fr-topic-links">
+          {% for fr_topic in fr_section.items %}
+          <li>
+            <a href="{{ fr_topic.url | relative_url }}" data-fr-topic>
+              <span>{{ fr_topic.title }}</span><span class="fr-topic-arrow" aria-hidden="true">→</span>
+            </a>
+            {% if fr_topic.editorial_status == 'pending_review' %}<span class="fr-review-label">Pendiente de revisión</span>{% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </details>
+  {% endfor %}
+  <p class="fr-editorial-note">Las fichas pendientes de revisión editorial conservan su aviso. La publicación de prueba no implica aprobación de su contenido.</p>
+</div>

@@ -1,0 +1,14 @@
+<details class="fr-menu" data-disclosure-menu>
+  <summary>Explorar <span class="fr-chevron" aria-hidden="true"></span></summary>
+  <nav class="fr-menu-panel" aria-label="Explorar Cómo funciona">
+    <a class="fr-menu-overview" href="{{ fr_root | relative_url }}">Financiamiento Reembolsable <span aria-hidden="true">→</span></a>
+    {% for fr_menu_role in fr_roles %}
+      {% assign fr_menu_url = fr_root | append: fr_slugs[forloop.index0] | append: '/' %}
+      <a class="fr-menu-role" href="{{ fr_menu_url | relative_url }}"{% if fr_current_role == fr_menu_role %} aria-current="{% if page.url == fr_menu_url %}page{% else %}true{% endif %}"{% endif %}>
+        <strong>{{ fr_menu_role }}</strong>
+        <span>{{ fr_descriptions[forloop.index0] }}</span>
+      </a>
+    {% endfor %}
+    <a class="fr-menu-search" href="{{ '/' | relative_url }}#buscar">Buscar una explicación</a>
+  </nav>
+</details>

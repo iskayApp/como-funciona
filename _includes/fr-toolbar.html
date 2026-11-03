@@ -1,0 +1,27 @@
+<div class="fr-toolbar">
+  <nav class="fr-role-tabs" aria-label="Recorridos de Financiamiento Reembolsable">
+    {% for fr_tab_role in fr_roles %}
+      {% assign fr_tab_url = fr_root | append: fr_slugs[forloop.index0] | append: '/' %}
+      <a href="{{ fr_tab_url | relative_url }}"{% if fr_current_role == fr_tab_role %} aria-current="{% if page.url == fr_tab_url %}page{% else %}true{% endif %}"{% endif %}>{{ fr_tab_role }}</a>
+    {% endfor %}
+  </nav>
+  {% if fr_current_role != '' and page.url != fr_current_url %}
+  <div class="fr-context-actions">
+    <a class="fr-back" href="{{ fr_current_url | relative_url }}">← Ver recorrido de {{ fr_current_role }}</a>
+    <details class="fr-jump" data-disclosure-menu>
+      <summary>Ir a una sección <span class="fr-chevron" aria-hidden="true"></span></summary>
+      <nav class="fr-jump-panel" aria-label="Secciones de {{ fr_current_role }}">
+        {% assign fr_jump_group = '' %}
+        {% for fr_section in fr_sections %}
+          {% if fr_current_role == 'Colaboradores' %}
+            {% assign fr_new_group = 'Base común' %}
+            {% if fr_section.name contains '/areas/' %}{% assign fr_new_group = 'Áreas de colaboración' %}{% endif %}
+            {% if fr_new_group != fr_jump_group %}<p class="fr-menu-group">{{ fr_new_group }}</p>{% assign fr_jump_group = fr_new_group %}{% endif %}
+          {% endif %}
+          <a href="{{ fr_section.name | relative_url }}"{% if page.url == fr_section.name %} aria-current="page"{% elsif page.stage_url == fr_section.name %} aria-current="true"{% endif %}>{{ fr_section.items.first.stage }}</a>
+        {% endfor %}
+      </nav>
+    </details>
+  </div>
+  {% endif %}
+</div>

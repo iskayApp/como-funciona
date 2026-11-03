@@ -1,0 +1,17 @@
+<section class="fr-role-picker" aria-labelledby="fr-role-picker-title">
+  <h2 id="fr-role-picker-title">Elige tu recorrido</h2>
+  <p class="fr-muted">Tres formas de participar. Una misma guía para orientarte.</p>
+  <div class="fr-role-grid">
+    {% for fr_card_role in fr_roles %}
+      {% assign fr_card_url = fr_root | append: fr_slugs[forloop.index0] | append: '/' %}
+      {% assign fr_card_topics = fr_topics | where_exp: 'entry', 'entry.url contains fr_card_url' %}
+      {% assign fr_card_sections = fr_card_topics | group_by: 'stage_url' %}
+      <a class="fr-role-card" href="{{ fr_card_url | relative_url }}">
+        <span class="fr-card-kicker">{{ fr_descriptions[forloop.index0] }}</span>
+        <h3>{{ fr_card_role }}</h3>
+        <span class="fr-card-meta">{{ fr_card_topics.size }} fichas · {% if fr_card_role == 'Colaboradores' %}Base común y 4 áreas{% else %}{{ fr_card_sections.size }} etapas{% endif %}</span>
+        <span class="fr-card-action">Explorar recorrido <span aria-hidden="true">→</span></span>
+      </a>
+    {% endfor %}
+  </div>
+</section>

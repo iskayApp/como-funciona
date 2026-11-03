@@ -3,24 +3,15 @@ layout: default
 title: "Cómo funciona · Financiamiento Reembolsable"
 description: "Recorridos de Promotores, Inversores y Colaboradores de Financiamiento Reembolsable en iskay.app."
 permalink: /
-eyebrow: "Prueba de publicación · Revisión editorial por roles"
+eyebrow: "Financiamiento Reembolsable · Guía de uso"
 ---
 
-# Cómo funciona · Financiamiento Reembolsable
+# Cómo funciona
 
-Consulta los recorridos de **Promotores, Inversores y Colaboradores** en Financiamiento Reembolsable.
+Explora **Financiamiento Reembolsable** desde tu rol o busca directamente la explicación que necesitas.
 
-<div class="test-note">
-Estamos validando la experiencia pública y móvil antes de integrar esta documentación al dominio institucional de iskay.app.
-</div>
-
-## Elige tu rol
-
-- [Promotores]({{ '/financiamiento-reembolsable/promotores/' | relative_url }}) — 33 fichas en seis etapas.
-- [Inversores]({{ '/financiamiento-reembolsable/inversores/' | relative_url }}) — 37 fichas en siete etapas.
-- [Colaboradores]({{ '/financiamiento-reembolsable/colaboradores/' | relative_url }}) — 29 fichas de base común y cuatro áreas de colaboración.
-
-Los contenidos que aún requieren aprobación editorial están marcados como **pendientes de revisión**. Esta es una publicación de prueba y su contenido puede recibir ajustes.
+{% include fr-context.html %}
+{% include fr-role-cards.html %}
 
 <section id="buscar" class="public-search" data-catalog-url="{{ '/mantenimiento/share_catalog.json' | relative_url }}" data-site-root="{{ '/' | absolute_url }}" aria-labelledby="public-search-title">
   <h2 id="public-search-title">¿Qué necesitas saber?</h2>
@@ -57,7 +48,7 @@ Los contenidos que aún requieren aprobación editorial están marcados como **p
   <p id="public-search-count" class="public-search-count" role="status" aria-live="polite"></p>
   <div id="public-search-results" class="public-search-results"></div>
   <button id="public-search-more" class="public-search-more" type="button" hidden>Mostrar más resultados</button>
-  <noscript><p>Para consultar las explicaciones sin JavaScript, utiliza el recorrido por etapas que aparece a continuación.</p></noscript>
+  <noscript><p>Para consultar las explicaciones sin JavaScript, utiliza los recorridos por rol disponibles en esta página.</p></noscript>
 </section>
 
 <section id="orientacion" class="guidance" data-catalog-url="{{ '/mantenimiento/share_catalog.json' | relative_url }}" data-site-root="{{ '/' | absolute_url }}" aria-labelledby="guidance-invite-heading">
@@ -87,53 +78,4 @@ Los contenidos que aún requieren aprobación editorial están marcados como **p
 <script src="{{ '/assets/js/public-search.js' | relative_url }}?v=20261102-estandar" defer></script>
 <script src="{{ '/assets/js/guidance.js' | relative_url }}?v=20261102-orientacion" defer></script>
 
-## Etapas para Promotores
-
-<ul class="topic-list">
-  <li>
-    <a href="{{ '/financiamiento-reembolsable/promotores/antes-de-solicitar/' | relative_url }}">
-      <span class="topic-number">Etapa 01 · Completa</span>
-      <strong>Antes de solicitar</strong><br>
-      Entiende qué es el financiamiento, quién puede solicitarlo, cómo revisar tu capacidad de reembolso y cómo definir el monto.
-    </a>
-  </li>
-  <li>
-    <a href="{{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/' | relative_url }}">
-      <span class="topic-number">Etapa 02 · Completa</span>
-      <strong>Configura tu financiamiento</strong><br>
-      Define el período y modalidad de campaña, plazo, TNA, pagos y garantías aplicables.
-    </a>
-  </li>
-  <li>
-    <a href="{{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/' | relative_url }}">
-      <span class="topic-number">Etapa 03 · Completa</span>
-      <strong>Prepara la revisión profesional</strong><br>
-      Identifica qué colaboradores profesionales debes incorporar y qué revisión corresponde según el monto objetivo solicitado.
-    </a>
-  </li>
-  <li>
-    <a href="{{ '/financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/' | relative_url }}">
-      <span class="topic-number">Etapa 04 · Completa</span>
-      <strong>Construye y publica tu campaña</strong><br>
-      Prepara la descripción, contenido visual, documentación y condiciones de acceso para publicar tu campaña.
-    </a>
-  </li>
-  <li>
-    <a href="{{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/' | relative_url }}">
-      <span class="topic-number">Etapa 05 · Completa</span>
-      <strong>Cierre, formalización y transferencia</strong><br>
-      Completa los requisitos posteriores al cierre antes de recibir los fondos.
-    </a>
-  </li>
-  <li>
-    <a href="{{ '/financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/' | relative_url }}">
-      <span class="topic-number">Etapa 06 · Completa</span>
-      <strong>Cumple y da seguimiento</strong><br>
-      Consulta el estado de las cuotas y conoce qué ocurre ante retrasos, mora o incumplimientos.
-    </a>
-  </li>
-</ul>
-
-## Recorrido de Promotores
-
-**33 fichas desarrolladas y organizadas en 6 etapas.**
+<div class="fr-editorial-note">Publicación de prueba. Las fichas pendientes de revisión editorial conservan su aviso. Estamos validando la experiencia pública y móvil antes de integrar esta documentación al dominio institucional de iskay.app.</div>
