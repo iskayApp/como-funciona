@@ -10,9 +10,9 @@ Las cinco categorías de Ideas son Donación, Recompensa, Precompra, Inversión 
 
 ## Alcance actual
 
-- El recorrido **Financiamiento Reembolsable · Promotores** está desarrollado por completo.
-- El recorrido contiene **33 fichas organizadas en 6 etapas**.
-- Cada ficha dispone de una URL pública estable y navegación anterior/siguiente.
+- **Financiamiento Reembolsable** incorpora tres recorridos: **Promotores (33 fichas y seis etapas), Inversores (37 fichas y siete etapas) y Colaboradores (29 fichas en base común y cuatro áreas)**.
+- En total existen **99 fichas publicadas**: 33 de Promotores y 66 fichas nuevas para Inversores y Colaboradores. Las que aún no cuentan con aprobación editorial muestran un aviso visible.
+- Todas las fichas disponen de URL canónica y los recorridos tienen navegación por rol y etapa.
 - Las demás categorías conservan su estructura base, pero todavía no forman parte de la publicación pública activa.
 - El apartado Recursos permanece fuera del alcance actual.
 
@@ -68,5 +68,5 @@ Durante esta fase de prueba pública, el sitio mantiene `noindex: true` para evi
 - Repositorio: **público**.
 - Rama principal: `main`.
 - GitHub Pages: **activo**.
-- Financiamiento Reembolsable · Promotores: **33/33 fichas desarrolladas · PRUEBA PÚBLICA**.
-- Etapas 01 a 06: **completas**.
+- Financiamiento Reembolsable: **99 fichas en tres roles · PRUEBA PÚBLICA** (59 nuevas pendientes de revisión editorial).
+- Promotores: 6 etapas; Inversores: 7 etapas; Colaboradores: base común y cuatro áreas de colaboración.
