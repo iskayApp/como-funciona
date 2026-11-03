@@ -1,18 +1,26 @@
 ---
 layout: default
-title: "Financiamiento Reembolsable para Promotores"
-description: "Prueba pública del recorrido Cómo funciona para promotores de Financiamiento Reembolsable en iskay.app."
+title: "Cómo funciona · Financiamiento Reembolsable"
+description: "Recorridos de Promotores, Inversores y Colaboradores de Financiamiento Reembolsable en iskay.app."
 permalink: /
-eyebrow: "Prueba de publicación · Recorrido completo"
+eyebrow: "Prueba de publicación · Revisión editorial por roles"
 ---
 
-# Financiamiento Reembolsable para Promotores
+# Cómo funciona · Financiamiento Reembolsable
 
-Esta prueba publica el recorrido **Cómo funciona** para promotores.
+Consulta los recorridos de **Promotores, Inversores y Colaboradores** en Financiamiento Reembolsable.
 
 <div class="test-note">
 Estamos validando la experiencia pública y móvil antes de integrar esta documentación al dominio institucional de iskay.app.
 </div>
+
+## Elige tu rol
+
+- [Promotores]({{ '/financiamiento-reembolsable/promotores/' | relative_url }}) — 33 fichas en seis etapas.
+- [Inversores]({{ '/financiamiento-reembolsable/inversores/' | relative_url }}) — 37 fichas en siete etapas.
+- [Colaboradores]({{ '/financiamiento-reembolsable/colaboradores/' | relative_url }}) — 29 fichas de base común y cuatro áreas de colaboración.
+
+Los contenidos que aún requieren aprobación editorial están marcados como **pendientes de revisión**. Esta es una publicación de prueba y su contenido puede recibir ajustes.
 
 <section id="buscar" class="public-search" data-catalog-url="{{ '/mantenimiento/share_catalog.json' | relative_url }}" data-site-root="{{ '/' | absolute_url }}" aria-labelledby="public-search-title">
   <h2 id="public-search-title">¿Qué necesitas saber?</h2>
@@ -79,7 +87,7 @@ Estamos validando la experiencia pública y móvil antes de integrar esta docume
 <script src="{{ '/assets/js/public-search.js' | relative_url }}?v=20261102-estandar" defer></script>
 <script src="{{ '/assets/js/guidance.js' | relative_url }}?v=20261102-orientacion" defer></script>
 
-## Etapas disponibles
+## Etapas para Promotores
 
 <ul class="topic-list">
   <li>
@@ -126,6 +134,6 @@ Estamos validando la experiencia pública y móvil antes de integrar esta docume
   </li>
 </ul>
 
-## Recorrido completo
+## Recorrido de Promotores
 
 **33 fichas desarrolladas y organizadas en 6 etapas.**

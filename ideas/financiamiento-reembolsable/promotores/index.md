@@ -1,12 +1,19 @@
+---
+layout: default
+title: "Financiamiento Reembolsable · Promotores"
+permalink: /financiamiento-reembolsable/promotores/
+category: "Financiamiento Reembolsable"
+---
+
 # Financiamiento Reembolsable · Promotores
 
-Este recorrido organiza **Cómo funciona** para promotores en seis etapas.
+**33 fichas organizadas en seis etapas.**
 
-1. [Antes de solicitar](./01-antes-de-solicitar/)
-2. [Configura tu financiamiento](./02-configura-tu-financiamiento/)
-3. [Prepara la revisión profesional](./03-prepara-la-revision-profesional/)
-4. [Construye y publica tu campaña](./04-construye-y-publica-tu-campana/)
-5. [Cierre, formalización y transferencia](./05-cierre-formalizacion-transferencia/)
-6. [Cumple y da seguimiento](./06-cumple-y-da-seguimiento/)
+1. [Antes de solicitar]({{ '/financiamiento-reembolsable/promotores/antes-de-solicitar/' | relative_url }})
+2. [Configura tu financiamiento]({{ '/financiamiento-reembolsable/promotores/configura-tu-financiamiento/' | relative_url }})
+3. [Prepara la revisión profesional]({{ '/financiamiento-reembolsable/promotores/prepara-la-revision-profesional/' | relative_url }})
+4. [Construye y publica tu campaña]({{ '/financiamiento-reembolsable/promotores/construye-y-publica-tu-campana/' | relative_url }})
+5. [Cierre, formalización y transferencia]({{ '/financiamiento-reembolsable/promotores/cierre-formalizacion-transferencia/' | relative_url }})
+6. [Cumple y da seguimiento]({{ '/financiamiento-reembolsable/promotores/cumple-y-da-seguimiento/' | relative_url }})
 
-Cada tema se desarrollará como una ficha independiente usando la plantilla editorial aprobada en `PLANTILLA_FICHA.md`.
+[Volver a Financiamiento Reembolsable]({{ '/financiamiento-reembolsable/' | relative_url }}).

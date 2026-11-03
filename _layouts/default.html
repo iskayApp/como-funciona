@@ -32,7 +32,7 @@
   <main class="shell">
     <nav class="breadcrumbs" aria-label="Ruta">
       <a href="{{ '/' | relative_url }}">Cómo funciona</a>
-      {% if page.category %}<span aria-hidden="true">/</span><span>{{ page.category }}</span>{% endif %}
+      {% if page.category %}<span aria-hidden="true">/</span>{% if page.category == "Financiamiento Reembolsable" %}<a href="{{ '/financiamiento-reembolsable/' | relative_url }}">{{ page.category }}</a>{% else %}<span>{{ page.category }}</span>{% endif %}{% endif %}
       {% if page.stage %}<span aria-hidden="true">/</span><a href="{{ page.stage_url | default: '/financiamiento-reembolsable/promotores/antes-de-solicitar/' | relative_url }}">{{ page.stage }}</a>{% endif %}
     </nav>
 
