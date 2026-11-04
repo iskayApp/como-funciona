@@ -31,6 +31,7 @@ jobs:
           node --check assets/js/public-search.js
           node --check assets/js/guidance.js
           node --check assets/js/fr-navigation.js
+          node --check assets/js/fr-explorer.js
           node --test tests/public-search.test.cjs tests/guidance.test.cjs
 
       - name: Generate and validate share catalog
@@ -52,6 +53,9 @@ jobs:
 
       - name: Test desktop, mobile, keyboard and no-JavaScript navigation
         run: python scripts/smoke_fr_navigation.py _site
+
+      - name: Test role-local search and section filters
+        run: python scripts/smoke_fr_explorer.py _site
 
       - name: Upload UI test screenshots
         if: always()

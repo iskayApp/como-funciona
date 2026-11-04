@@ -13,6 +13,31 @@
     <h2>Explora a tu ritmo</h2>
     <p class="fr-muted">Despliega una sección y elige la explicación que necesitas. No es necesario seguir todo el recorrido.</p>
   </div>
+  <div class="fr-filter" data-fr-filter hidden>
+    <form class="fr-filter-fields" role="search" aria-label="Buscar fichas de {{ fr_current_role | escape }}" data-fr-filter-form>
+      <div class="fr-filter-field">
+        <label for="fr-filter-query">Buscar en {{ fr_current_role }}</label>
+        <input id="fr-filter-query" data-fr-filter-query type="search" maxlength="160" placeholder="Escribe un tema o código de ficha" autocomplete="off" aria-controls="fr-sections" aria-describedby="fr-filter-help">
+      </div>
+      <div class="fr-filter-field">
+        <label for="fr-filter-section">Filtrar por sección</label>
+        <select id="fr-filter-section" data-fr-filter-section aria-controls="fr-sections">
+          <option value="">Todas las secciones</option>
+        </select>
+      </div>
+    </form>
+    <p class="fr-filter-help" id="fr-filter-help">Busca por título o código. También puedes escribir sin tildes.</p>
+    <div class="fr-filter-feedback">
+      <p data-fr-filter-status role="status" aria-live="polite" aria-atomic="true"></p>
+      <button type="button" data-fr-filter-clear disabled>Limpiar filtros</button>
+    </div>
+    <div class="fr-filter-empty" data-fr-filter-empty hidden>
+      <strong>No hay coincidencias en este recorrido.</strong>
+      <p>Prueba otra palabra o selecciona «Todas las secciones».</p>
+      <a href="{{ '/' | relative_url }}#buscar">Buscar en todo Cómo funciona <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+  <div id="fr-sections">
   {% assign fr_previous_group = '' %}
   {% assign fr_common_number = 0 %}
   {% assign fr_area_number = 0 %}
@@ -32,8 +57,10 @@
         {% assign fr_section_number = fr_area_number %}
       {% endif %}
       {% if fr_section_group != fr_previous_group %}
-        <h3 class="fr-group-title">{{ fr_section_group }}</h3>
-        {% if fr_area_number == 1 %}<p class="fr-muted">Consulta el área que corresponda a tu participación. Las demás están disponibles como referencia.</p>{% endif %}
+        <div data-fr-group-heading="{% if fr_section.name contains '/areas/' %}area{% else %}common{% endif %}">
+          <h3 class="fr-group-title">{{ fr_section_group }}</h3>
+          {% if fr_area_number == 1 %}<p class="fr-muted">Consulta el área que corresponda a tu participación. Las demás están disponibles como referencia.</p>{% endif %}
+        </div>
       {% endif %}
     {% endif %}
     {% assign fr_previous_group = fr_section_group %}
@@ -49,7 +76,7 @@
         <ul class="fr-topic-links">
           {% for fr_topic in fr_section.items %}
           <li>
-            <a href="{{ fr_topic.url | relative_url }}" data-fr-topic>
+            <a href="{{ fr_topic.url | relative_url }}" data-fr-topic data-fr-code="{{ fr_topic.code | escape }}">
               <span>{{ fr_topic.title }}</span><span class="fr-topic-arrow" aria-hidden="true">→</span>
             </a>
             {% if fr_topic.editorial_status == 'pending_review' %}<span class="fr-review-label">Pendiente de revisión</span>{% endif %}
@@ -59,5 +86,6 @@
       </div>
     </details>
   {% endfor %}
+  </div>
   <p class="fr-editorial-note">Las fichas pendientes de revisión editorial conservan su aviso. La publicación de prueba no implica aprobación de su contenido.</p>
 </div>
