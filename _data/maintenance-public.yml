@@ -1,0 +1,17 @@
+# Metadatos de control PUBLICOS. Este repositorio y GitHub Pages son públicos.
+# No introducir aquí borradores privados, datos personales ni notas confidenciales.
+# Las fichas canónicas siguen siendo la única fuente de contenidos y aprobaciones.
+schema_version: 1
+editorial_controls:
+  - category_id: financiamiento-reembolsable
+    title: Revisión editorial y hallazgos de FR
+    url: https://github.com/iskayApp/como-funciona/issues/9
+# Solo referencias expresamente publicables, nunca el texto del borrador.
+# Campos: public, code, title (solo para nuevas fichas), category_id, role_id,
+# phase (classified|organized|identified|developed), version, content_sha256,
+# reference_url (HTTPS público) y updated_at. «public: true» es obligatorio.
+preparation: []
+# Registro expreso; no representa detección ni sincronización automática con Drive.
+# Campos: public, id, source_label (literal), section (opcional, literal),
+# title, reference_url, recorded_at. No modifica ni aprueba las fichas afectadas.
+guide_changes: []
