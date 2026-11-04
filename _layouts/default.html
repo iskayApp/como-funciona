@@ -23,14 +23,17 @@
   <link rel="stylesheet" href="{{ '/assets/css/fr-explorer.css' | relative_url }}?v=20261104">
   <script src="{{ '/assets/js/fr-explorer.js' | relative_url }}?v=20261104" defer></script>
   {% endif %}
+  <link rel="stylesheet" href="{{ '/assets/css/knowledge.css' | relative_url }}?v=20261104">
+  <script src="{{ '/assets/js/knowledge.js' | relative_url }}?v=20261104" defer></script>
 </head>
-<body>
+<body class="{% if page.url == '/' %}page-home{% elsif page.code %}page-topic{% elsif fr_current_role != '' and page.url == fr_current_url %}page-hub{% elsif fr_is_stage %}page-stage{% else %}page-document{% endif %}">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="{{ '/' | relative_url }}" aria-label="Inicio de Cómo funciona">iskay<span class="brand-dot">.</span>app</a>
+      <a class="brand" href="{{ '/' | relative_url }}" aria-label="Inicio de Cómo funciona"><img class="brand-symbol" src="{{ site.data.visual.brand_symbol | relative_url }}" width="36" height="28" alt=""><span class="brand-wordmark">iskay<span class="brand-dot">.</span>app</span></a>
       <div class="header-actions">
-        <span class="section-name">Cómo funciona</span>
+        <a class="header-home" href="{{ '/' | relative_url }}">{% include ui-icon.html name='home' %} Inicio</a>
+        <a class="section-name" href="{{ '/' | relative_url }}">{% include ui-icon.html name='book' %} Cómo funciona</a>
         {% include fr-menu.html %}
         <a class="header-search-link" href="{{ '/' | relative_url }}#buscar" aria-label="Buscar en Cómo funciona" title="Buscar">
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg>
@@ -40,6 +43,7 @@
   </header>
 
   <main class="shell" id="contenido" tabindex="-1">
+    {% unless page.url == '/' %}
     <nav class="breadcrumbs" aria-label="Ruta">
       <a href="{{ '/' | relative_url }}">Cómo funciona</a>
       {% if page.category %}<span aria-hidden="true">/</span>{% if fr_is_page %}<a href="{{ fr_root | relative_url }}"{% if page.url == fr_root %} aria-current="page"{% endif %}>{{ page.category }}</a>{% else %}<span>{{ page.category }}</span>{% endif %}{% endif %}
@@ -49,12 +53,15 @@
       {% if page.stage %}<span aria-hidden="true">/</span>{% if fr_is_stage %}<span aria-current="page">{{ page.stage }}</span>{% else %}<a href="{{ page.stage_url | relative_url }}">{{ page.stage }}</a>{% endif %}{% elsif fr_is_stage %}<span aria-hidden="true">/</span><span aria-current="page">{{ page.title }}</span>{% endif %}
     </nav>
 
+    {% endunless %}
     {% if fr_is_page %}{% include fr-toolbar.html %}{% endif %}
-    {% if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>{% endif %}
+    {% if page.eyebrow and page.url != '/' %}<p class="eyebrow">{{ page.eyebrow }}{% if page.code %}<span class="canonical-code">{{ page.code }}</span>{% endif %}</p>{% endif %}
+    {% if page.code %}<div class="topic-layout">{% endif %}
     <article class="content{% if fr_is_stage %} fr-stage-content{% endif %}">
       {{ content }}
     </article>
 
+    {% if page.code %}<aside class="topic-index" hidden><details open><summary>{% include ui-icon.html name='document' %} En esta ficha</summary><nav aria-label="Contenido de esta ficha"></nav></details></aside></div>{% endif %}
     {% include share-links.html %}
 
     {% if page.prev_url or page.next_url %}

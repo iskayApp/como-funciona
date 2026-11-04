@@ -9,7 +9,7 @@ from scripts import build_share_catalog as catalog
 
 
 class ShareCatalogTests(unittest.TestCase):
-    def build_with(self, meta, body=""):
+    def build_with(self, meta, body="", taxonomy=None):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             ideas = root / "ideas"
@@ -20,10 +20,30 @@ class ShareCatalogTests(unittest.TestCase):
                 'url: "https://iskayapp.github.io"\nbaseurl: "/como-funciona"\n',
                 encoding="utf-8",
             )
+            if taxonomy is not None:
+                (root / "_data").mkdir()
+                (root / "_data" / "categories.yml").write_text(taxonomy, encoding="utf-8")
             output = root / "mantenimiento" / "share_catalog.json"
             with patch.object(catalog, "ROOT", root), patch.object(catalog, "IDEAS", ideas), patch.object(catalog, "OUTPUT", output):
                 result = catalog.build_catalog()
             return result, json.loads(output.read_text(encoding="utf-8"))
+
+    def test_legacy_role_uses_shared_navigation_label(self):
+        meta = """code: LEGACY-01
+title: Ficha antigua
+permalink: /financiamiento-reembolsable/promotores/antigua/
+"""
+        taxonomy = """- name: Financiamiento Reembolsable
+  roles:
+    - name: Promotores
+      url: /financiamiento-reembolsable/promotores/
+"""
+        status, data = self.build_with(meta, taxonomy=taxonomy)
+        self.assertEqual(status, 0)
+        self.assertEqual(data['items'][0]['role'], 'Promotores')
+        status, data = self.build_with(meta + 'role: Otro rol explícito\n', taxonomy=taxonomy)
+        self.assertEqual(status, 0)
+        self.assertEqual(data['items'][0]['role'], 'Otro rol explícito')
 
     def test_canonical_media_and_approved_distribution(self):
         metadata = """

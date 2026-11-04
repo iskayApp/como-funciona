@@ -1,0 +1,37 @@
+{% assign public_topics = site.pages | where_exp: 'entry', 'entry.code != nil' | where_exp: 'entry', 'entry.published != false' | sort: 'code' %}
+<section class="home-resources" aria-labelledby="home-resources-title">
+  <div class="section-heading"><div><h2 id="home-resources-title">{% include ui-icon.html name='play' %}Contenido para entender iskay.app</h2><p>Otra forma de comprender las explicaciones, siempre junto a su ficha.</p></div></div>
+  <div class="resource-grid">
+  {% for topic in public_topics %}
+    {% include topic-context.html topic=topic %}
+    {% unless topic.visibility == 'private' or topic.status == 'draft' or topic.status == 'review' or topic.status == 'archived' %}
+    {% for media in topic.media %}
+      {% if media.status == 'approved' and media.visibility != 'private' and media.storage == 'internal' %}
+        {% if media.type == 'diagram' or media.type == 'animation' or media.type == 'image' %}
+        <a class="resource-card" href="{{ topic.url | relative_url }}#media-{{ media.id | slugify }}">
+          {% assign preview = site.data.visual.previews[media.id] %}
+          <div class="resource-preview"><img src="{{ preview | default: media.src | relative_url }}" alt="{% unless preview %}{{ media.alt | default: topic.title | escape }}{% endunless %}" loading="lazy" decoding="async" width="640" height="320"></div>
+          <div class="resource-info"><span class="resource-type">{% include ui-icon.html name='diagram' %}{% if media.type == 'diagram' %}Diagrama{% elsif media.type == 'animation' %}Animación{% else %}Imagen{% endif %}</span><h3>{{ topic.title | escape }}</h3><span class="resource-context">{{ topic.category | escape }} · {{ cf_topic_role | escape }}</span><strong class="resource-action">Ver en la ficha {% include ui-icon.html name='arrow' %}</strong></div>
+        </a>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    {% endunless %}
+  {% endfor %}
+  </div>
+</section>
+<section class="home-featured" aria-labelledby="home-featured-title">
+  <div class="section-heading"><div><h2 id="home-featured-title">{% include ui-icon.html name='book' %}Fichas clave de iskay.app</h2><p>Explicaciones para conocer el financiamiento y preparar tus siguientes pasos.</p></div><a href="#buscar">Buscar otras fichas <span aria-hidden="true">→</span></a></div>
+  <div class="featured-grid">
+  {% for code in site.data.visual.featured_codes %}
+    {% assign topic = public_topics | where: 'code', code | first %}
+    {% if topic and topic.visibility != 'private' and topic.status != 'draft' and topic.status != 'review' and topic.status != 'archived' %}
+    {% include topic-context.html topic=topic %}
+    <a class="featured-card" href="{{ topic.url | relative_url }}">
+      <span class="featured-icon">{% if forloop.index == 1 %}{% include ui-icon.html name='chart' %}{% elsif forloop.index == 2 %}{% include ui-icon.html name='money' %}{% else %}{% include ui-icon.html name='people' %}{% endif %}</span>
+      <div><span class="featured-code">{{ topic.code | escape }}</span><h3>{{ topic.title | escape }}</h3><p>{{ topic.description | escape }}</p><span class="featured-context">{{ cf_topic_role | escape }} · {{ topic.stage | escape }}</span>{% if topic.editorial_status == 'pending_review' %}<span class="fr-review-label">Pendiente de revisión editorial</span>{% endif %}</div><span class="featured-arrow" aria-hidden="true">›</span>
+    </a>
+    {% endif %}
+  {% endfor %}
+  </div>
+</section>

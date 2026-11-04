@@ -14,6 +14,9 @@
   const filters = root.querySelector("#public-search-filters");
   const category = root.querySelector("#public-search-category");
   const role = root.querySelector("#public-search-role");
+  const stageFilter = root.querySelector("#public-search-stage");
+  const typeFilter = root.querySelector("#public-search-type");
+  const typeLabels = {ficha: "Ficha canónica", diagram: "Diagrama", animation: "Animación", image: "Imagen", video: "Video", audio: "Audio"};
   const clear = root.querySelector("#public-search-clear");
   const results = root.querySelector("#public-search-results");
   const count = root.querySelector("#public-search-count");
@@ -57,6 +60,32 @@
     const scoped = category.value ? items.filter(item => item.category === category.value) : items;
     fillOptions(role, scoped.map(item => item.role), "Todos los roles");
     if ([...role.options].some(option => option.value === previous)) role.value = previous;
+    updateStages();
+  }
+
+  function scopedItems() {
+    return items.filter(item => (!category.value || item.category === category.value) &&
+      (!role.value || item.role === role.value));
+  }
+
+  function updateTypes() {
+    if (!typeFilter) return;
+    const previous = typeFilter.value;
+    const scoped = scopedItems().filter(item => !stageFilter?.value || item.stage === stageFilter.value);
+    const types = [...new Set(scoped.flatMap(item => (item.media || []).map(media => media.type)).filter(Boolean))];
+    typeFilter.replaceChildren(new Option("Todos los tipos", ""));
+    if (scoped.length) typeFilter.add(new Option("Ficha canónica", "ficha"));
+    types.sort().forEach(value => typeFilter.add(new Option(typeLabels[value] || value, value)));
+    if ([...typeFilter.options].some(option => option.value === previous)) typeFilter.value = previous;
+  }
+
+  function updateStages() {
+    if (stageFilter) {
+      const previous = stageFilter.value;
+      fillOptions(stageFilter, scopedItems().map(item => item.stage), "Todas las etapas");
+      if ([...stageFilter.options].some(option => option.value === previous)) stageFilter.value = previous;
+    }
+    updateTypes();
     render(true);
   }
 
@@ -94,7 +123,7 @@
   function render(resetLimit) {
     if (resetLimit) visibleLimit = pageSize;
     const query = normalize(input.value);
-    const hasCriteria = Boolean(query || category.value || role.value);
+    const hasCriteria = Boolean(query || category.value || role.value || stageFilter?.value || typeFilter?.value);
     tools.hidden = !hasCriteria;
 
     if (!hasCriteria) {
@@ -109,7 +138,9 @@
     const tokens = query.split(/\s+/).filter(Boolean);
     const found = items.filter(item =>
       (!category.value || item.category === category.value) &&
-      (!role.value || item.role === role.value) && match(item, tokens));
+      (!role.value || item.role === role.value) &&
+      (!stageFilter?.value || item.stage === stageFilter.value) &&
+      (!typeFilter?.value || typeFilter.value === "ficha" || (item.media || []).some(media => media.type === typeFilter.value)) && match(item, tokens));
     if (query) found.sort((a, b) => score(b, query) - score(a, query));
 
     const fragment = document.createDocumentFragment();
@@ -135,7 +166,9 @@
   // La búsqueda también responde mientras se escribe, sin obligar a pulsar el botón.
   input.addEventListener("input", () => render(true));
   category.addEventListener("change", updateRoles);
-  role.addEventListener("change", () => render(true));
+  role.addEventListener("change", updateStages);
+  stageFilter?.addEventListener("change", () => { updateTypes(); render(true); });
+  typeFilter?.addEventListener("change", () => render(true));
 
   toggle.addEventListener("click", () => {
     filters.hidden = !filters.hidden;
@@ -146,8 +179,10 @@
   clear.addEventListener("click", () => {
     input.value = "";
     category.value = "";
-    updateRoles();
     role.value = "";
+    if (stageFilter) stageFilter.value = "";
+    if (typeFilter) typeFilter.value = "";
+    updateRoles();
     filters.hidden = true;
     toggle.setAttribute("aria-expanded", "false");
     render(true);
@@ -176,6 +211,8 @@
       category.disabled = false;
       role.disabled = false;
       clear.disabled = false;
+      if (stageFilter) stageFilter.disabled = false;
+      if (typeFilter) typeFilter.disabled = false;
       render(true);
     })
     .catch(_error => {
@@ -190,5 +227,7 @@
       category.disabled = true;
       role.disabled = true;
       clear.disabled = true;
+      if (stageFilter) stageFilter.disabled = true;
+      if (typeFilter) typeFilter.disabled = true;
     });
 })();

@@ -136,6 +136,8 @@ def visible_marketing_pieces(data, entry, path, errors):
 
 def build_catalog():
     config = yaml.safe_load((ROOT / "_config.yml").read_text(encoding="utf-8"))
+    taxonomy_path = ROOT / "_data" / "categories.yml"
+    taxonomy = yaml.safe_load(taxonomy_path.read_text(encoding="utf-8")) if taxonomy_path.exists() else []
     catalog = []
     errors = []
     warnings = []
@@ -159,11 +161,16 @@ def build_catalog():
 
         canonical = public_url(config, permalink)
         parts = path.relative_to(IDEAS).parts
+        # Las fichas antiguas pueden omitir role. Resolverlo desde el registro
+        # común evita ofrecer «promotores» y «Promotores» como roles distintos.
+        navigation_role = next((role.get("name") for category in (taxonomy or [])
+                                for role in category.get("roles", [])
+                                if role.get("url") and permalink.startswith(role["url"])), None)
         entry = {
             "code": code,
             "title": data.get("title"),
             "category": data.get("category") or parts[0],
-            "role": data.get("role") or (parts[1] if len(parts) > 1 else None),
+            "role": data.get("role") or navigation_role or (parts[1] if len(parts) > 1 else None),
             "stage": data.get("stage"),
             "content_version": data.get("content_version"),
             "canonical_url": canonical,

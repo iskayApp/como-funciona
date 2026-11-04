@@ -1,6 +1,7 @@
 """Exercise generic navigation and maintenance using the actual Jekyll output.
 The technical report is a controlled fixture, not a live TikTok/API check.
 """
+import os
 from functools import partial
 from http.server import ThreadingHTTPServer
 from threading import Thread
@@ -41,7 +42,7 @@ def main():
     tested = []
     try:
         with sync_playwright() as pw:
-            browser = pw.chromium.launch()
+            browser = pw.chromium.launch(executable_path=os.environ.get("CHROMIUM_EXECUTABLE_PATH"))
             for width in (1280, 390, 320):
                 context = browser.new_context(viewport={'width':width,'height':900})
                 context.route('**/mantenimiento/status.json', lambda route: route.fulfill(json=fixture))
@@ -54,8 +55,8 @@ def main():
                 assert page.locator('.category-card-pending a').count() == 0
                 assert page.locator('.category-role-link').count() == 3
                 assert page.evaluate('(document.querySelector("#buscar").compareDocumentPosition(document.querySelector("#categorias")) & 4) !== 0')
-                assert page.evaluate('(document.querySelector("#categorias").compareDocumentPosition(document.querySelector("#orientacion")) & 4) !== 0')
-                assert page.locator('h1').inner_text() == 'Cómo funciona'
+                assert page.evaluate('(document.querySelector("#orientacion").compareDocumentPosition(document.querySelector("#categorias")) & 4) !== 0')
+                assert page.locator('h1').inner_text() == 'Aprende a usar iskay.app'
                 assert 'Financiamiento Reembolsable' not in page.title()
                 fits(page)
                 page.locator('.fr-menu > summary').click()

@@ -1,4 +1,5 @@
 """Exercise role-local filters against the real Jekyll build and canonical links."""
+import os
 from functools import partial
 from http.server import ThreadingHTTPServer
 from threading import Thread
@@ -19,7 +20,7 @@ def main():
     passed = []
     try:
         with sync_playwright() as p:
-            browser = p.chromium.launch()
+            browser = p.chromium.launch(executable_path=os.environ.get("CHROMIUM_EXECUTABLE_PATH"))
             for width in (1280, 390, 320):
                 context = browser.new_context(viewport={'width': width, 'height': 900})
                 page = context.new_page()

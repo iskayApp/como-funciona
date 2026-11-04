@@ -6,9 +6,13 @@ permalink: /
 eyebrow: "Guía de uso · iskay.app"
 ---
 
-# Cómo funciona
-
-Encuentra una explicación, explora las categorías disponibles o recibe orientación para saber por dónde empezar.
+<div class="home-top">
+<div class="home-welcome">
+<img class="welcome-image" src="{{ site.data.visual.hero | relative_url }}" alt="" width="1600" height="800" fetchpriority="high" decoding="async">
+<div class="welcome-content">
+<p class="welcome-eyebrow">{% include ui-icon.html name='book' %} Centro de ayuda · Cómo funciona</p>
+<h1>Aprende a usar iskay.app</h1>
+<p class="welcome-description">Encuentra explicaciones y recursos para comprender cómo funciona iskay.app.</p>
 
 <section id="buscar" class="public-search" data-catalog-url="{{ '/mantenimiento/share_catalog.json' | relative_url }}" data-site-root="{{ '/' | absolute_url }}" aria-labelledby="public-search-title">
   <h2 id="public-search-title">¿Qué necesitas saber?</h2>
@@ -19,7 +23,7 @@ Encuentra una explicación, explora las categorías disponibles o recibe orienta
     <span class="public-search-icon" aria-hidden="true">
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg>
     </span>
-    <input id="public-search-query" type="search" placeholder="Buscar temas, preguntas o códigos…" autocomplete="off" enterkeyhint="search" disabled>
+    <input id="public-search-query" type="search" placeholder="¿Qué necesitas saber?" autocomplete="off" enterkeyhint="search" disabled>
     <button id="public-search-submit" class="public-search-submit" type="submit" disabled>Buscar</button>
   </form>
 
@@ -40,6 +44,14 @@ Encuentra una explicación, explora las categorías disponibles o recibe orienta
       <label for="public-search-role">Dirigido a</label>
       <select id="public-search-role" disabled><option value="">Todos los roles</option></select>
     </div>
+    <div class="public-search-field">
+      <label for="public-search-stage">Etapa</label>
+      <select id="public-search-stage" disabled><option value="">Todas las etapas</option></select>
+    </div>
+    <div class="public-search-field">
+      <label for="public-search-type">Tipo de contenido</label>
+      <select id="public-search-type" disabled><option value="">Todos los tipos</option></select>
+    </div>
   </div>
 
   <p id="public-search-count" class="public-search-count" role="status" aria-live="polite"></p>
@@ -47,8 +59,6 @@ Encuentra una explicación, explora las categorías disponibles o recibe orienta
   <button id="public-search-more" class="public-search-more" type="button" hidden>Mostrar más resultados</button>
   <noscript><p>Para consultar las explicaciones sin JavaScript, utiliza las categorías y sus recorridos disponibles en esta página.</p></noscript>
 </section>
-
-{% include category-cards.html %}
 
 <section id="orientacion" class="guidance" data-catalog-url="{{ '/mantenimiento/share_catalog.json' | relative_url }}" data-site-root="{{ '/' | absolute_url }}" aria-labelledby="guidance-invite-heading">
   <div class="guidance-invite">
@@ -74,7 +84,15 @@ Encuentra una explicación, explora las categorías disponibles o recibe orienta
   </div>
 </section>
 
-<script src="{{ '/assets/js/public-search.js' | relative_url }}?v=20261102-estandar" defer></script>
+</div>
+</div>
+{% include home-routes.html %}
+</div>
+
+{% include category-cards.html %}
+{% include home-content.html %}
+
+<script src="{{ '/assets/js/public-search.js' | relative_url }}?v=20261104-visual" defer></script>
 <script src="{{ '/assets/js/guidance.js' | relative_url }}?v=20261102-orientacion" defer></script>
 
 <div class="fr-editorial-note">Publicación de prueba. Las fichas pendientes de revisión editorial conservan su aviso. Estamos validando la experiencia pública y móvil antes de integrar esta documentación al dominio institucional de iskay.app.</div>

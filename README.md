@@ -70,3 +70,9 @@ Durante esta fase de prueba pública, el sitio mantiene `noindex: true` para evi
 - GitHub Pages: **activo**.
 - Financiamiento Reembolsable: **99 fichas en tres roles · PRUEBA PÚBLICA** (59 nuevas pendientes de revisión editorial).
 - Promotores: 6 etapas; Inversores: 7 etapas; Colaboradores: base común y cuatro áreas de colaboración.
+
+## Presentación y recursos visuales
+
+La presentación CF-UX-001 incorpora una portada visual, recorridos por etapas e índices de lectura, conservando el catálogo y las fichas canónicas. La fotografía, el símbolo de cabecera y las miniaturas son provisionales y reemplazables. Las rutas y la selección de fichas destacadas se configuran en `_data/visual.yml`; los iconos se encuentran en `_includes/ui-icon.html`.
+
+Consulta la [guía de implementación, sustitución de recursos y validación](.github/planificacion/CF-UX-001_IMPLEMENTACION.md).

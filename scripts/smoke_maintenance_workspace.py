@@ -1,4 +1,5 @@
 """Exercise the four rendered views; service reports are synthetic fixtures."""
+import os
 from functools import partial
 from http.server import ThreadingHTTPServer
 from threading import Thread
@@ -86,7 +87,7 @@ def main():
     passed=[]
     try:
         with sync_playwright() as pw:
-            browser=pw.chromium.launch()
+            browser=pw.chromium.launch(executable_path=os.environ.get("CHROMIUM_EXECUTABLE_PATH"))
             for width in (1280,390,320):
                 context=browser.new_context(viewport={'width':width,'height':900})
                 context.route('**/mantenimiento/status.json',lambda route:route.fulfill(json=fixture))

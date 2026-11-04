@@ -9,6 +9,13 @@
       <a href="{{ '/' | relative_url }}#buscar">Buscar una explicación</a>
     </div>
   </div>
+  <div class="hub-layout">
+    <aside class="hub-index"><details open><summary>{% include ui-icon.html name='route' %} Tu recorrido</summary><nav aria-label="Etapas del recorrido">
+    {% for section in fr_sections %}
+      <a href="{{ section.name | relative_url }}" data-hub-target="seccion-{{ forloop.index }}"><span>{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>{{ section.items.first.stage | escape }}</a>
+    {% endfor %}
+    </nav></details></aside>
+    <div class="hub-main">
   <div class="fr-explorer-heading">
     <h2>Explora a tu ritmo</h2>
     <p class="fr-muted">Despliega una sección y elige la explicación que necesitas. No es necesario seguir todo el recorrido.</p>
@@ -77,7 +84,7 @@
           {% for fr_topic in fr_section.items %}
           <li>
             <a href="{{ fr_topic.url | relative_url }}" data-fr-topic data-fr-code="{{ fr_topic.code | escape }}">
-              <span>{{ fr_topic.title }}</span><span class="fr-topic-arrow" aria-hidden="true">→</span>
+              <span><small class="topic-code">{{ fr_topic.code }}</small>{{ fr_topic.title }}{% for media in fr_topic.media %}{% if media.status == 'approved' and media.visibility != 'private' %}<small class="topic-media-label">{% if media.type == 'diagram' %}Diagrama{% elsif media.type == 'animation' %}Animación{% else %}Multimedia{% endif %}</small>{% break %}{% endif %}{% endfor %}</span><span class="fr-topic-arrow" aria-hidden="true">→</span>
             </a>
             {% if fr_topic.editorial_status == 'pending_review' %}<span class="fr-review-label">Pendiente de revisión</span>{% endif %}
           </li>
@@ -87,5 +94,6 @@
     </details>
   {% endfor %}
   </div>
+  </div></div>
   <p class="fr-editorial-note">Las fichas pendientes de revisión editorial conservan su aviso. La publicación de prueba no implica aprobación de su contenido.</p>
 </div>

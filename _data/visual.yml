@@ -1,0 +1,10 @@
+# Referencias reemplazables. La imagen y el símbolo de cabecera son provisionales.
+hero: /assets/visual/colaboracion-andina.webp
+brand_symbol: /assets/visual/simbolo-provisional.svg
+featured_codes:
+  - FR-PRO-01
+  - FR-PRO-09
+  - FR-PRO-13
+previews:
+  fr-pro-13-colaboradores-monto: /assets/visual/colaboradores-preview.webp
+  fr-pro-09-flujo-pagos: /assets/visual/pagos-preview.webp

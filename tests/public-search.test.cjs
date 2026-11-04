@@ -51,9 +51,9 @@ test("carga vacía, búsqueda acotada, paginación, enlaces seguros y limpiar fi
   const controls = {};
   for (const id of ["public-search-form", "public-search-query", "public-search-submit",
     "public-search-tools", "public-search-filter-toggle", "public-search-filters",
-    "public-search-category", "public-search-role", "public-search-clear",
+    "public-search-category", "public-search-role", "public-search-stage", "public-search-type", "public-search-clear",
     "public-search-results", "public-search-count", "public-search-more"]) {
-    controls["#" + id] = new FakeElement(id.includes("category") || id.includes("role") ? "select" : "div");
+    controls["#" + id] = new FakeElement(["category", "role", "stage", "type"].some(name => id.includes(name)) ? "select" : "div");
   }
   const root = new FakeElement("section");
   root.dataset.siteRoot = "https://iskayapp.github.io/como-funciona/";
@@ -65,7 +65,8 @@ test("carga vacía, búsqueda acotada, paginación, enlaces seguros y limpiar fi
     title: "¿Qué garantías necesita la iniciativa? " + (index + 1),
     category: "Financiamiento Reembolsable",
     role: "Promotores",
-    stage: "Antes de solicitar",
+    stage: index === 1 ? "Configura tu financiamiento" : "Antes de solicitar",
+    media: index < 2 ? [{type: index === 0 ? "diagram" : "animation"}] : [],
     public_searchable: true,
     canonical_url: "https://iskayapp.github.io/como-funciona/tema-" + (index + 1) + "/",
   }));
@@ -131,6 +132,25 @@ test("carga vacía, búsqueda acotada, paginación, enlaces seguros y limpiar fi
   more.dispatch("click");
   assert.equal(results.children.length, 9, "Mostrar resultados siguientes a petición");
 
+  const stage = controls["#public-search-stage"];
+  const type = controls["#public-search-type"];
+  type.value = "diagram";
+  type.dispatch("change");
+  assert.equal(results.children.length, 1, "El filtro multimedia devuelve fichas con ese recurso");
+  assert.ok(results.children[0].href.endsWith('/tema-1/'));
+  stage.value = "Configura tu financiamiento";
+  stage.dispatch("change");
+  assert.equal(type.value, "", "Cambiar etapa descarta un tipo incompatible");
+  assert.equal(type.options.some(option => option.value === "diagram"), false);
+  assert.ok(results.children[0].href.endsWith('/tema-2/'));
+  type.value = "animation";
+  type.dispatch("change");
+  assert.equal(results.children.length, 1);
+  stage.value = "";
+  stage.dispatch("change");
+  type.value = "";
+  type.dispatch("change");
+
   query.value = "FR-PRO-03";
   form.dispatch("submit");
   query.dispatch("input");
@@ -140,6 +160,8 @@ test("carga vacía, búsqueda acotada, paginación, enlaces seguros y limpiar fi
   clear.dispatch("click");
   assert.equal(results.children.length, 0);
   assert.equal(category.value, "");
+  assert.equal(stage.value, "");
+  assert.equal(type.value, "");
   assert.equal(query.value, "");
   assert.equal(tools.hidden, true);
   assert.equal(filters.hidden, true);

@@ -5,7 +5,7 @@ Las URLs se derivan de page.url y de page.media; no se escriben manualmente.
 {% if page.code and page.permalink %}
 <section class="share-links" aria-labelledby="share-links-heading">
   <h2 id="share-links-heading">Enlaces para compartir</h2>
-  <p class="share-links-help">Copia el enlace del concepto completo o de un recurso vinculado. Todos los destinos se generan desde los metadatos de esta ficha.</p>
+  <p class="share-links-help">Comparte la explicación completa, el recurso dentro de la ficha o su archivo original.</p>
 
   <div class="share-link-entry">
     <div class="share-link-description">
@@ -20,7 +20,7 @@ Las URLs se derivan de page.url y de page.media; no se escriben manualmente.
     {% if media.id and media.status == 'approved' and media.visibility != 'private' %}
       {% assign anchor_id = media.id | prepend: 'media-' | slugify %}
       {% assign media_key = media.id | slugify %}
-      {% assign media_title = media.title | default: media.caption | default: media.id %}
+      {% assign media_title = media.title | default: media.caption | default: page.title %}
       {% assign resource_url = media.original_url | default: media.share_url | default: media.url %}
       {% if resource_url == nil or resource_url == '' %}
         {% if media.provider == 'youtube' and media.video_id %}
@@ -37,7 +37,7 @@ Las URLs se derivan de page.url y de page.media; no se escriben manualmente.
 
       <div class="share-media-group">
         <h3>{{ media_title | escape }}</h3>
-        <p class="share-media-type">Recurso {{ media.type | default: 'multimedia' | escape }} · {{ media.id | escape }}</p>
+        <p class="share-media-type">Recurso multimedia asociado a esta ficha.</p>
         <div class="share-link-entry">
           <div class="share-link-description">
             <strong>Multimedia dentro de la ficha</strong>

@@ -1,0 +1,8 @@
+{%- assign cf_topic_role = include.topic.role -%}
+{%- unless cf_topic_role -%}
+  {%- for category in site.data.categories -%}
+    {%- for role in category.roles -%}
+      {%- if include.topic.url contains role.url -%}{%- assign cf_topic_role = role.name -%}{%- endif -%}
+    {%- endfor -%}
+  {%- endfor -%}
+{%- endunless -%}
