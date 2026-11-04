@@ -65,4 +65,6 @@ El entorno de esta tarea activa Ruby/Python mediante `source /workspace/.setup/a
 
 La publicación sigue el flujo existente de GitHub Pages al integrar cambios en `main`. La preparación y validación local no publican el sitio.
 
-Validación realizada en esta tarea: compilación Jekyll, 29 pruebas Python, 12 pruebas JavaScript, auditorías de las 99 fichas y los cinco scripts de navegador satisfactorios. Se comprobó además que `ideas/`, las categorías, la configuración de publicación y los SVG canónicos no tienen diferencias respecto a la base.
+Validación realizada en esta tarea: compilación Jekyll, 37 pruebas Python, 12 pruebas JavaScript, auditorías de las 99 fichas y los cinco scripts de navegador satisfactorios. Se comprobó además que `ideas/`, las categorías, la configuración de publicación y los SVG canónicos no tienen diferencias respecto a la base.
+
+Antes de publicar se integraron los commits recientes de `main` con las 61 piezas de marketing y los seis TikTok oficiales. Se conservaron sus registros, reproductores y relaciones canónicas; la auditoría combinada comprueba también los anclajes de TikTok.
