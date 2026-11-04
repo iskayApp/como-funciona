@@ -11,9 +11,10 @@ from smoke_category_base import report_fixture
 def main():
     control=json.loads((SITE / 'mantenimiento/control_catalog.json').read_text())
     assert control['summary']['published']==99
-    assert control['summary']['editorial']=={'unspecified':33,'approved':7,'pending_review':59} or control['summary']['editorial']=={'pending_review':59,'approved':7,'unspecified':33}
-    assert control['publication_audit']['reachable']==99
-    assert not control['publication_audit']['unreachable_topics']
+    assert control['summary']['editorial']=={'unspecified':33,'approved':7,'pending_review':59}
+    route_audit=json.loads((ARTIFACTS / 'maintenance-route-audit.json').read_text())
+    assert route_audit['reachable']==99
+    assert not route_audit['unreachable_topics']
     server=ThreadingHTTPServer(('127.0.0.1',0),partial(Handler,directory=str(SITE)))
     Thread(target=server.serve_forever,daemon=True).start()
     home=f'http://127.0.0.1:{server.server_port}'+BASE+'/'
