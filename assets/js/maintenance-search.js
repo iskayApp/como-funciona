@@ -108,15 +108,26 @@
     card.appendChild(node("h3", "maint-search-heading", item.title || "Sin título"));
     card.appendChild(node("p", "maint-search-meta", [item.category, item.role, item.stage].filter(Boolean).join(" · ")));
 
-    // Sólo los metadatos editoriales explícitos crean una relación con la producción.
-    const linkedPieces = Array.isArray(item.marketing_pieces) ? item.marketing_pieces : [];
+    // Las correspondencias aprobadas no afirman que exista una publicación.
+    // Los recursos se vinculan por separado mediante asset_ids verificados.
+    const editorial = Array.isArray(item.editorial_pieces) ? item.editorial_pieces : [];
+    const verified = Array.isArray(item.marketing_pieces) ? item.marketing_pieces : [];
+    const byCode = new Map();
+    editorial.forEach(piece => byCode.set(piece.code, { ...piece, assets: [] }));
+    verified.forEach(piece => {
+      const prior = byCode.get(piece.code);
+      byCode.set(piece.code, prior
+        ? { ...prior, ...piece, relation: prior.relation, assets: piece.assets || [] }
+        : piece);
+    });
+    const linkedPieces = [...byCode.values()];
     const fallbackAssets = [...(Array.isArray(item.media) ? item.media : []),
       ...(Array.isArray(item.distribution) ? item.distribution : [])];
     const unassigned = Array.isArray(item.unassigned_assets) ? item.unassigned_assets : fallbackAssets;
 
     card.appendChild(node("p", "maint-search-meta", linkedPieces.length
-      ? linkedPieces.length + (linkedPieces.length === 1 ? " pieza publicitaria vinculada" : " piezas publicitarias vinculadas")
-      : "Sin pieza publicitaria identificada en los metadatos"));
+      ? linkedPieces.length + (linkedPieces.length === 1 ? " pieza publicitaria relacionada" : " piezas publicitarias relacionadas")
+      : "Sin correspondencia editorial de pieza publicitaria"));
 
     linkedPieces.forEach(piece => {
       const group = node("section", "maint-search-piece maint-search-production");
@@ -124,9 +135,13 @@
         (piece.category_code ? " (" + piece.category_code + ")" : "");
       group.appendChild(node("h4", "maint-search-piece-title", "Pieza publicitaria · " + officialCode));
       group.appendChild(node("p", "maint-search-meta", piece.title || "Título no registrado"));
+      group.appendChild(node("p", "maint-search-meta", piece.relation
+        ? "Correspondencia " + piece.relation.toLowerCase() + " · Ensamblaje editorial aprobado"
+        : "Publicación asociada mediante metadatos verificados"));
       const assets = Array.isArray(piece.assets) ? piece.assets : [];
       if (!assets.length) {
-        group.appendChild(node("p", "maint-search-empty", "Aún no hay publicaciones aprobadas vinculadas a esta pieza."));
+        group.appendChild(node("p", "maint-search-empty",
+          "Relación editorial aprobada; todavía no consta multimedia o publicación verificada para esta pieza."));
         group.appendChild(linkActions(item.canonical_url, null));
       } else {
         assets.forEach(asset => group.appendChild(assetRow(asset, item.canonical_url)));
@@ -154,9 +169,11 @@
     const pieces = [...(Array.isArray(item.media) ? item.media : []),
       ...(Array.isArray(item.distribution) ? item.distribution : [])];
     const marketing = Array.isArray(item.marketing_pieces) ? item.marketing_pieces : [];
+    const editorial = Array.isArray(item.editorial_pieces) ? item.editorial_pieces : [];
     const haystack = normalize([
       item.code, item.title, item.category, item.role, item.stage,
       ...marketing.flatMap(piece => [piece.code, piece.title, piece.category_code]),
+       ...editorial.flatMap(piece => [piece.code, piece.title, piece.relation]),
       ...pieces.flatMap(piece => [piece.title, piece.id, piece.provider, piece.type])
     ].filter(Boolean).join(" "));
     return normalize(query).split(/\s+/).every(token => haystack.includes(token));
@@ -220,6 +237,14 @@
     .then(data => {
       if (!data || !Array.isArray(data.items)) throw new Error("Formato de catálogo no válido");
       items = data.items;
+      const assembly = root.querySelector("#maint-assembly-summary");
+      if (assembly && data.editorial_assembly) {
+        const a = data.editorial_assembly;
+        assembly.textContent = "Ensamblaje FR aprobado (" + a.approved_on + "): " +
+          a.pieces + " piezas · " + a.relations + " relaciones (" +
+          a.principal + " principales y " + a.complementaria + " complementarias) · " +
+          a.linked_fichas + " fichas relacionadas.";
+      }
       choiceOptions(category, items.map(item => item.category), "Todas las categorías");
       updateRoles();
     })

@@ -43,16 +43,17 @@ Encuentra una ficha, consulta sus recursos y distingue lo publicado de lo que ne
 
   <section id="m-multimedia" class="maintenance-view" data-maint-view aria-labelledby="media-view-title">
     <h2 id="media-view-title">Multimedia y marketing</h2>
-    <p class="maint-meta">Ficha canónica → Pieza publicitaria → Recursos y publicaciones. Vincular un recurso no significa insertarlo dentro de la ficha.</p>
+    <p class="maint-meta">Etapa → Ficha canónica → Pieza(s) publicitaria(s). Las correspondencias editoriales aprobadas se distinguen de los recursos multimedia efectivamente publicados.</p>
     <section id="maintenance-search" class="maint-search" data-catalog-url="{{ '/mantenimiento/share_catalog.json' | relative_url }}" aria-labelledby="maint-search-title">
       <h3 id="maint-search-title">Buscar conceptos y piezas para compartir</h3>
-      <p class="maint-meta">Conserva los códigos oficiales. Los recursos sin correspondencia verificada se identifican por separado.</p>
+      <p class="maint-meta">Busca por código de ficha o de pieza publicitaria. Cada relación indica si es principal o complementaria; los recursos sin vínculo técnico se muestran por separado.</p>
       <div class="maint-search-controls">
-        <div class="maint-search-field maint-search-wide"><label for="maint-search-text">Concepto, título o código</label><input id="maint-search-text" type="search" placeholder="Ej. FR-PRO-13, garantías, pagos" autocomplete="off"></div>
+        <div class="maint-search-field maint-search-wide"><label for="maint-search-text">Concepto, título o código</label><input id="maint-search-text" type="search" placeholder="Ej. PRO-EDU-03, FR-PRO-13, garantías" autocomplete="off"></div>
         <div class="maint-search-field"><label for="maint-search-category">Categoría</label><select id="maint-search-category"><option value="">Todas las categorías</option></select></div>
         <div class="maint-search-field"><label for="maint-search-role">Rol</label><select id="maint-search-role"><option value="">Todos los roles</option></select></div>
         <button type="button" id="maint-search-clear" class="maint-search-clear">Limpiar filtros</button>
       </div>
+      <p id="maint-assembly-summary" class="maint-meta"></p>
       <p id="maint-search-count" class="maint-meta" role="status" aria-live="polite">Cargando fichas…</p>
       <p id="maint-search-feedback" class="maint-search-feedback" role="status" aria-live="polite"></p>
       <div id="maint-search-results" class="maint-search-results"><p class="maint-meta">Cargando el catálogo actual…</p></div>
@@ -92,4 +93,4 @@ Encuentra una ficha, consulta sus recursos y distingue lo publicado de lo que ne
 <link rel="stylesheet" href="{{ '/assets/css/maintenance-workspace.css' | relative_url }}?v=20261104-vistas">
 <script src="{{ '/assets/js/maintenance-workspace.js' | relative_url }}?v=20261104-vistas" defer></script>
 <script src="{{ '/assets/js/maintenance-status.js' | relative_url }}?v=20261104-base" defer></script>
-<script src="{{ '/assets/js/maintenance-search.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/maintenance-search.js' | relative_url }}?v=20261104-ensamblaje-fr" defer></script>

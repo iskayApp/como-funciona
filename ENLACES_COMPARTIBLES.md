@@ -87,7 +87,7 @@ Los tres identificadores tienen significado independiente:
 
 Una ficha puede tener varias piezas y una pieza puede aparecer asociada a distintas fichas. **No se asocia `FR-PRO-01` con `PRO-EDU-01` por la coincidencia numérica**. Se requiere evidencia editorial y una relación explícita.
 
-Para una ficha cuya relación haya sido comprobada frente a la documentación de producción, declarar `marketing_pieces` en su front matter. Los IDs de `asset_ids` deben existir entre los recursos `media` o `distribution` aprobados de esa misma ficha:
+Cuando la relación editorial también disponga de recursos o publicaciones efectivamente comprobados, declarar `marketing_pieces` en el front matter de la ficha. Los IDs de `asset_ids` deben existir entre los recursos `media` o `distribution` aprobados de esa misma ficha:
 
 ```yaml
 marketing_pieces:
@@ -113,6 +113,16 @@ El equipo de marketing puede entrar al [Centro de mantenimiento](https://iskayap
 Cada pieza visible ofrece tres acciones: **Copiar ficha**, **Copiar multimedia** y **Copiar original**. Un botón queda deshabilitado cuando no existe su enlace válido. Las publicaciones registradas únicamente en `distribution` pueden tener enlace a la ficha y a la publicación original, pero **no** un enlace directo al interior de la ficha hasta que realmente estén incorporadas allí.
 
 Solo aparecen multimedia con estado `approved` y piezas distribuidas con estado `approved` o `published`, siempre que no sean privadas. Las fichas sin piezas publicables también se pueden localizar y compartir.
+
+## Ensamblaje editorial FR aprobado (2026-11-04)
+
+El archivo `_data/fr_ensamblaje_marketing.json` recoge los códigos y títulos **exactos** de las 61 piezas del calendario `5.1 Aprobacion_calendario_Financiamiento_Reembolsable_iskay.xlsm`. Para cada código se enumeran fichas principales y complementarias. La aprobación afecta al **cruce editorial**, no a la producción, publicación o validación funcional de cada ficha.
+
+Al generar `mantenimiento/share_catalog.json`, el script añade `editorial_pieces` a las 90 fichas relacionadas: código oficial de pieza, título de calendario, categoría FR y tipo de correspondencia. Valida códigos duplicados, roles, fichas inexistentes y los totales esperados (61 piezas, 185 relaciones: 93 principales y 92 complementarias). Las restantes nueve fichas no reciben vínculos artificiales.
+
+El mantenimiento muestra estas correspondencias al buscar por **etapa, código de ficha, código de pieza o título**. Una pieza puede corresponder a varias fichas y una ficha a varias piezas. Este campo es distinto de `marketing_pieces`, que requiere evidencia real de `asset_ids` y recursos `media` o `distribution` aptos para compartir. Nunca se inventan URLs de multimedia ni de publicaciones originales; los botones correspondientes se deshabilitan si no existen.
+
+El buscador público sigue mostrando solo fichas canónicas y no expone información de marketing.
 
 ## Uso práctico
 
