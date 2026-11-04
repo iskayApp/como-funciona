@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit generated canonical routes and reachability, without external requests."""
+"""Audit generated routes read-only; store evidence outside Jekyll output."""
 from collections import deque
 from datetime import datetime, timezone
 from html.parser import HTMLParser
@@ -78,11 +78,14 @@ def audit(site, config, data):
 def main():
     site = Path(sys.argv[1] if len(sys.argv) > 1 else ROOT / '_site')
     config = yaml.safe_load((ROOT / '_config.yml').read_text(encoding='utf-8'))
-    path = site / 'mantenimiento/control_catalog.json'
-    data = json.loads(path.read_text(encoding='utf-8'))
+    data = json.loads((site / 'mantenimiento/control_catalog.json').read_text(encoding='utf-8'))
     result = audit(site, config, data)
-    data['publication_audit'] = result
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    # The container-generated site is read-only to this runner. Keep evidence in
+    # the runner-owned artifact directory rather than changing ownership or files.
+    artifacts = ROOT / 'ui-artifacts'
+    artifacts.mkdir(exist_ok=True)
+    (artifacts / 'maintenance-route-audit.json').write_text(
+        json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(result, ensure_ascii=False))
     if result['missing_routes'] or result['unreachable_topics'] or not result['unique_codes'] or not result['unique_routes']:
         raise SystemExit('La publicación contiene rutas duplicadas, ausentes o fichas sin acceso desde la portada.')
