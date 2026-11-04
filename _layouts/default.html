@@ -18,6 +18,10 @@
   <link rel="stylesheet" href="{{ '/assets/css/fr-navigation.css' | relative_url }}?v=20261103-integracion">
   <script src="{{ '/assets/js/share-links.js' | relative_url }}" defer></script>
   <script src="{{ '/assets/js/fr-navigation.js' | relative_url }}?v=20261103-integracion" defer></script>
+  {% if fr_current_role != '' and page.url == fr_current_url %}
+  <link rel="stylesheet" href="{{ '/assets/css/fr-explorer.css' | relative_url }}?v=20261104">
+  <script src="{{ '/assets/js/fr-explorer.js' | relative_url }}?v=20261104" defer></script>
+  {% endif %}
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
