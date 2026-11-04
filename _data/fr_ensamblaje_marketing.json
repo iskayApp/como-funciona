@@ -1,0 +1,739 @@
+{
+  "schema_version": 1,
+  "category": "Financiamiento Reembolsable",
+  "category_code": "FR",
+  "source": "5.1 Aprobacion_calendario_Financiamiento_Reembolsable_iskay.xlsm",
+  "approved_on": "2026-11-04",
+  "approval": "ensamblaje correcto - aprobado",
+  "expected_pieces": 61,
+  "expected_relations": 185,
+  "pieces": [
+    {
+      "code": "PRO-EDU-01",
+      "title": "🤝 Tu iniciativa, frente a potenciales inversionistas",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-01"
+      ],
+      "complementaria": [
+        "FR-PRO-23"
+      ]
+    },
+    {
+      "code": "PRO-INS-01",
+      "title": "🚀 De la iniciativa a una propuesta de financiamiento clara",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-03",
+        "FR-PRO-19"
+      ],
+      "complementaria": [
+        "FR-PRO-04"
+      ]
+    },
+    {
+      "code": "PRO-EDU-06",
+      "title": "💬 Si no puedes explicarlo con claridad, será difícil financiarlo",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-19"
+      ],
+      "complementaria": [
+        "FR-PRO-03",
+        "FR-PRO-04"
+      ]
+    },
+    {
+      "code": "PRO-INS-02",
+      "title": "🧩 Convierte una idea en información que otros puedan evaluar",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-19",
+        "FR-PRO-21"
+      ],
+      "complementaria": [
+        "FR-PRO-03"
+      ]
+    },
+    {
+      "code": "PRO-EDU-07",
+      "title": "🎯 ¿Necesitas el 100% o puedes avanzar con lo recaudado?",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-06"
+      ],
+      "complementaria": [
+        "FR-PRO-24"
+      ]
+    },
+    {
+      "code": "PRO-EDU-17",
+      "title": "💡 ¿Tu iniciativa está lista para avanzar, pero te falta capital?",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-01"
+      ],
+      "complementaria": [
+        "FR-PRO-02",
+        "FR-PRO-03"
+      ]
+    },
+    {
+      "code": "PRO-EDU-12",
+      "title": "📲 ¿Qué necesitas para financiar tu iniciativa? Conoce los requisitos de cada etapa.",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-01"
+      ],
+      "complementaria": [
+        "FR-PRO-19",
+        "FR-PRO-23",
+        "FR-PRO-24",
+        "FR-PRO-33"
+      ]
+    },
+    {
+      "code": "PRO-EDU-02",
+      "title": "📌 Financiamiento reembolsable: algunas condiciones dependen del monto",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-07",
+        "FR-PRO-08",
+        "FR-PRO-10"
+      ],
+      "complementaria": [
+        "FR-PRO-11",
+        "FR-PRO-12"
+      ]
+    },
+    {
+      "code": "PRO-EDU-03",
+      "title": "🧠 Antes de abrir la campaña, prepara la revisión profesional",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-13"
+      ],
+      "complementaria": [
+        "FR-PRO-14",
+        "FR-PRO-15",
+        "FR-PRO-16",
+        "FR-PRO-17",
+        "FR-PRO-18"
+      ]
+    },
+    {
+      "code": "PRO-EDU-04",
+      "title": "📝 Recaudar no es el último paso: hay que formalizar",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-25",
+        "FR-PRO-27"
+      ],
+      "complementaria": [
+        "FR-PRO-28"
+      ]
+    },
+    {
+      "code": "PRO-EDU-05",
+      "title": "🔐 Mostrar lo necesario sin exponer lo sensible",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-21",
+        "FR-PRO-22"
+      ],
+      "complementaria": []
+    },
+    {
+      "code": "PRO-EDU-08",
+      "title": "📅 Lo que ofreces al inversionista se convierte en una obligación de pago",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-08",
+        "FR-PRO-09"
+      ],
+      "complementaria": [
+        "FR-PRO-03",
+        "FR-PRO-07"
+      ]
+    },
+    {
+      "code": "PRO-EDU-09",
+      "title": "🛡️ La garantía no se improvisa al final",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-10",
+        "FR-PRO-25",
+        "FR-PRO-27"
+      ],
+      "complementaria": [
+        "FR-PRO-11",
+        "FR-PRO-12"
+      ]
+    },
+    {
+      "code": "PRO-EDU-10",
+      "title": "📈 Cuanto mayor el financiamiento, mayor la estructura requerida",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-10",
+        "FR-PRO-13"
+      ],
+      "complementaria": [
+        "FR-PRO-17",
+        "FR-PRO-18"
+      ]
+    },
+    {
+      "code": "PRO-EDU-11",
+      "title": "✅ Tener un informe no significa estar “aprobado”",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-13",
+        "FR-PRO-14"
+      ],
+      "complementaria": [
+        "FR-PRO-15"
+      ]
+    },
+    {
+      "code": "PRO-EDU-13",
+      "title": "🌱 Distintos propósitos, una misma pregunta: ¿cómo se reembolsará?",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-02",
+        "FR-PRO-03"
+      ],
+      "complementaria": [
+        "FR-PRO-01"
+      ]
+    },
+    {
+      "code": "PRO-EDU-14",
+      "title": "🗺️ ¿Qué pasa desde que preparas la campaña hasta que recibes los fondos?",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-23",
+        "FR-PRO-24",
+        "FR-PRO-25"
+      ],
+      "complementaria": [
+        "FR-PRO-19",
+        "FR-PRO-26"
+      ]
+    },
+    {
+      "code": "PRO-INS-03",
+      "title": "📌 Cumplir hoy influye en cómo se verá tu próxima campaña",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-29",
+        "FR-PRO-33"
+      ],
+      "complementaria": []
+    },
+    {
+      "code": "PRO-EDU-15",
+      "title": "🗂️ No todos los documentos se presentan en el mismo momento",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-21",
+        "FR-PRO-25"
+      ],
+      "complementaria": [
+        "FR-PRO-22"
+      ]
+    },
+    {
+      "code": "PRO-EDU-16",
+      "title": "✅ Campaña cerrada: ahora empieza el cumplimiento",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-29",
+        "FR-PRO-33"
+      ],
+      "complementaria": [
+        "FR-PRO-09",
+        "FR-PRO-24"
+      ]
+    },
+    {
+      "code": "PRO-INS-04",
+      "title": "✨ La convicción abre la puerta; la preparación sostiene el financiamiento",
+      "role": "Promotores",
+      "principal": [
+        "FR-PRO-03",
+        "FR-PRO-19"
+      ],
+      "complementaria": [
+        "FR-PRO-04"
+      ]
+    },
+    {
+      "code": "INV-EDU-14",
+      "title": "🧮 Un ejemplo para entender el financiamiento",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-010"
+      ],
+      "complementaria": [
+        "CF-FR-INV-011",
+        "CF-FR-INV-030"
+      ]
+    },
+    {
+      "code": "INV-EDU-17",
+      "title": "❓ 8 preguntas que conviene hacer antes de invertir",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-019"
+      ],
+      "complementaria": [
+        "CF-FR-INV-001"
+      ]
+    },
+    {
+      "code": "INV-EDU-04",
+      "title": "🔎 Antes de invertir, revisa la documentación",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-007",
+        "CF-FR-INV-008"
+      ],
+      "complementaria": [
+        "CF-FR-INV-019"
+      ]
+    },
+    {
+      "code": "INV-EDU-08",
+      "title": "🧠 Un criterio técnico no es una recomendación de inversión",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-017"
+      ],
+      "complementaria": [
+        "CF-FR-INV-016",
+        "CF-FR-INV-019"
+      ]
+    },
+    {
+      "code": "INV-EDU-15",
+      "title": "🧭 Información para decidir, no una decisión tomada por ti",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-019"
+      ],
+      "complementaria": [
+        "CF-FR-INV-003",
+        "CF-FR-INV-004"
+      ]
+    },
+    {
+      "code": "INV-EDU-12",
+      "title": "📊 Riesgo y rentabilidad: qué mirar más allá de la tasa",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-009",
+        "CF-FR-INV-017"
+      ],
+      "complementaria": [
+        "CF-FR-INV-003",
+        "CF-FR-INV-019"
+      ]
+    },
+    {
+      "code": "INV-EDU-03",
+      "title": "🛡️ ¿Pagaré con aval o hipoteca? Depende del monto",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-013"
+      ],
+      "complementaria": [
+        "CF-FR-INV-014",
+        "CF-FR-INV-015"
+      ]
+    },
+    {
+      "code": "INV-EDU-10",
+      "title": "💡 ¿De dónde saldrá el dinero para pagarte?",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-009"
+      ],
+      "complementaria": [
+        "CF-FR-INV-005",
+        "CF-FR-INV-007"
+      ]
+    },
+    {
+      "code": "INV-EDU-01",
+      "title": "💡 Financiamiento Reembolsable: del análisis al reembolso",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-001"
+      ],
+      "complementaria": [
+        "CF-FR-INV-019",
+        "CF-FR-INV-020",
+        "CF-FR-INV-024",
+        "CF-FR-INV-031"
+      ]
+    },
+    {
+      "code": "INV-EDU-09",
+      "title": "📝 <CORREGIR> Antes de aceptar: lee las condiciones del contrato",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-022"
+      ],
+      "complementaria": [
+        "CF-FR-INV-020",
+        "CF-FR-INV-021"
+      ]
+    },
+    {
+      "code": "INV-EDU-02",
+      "title": "📈 TNA e interés simple: ¿qué significan para tu inversión?",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-010",
+        "CF-FR-INV-011"
+      ],
+      "complementaria": []
+    },
+    {
+      "code": "INV-EDU-11",
+      "title": "📅 Tu inversión tiene un calendario de pagos",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-030",
+        "CF-FR-INV-032"
+      ],
+      "complementaria": [
+        "CF-FR-INV-031"
+      ]
+    },
+    {
+      "code": "INV-EDU-19",
+      "title": "↩️ ¿Cuándo pueden revertirse los fondos?",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-027",
+        "CF-FR-INV-028"
+      ],
+      "complementaria": [
+        "CF-FR-INV-024",
+        "CF-FR-INV-029"
+      ]
+    },
+    {
+      "code": "INV-EDU-13",
+      "title": "⚠️ Si un pago se retrasa, ¿qué pasa después?",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-034",
+        "CF-FR-INV-036"
+      ],
+      "complementaria": [
+        "CF-FR-INV-035",
+        "CF-FR-INV-037"
+      ]
+    },
+    {
+      "code": "INV-EDU-05",
+      "title": "📊 Diversificar no es adivinar: es repartir exposición",
+      "role": "Inversores",
+      "principal": [],
+      "complementaria": [
+        "CF-FR-INV-003",
+        "CF-FR-INV-019"
+      ]
+    },
+    {
+      "code": "INV-EDU-06",
+      "title": "💵 ¿Qué comisión paga el inversionista?",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-012"
+      ],
+      "complementaria": [
+        "CF-FR-INV-028"
+      ]
+    },
+    {
+      "code": "INV-EDU-07",
+      "title": "🎯 Fija o flexible: ¿qué cambia para la campaña?",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-006",
+        "CF-FR-INV-024"
+      ],
+      "complementaria": [
+        "CF-FR-INV-027"
+      ]
+    },
+    {
+      "code": "INV-EDU-16",
+      "title": "⚠️ <CORREGIR> Rentabilidad posible también significa riesgo",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-003"
+      ],
+      "complementaria": [
+        "CF-FR-INV-002",
+        "CF-FR-INV-019"
+      ]
+    },
+    {
+      "code": "INV-EDU-18",
+      "title": "⚖️ <CORREGIR> Invertir formalmente también es entender tus documentos",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-022",
+        "CF-FR-INV-025"
+      ],
+      "complementaria": [
+        "CF-FR-INV-018"
+      ]
+    },
+    {
+      "code": "INV-INS-01",
+      "title": "🌱<CORREGIR> Propósito sí. Decisión informada también.\n",
+      "role": "Inversores",
+      "principal": [
+        "CF-FR-INV-001",
+        "CF-FR-INV-019"
+      ],
+      "complementaria": [
+        "CF-FR-INV-003"
+      ]
+    },
+    {
+      "code": "COL-VEN-01",
+      "title": "💼 <CORREGIR> Tu conociento puede convertirse en experiencia acumulada 👉 iskay.app",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-003"
+      ],
+      "complementaria": [
+        "CF-FR-COL-001"
+      ]
+    },
+    {
+      "code": "COL-EDU-01",
+      "title": "🧩 ¿Qué profesionales necesita un Financiamiento Reembolsable?",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-005"
+      ],
+      "complementaria": [
+        "CF-FR-COL-004",
+        "CF-FR-COL-006"
+      ]
+    },
+    {
+      "code": "COL-EDU-08",
+      "title": "⏱️ Tu trabajo empieza antes de recaudar",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-004"
+      ],
+      "complementaria": [
+        "CF-FR-COL-017"
+      ]
+    },
+    {
+      "code": "COL-EDU-02",
+      "title": "🧠 Analizar no es aprobar",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-002"
+      ],
+      "complementaria": [
+        "CF-FR-COL-020"
+      ]
+    },
+    {
+      "code": "COL-INS-02",
+      "title": "🌟 Tu conocimiento no decide por otros: les ayuda a decidir mejor",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-002"
+      ],
+      "complementaria": [
+        "CF-FR-COL-003",
+        "CF-FR-COL-020"
+      ]
+    },
+    {
+      "code": "COL-EDU-14",
+      "title": "⚠️ <CORREGIR> ¿Qué cambia cuando una cuota deja de pagarse?",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-027"
+      ],
+      "complementaria": [
+        "CF-FR-COL-028"
+      ]
+    },
+    {
+      "code": "COL-EDU-03",
+      "title": "📊 <CORREGIR> ¿Puede el promotor atender los pagos ofrecidos a los inversionistas?",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-012"
+      ],
+      "complementaria": [
+        "CF-FR-COL-013"
+      ]
+    },
+    {
+      "code": "COL-EDU-15",
+      "title": "📄 Un criterio técnico útil debe ser claro",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-020"
+      ],
+      "complementaria": [
+        "CF-FR-COL-002"
+      ]
+    },
+    {
+      "code": "COL-EDU-16",
+      "title": "🗂️ El valor profesional también está en dejar evidencia: el informe",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-026"
+      ],
+      "complementaria": [
+        "CF-FR-COL-020",
+        "CF-FR-COL-022"
+      ]
+    },
+    {
+      "code": "COL-INS-01",
+      "title": "🛡️ Un buen informe también dice lo que no garantiza",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-002"
+      ],
+      "complementaria": [
+        "CF-FR-COL-020"
+      ]
+    },
+    {
+      "code": "COL-EDU-09",
+      "title": "💧 La pregunta clave: ¿de dónde saldrá el dinero para pagar?",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-012"
+      ],
+      "complementaria": []
+    },
+    {
+      "code": "COL-EDU-06",
+      "title": "📚 Los números también necesitan contexto y documentos",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-019"
+      ],
+      "complementaria": [
+        "CF-FR-COL-009"
+      ]
+    },
+    {
+      "code": "COL-EDU-10",
+      "title": "✍️ Hasta USD 9.999,99: ¿cómo se estructura la garantía personal?",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-014",
+        "CF-FR-COL-023"
+      ],
+      "complementaria": [
+        "CF-FR-COL-006"
+      ]
+    },
+    {
+      "code": "COL-EDU-11",
+      "title": "🏠 Desde USD 10.000: la garantía real exige más que un inmueble",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-015",
+        "CF-FR-COL-024"
+      ],
+      "complementaria": [
+        "CF-FR-COL-006",
+        "CF-FR-COL-025"
+      ]
+    },
+    {
+      "code": "COL-EDU-12",
+      "title": "🔬 Más exposición, análisis más profundo",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-007",
+        "CF-FR-COL-016"
+      ],
+      "complementaria": []
+    },
+    {
+      "code": "COL-EDU-07",
+      "title": "📈 El monto cambia el nivel de revisión profesional",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-005",
+        "CF-FR-COL-007"
+      ],
+      "complementaria": [
+        "CF-FR-COL-016"
+      ]
+    },
+    {
+      "code": "COL-EDU-04",
+      "title": "⚖️ El profesional que resguarda la estructura legal del financiamiento",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-017",
+        "CF-FR-COL-022"
+      ],
+      "complementaria": [
+        "CF-FR-COL-021",
+        "CF-FR-COL-027"
+      ]
+    },
+    {
+      "code": "COL-EDU-05",
+      "title": "🏠 Una hipoteca empieza por entender el valor del inmueble",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-018",
+        "CF-FR-COL-025"
+      ],
+      "complementaria": [
+        "CF-FR-COL-015"
+      ]
+    },
+    {
+      "code": "COL-EDU-13",
+      "title": "🔐 <CORREGIR> Transparencia también significa gestionar accesos",
+      "role": "Colaboradores",
+      "principal": [
+        "CF-FR-COL-009",
+        "CF-FR-COL-011"
+      ],
+      "complementaria": [
+        "CF-FR-COL-010"
+      ]
+    },
+    {
+      "code": "COL-VEN-02",
+      "title": "🎓 <CORREGIR> Tu especialidad puede tener un lugar en Financiamiento Reembolsable",
+      "role": "Colaboradores",
+      "principal": [],
+      "complementaria": [
+        "CF-FR-COL-003",
+        "CF-FR-COL-005",
+        "CF-FR-COL-008"
+      ]
+    }
+  ]
+}

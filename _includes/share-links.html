@@ -65,6 +65,38 @@ Las URLs se derivan de page.url y de page.media; no se escriben manualmente.
       </div>
     {% endif %}
   {% endfor %}
+
+  {% if page.category == "Financiamiento Reembolsable" %}
+    {% for video in site.data.fr_tiktok_publicaciones.videos %}
+      {% assign related_piece = site.data.fr_ensamblaje_marketing.pieces | where: "code", video.piece_code | first %}
+      {% if related_piece and related_piece.principal contains page.code %}
+        {% assign ficha_code_key = page.code | downcase %}
+        {% assign piece_code_key = video.piece_code | downcase %}
+        {% assign asset_key = ficha_code_key | append: "-tiktok-" | append: piece_code_key %}
+        <div class="share-media-group">
+          <h3>{{ related_piece.title | escape }}</h3>
+          <p class="share-media-type">Vídeo TikTok publicado · iskay.app</p>
+          <div class="share-link-entry">
+            <div class="share-link-description">
+              <strong>Multimedia dentro de la ficha</strong>
+              <span>Conduce al reproductor de este vídeo dentro de la explicación.</span>
+              <a id="share-media-{{ asset_key }}" class="share-link-destination" href="{{ page.url | absolute_url }}#media-{{ asset_key }}">Ver destino</a>
+            </div>
+            <button type="button" class="copy-link-button" data-copy-target="share-media-{{ asset_key }}">Copiar enlace de la multimedia</button>
+          </div>
+          <div class="share-link-entry">
+            <div class="share-link-description">
+              <strong>Publicación original</strong>
+              <span>Vídeo publicado en la cuenta oficial de TikTok de iskay.app.</span>
+              <a id="share-original-{{ asset_key }}" class="share-link-destination" href="{{ video.share_url | escape }}" target="_blank" rel="noopener noreferrer">Abrir TikTok</a>
+            </div>
+            <button type="button" class="copy-link-button" data-copy-target="share-original-{{ asset_key }}">Copiar enlace original</button>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
   <p class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></p>
 </section>
 {% endif %}

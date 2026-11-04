@@ -1,0 +1,61 @@
+{% comment %}
+  Vídeos TikTok de FR, provenientes exclusivamente de publicaciones verificadas.
+  Las relaciones principal/complementaria se leen del ensamblaje editorial aprobado.
+  La ficha conserva su texto canónico y no incorpora códigos publicitarios visibles.
+{% endcomment %}
+{% if page.code and page.category == "Financiamiento Reembolsable" %}
+  {% assign fr_tiktok_posts = site.data.fr_tiktok_publicaciones.videos %}
+  {% assign fr_marketing_pieces = site.data.fr_ensamblaje_marketing.pieces %}
+  {% assign has_fr_tiktok_primary = false %}
+  {% assign has_fr_tiktok_related = false %}
+  {% for video in fr_tiktok_posts %}
+    {% assign associated_piece = fr_marketing_pieces | where: "code", video.piece_code | first %}
+    {% if associated_piece %}
+      {% if associated_piece.principal contains page.code %}{% assign has_fr_tiktok_primary = true %}{% endif %}
+      {% if associated_piece.complementaria contains page.code %}{% assign has_fr_tiktok_related = true %}{% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% if has_fr_tiktok_primary %}
+  <section class="fr-tiktok-section" aria-label="Vídeos explicativos relacionados">
+    <h2>Vídeos para comprender mejor</h2>
+    <p class="fr-tiktok-intro">Publicaciones originales de iskay.app en TikTok que complementan esta explicación.</p>
+    {% for video in fr_tiktok_posts %}
+      {% assign associated_piece = fr_marketing_pieces | where: "code", video.piece_code | first %}
+      {% if associated_piece and associated_piece.principal contains page.code %}
+        {% assign ficha_slug = page.code | downcase %}
+        {% assign piece_slug = video.piece_code | downcase %}
+        {% assign video_anchor = "media-" | append: ficha_slug | append: "-tiktok-" | append: piece_slug %}
+        {% assign video_player = video.embed_link | replace: "autoplay=1", "autoplay=0" | replace: "loop=1", "loop=0" %}
+        <figure id="{{ video_anchor }}" class="fr-tiktok-card media-block">
+          <figcaption><strong>{{ associated_piece.title | escape }}</strong></figcaption>
+          <details>
+            <summary>Reproducir vídeo explicativo</summary>
+            <div class="fr-tiktok-frame">
+              <iframe title="Vídeo de TikTok: {{ associated_piece.title | escape }}"
+                src="{{ video_player | escape }}" loading="lazy"
+                allow="fullscreen; picture-in-picture; encrypted-media"
+                allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+          </details>
+          <p class="fr-tiktok-original"><a href="{{ video.share_url | escape }}" target="_blank" rel="noopener noreferrer">Ver publicación original en TikTok</a></p>
+        </figure>
+      {% endif %}
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if has_fr_tiktok_related %}
+    <section class="fr-tiktok-related" aria-label="Vídeos complementarios relacionados">
+      <h2>Vídeos relacionados</h2>
+      <ul>
+        {% for video in fr_tiktok_posts %}
+          {% assign associated_piece = fr_marketing_pieces | where: "code", video.piece_code | first %}
+          {% if associated_piece and associated_piece.complementaria contains page.code %}
+            <li><a href="{{ video.share_url | escape }}" target="_blank" rel="noopener noreferrer">{{ associated_piece.title | escape }}</a> <span class="fr-tiktok-related-label">· TikTok</span></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+{% endif %}

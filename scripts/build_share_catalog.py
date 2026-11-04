@@ -134,6 +134,243 @@ def visible_marketing_pieces(data, entry, path, errors):
     return associations, unassigned
 
 
+
+def apply_approved_assembly(catalog, errors):
+    """Une el calendario aprobado con las fichas, sin inventar activos multimedia.
+
+    Las relaciones editoriales (principal/complementaria) no son publicaciones,
+    ni equivalen a marketing_pieces con asset_ids comprobados.
+    """
+    for entry in catalog:
+        entry["editorial_pieces"] = []
+    path = ROOT / "_data" / "fr_ensamblaje_marketing.json"
+    if not path.is_file():
+        return None  # Los tests de catálogo y otras categorías no requieren FR.
+
+    try:
+        source = json.loads(path.read_text(encoding="utf-8"))
+    except (ValueError, OSError) as exc:
+        errors.append(f"{path}: no puede leerse el ensamblaje: {exc}")
+        return None
+    if (source.get("schema_version") != 1
+            or source.get("category_code") != "FR"
+            or source.get("approval") != "ensamblaje correcto - aprobado"):
+        errors.append(f"{path}: falta la aprobación o el esquema esperado")
+        return None
+    pieces = source.get("pieces")
+    if not isinstance(pieces, list):
+        errors.append(f"{path}: pieces debe ser una lista")
+        return None
+
+    by_code = {item["code"]: item for item in catalog}
+    roles = {"PRO": "promotores", "INV": "inversores", "COL": "colaboradores"}
+    seen_pieces = set()
+    linked_fichas = set()
+    main_count = 0
+    extra_count = 0
+    for piece in pieces:
+        if not isinstance(piece, dict):
+            errors.append(f"{path}: pieza sin estructura")
+            continue
+        code, title, role = piece.get("code"), piece.get("title"), piece.get("role")
+        if not isinstance(code, str) or not isinstance(title, str) or not title.strip():
+            errors.append(f"{path}: pieza sin código/título válido")
+            continue
+        if code in seen_pieces:
+            errors.append(f"{path}: pieza duplicada: {code}")
+            continue
+        seen_pieces.add(code)
+        expected_role = roles.get(code.split("-", 1)[0])
+        if (not expected_role or role != expected_role.capitalize()
+                or not re.fullmatch(r"(PRO|INV|COL)-(EDU|INS|ENT|VEN)-\d{2}", code)):
+            errors.append(f"{path}: código o rol de pieza inválidos: {code}")
+            continue
+        used_fichas = set()
+        for key, label in (("principal", "Principal"), ("complementaria", "Complementaria")):
+            ids = piece.get(key)
+            if not isinstance(ids, list):
+                errors.append(f"{path}: {code} debe declarar {key} como lista")
+                continue
+            for ficha_code in ids:
+                if not isinstance(ficha_code, str) or ficha_code in used_fichas:
+                    errors.append(f"{path}: referencia duplicada/inválida en {code}")
+                    continue
+                used_fichas.add(ficha_code)
+                ficha = by_code.get(ficha_code)
+                if not ficha:
+                    errors.append(f"{path}: {code} remite a ficha inexistente {ficha_code}")
+                    continue
+                if (str(ficha.get("role") or "").casefold() != expected_role
+                        or ficha.get("category") != source.get("category")):
+                    errors.append(f"{path}: {code} y {ficha_code} pertenecen a roles/categorías diferentes")
+                    continue
+                ficha["editorial_pieces"].append({
+                    "code": code,
+                    "category_code": "FR",
+                    "title": title,
+                    "relation": label,
+                    "assembly_status": "approved",
+                })
+                linked_fichas.add(ficha_code)
+                if key == "principal":
+                    main_count += 1
+                else:
+                    extra_count += 1
+
+    relations = main_count + extra_count
+    if len(seen_pieces) != source.get("expected_pieces"):
+        errors.append(f"{path}: conteo de piezas distinto al aprobado")
+    if relations != source.get("expected_relations"):
+        errors.append(f"{path}: conteo de correspondencias distinto al aprobado")
+    return {
+        "source": source.get("source"),
+        "approved_on": source.get("approved_on"),
+        "pieces": len(seen_pieces),
+        "relations": relations,
+        "principal": main_count,
+        "complementaria": extra_count,
+        "linked_fichas": len(linked_fichas),
+        "unlinked_fichas": sum(
+            1 for entry in catalog
+            if entry.get("category") == source.get("category")
+            and entry["code"] not in linked_fichas
+        ),
+    }
+
+
+
+def attach_verified_tiktok(catalog, errors):
+    """Asocia publicaciones reales de TikTok con el ensamblaje editorial aprobado.
+
+    Ficha principal: reproductor embebido con un ancla real generada por el
+    include fr-tiktok-videos.html. Ficha complementaria: publicación externa.
+    Ninguna asociación se deduce por semejanza de números ni del título.
+    """
+    path = ROOT / "_data" / "fr_tiktok_publicaciones.json"
+    if not path.is_file():
+        return None  # Mantiene compatibles las pruebas unitarias aisladas.
+
+    try:
+        registry = json.loads(path.read_text(encoding="utf-8"))
+    except (ValueError, OSError) as exc:
+        errors.append(f"{path}: inventario TikTok ilegible: {exc}")
+        return None
+    if (registry.get("schema_version") != 1 or registry.get("platform") != "tiktok"
+            or registry.get("account") != "@iskay.app"
+            or not isinstance(registry.get("videos"), list)):
+        errors.append(f"{path}: esquema TikTok inválido")
+        return None
+
+    videos = registry["videos"]
+    by_code = {item["code"]: item for item in catalog}
+    piece_index = {}
+    for item in catalog:
+        for piece in item.get("editorial_pieces", []):
+            piece_index.setdefault(piece["code"], []).append((item, piece))
+
+    seen_video_ids = set()
+    seen_piece_codes = set()
+    linked_pages = set()
+    primary = related = 0
+    for video in videos:
+        if not isinstance(video, dict):
+            errors.append(f"{path}: vídeo sin estructura")
+            continue
+        video_id, piece_code = str(video.get("video_id") or ""), video.get("piece_code")
+        url, embed = video.get("share_url"), video.get("embed_link")
+        if (not re.fullmatch(r"\d{12,25}", video_id)
+                or not isinstance(piece_code, str)
+                or video_id in seen_video_ids or piece_code in seen_piece_codes):
+            errors.append(f"{path}: vídeo o pieza duplicados/inválidos: {piece_code}/{video_id}")
+            continue
+        seen_video_ids.add(video_id)
+        seen_piece_codes.add(piece_code)
+
+        # Solo usar URLs devueltas por la API de la cuenta oficial, sin
+        # componer enlaces o asociar IDs del calendario por proximidad.
+        try:
+            share_parts, embed_parts = urlsplit(url), urlsplit(embed)
+            expected_share = f"/@iskay.app/video/{video_id}"
+            expected_embed = f"/player/v1/{video_id}"
+            approved_url = (
+                share_parts.scheme == embed_parts.scheme == "https"
+                and share_parts.netloc == embed_parts.netloc == "www.tiktok.com"
+                and share_parts.path == expected_share
+                and embed_parts.path == expected_embed
+                and not share_parts.username and not embed_parts.username
+            )
+        except (TypeError, ValueError):
+            approved_url = False
+        if not approved_url:
+            errors.append(f"{path}: URL de publicación no verificable: {piece_code}")
+            continue
+
+        associations = piece_index.get(piece_code, [])
+        if not associations:
+            errors.append(f"{path}: {piece_code} no consta en el ensamblaje aprobado")
+            continue
+        for item, association in associations:
+            relation = association["relation"]
+            ficha_code = item["code"]
+            asset_id = f"{ficha_code.lower()}-tiktok-{piece_code.lower()}"
+            canonical = item["canonical_url"]
+            asset = {
+                "id": asset_id, "type": "video", "title": association["title"],
+                "provider": "tiktok", "video_id": video_id,
+                "derived_from_version": None,  # No inventar revisión funcional.
+                "media_url": canonical + "#media-" + asset_id if relation == "Principal" else None,
+                "original_url": url, "original_available": True,
+            }
+            # Evitar duplicar una referencia TikTok ya existente en el front matter;
+            # FR-PRO-01 contenía un video_id sin URL original.
+            matched_originals = [
+                old for old in item["distribution"]
+                if old.get("provider") == "tiktok" and old.get("video_id") == video_id
+            ]
+            for old in matched_originals:
+                item["distribution"].remove(old)
+                if old in item["unassigned_assets"]:
+                    item["unassigned_assets"].remove(old)
+
+            target = "media" if relation == "Principal" else "distribution"
+            if any(x["id"] == asset_id for x in item[target]):
+                errors.append(f"{path}: asset_id duplicado en {ficha_code}: {asset_id}")
+                continue
+            item[target].append(asset)
+            group = next((g for g in item["marketing_pieces"] if g["code"] == piece_code), None)
+            if group is None:
+                group = {
+                    "code": piece_code,
+                    "category_code": "FR",
+                    "title": association["title"],
+                    "assets": [],
+                }
+                item["marketing_pieces"].append(group)
+            if all(existing["id"] != asset_id for existing in group["assets"]):
+                group["assets"].append(asset)
+            linked_pages.add(ficha_code)
+            if relation == "Principal":
+                primary += 1
+            else:
+                related += 1
+
+    links = primary + related
+    if len(seen_video_ids) != registry.get("expected_videos"):
+        errors.append(f"{path}: total de vídeos diferente del inventario aprobado")
+    if links != registry.get("expected_relations"):
+        errors.append(f"{path}: total de relaciones TikTok diferente del cruce aprobado")
+    return {
+        "platform": registry.get("platform"),
+        "account": registry.get("account"),
+        "verified_at": registry.get("verified_at"),
+        "videos": len(seen_video_ids),
+        "linked_fichas": len(linked_pages),
+        "links": links,
+        "principal": primary,
+        "complementaria": related,
+    }
+
+
 def build_catalog():
     config = yaml.safe_load((ROOT / "_config.yml").read_text(encoding="utf-8"))
     taxonomy_path = ROOT / "_data" / "categories.yml"
@@ -243,6 +480,7 @@ def build_catalog():
                 warnings.append(f"{code}/{asset_id}: publicación sin URL original verificable")
             entry["distribution"].append({
                 "id": asset_id,
+                "video_id": video_id or None,
                 "type": asset.get("type") or "publicacion",
                 "title": asset.get("title") or asset.get("caption") or asset_id,
                 "provider": provider,
@@ -258,6 +496,9 @@ def build_catalog():
         entry["unassigned_assets"] = unassigned_assets
         catalog.append(entry)
 
+    assembly_report = apply_approved_assembly(catalog, errors)
+    tiktok_report = attach_verified_tiktok(catalog, errors)
+
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "total_fichas": len(catalog),
@@ -265,6 +506,10 @@ def build_catalog():
         "total_distribution": sum(len(entry["distribution"]) for entry in catalog),
         "total_marketing_pieces": sum(len(entry["marketing_pieces"]) for entry in catalog),
         "total_unassigned_assets": sum(len(entry["unassigned_assets"]) for entry in catalog),
+        "editorial_assembly": assembly_report,
+        "verified_tiktok": tiktok_report,
+        "total_editorial_pieces": assembly_report["pieces"] if assembly_report else 0,
+        "total_editorial_links": assembly_report["relations"] if assembly_report else 0,
         "items": catalog,
     }
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)

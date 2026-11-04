@@ -170,7 +170,10 @@ def build_control(root=ROOT, revision=None):
             'metadata_gaps': missing, 'stale_asset_ids': stale,
             'embedded_count': len(entry.get('media', [])),
             'distribution_count': len(entry.get('distribution', [])),
-            'marketing_codes': [p['code'] for p in entry.get('marketing_pieces', [])],
+            'marketing_codes': list(dict.fromkeys(
+                [p['code'] for p in entry.get('editorial_pieces', [])] +
+                [p['code'] for p in entry.get('marketing_pieces', [])]
+            )),
             'resource_ids': [a['id'] for a in assets],
         })
     new_preparation = [p for p in preparation if p['code'] not in codes]

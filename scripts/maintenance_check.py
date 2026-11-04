@@ -303,6 +303,45 @@ def main():
                         "platform": "TikTok",
                     })
 
+
+    # Registro explícito de piezas TikTok publicado por la cuenta oficial.
+    # Las relaciones se derivan del calendario FR aprobado y no de su título.
+    registry_path = ROOT / "_data" / "fr_tiktok_publicaciones.json"
+    assembly_path = ROOT / "_data" / "fr_ensamblaje_marketing.json"
+    if registry_path.is_file() and assembly_path.is_file():
+        registry = json.loads(registry_path.read_text(encoding="utf-8"))
+        assembly = json.loads(assembly_path.read_text(encoding="utf-8"))
+        piece_by_code = {p["code"]: p for p in assembly.get("pieces", [])}
+        page_by_code = {p["data"].get("code"): p for p in pages}
+        for video in registry.get("videos", []):
+            vid = str(video.get("video_id") or "")
+            piece_code = video.get("piece_code")
+            piece = piece_by_code.get(piece_code)
+            if not vid or not piece:
+                raise ValueError(f"Vídeo TikTok sin pieza aprobada: {vid}/{piece_code}")
+            tiktok_ids.append(vid)
+            for key, relation in (("principal", "media"), ("complementaria", "distribution")):
+                for ficha in piece[key]:
+                    page = page_by_code.get(ficha)
+                    if page is None:
+                        raise ValueError(f"TikTok {piece_code} referencia ficha inexistente: {ficha}")
+                    links = tiktok_links.setdefault(vid, [])
+                    record = next((x for x in links if x["code"] == ficha), None)
+                    if record is None:
+                        record = {
+                            "code": ficha, "title": page["data"].get("title"),
+                            "canonical_url": normalize_url(page["data"].get("permalink")),
+                            "derived_from_version": None,
+                            "content_version": page["data"].get("content_version"),
+                            "reviewed": None, "platform": "TikTok",
+                        }
+                        links.append(record)
+                    record.update(
+                        relation=relation,
+                        piece_code=piece_code,
+                        asset_id=f"{ficha.lower()}-tiktok-{piece_code.lower()}",
+                    )
+
     access_token, tiktok_service = refresh_tiktok_access()
     all_tiktok = []
     tiktok_query = {}
