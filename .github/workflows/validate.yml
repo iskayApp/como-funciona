@@ -13,54 +13,43 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
       - name: Setup Python
         uses: actions/setup-python@v6
         with:
           python-version: "3.13"
-
       - name: Install metadata dependencies
         run: python -m pip install --disable-pip-version-check PyYAML
-
-      - name: Run share-link tests and protect canonical sources
+      - name: Run share-link, control and source-preservation tests
         run: python -m unittest discover -s tests -v
-
-      - name: Check public and maintenance search JavaScript
+      - name: Check JavaScript and isolated control states
         run: |
-          node --check assets/js/maintenance-search.js
-          node --check assets/js/maintenance-status.js
-          node --check assets/js/public-search.js
-          node --check assets/js/guidance.js
-          node --check assets/js/fr-navigation.js
-          node --check assets/js/fr-explorer.js
-          node --test tests/public-search.test.cjs tests/guidance.test.cjs tests/category-hierarchy.test.cjs
-
-      - name: Generate and validate share catalog
-        run: python scripts/build_share_catalog.py
-
+          for file in assets/js/*.js; do node --check "$file"; done
+          node --test tests/*.test.cjs
+      - name: Generate shared catalog and public maintenance projection
+        run: |
+          python scripts/build_share_catalog.py
+          python scripts/build_maintenance_control.py
       - name: Validate Jekyll rendering
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
-
-      - name: Validate FR navigation against all canonical pages
-        run: python scripts/check_fr_navigation.py _site
-
+      - name: Validate canonical routes and reachability
+        run: |
+          python scripts/check_fr_navigation.py _site
+          python scripts/verify_maintenance_site.py _site
       - name: Install browser testing dependencies
         run: |
           python -m pip install --disable-pip-version-check playwright==1.57.0
           python -m playwright install --with-deps chromium
-
       - name: Test desktop, mobile, keyboard and no-JavaScript navigation
         run: python scripts/smoke_fr_navigation.py _site
-
       - name: Test role-local search and section filters
         run: python scripts/smoke_fr_explorer.py _site
-
       - name: Test general home and category-role-section maintenance
         run: python scripts/smoke_category_base.py _site
-
+      - name: Test the four maintenance views and failure states
+        run: python scripts/smoke_maintenance_workspace.py _site
       - name: Upload UI test screenshots
         if: always()
         uses: actions/upload-artifact@v4

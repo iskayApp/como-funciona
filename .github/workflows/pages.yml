@@ -22,32 +22,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
       - name: Setup Python
         uses: actions/setup-python@v6
         with:
           python-version: "3.13"
-
       - name: Install maintenance dependencies
         run: python -m pip install --disable-pip-version-check PyYAML
-
       - name: Generate maintenance report
         env:
           TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
           TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
           TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
         run: python scripts/maintenance_check.py
-
-      - name: Generate and validate share links catalog
-        run: python scripts/build_share_catalog.py
-
-      - name: Validate maintenance search and sharing catalogue
+      - name: Generate and validate sharing and public control catalogs
         run: |
-          node --check assets/js/maintenance-search.js
-          node --check assets/js/public-search.js
-          node --test tests/public-search.test.cjs
+          python scripts/build_share_catalog.py
+          python scripts/build_maintenance_control.py
+      - name: Validate maintenance and public source preservation
+        run: |
+          for file in assets/js/*.js; do node --check "$file"; done
+          node --test tests/*.test.cjs
           python -m unittest discover -s tests -p 'test_*.py'
-
       - name: Detect TikTok refresh-token rotation
         id: tiktok-rotation
         shell: bash
@@ -57,28 +52,23 @@ jobs:
           else
             echo "required=false" >> "$GITHUB_OUTPUT"
           fi
-
       - name: Create temporary GitHub App token
         id: maintenance-app-token
         uses: actions/create-github-app-token@v3
         with:
           client-id: ${{ vars.MAINTENANCE_APP_CLIENT_ID }}
           private-key: ${{ secrets.MAINTENANCE_APP_PRIVATE_KEY }}
-
       - name: Persist rotated TikTok refresh token
         if: steps.tiktok-rotation.outputs.required == 'true'
         env:
           GH_TOKEN: ${{ steps.maintenance-app-token.outputs.token }}
         shell: bash
         run: |
-          gh secret set TIKTOK_REFRESH_TOKEN             --repo "$GITHUB_REPOSITORY"             < mantenimiento/tiktok_refresh_token.next
-
+          gh secret set TIKTOK_REFRESH_TOKEN --repo "$GITHUB_REPOSITORY" < mantenimiento/tiktok_refresh_token.next
           rm -f mantenimiento/tiktok_refresh_token.next
-
           python - <<'PY'
           import json
           from pathlib import Path
-
           path = Path("mantenimiento/status.json")
           data = json.loads(path.read_text(encoding="utf-8"))
           service = data.setdefault("services", {}).setdefault("tiktok", {})
@@ -87,24 +77,19 @@ jobs:
           suffix = " Refresh token rotado y actualizado automáticamente en GitHub Secrets."
           if suffix.strip() not in detail:
               service["detail"] = (detail + suffix).strip()
-          path.write_text(
-              json.dumps(data, ensure_ascii=False, indent=2),
-              encoding="utf-8"
-          )
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
           PY
-
           echo "TikTok refresh token rotated and TIKTOK_REFRESH_TOKEN was updated automatically."
-
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
-
+      - name: Audit generated canonical routes before publishing
+        run: python scripts/verify_maintenance_site.py _site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
