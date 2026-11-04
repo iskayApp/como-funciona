@@ -1,0 +1,37 @@
+<section id="maintenance-structure" class="maintenance-structure" aria-labelledby="maintenance-structure-title">
+  <h2 id="maintenance-structure-title">Contenido por categoría y rol</h2>
+  <p class="maint-meta">Categoría → Rol → Sección → Ficha. La publicación de prueba no equivale a aprobación editorial.</p>
+  {% for category in site.data.categories %}
+    {% include category-context.html category=category %}
+    <details class="catalog-category" data-maint-category="{{ category.id | escape }}"{% if cf_category_ready %} open{% endif %}>
+      <summary><strong>{{ category.name | escape }}</strong><span>{% if cf_category_ready %}{{ cf_category_topics.size }} fichas{% else %}En preparación{% endif %}</span></summary>
+      {% if cf_category_ready %}
+        {% for role in category.roles %}
+          {% assign role_topics = cf_category_topics | where_exp: 'entry', 'entry.url contains role.url' %}
+          {% if role_topics.size > 0 %}
+          <details class="catalog-role" data-maint-role="{{ role.id | escape }}">
+            <summary><strong>{{ role.name | escape }}</strong><span>{{ role_topics.size }} fichas</span></summary>
+            {% assign role_sections = role_topics | group_by: 'stage_url' %}
+            {% for section in role_sections %}
+              {% assign section_first = section.items | first %}
+              <details class="catalog-section" data-maint-section="{{ section.name | escape }}">
+                <summary><strong>{{ section_first.stage | default: 'Sin sección identificada' | escape }}</strong><span>{{ section.items.size }} fichas</span></summary>
+                <ul class="catalog-topics">
+                  {% for topic in section.items %}
+                  <li>
+                    <a href="{{ topic.url | relative_url }}" data-maint-topic="{{ topic.code | escape }}">{{ topic.title | escape }}</a>
+                    <span class="catalog-topic-meta">{{ topic.code | escape }} · Versión {{ topic.content_version | default: 'sin indicar' }} · {% if topic.editorial_status == 'pending_review' %}Pendiente de revisión editorial{% elsif topic.editorial_status == 'approved' %}Aprobada editorialmente{% else %}Sin estado editorial explícito{% endif %}</span>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </details>
+            {% endfor %}
+          </details>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <p class="maint-meta catalog-preparation">Sin recorridos disponibles en esta fase. Su incorporación seguirá el orden: clasificar, organizar, identificar y desarrollar.</p>
+      {% endif %}
+    </details>
+  {% endfor %}
+</section>
