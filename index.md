@@ -1,17 +1,14 @@
 ---
 layout: default
-title: "Cómo funciona · Financiamiento Reembolsable"
-description: "Recorridos de Promotores, Inversores y Colaboradores de Financiamiento Reembolsable en iskay.app."
+title: "Cómo funciona"
+description: "Encuentra explicaciones, explora las categorías de iskay.app o recibe orientación para saber por dónde empezar."
 permalink: /
-eyebrow: "Financiamiento Reembolsable · Guía de uso"
+eyebrow: "Guía de uso · iskay.app"
 ---
 
 # Cómo funciona
 
-Explora **Financiamiento Reembolsable** desde tu rol o busca directamente la explicación que necesitas.
-
-{% include fr-context.html %}
-{% include fr-role-cards.html %}
+Encuentra una explicación, explora las categorías disponibles o recibe orientación para saber por dónde empezar.
 
 <section id="buscar" class="public-search" data-catalog-url="{{ '/mantenimiento/share_catalog.json' | relative_url }}" data-site-root="{{ '/' | absolute_url }}" aria-labelledby="public-search-title">
   <h2 id="public-search-title">¿Qué necesitas saber?</h2>
@@ -48,8 +45,10 @@ Explora **Financiamiento Reembolsable** desde tu rol o busca directamente la exp
   <p id="public-search-count" class="public-search-count" role="status" aria-live="polite"></p>
   <div id="public-search-results" class="public-search-results"></div>
   <button id="public-search-more" class="public-search-more" type="button" hidden>Mostrar más resultados</button>
-  <noscript><p>Para consultar las explicaciones sin JavaScript, utiliza los recorridos por rol disponibles en esta página.</p></noscript>
+  <noscript><p>Para consultar las explicaciones sin JavaScript, utiliza las categorías y sus recorridos disponibles en esta página.</p></noscript>
 </section>
+
+{% include category-cards.html %}
 
 <section id="orientacion" class="guidance" data-catalog-url="{{ '/mantenimiento/share_catalog.json' | relative_url }}" data-site-root="{{ '/' | absolute_url }}" aria-labelledby="guidance-invite-heading">
   <div class="guidance-invite">

@@ -1,0 +1,41 @@
+/* Base compartida. No redefine los recorridos ni las fichas de FR. */
+.category-explorer { margin: 32px 0; scroll-margin-top: 90px; }
+.category-explorer > p { color: var(--muted, #687171); }
+.category-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.category-card { min-width: 0; padding: 20px; border: 1px solid var(--line, #d8dedd); border-radius: 12px; background: var(--surface, #fff); }
+.category-card[data-availability="available"] { grid-column: 1 / -1; border-top: 3px solid #0086FF; }
+.category-card-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; }
+.content .category-card h3 { font-size: 1.12rem; line-height: 1.4; margin: 0; }
+.category-card h3 a { color: var(--text, #252A2B); text-decoration-color: #0086FF; text-underline-offset: 4px; }
+.category-state { color: var(--text, #252A2B); font-size: .75rem; border: 1px solid var(--line, #d8dedd); border-radius: 999px; padding: 3px 9px; }
+.category-card p, .category-count { font-size: .88rem; color: var(--muted, #687171); margin: 9px 0 0; }
+.category-role-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.category-role-links .category-role-link { display: flex; flex: 1 1 160px; min-width: 0; min-height: 44px; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border: 1px solid var(--line, #d8dedd); border-radius: 8px; color: var(--text, #252A2B); background: transparent; text-decoration: none; box-shadow: none; }
+.category-role-link::after { display: none; }
+.category-role-link strong { font-size: .9rem; }
+.category-role-link span { font-size: .78rem; color: var(--muted, #687171); white-space: nowrap; }
+.category-role-link:hover { border-color: #0086FF; }
+.category-role-link:focus-visible, .category-explorer a:focus-visible, .maintenance-structure a:focus-visible, .maintenance-structure summary:focus-visible { outline: 2px solid #0086FF; outline-offset: 3px; }
+.category-menu-panel { max-height: min(75vh, 620px); overflow-y: auto; overscroll-behavior: contain; }
+.category-menu-group { border-bottom: 1px solid var(--line, #d8dedd); padding: 4px 0; }
+.category-menu-home { display: block; padding: 10px 12px; color: var(--text, #252A2B); font-size: .85rem; }
+.category-menu-pending { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 5px 10px; padding: 10px 12px; color: var(--text, #252A2B); font-size: .87rem; }
+.category-menu-pending small { color: var(--muted, #687171); }
+.maintenance-structure { margin: 30px 0; }
+.catalog-category, .catalog-role, .catalog-section { border-top: 1px solid var(--line, #d8dedd); min-width: 0; }
+.catalog-category > summary, .catalog-role > summary, .catalog-section > summary { cursor: pointer; padding: 14px 0; min-height: 44px; overflow-wrap: anywhere; }
+.catalog-category > summary > span, .catalog-role > summary > span, .catalog-section > summary > span { display: inline-block; margin-left: 12px; color: var(--muted, #687171); font-size: .8rem; }
+.catalog-role { margin-left: 16px; }
+.catalog-section { margin-left: 16px; }
+.catalog-topics { padding-left: 20px; }
+.catalog-topics li { padding: 8px 0; }
+.catalog-topics a { color: var(--text, #252A2B); text-decoration-color: #0086FF; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.catalog-topic-meta { display: block; margin-top: 4px; color: var(--muted, #687171); font-size: .76rem; overflow-wrap: anywhere; }
+.catalog-preparation { padding-left: 16px; }
+@media (max-width: 620px) {
+  .category-grid { grid-template-columns: minmax(0, 1fr); }
+  .category-card { padding: 16px; }
+  .category-role-links { flex-direction: column; }
+  .category-role-links .category-role-link { flex: auto; }
+  .catalog-role, .catalog-section { margin-left: 8px; }
+}

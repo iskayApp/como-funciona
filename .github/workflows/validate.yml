@@ -22,17 +22,18 @@ jobs:
       - name: Install metadata dependencies
         run: python -m pip install --disable-pip-version-check PyYAML
 
-      - name: Run share-link tests
+      - name: Run share-link tests and protect canonical sources
         run: python -m unittest discover -s tests -v
 
       - name: Check public and maintenance search JavaScript
         run: |
           node --check assets/js/maintenance-search.js
+          node --check assets/js/maintenance-status.js
           node --check assets/js/public-search.js
           node --check assets/js/guidance.js
           node --check assets/js/fr-navigation.js
           node --check assets/js/fr-explorer.js
-          node --test tests/public-search.test.cjs tests/guidance.test.cjs
+          node --test tests/public-search.test.cjs tests/guidance.test.cjs tests/category-hierarchy.test.cjs
 
       - name: Generate and validate share catalog
         run: python scripts/build_share_catalog.py
@@ -56,6 +57,9 @@ jobs:
 
       - name: Test role-local search and section filters
         run: python scripts/smoke_fr_explorer.py _site
+
+      - name: Test general home and category-role-section maintenance
+        run: python scripts/smoke_category_base.py _site
 
       - name: Upload UI test screenshots
         if: always()

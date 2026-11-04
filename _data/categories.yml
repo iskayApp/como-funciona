@@ -1,0 +1,40 @@
+# Registro de navegación, no catálogo duplicado de fichas.
+# «available» exige además una portada y fichas publicables existentes.
+# Añadir una categoría no autoriza su contenido ni modifica estados editoriales.
+- id: financiamiento-reembolsable
+  name: Financiamiento Reembolsable
+  url: /financiamiento-reembolsable/
+  status: available
+  roles:
+    - id: promotores
+      name: Promotores
+      url: /financiamiento-reembolsable/promotores/
+      description: Quiero solicitar financiamiento.
+    - id: inversores
+      name: Inversores
+      url: /financiamiento-reembolsable/inversores/
+      description: Quiero conocer cómo invertir.
+    - id: colaboradores
+      name: Colaboradores
+      url: /financiamiento-reembolsable/colaboradores/
+      description: Quiero aportar criterios técnicos.
+- id: donacion
+  name: Donación
+  url: /donacion/
+  status: preparation
+  roles: []
+- id: recompensa
+  name: Recompensa
+  url: /recompensa/
+  status: preparation
+  roles: []
+- id: precompra
+  name: Precompra
+  url: /precompra/
+  status: preparation
+  roles: []
+- id: inversion-en-acciones
+  name: Inversión en Acciones
+  url: /inversion-en-acciones/
+  status: preparation
+  roles: []

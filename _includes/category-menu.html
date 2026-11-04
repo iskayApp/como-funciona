@@ -1,0 +1,26 @@
+{%- comment -%}Se conservan los hooks fr-menu del componente accesible existente.{%- endcomment -%}
+<details class="fr-menu category-menu" data-disclosure-menu>
+  <summary>Explorar <span class="fr-chevron" aria-hidden="true"></span></summary>
+  <nav class="fr-menu-panel category-menu-panel" aria-label="Explorar Cómo funciona">
+    <a class="category-menu-home" href="{{ '/' | relative_url }}#categorias">Todas las categorías</a>
+    {% for category in site.data.categories %}
+      {% include category-context.html category=category %}
+      <div class="category-menu-group" data-menu-category="{{ category.id | escape }}">
+      {% if cf_category_ready %}
+        <a class="fr-menu-overview" href="{{ category.url | relative_url }}"{% if page.url == category.url %} aria-current="page"{% endif %}>{{ category.name | escape }} <span aria-hidden="true">→</span></a>
+        {% for role in category.roles %}
+          {% assign role_topics = cf_category_topics | where_exp: 'entry', 'entry.url contains role.url' %}
+          {% assign role_page = site.pages | where: 'url', role.url | first %}
+          {% if role_page and role_topics.size > 0 %}
+            <a class="fr-menu-role" href="{{ role.url | relative_url }}"{% if page.url contains role.url %} aria-current="{% if page.url == role.url %}page{% else %}true{% endif %}"{% endif %}><strong>{{ role.name | escape }}</strong><span>{{ role.description | escape }}</span></a>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <div class="category-menu-pending"><span>{{ category.name | escape }}</span><small>En preparación</small></div>
+      {% endif %}
+      </div>
+    {% endfor %}
+    <a class="fr-menu-search" href="{{ '/' | relative_url }}#buscar">Buscar una explicación</a>
+    <a class="category-menu-home" href="{{ '/' | relative_url }}#orientacion">Recibir orientación</a>
+  </nav>
+</details>
