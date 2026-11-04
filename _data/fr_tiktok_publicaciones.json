@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "platform": "tiktok",
+  "account": "@iskay.app",
+  "verified_at": "2026-11-04T15:40:41.531816+00:00",
+  "source": "TikTok Display API video.list (cuenta conectada), informe de GitHub Pages 2026-11-04",
+  "expected_videos": 6,
+  "expected_relations": 16,
+  "videos": [
+    {
+      "piece_code": "PRO-EDU-01",
+      "video_id": "7687702006810545440",
+      "published_at": "2026-09-20T19:30:09Z",
+      "share_url": "https://www.tiktok.com/@iskay.app/video/7687702006810545440?utm_campaign=tt4d_open_api&utm_source=sbawfpo3hbb1g27jaz",
+      "embed_link": "https://www.tiktok.com/player/v1/7687702006810545440?music_info=1&description=1&autoplay=1&loop=1&utm_campaign=tt4d_open_api&utm_source=sbawfpo3hbb1g27jaz"
+    },
+    {
+      "piece_code": "PRO-INS-01",
+      "video_id": "7687950909267053846",
+      "published_at": "2026-09-21T16:00:00Z",
+      "share_url": "https://www.tiktok.com/@iskay.app/video/7687950909267053846?utm_campaign=tt4d_open_api&utm_source=sbawfpo3hbb1g27jaz",
+      "embed_link": "https://www.tiktok.com/player/v1/7687950909267053846?music_info=1&description=1&autoplay=1&loop=1&utm_campaign=tt4d_open_api&utm_source=sbawfpo3hbb1g27jaz"
+    },
+    {
+      "piece_code": "PRO-EDU-06",
+      "video_id": "7691786784807685409",
+      "published_at": "2026-10-01T19:41:14Z",
+      "share_url": "https://www.tiktok.com/@iskay.app/video/7691786784807685409?utm_campaign=tt4d_open_api&utm_source=sbawfpo3hbb1g27jaz",
+      "embed_link": "https://www.tiktok.com/player/v1/7691786784807685409?music_info=1&description=1&autoplay=1&loop=1&utm_campaign=tt4d_open_api&utm_source=sbawfpo3hbb1g27jaz"
+    },
+    {
+      "piece_code": "PRO-INS-02",
+      "video_id": "7698689024818531606",
+      "published_at": "2026-10-20T16:00:00Z",
+      "share_url": "https://www.tiktok.com/@iskay.app/video/7698689024818531606?utm_campaign=tt4d_open_api&utm_source=sbawfpo3hbb1g27jaz",
+      "embed_link": "https://www.tiktok.com/player/v1/7698689024818531606?music_info=1&description=1&autoplay=1&loop=1&utm_campaign=tt4d_open_api&utm_source=sbawfpo3hbb1g27jaz"
+    },
+    {
+      "piece_code": "PRO-EDU-07",
+      "video_id": "7700183228686060822",
+      "published_at": "2026-10-24T16:00:00Z",
+      "share_url": "https://www.tiktok.com/@iskay.app/video/7700183228686060822?utm_campaign=tt4d_open_api&utm_source=sbawfpo3hbb1g27jaz",
+      "embed_link": "https://www.tiktok.com/player/v1/7700183228686060822?music_info=1&description=1&autoplay=1&loop=1&utm_campaign=tt4d_open_api&utm_source=sbawfpo3hbb1g27jaz"
+    },
+    {
+      "piece_code": "PRO-EDU-17",
+      "video_id": "7701409317936844054",
+      "published_at": "2026-10-27T18:01:34Z",
+      "share_url": "https://www.tiktok.com/@iskay.app/video/7701409317936844054?utm_campaign=tt4d_open_api&utm_source=sbawfpo3hbb1g27jaz",
+      "embed_link": "https://www.tiktok.com/player/v1/7701409317936844054?music_info=1&description=1&autoplay=1&loop=1&utm_campaign=tt4d_open_api&utm_source=sbawfpo3hbb1g27jaz"
+    }
+  ]
+}

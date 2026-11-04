@@ -75,11 +75,62 @@ def audit(site, config, data):
             'reachable': len(codes) - len(missing) - len(orphaned)}
 
 
+
+def audit_verified_tiktok(site, config, sharing):
+    """Comprueba que el reproductor/ancla y los enlaces existen en el HTML real."""
+    report = sharing.get("verified_tiktok")
+    if not report:
+        return {"checked": 0, "errors": []}
+    origin = config['url'].rstrip('/')
+    base = config.get('baseurl', '').rstrip('/')
+    errors = []
+    observed_primary = observed_related = 0
+    for ficha in sharing.get("items", []):
+        assets = [asset for piece in ficha.get("marketing_pieces", [])
+                  for asset in piece.get("assets", [])
+                  if asset.get("provider") == "tiktok"]
+        if not assets:
+            continue
+        canonical = ficha["canonical_url"]
+        route = urlsplit(canonical).path
+        if not canonical.startswith(origin + base + '/') or not route.startswith(base + '/'):
+            errors.append(f'{ficha["code"]}: URL canónica inesperada')
+            continue
+        route = route[len(base):].lstrip('/')
+        path = site / route / 'index.html'
+        if not path.is_file():
+            errors.append(f'{ficha["code"]}: no se generó la ficha')
+            continue
+        html = path.read_text(encoding='utf-8')
+        for asset in assets:
+            if not asset.get("original_url"):
+                errors.append(f'{ficha["code"]}/{asset["id"]}: sin enlace original')
+                continue
+            if asset.get("media_url"):
+                anchor = 'id="media-' + asset["id"] + '"'
+                player = '/player/v1/' + str(asset.get("video_id"))
+                if anchor not in html:
+                    errors.append(f'{ficha["code"]}/{asset["id"]}: falta ancla multimedia')
+                if player not in html:
+                    errors.append(f'{ficha["code"]}/{asset["id"]}: falta iframe de TikTok')
+                observed_primary += 1
+            else:
+                if '/@iskay.app/video/' + str(asset.get("video_id")) not in html:
+                    errors.append(f'{ficha["code"]}/{asset["id"]}: falta enlace complementario')
+                observed_related += 1
+    if observed_primary != report.get("principal") or observed_related != report.get("complementaria"):
+        errors.append("El total multimedia del HTML no coincide con los enlaces verificados")
+    return {"checked": observed_primary + observed_related, "principal": observed_primary,
+            "complementaria": observed_related, "errors": errors}
+
+
 def main():
     site = Path(sys.argv[1] if len(sys.argv) > 1 else ROOT / '_site')
     config = yaml.safe_load((ROOT / '_config.yml').read_text(encoding='utf-8'))
     data = json.loads((site / 'mantenimiento/control_catalog.json').read_text(encoding='utf-8'))
     result = audit(site, config, data)
+    sharing = json.loads((site / 'mantenimiento/share_catalog.json').read_text(encoding='utf-8'))
+    result["tiktok"] = audit_verified_tiktok(site, config, sharing)
     # The container-generated site is read-only to this runner. Keep evidence in
     # the runner-owned artifact directory rather than changing ownership or files.
     artifacts = ROOT / 'ui-artifacts'
@@ -87,6 +138,8 @@ def main():
     (artifacts / 'maintenance-route-audit.json').write_text(
         json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(result, ensure_ascii=False))
+    if result["tiktok"]["errors"]:
+        raise SystemExit("Falta multimedia TikTok en las fichas: " + "; ".join(result["tiktok"]["errors"]))
     if result['missing_routes'] or result['unreachable_topics'] or not result['unique_codes'] or not result['unique_routes']:
         raise SystemExit('La publicación contiene rutas duplicadas, ausentes o fichas sin acceso desde la portada.')
 

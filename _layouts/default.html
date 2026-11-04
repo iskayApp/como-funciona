@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=20261102-orientacion">
   <link rel="stylesheet" href="{{ '/assets/css/fr-navigation.css' | relative_url }}?v=20261103-integracion">
   <link rel="stylesheet" href="{{ '/assets/css/category-navigation.css' | relative_url }}?v=20261104-base">
+  {% if page.code and page.category == "Financiamiento Reembolsable" %}<link rel="stylesheet" href="{{ '/assets/css/fr-tiktok.css' | relative_url }}?v=20261104-tiktok">{% endif %}
   <script src="{{ '/assets/js/share-links.js' | relative_url }}" defer></script>
   <script src="{{ '/assets/js/fr-navigation.js' | relative_url }}?v=20261103-integracion" defer></script>
   {% if fr_current_role != '' and page.url == fr_current_url %}
@@ -53,6 +54,7 @@
     {% if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>{% endif %}
     <article class="content{% if fr_is_stage %} fr-stage-content{% endif %}">
       {{ content }}
+      {% include fr-tiktok-videos.html %}
     </article>
 
     {% include share-links.html %}

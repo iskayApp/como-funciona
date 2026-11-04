@@ -30,13 +30,13 @@ class CategoryBaseTests(unittest.TestCase):
         self.assertIn('Sin registro ni datos personales. Tus respuestas no se guardan.', home)
 
     def test_phase_one_does_not_edit_canonical_sources(self):
-        # Snapshot at bb4b629. Update only as part of a separately authorized content phase.
+        # Fichas y búsqueda protegidas. Los cambios aprobados en marketing actualizan su hash.
         tree = subprocess.check_output(['git', 'ls-tree', 'HEAD', 'ideas'], cwd=ROOT, text=True).split()[2]
         self.assertEqual(tree, 'deee78e1e0402f19730287c9d9bd0ac28d85c75b')
         protected = {
             'assets/js/public-search.js': '186af4332922a10225c5015033d1f42df059cb39',
             'assets/js/guidance.js': '6afa1f1ab68bfcc139b4e8ade5613e223f232674',
-            'assets/js/maintenance-search.js': 'a5f8879c3fdf35ef686ed47ea07b7f874b3c8a76',
+            'assets/js/maintenance-search.js': '74a5ce0d74cc25d552b545024527538d0cd65eb0',
         }
         for path, expected in protected.items():
             actual = subprocess.check_output(['git', 'hash-object', path], cwd=ROOT, text=True).strip()

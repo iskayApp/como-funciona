@@ -245,6 +245,12 @@ media:
 
 El componente común de las fichas genera automáticamente tres destinos: ficha completa, multimedia en la ficha (mediante un ancla permanente derivada de `media.id`) y recurso original (a partir de `original_url`, `share_url`, `url`, identificador de YouTube o `src`). No se deben duplicar URLs en textos manuales. Los identificadores publicados no deben cambiar al actualizar contenido, títulos o proveedores. Para TikTok no basta el identificador del video sin un enlace real de publicación. Detalles y validación en [ENLACES_COMPARTIBLES.md](./ENLACES_COMPARTIBLES.md).
 
+## Ensamblaje verificado de TikTok en Financiamiento Reembolsable
+
+Para las publicaciones que ya existen en la cuenta oficial @iskay.app se utiliza el registro `_data/fr_tiktok_publicaciones.json`, contrastado con el catálogo aprobado de piezas. El componente `_includes/fr-tiktok-videos.html` reproduce los vídeos únicamente en las fichas de relación **Principal** mediante reproductores oficiales de TikTok, sin autoplay, abiertos voluntariamente; la relación **Complementaria** ofrece un enlace a la publicación original. Las URL de TikTok proceden de su API oficial, y el identificador técnico deriva de la combinación estable de ficha y pieza (no de su proximidad numérica).
+
+La integración no cambia los textos de las fichas ni declara que un vídeo esté revisado contra una versión funcional si ese dato no se ha registrado. En el catálogo compartido, los ocho vídeos embebidos ofrecen URL de ancla dentro de la ficha y URL original; los ocho enlaces complementarios ofrecen únicamente la URL original, nunca un ancla ficticia. La misma ficha puede vincular varios vídeos y cada vídeo puede vincular varias fichas, sin duplicar archivos multimedia.
+
 ## Campos comunes
 
 | Campo | Función |
