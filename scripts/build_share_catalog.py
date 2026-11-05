@@ -38,6 +38,14 @@ def public_url(config, path):
     return config["url"].rstrip("/") + config.get("baseurl", "").rstrip("/") + path
 
 
+def excluded_from_build(path, config):
+    """Los borradores de categorías excluidas no tienen una URL publicada."""
+    relative = path.relative_to(ROOT).as_posix()
+    return any(relative == str(rule).rstrip("/")
+               or relative.startswith(str(rule).rstrip("/") + "/")
+               for rule in config.get("exclude", []))
+
+
 def valid_http_url(value):
     if not isinstance(value, str):
         return False
@@ -324,13 +332,26 @@ def attach_verified_tiktok(catalog, errors):
             # Evitar duplicar una referencia TikTok ya existente en el front matter;
             # FR-PRO-01 contenía un video_id sin URL original.
             matched_originals = [
-                old for old in item["distribution"]
+                old for old in item["media"] + item["distribution"]
                 if old.get("provider") == "tiktok" and old.get("video_id") == video_id
             ]
+            declared_versions = {str(old["derived_from_version"]): old["derived_from_version"]
+                                 for old in matched_originals if old.get("derived_from_version") is not None}
+            if len(declared_versions) > 1:
+                errors.append(f"{path}: versiones derivadas contradictorias para {ficha_code}/{video_id}")
+            elif declared_versions:
+                # La versión de origen solo se conserva para la coincidencia
+                # exacta ficha + vídeo, sin extenderla a otras asociaciones.
+                asset["derived_from_version"] = next(iter(declared_versions.values()))
             for old in matched_originals:
-                item["distribution"].remove(old)
+                for collection in (item["media"], item["distribution"]):
+                    if old in collection:
+                        collection.remove(old)
                 if old in item["unassigned_assets"]:
                     item["unassigned_assets"].remove(old)
+            for group in item["marketing_pieces"]:
+                group["assets"] = [asset if old in matched_originals else old
+                                   for old in group["assets"]]
 
             target = "media" if relation == "Principal" else "distribution"
             if any(x["id"] == asset_id for x in item[target]):
@@ -414,7 +435,8 @@ def build_catalog():
             # Solo las fichas publicables deben aparecer en la búsqueda de usuarios;
             # el mantenimiento mantiene el inventario completo.
             "public_searchable": (
-                data.get("published") is not False
+                not excluded_from_build(path, config)
+                and data.get("published") is not False
                 and data.get("visibility") != "private"
                 and data.get("status") not in ("draft", "review", "archived")
             ),
@@ -451,6 +473,7 @@ def build_catalog():
                 "type": media.get("type"),
                 "title": media.get("title") or media.get("caption") or media_id,
                 "provider": media.get("provider") or media.get("storage"),
+                "video_id": str(media["video_id"]) if media.get("video_id") else None,
                 "derived_from_version": media.get("derived_from_version"),
                 "media_url": canonical + "#" + anchor,
                 "original_url": origin,

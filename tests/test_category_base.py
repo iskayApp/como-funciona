@@ -1,4 +1,4 @@
-"""Phase 1: general shell, with FR and existing search/guidance protected."""
+"""Review snapshot: preserve FR sources and the verified shared components."""
 from pathlib import Path
 import subprocess
 import unittest
@@ -29,14 +29,15 @@ class CategoryBaseTests(unittest.TestCase):
         self.assertLess(home.index('id="orientacion"'), home.index('include category-cards.html'))
         self.assertIn('Sin registro ni datos personales. Tus respuestas no se guardan.', home)
 
-    def test_phase_one_does_not_edit_canonical_sources(self):
-        # Contenido canónico protegido; hashes actualizados por los cambios aprobados de diseño y marketing.
+    def test_review_snapshot_preserves_canonical_sources(self):
+        # Revisión 2026-11-05: solo formato INV004 y correcciones verificadas de búsqueda/orientación.
+        # Las pruebas de comportamiento cubren cada corrección; códigos, URL y palabras se conservan.
         tree = subprocess.check_output(['git', 'ls-tree', 'HEAD', 'ideas'], cwd=ROOT, text=True).split()[2]
-        self.assertEqual(tree, 'deee78e1e0402f19730287c9d9bd0ac28d85c75b')
+        self.assertEqual(tree, '89d23ea6b5ba9548af66fe5eadf0aafdcb681291')
         protected = {
-            'assets/js/public-search.js': 'dd728f8be3f2a42f0b7f7879dc5870ccba1a72fa',
-            'assets/js/guidance.js': '6afa1f1ab68bfcc139b4e8ade5613e223f232674',
-            'assets/js/maintenance-search.js': '74a5ce0d74cc25d552b545024527538d0cd65eb0',
+            'assets/js/public-search.js': '2184f044adf2daaee453a2a055acf0fcfcb79101',
+            'assets/js/guidance.js': '053ea612c0a3b857f68607c00447d7849fa55819',
+            'assets/js/maintenance-search.js': 'cf5df58a8737a8570d8aa6f609f4c4c6168c661c',
         }
         for path, expected in protected.items():
             actual = subprocess.check_output(['git', 'hash-object', path], cwd=ROOT, text=True).strip()

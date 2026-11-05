@@ -92,7 +92,7 @@ eyebrow: "Guía de uso · iskay.app"
 {% include category-cards.html %}
 {% include home-content.html %}
 
-<script src="{{ '/assets/js/public-search.js' | relative_url }}?v=20261104-visual" defer></script>
-<script src="{{ '/assets/js/guidance.js' | relative_url }}?v=20261102-orientacion" defer></script>
+<script src="{{ '/assets/js/public-search.js' | relative_url }}?v=20261105-revision" defer></script>
+<script src="{{ '/assets/js/guidance.js' | relative_url }}?v=20261105-revision" defer></script>
 
 <div class="fr-editorial-note">Publicación de prueba. Las fichas pendientes de revisión editorial conservan su aviso. Estamos validando la experiencia pública y móvil antes de integrar esta documentación al dominio institucional de iskay.app.</div>

@@ -4,6 +4,7 @@
   "use strict";
 
   function fallbackCopy(value) {
+    var previousFocus = document.activeElement;
     var field = document.createElement("textarea");
     field.value = value;
     field.setAttribute("readonly", "");
@@ -11,11 +12,14 @@
     field.style.top = "0";
     field.style.opacity = "0";
     document.body.appendChild(field);
-    field.focus();
-    field.select();
-    var success = document.execCommand("copy");
-    document.body.removeChild(field);
-    if (!success) throw new Error("No se pudo acceder al portapapeles");
+    try {
+      field.focus();
+      field.select();
+      if (!document.execCommand("copy")) throw new Error("No se pudo acceder al portapapeles");
+    } finally {
+      document.body.removeChild(field);
+      if (previousFocus && typeof previousFocus.focus === "function") previousFocus.focus();
+    }
   }
 
   async function copyText(value) {

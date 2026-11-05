@@ -3,6 +3,32 @@
  */
 (() => {
   "use strict";
+  const normalize = value => String(value == null ? "" : value)
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("es").trim();
+  const publishedItems = values => Array.isArray(values)
+    ? values.filter(item => item && item.public_searchable === true) : [];
+  const productionCode = piece => (piece.code || "") +
+    (piece.category_code ? " (" + piece.category_code + ")" : "");
+
+  function matches(item, query, cat, selectedRole) {
+    if (cat && item.category !== cat) return false;
+    if (selectedRole && item.role !== selectedRole) return false;
+    if (!query) return true;
+    const pieces = [...(Array.isArray(item.media) ? item.media : []),
+      ...(Array.isArray(item.distribution) ? item.distribution : [])];
+    const marketing = Array.isArray(item.marketing_pieces) ? item.marketing_pieces : [];
+    const editorial = Array.isArray(item.editorial_pieces) ? item.editorial_pieces : [];
+    const haystack = normalize([
+      item.code, item.title, item.category, item.role, item.stage,
+      ...marketing.flatMap(piece => [productionCode(piece), piece.title, piece.category_code]),
+      ...editorial.flatMap(piece => [productionCode(piece), piece.title, piece.relation]),
+      ...pieces.flatMap(piece => [piece.title, piece.id, piece.provider, piece.type])
+    ].filter(Boolean).join(" "));
+    return normalize(query).split(/\s+/).every(token => haystack.includes(token));
+  }
+
+  if (typeof module !== "undefined" && module.exports) module.exports = { publishedItems, matches };
+  if (typeof document === "undefined") return;
   const root = document.getElementById("maintenance-search");
   if (!root) return;
 
@@ -14,9 +40,6 @@
   const count = root.querySelector("#maint-search-count");
   const feedback = root.querySelector("#maint-search-feedback");
   let items = [];
-
-  const normalize = value => String(value == null ? "" : value)
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("es").trim();
 
   const safeUrl = value => {
     if (typeof value !== "string") return "";
@@ -162,23 +185,6 @@
     return card;
   }
 
-  function matches(item, query, cat, selectedRole) {
-    if (cat && item.category !== cat) return false;
-    if (selectedRole && item.role !== selectedRole) return false;
-    if (!query) return true;
-    const pieces = [...(Array.isArray(item.media) ? item.media : []),
-      ...(Array.isArray(item.distribution) ? item.distribution : [])];
-    const marketing = Array.isArray(item.marketing_pieces) ? item.marketing_pieces : [];
-    const editorial = Array.isArray(item.editorial_pieces) ? item.editorial_pieces : [];
-    const haystack = normalize([
-      item.code, item.title, item.category, item.role, item.stage,
-      ...marketing.flatMap(piece => [piece.code, piece.title, piece.category_code]),
-       ...editorial.flatMap(piece => [piece.code, piece.title, piece.relation]),
-      ...pieces.flatMap(piece => [piece.title, piece.id, piece.provider, piece.type])
-    ].filter(Boolean).join(" "));
-    return normalize(query).split(/\s+/).every(token => haystack.includes(token));
-  }
-
   function render() {
     const hasCriteria = Boolean(normalize(search.value) || category.value || role.value);
     if (!hasCriteria) {
@@ -236,7 +242,9 @@
     })
     .then(data => {
       if (!data || !Array.isArray(data.items)) throw new Error("Formato de catálogo no válido");
-      items = data.items;
+      // Esta consulta copia enlaces de fichas publicadas. Las referencias en
+      // preparación se consultan en su vista de control, sin enlaces ficticios.
+      items = publishedItems(data.items);
       const assembly = root.querySelector("#maint-assembly-summary");
       if (assembly && data.editorial_assembly) {
         const a = data.editorial_assembly;

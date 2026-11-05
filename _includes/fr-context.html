@@ -1,33 +1,59 @@
 {%- comment -%}
-Navigation is derived from the canonical pages, not from a second content catalog.
-Legacy Promotores pages do not have role metadata; their existing URL is authoritative.
+Contexto común de categoría, rol y etapa, derivado del registro y las páginas reales.
+Se conservan nombres fr_* para compatibilidad con las fichas y estilos existentes.
+Las URLs del registro resuelven también las fichas antiguas sin metadato role.
 {%- endcomment -%}
-{%- assign fr_root = '/financiamiento-reembolsable/' -%}
-{%- assign fr_roles = 'Promotores|Inversores|Colaboradores' | split: '|' -%}
-{%- assign fr_slugs = 'promotores|inversores|colaboradores' | split: '|' -%}
-{%- assign fr_descriptions = 'Quiero solicitar financiamiento.|Quiero conocer cómo invertir.|Quiero aportar criterios técnicos.' | split: '|' -%}
-{%- assign fr_all_pages = site.pages | where: 'category', 'Financiamiento Reembolsable' | sort: 'path' -%}
-{%- assign fr_topics = fr_all_pages | where_exp: 'entry', 'entry.code != nil' | where_exp: 'entry', 'entry.published != false' -%}
+{%- assign fr_empty = '' | split: '|' -%}
+{%- assign fr_category = site.data.categories | where: 'name', page.category | first -%}
+{%- assign fr_category_name = '' -%}
+{%- assign fr_category_ready = false -%}
+{%- assign fr_root = '' -%}
+{%- assign fr_role_definitions = fr_empty -%}
+{%- assign fr_roles = fr_empty -%}
+{%- assign fr_slugs = fr_empty -%}
+{%- assign fr_descriptions = fr_empty -%}
+{%- assign fr_topics = fr_empty -%}
 {%- assign fr_current_role = '' -%}
 {%- assign fr_current_url = '' -%}
 {%- assign fr_current_description = '' -%}
+{%- assign fr_current_topics = fr_empty -%}
+{%- assign fr_sections = fr_empty -%}
+{%- assign fr_current_role_ready = false -%}
+{%- assign fr_has_areas = false -%}
 {%- assign fr_is_page = false -%}
-{%- if page.url contains fr_root -%}
-  {%- assign fr_is_page = true -%}
-  {%- for fr_role in fr_roles -%}
-    {%- assign fr_candidate_url = fr_root | append: fr_slugs[forloop.index0] | append: '/' -%}
-    {%- if page.url contains fr_candidate_url -%}
-      {%- assign fr_current_role = fr_role -%}
-      {%- assign fr_current_url = fr_candidate_url -%}
-      {%- assign fr_current_description = fr_descriptions[forloop.index0] -%}
-    {%- endif -%}
-  {%- endfor -%}
-{%- endif -%}
 {%- assign fr_is_stage = false -%}
-{%- if fr_current_role != '' -%}
-  {%- assign fr_current_topics = fr_topics | where_exp: 'entry', 'entry.url contains fr_current_url' -%}
-  {%- assign fr_sections = fr_current_topics | group_by: 'stage_url' -%}
-  {%- if page.code == nil and page.url != fr_current_url -%}
-    {%- assign fr_is_stage = true -%}
+{%- if fr_category -%}
+  {%- assign fr_category_name = fr_category.name -%}
+  {%- assign fr_root = fr_category.url -%}
+  {%- assign fr_role_definitions = fr_category.roles -%}
+  {%- assign fr_roles = fr_role_definitions | map: 'name' -%}
+  {%- assign fr_slugs = fr_role_definitions | map: 'id' -%}
+  {%- assign fr_descriptions = fr_role_definitions | map: 'description' -%}
+  {%- include category-context.html category=fr_category -%}
+  {%- assign fr_category_ready = cf_category_ready -%}
+  {%- if fr_category_ready -%}{%- assign fr_topics = cf_category_topics -%}{%- endif -%}
+  {%- assign fr_category_prefix = page.url | slice: 0, fr_root.size -%}
+  {%- if fr_category_prefix == fr_root -%}
+    {%- assign fr_is_page = true -%}
+    {%- for fr_role in fr_role_definitions -%}
+      {%- assign fr_role_prefix = page.url | slice: 0, fr_role.url.size -%}
+      {%- if fr_role_prefix == fr_role.url -%}
+        {%- assign fr_current_role = fr_role.name -%}
+        {%- assign fr_current_url = fr_role.url -%}
+        {%- assign fr_current_description = fr_role.description -%}
+        {%- assign fr_current_topics = fr_topics | where_exp: 'entry', 'entry.url contains fr_current_url' -%}
+        {%- assign fr_role_page = site.pages | where: 'url', fr_current_url | where_exp: 'entry', 'entry.published != false' | where_exp: 'entry', 'entry.visibility != "private"' | where_exp: 'entry', 'entry.status != "draft"' | where_exp: 'entry', 'entry.status != "review"' | where_exp: 'entry', 'entry.status != "archived"' | first -%}
+        {%- if fr_category_ready and fr_role_page and fr_current_topics.size > 0 -%}
+          {%- assign fr_current_role_ready = true -%}
+          {%- assign fr_sections = fr_current_topics | group_by: 'stage_url' -%}
+          {%- assign fr_current_section = fr_sections | where: 'name', page.url | first -%}
+          {%- if page.code == nil and fr_current_section -%}{%- assign fr_is_stage = true -%}{%- endif -%}
+        {%- endif -%}
+        {%- if fr_role.section_layout == 'areas' -%}{%- assign fr_has_areas = true -%}{%- endif -%}
+        {%- comment -%}Compatibilidad con el recorrido FR ya aprobado, sin imponerlo a otros Colaboradores.{%- endcomment -%}
+        {%- if fr_category.id == 'financiamiento-reembolsable' and fr_role.id == 'colaboradores' -%}{%- assign fr_has_areas = true -%}{%- endif -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
   {%- endif -%}
 {%- endif -%}

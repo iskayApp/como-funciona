@@ -1,7 +1,8 @@
 {%- comment -%}La disponibilidad se verifica contra páginas reales, nunca solo contra una etiqueta.{%- endcomment -%}
 {%- assign cf_category = include.category -%}
-{%- assign cf_category_topics = site.pages | where: 'category', cf_category.name | where_exp: 'entry', 'entry.code != nil' | where_exp: 'entry', 'entry.published != false' | sort: 'path' -%}
-{%- assign cf_category_page = site.pages | where: 'url', cf_category.url | first -%}
+{%- assign cf_public_pages = site.pages | where_exp: 'entry', 'entry.published != false' | where_exp: 'entry', 'entry.visibility != "private"' | where_exp: 'entry', 'entry.status != "draft"' | where_exp: 'entry', 'entry.status != "review"' | where_exp: 'entry', 'entry.status != "archived"' -%}
+{%- assign cf_category_topics = cf_public_pages | where: 'category', cf_category.name | where_exp: 'entry', 'entry.code != nil' | sort: 'path' -%}
+{%- assign cf_category_page = cf_public_pages | where: 'url', cf_category.url | first -%}
 {%- assign cf_category_ready = false -%}
 {%- if cf_category.status == 'available' and cf_category_page and cf_category_topics.size > 0 -%}
   {%- assign cf_category_ready = true -%}

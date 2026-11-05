@@ -1,14 +1,20 @@
-<div class="fr-hub" data-fr-role="{{ fr_current_role }}">
+<div class="fr-hub" data-fr-role="{{ fr_current_role | escape }}" data-section-layout="{% if fr_has_areas %}areas{% else %}stages{% endif %}">
   <div class="fr-hub-heading">
-    <p class="fr-overline">Financiamiento Reembolsable</p>
-    <h1>{{ fr_current_role }}</h1>
+    <p class="fr-overline">{{ fr_category_name | default: page.category | escape }}</p>
+    <h1>{{ fr_current_role | default: page.role | default: page.title | escape }}</h1>
     <p class="fr-hub-intro">{{ page.description }}</p>
-    <p class="fr-hub-meta">{{ fr_current_topics.size }} fichas · {% if fr_current_role == 'Colaboradores' %}Base común y cuatro áreas de colaboración{% else %}{{ fr_sections.size }} etapas{% endif %}</p>
+    {% if fr_current_role_ready %}
+    {% assign fr_area_sections = fr_sections | where_exp: 'section', 'section.name contains "/areas/"' %}
+    <p class="fr-hub-meta">{{ fr_current_topics.size }} fichas · {% if fr_has_areas %}Base común y {{ fr_area_sections.size }} áreas de colaboración{% else %}{{ fr_sections.size }} etapas{% endif %}</p>
     <div class="fr-hub-actions">
       <a class="fr-start" href="{{ fr_current_topics.first.url | relative_url }}">Empezar por la primera ficha <span aria-hidden="true">→</span></a>
       <a href="{{ '/' | relative_url }}#buscar">Buscar una explicación</a>
     </div>
+    {% else %}
+    <p class="fr-editorial-note">Este recorrido está en preparación. Sus fichas estarán disponibles cuando se complete su publicación.</p>
+    {% endif %}
   </div>
+  {% if fr_current_role_ready %}
   <div class="hub-layout">
     <aside class="hub-index"><details open><summary>{% include ui-icon.html name='route' %} Tu recorrido</summary><nav aria-label="Etapas del recorrido">
     {% for section in fr_sections %}
@@ -52,7 +58,7 @@
     {% assign fr_section_group = 'Etapas' %}
     {% assign fr_section_label = 'Etapa' %}
     {% assign fr_section_number = forloop.index %}
-    {% if fr_current_role == 'Colaboradores' %}
+    {% if fr_has_areas %}
       {% assign fr_section_group = 'Base común' %}
       {% assign fr_section_label = 'Base común' %}
       {% assign fr_common_number = fr_common_number | plus: 1 %}
@@ -96,4 +102,5 @@
   </div>
   </div></div>
   <p class="fr-editorial-note">Las fichas pendientes de revisión editorial conservan su aviso. La publicación de prueba no implica aprobación de su contenido.</p>
+  {% endif %}
 </div>

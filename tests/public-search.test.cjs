@@ -131,6 +131,8 @@ test("carga vacía, búsqueda acotada, paginación, enlaces seguros y limpiar fi
   assert.equal(more.hidden, false);
   more.dispatch("click");
   assert.equal(results.children.length, 9, "Mostrar resultados siguientes a petición");
+  assert.equal(results.children[6].focused, true,
+    "Llevar el foco al primer resultado nuevo, incluso cuando se oculta Mostrar más");
 
   const stage = controls["#public-search-stage"];
   const type = controls["#public-search-type"];
