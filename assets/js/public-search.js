@@ -190,8 +190,12 @@
   });
 
   more.addEventListener("click", () => {
+    const firstNewIndex = visibleLimit;
     visibleLimit += pageSize;
     render(false);
+    // Los enlaces nuevos aparecen antes del botón, que puede quedar oculto.
+    // Continuar desde el primero de ellos sin reiniciar la navegación de teclado.
+    results.children[firstNewIndex]?.focus();
   });
 
   fetch(root.dataset.catalogUrl, {cache: "no-store"})

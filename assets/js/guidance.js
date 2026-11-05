@@ -61,6 +61,9 @@
     history.push({...state});
     state = {...state, ...next};
     render();
+    // La respuesta elegida se elimina al cambiar de pregunta. Mantener el
+    // recorrido de teclado sobre la pregunta nueva y sus opciones.
+    question.focus();
   }
 
   function matching() {

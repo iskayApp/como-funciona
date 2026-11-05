@@ -279,6 +279,7 @@ def main():
                     "canonical_url": permalink,
                     "relation": "media",
                     "asset_id": media.get("id"),
+                    "version": media.get("version"),
                     "derived_from_version": media.get("derived_from_version"),
                     "content_version": data.get("content_version"),
                     "reviewed": media.get("reviewed") or data.get("reviewed"),
@@ -297,6 +298,7 @@ def main():
                         "canonical_url": permalink,
                         "relation": "distribution",
                         "asset_id": item.get("id"),
+                        "version": item.get("version"),
                         "derived_from_version": item.get("derived_from_version"),
                         "content_version": data.get("content_version"),
                         "reviewed": item.get("reviewed") or data.get("reviewed"),
@@ -341,6 +343,22 @@ def main():
                         piece_code=piece_code,
                         asset_id=f"{ficha.lower()}-tiktok-{piece_code.lower()}",
                     )
+                    # El inventario y el diagnóstico de la ficha deben comprobar
+                    # las mismas relaciones del registro. No basta con consultar
+                    # los IDs: cada recurso necesita su resultado en media_rows.
+                    page.setdefault("registered_tiktok", []).append({
+                        "id": record["asset_id"], "type": "video",
+                        "provider": "tiktok", "storage": "external",
+                        "video_id": vid, "relation": relation,
+                        "title": video.get("title") or piece.get("title"),
+                        "src": video.get("embed_link"),
+                        "url": video.get("share_url"),
+                        # Solo heredar lo declarado para este mismo vídeo en
+                        # esta misma ficha; el cruce no demuestra una revisión.
+                        "version": record.get("version"),
+                        "derived_from_version": record.get("derived_from_version"),
+                        "reviewed": record.get("reviewed"),
+                    })
 
     access_token, tiktok_service = refresh_tiktok_access()
     all_tiktok = []
@@ -384,6 +402,8 @@ def main():
         page_statuses = []
         checks = []
         media_rows = []
+        registered_tiktok = rec.get("registered_tiktok", [])
+        registered_ids = {asset["video_id"] for asset in registered_tiktok}
 
         if content_version is None:
             checks.append({
@@ -433,12 +453,18 @@ def main():
             })
             page_statuses.append(st)
 
-        for media in data.get("media") or []:
+        source_media = [media for media in data.get("media") or []
+                        if not isinstance(media, dict)
+                        or not (media.get("provider") == "tiktok"
+                                and str(media.get("video_id") or "") in registered_ids)]
+        embedded_tiktok = [asset for asset in registered_tiktok if asset["relation"] == "media"]
+        for media in source_media + embedded_tiktok:
             if not isinstance(media, dict):
                 continue
-            totals["recursos"] += 1
             mid = media.get("id") or "sin-id"
             storage = media.get("storage")
+            if storage == "internal":
+                totals["recursos"] += 1
             provider = media.get("provider")
             derived = media.get("derived_from_version")
             mstatus = []
@@ -513,12 +539,14 @@ def main():
                 "storage": storage,
                 "version": media.get("version"),
                 "derived_from_version": derived,
+                "reviewed": media.get("reviewed"),
                 "status": st,
                 "detail": " ".join(detail),
                 "src": media.get("src"),
                 "video_id": media.get("video_id"),
-                "title": (resolved_video or {}).get("title") if resolved_video else None,
-                "url": ((resolved_video or {}).get("share_url") or (resolved_video or {}).get("embed_link")) if resolved_video else media.get("src"),
+                "title": (resolved_video or {}).get("title") or media.get("title"),
+                "url": ((resolved_video or {}).get("share_url") or (resolved_video or {}).get("embed_link")
+                        or media.get("url") or media.get("src")),
             })
             page_statuses.append(st)
 
@@ -529,6 +557,9 @@ def main():
         else:
             youtube_items = []
             tiktok_items = []
+        tiktok_items = [asset for asset in tiktok_items
+                       if str(asset.get("video_id") or "") not in registered_ids]
+        tiktok_items.extend(asset for asset in registered_tiktok if asset["relation"] == "distribution")
 
         for y in youtube_items:
             totals["videos_youtube"] += 1
@@ -555,6 +586,7 @@ def main():
                 "storage": "external",
                 "version": y.get("version"),
                 "derived_from_version": derived,
+                "reviewed": y.get("reviewed"),
                 "status": st,
                 "detail": " ".join(detail),
                 "video_id": y.get("video_id"),
@@ -601,6 +633,7 @@ def main():
                 "storage": "external",
                 "version": t.get("version"),
                 "derived_from_version": derived,
+                "reviewed": t.get("reviewed"),
                 "status": st,
                 "detail": " ".join(detail),
                 "video_id": vid,
@@ -631,6 +664,14 @@ def main():
             "checks": checks,
             "media": media_rows,
         })
+
+    # Un vídeo puede estar relacionado con varias fichas. El panel distingue
+    # publicaciones únicas de ubicaciones para no inflar el inventario.
+    totals["relaciones_tiktok"] = totals["videos_tiktok"]
+    totals["videos_tiktok"] = len({
+        str(media["video_id"]) for item in items for media in item["media"]
+        if media.get("provider") == "tiktok" and media.get("video_id")
+    })
 
     tiktok_inventory_videos = []
     for video in all_tiktok:

@@ -1,17 +1,28 @@
+{% if fr_category_ready %}
 <section class="fr-role-picker" aria-labelledby="fr-role-picker-title">
   <h2 id="fr-role-picker-title">Elige tu recorrido</h2>
-  <p class="fr-muted">Tres formas de participar. Una misma guía para orientarte.</p>
+  <p class="fr-muted">Consulta las explicaciones según tu forma de participar.</p>
   <div class="fr-role-grid">
-    {% for fr_card_role in fr_roles %}
-      {% assign fr_card_url = fr_root | append: fr_slugs[forloop.index0] | append: '/' %}
+    {% for fr_card_role in fr_role_definitions %}
+      {% assign fr_card_url = fr_card_role.url %}
       {% assign fr_card_topics = fr_topics | where_exp: 'entry', 'entry.url contains fr_card_url' %}
       {% assign fr_card_sections = fr_card_topics | group_by: 'stage_url' %}
+      {% assign fr_card_page = site.pages | where: 'url', fr_card_url | where_exp: 'entry', 'entry.published != false' | where_exp: 'entry', 'entry.visibility != "private"' | where_exp: 'entry', 'entry.status != "draft"' | where_exp: 'entry', 'entry.status != "review"' | where_exp: 'entry', 'entry.status != "archived"' | first %}
+      {% assign fr_card_has_areas = false %}
+      {% if fr_card_role.section_layout == 'areas' %}{% assign fr_card_has_areas = true %}{% endif %}
+      {% if fr_category.id == 'financiamiento-reembolsable' and fr_card_role.id == 'colaboradores' %}{% assign fr_card_has_areas = true %}{% endif %}
+      {% assign fr_card_areas = fr_card_sections | where_exp: 'section', 'section.name contains "/areas/"' %}
+      {% if fr_category_ready and fr_card_page and fr_card_topics.size > 0 %}
       <a class="fr-role-card" href="{{ fr_card_url | relative_url }}">
-        <span class="fr-card-kicker">{{ fr_descriptions[forloop.index0] }}</span>
-        <h3>{{ fr_card_role }}</h3>
-        <span class="fr-card-meta">{{ fr_card_topics.size }} fichas · {% if fr_card_role == 'Colaboradores' %}Base común y 4 áreas{% else %}{{ fr_card_sections.size }} etapas{% endif %}</span>
+        <span class="fr-card-kicker">{{ fr_card_role.description | escape }}</span>
+        <h3>{{ fr_card_role.name | escape }}</h3>
+        <span class="fr-card-meta">{{ fr_card_topics.size }} fichas · {% if fr_card_has_areas %}Base común y {{ fr_card_areas.size }} áreas{% else %}{{ fr_card_sections.size }} etapas{% endif %}</span>
         <span class="fr-card-action">Explorar recorrido <span aria-hidden="true">→</span></span>
       </a>
+      {% endif %}
     {% endfor %}
   </div>
 </section>
+{% else %}
+<p class="fr-editorial-note">Esta categoría está en preparación. Sus recorridos estarán disponibles cuando se complete su publicación.</p>
+{% endif %}

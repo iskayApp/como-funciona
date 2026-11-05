@@ -9,7 +9,7 @@ from scripts import build_share_catalog as catalog
 
 
 class ShareCatalogTests(unittest.TestCase):
-    def build_with(self, meta, body="", taxonomy=None):
+    def build_with(self, meta, body="", taxonomy=None, extra_config=""):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             ideas = root / "ideas"
@@ -17,7 +17,7 @@ class ShareCatalogTests(unittest.TestCase):
             path.parent.mkdir(parents=True)
             path.write_text("---\n" + meta.strip() + "\n---\n" + body, encoding="utf-8")
             (root / "_config.yml").write_text(
-                'url: "https://iskayapp.github.io"\nbaseurl: "/como-funciona"\n',
+                'url: "https://iskayapp.github.io"\nbaseurl: "/como-funciona"\n' + extra_config,
                 encoding="utf-8",
             )
             if taxonomy is not None:
@@ -253,6 +253,26 @@ marketing_pieces:
                 self.assertEqual(item["code"], "FR-PRO-01")
                 self.assertEqual(item["stage"], "Antes de solicitar")
                 self.assertTrue(item["canonical_url"].endswith("/pregunta-publica/"))
+
+
+    def test_jekyll_exclusions_never_offer_unpublished_routes(self):
+        metadata = (
+            "code: CF-TEST-001\n"
+            "title: Ficha en preparación\n"
+            "permalink: /categoria/rol/primera-ficha/\n"
+        )
+        cases = [
+            ("ideas/financiamiento-reembolsable", False),
+            ("ideas/financiamiento-reembolsable/", False),
+            ("ideas/financiamiento-reembolsable/promotores/01-ficha.md", False),
+            ("ideas/financiamiento-reembolsable/promotores2", True),
+            ("ideas/otra-categoria", True),
+        ]
+        for exclusion, expected in cases:
+            with self.subTest(exclusion=exclusion):
+                status, data = self.build_with(metadata, extra_config="exclude:\n  - " + exclusion + "\n")
+                self.assertEqual(status, 0)
+                self.assertEqual(data["items"][0]["public_searchable"], expected)
 
 
 

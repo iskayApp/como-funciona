@@ -26,13 +26,13 @@ next_title: "¿Cómo interpretar los datos generales de una iniciativa?"
 
 ## Respuesta breve
 
-## Como inversor en Financiamiento Reembolsable de iskay.app, tienes derecho a conocer las condiciones de las iniciativas, acceder a la información disponible, dar seguimiento a tus inversiones y reclamar el cumplimiento de las obligaciones pactadas cuando corresponda.
+Como inversor en Financiamiento Reembolsable de iskay.app, tienes derecho a conocer las condiciones de las iniciativas, acceder a la información disponible, dar seguimiento a tus inversiones y reclamar el cumplimiento de las obligaciones pactadas cuando corresponda.
 
-## Por tu parte, eres responsable de evaluar la información antes de invertir, asumir los riesgos de tu participación y atender los costos aplicables.
+Por tu parte, eres responsable de evaluar la información antes de invertir, asumir los riesgos de tu participación y atender los costos aplicables.
 
 ## ¿Qué derechos y facultades tienes como inversor?
 
-## Al participar en Financiamiento Reembolsable, puedes:
+Al participar en Financiamiento Reembolsable, puedes:
 
 - Conocer las condiciones del financiamiento: consultar el destino de los recursos, la fuente de reembolso del promotor, el plazo, la tasa de interés, la frecuencia de pagos y las garantías aplicables.
 
@@ -46,7 +46,7 @@ next_title: "¿Cómo interpretar los datos generales de una iniciativa?"
 
 ## ¿Qué responsabilidades asumes?
 
-## Como inversor, debes:
+Como inversor, debes:
 
 - Leer y evaluar las condiciones: analizar la información publicada, los informes de los colaboradores y las garantías ofrecidas. Los criterios profesionales no sustituyen tu propia evaluación.
 
@@ -58,13 +58,13 @@ next_title: "¿Cómo interpretar los datos generales de una iniciativa?"
 
 ## ¿Qué debes tener presente?
 
-## El derecho a reclamar el cumplimiento de las obligaciones, la existencia de garantías y los informes profesionales no aseguran la recuperación del capital ni el cobro de los intereses.
+El derecho a reclamar el cumplimiento de las obligaciones, la existencia de garantías y los informes profesionales no aseguran la recuperación del capital ni el cobro de los intereses.
 
-## Pueden producirse retrasos, recuperación parcial o pérdida total de la inversión.
+Pueden producirse retrasos, recuperación parcial o pérdida total de la inversión.
 
 ## Qué debes hacer
 
-## Antes de participar, determina si las condiciones, los costos y los riesgos de la iniciativa son aceptables para ti, basándote en la información disponible.
+Antes de participar, determina si las condiciones, los costos y los riesgos de la iniciativa son aceptables para ti, basándote en la información disponible.
 
 ## Siguiente paso
 

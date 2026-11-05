@@ -66,7 +66,10 @@ test("orientación sin datos personales hacia la ficha canónica publicada", asy
   const question = controls["#guidance-question"];
   const choose = index => {
     assert.ok(options.children[index], "La opción elegida debe existir");
+    question.focused = false;
     options.children[index].click();
+    assert.equal(question.focused, true,
+      "Cada respuesta mueve el foco a la nueva pregunta antes de presentar las opciones");
   };
   await controls["#guidance-start"].click();
   await new Promise(resolve => setImmediate(resolve));

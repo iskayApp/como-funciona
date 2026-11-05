@@ -28,7 +28,7 @@ Patrón editorial aprobado para redactar las fichas. Los campos entre corchetes 
 
 ## 6. Qué debes hacer
 
-[Acción concreta que el promotor debe ejecutar después de entender el tema.]
+[Acción concreta que el usuario del rol de esta ficha debe ejecutar después de entender el tema. No asignar al lector obligaciones de otro rol.]
 
 ## 7. Importante
 

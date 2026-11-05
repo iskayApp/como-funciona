@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+_site/
+_navigation-fixture/
+_navigation-fixture-site/
+ui-artifacts/
+mantenimiento/status.json
+mantenimiento/share_catalog.json
+mantenimiento/control_catalog.json
+mantenimiento/tiktok_refresh_token.next

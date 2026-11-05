@@ -100,7 +100,8 @@ class TikTokApprovedAssemblyTests(unittest.TestCase):
         entry = next(e for e in entries if e["code"] == "FR-PRO-01")
         old = {"id": "fr-pro-01-tiktok-01",
                "provider": "tiktok", "video_id": "7701409317936844054",
-               "original_url": None, "original_available": False}
+               "original_url": None, "original_available": False,
+               "derived_from_version": 1}
         entry["distribution"].append(old)
         entry["unassigned_assets"].append(old)
         errors = []
@@ -111,6 +112,10 @@ class TikTokApprovedAssemblyTests(unittest.TestCase):
         self.assertNotIn(old, entry["unassigned_assets"])
         self.assertEqual(sum(x.get("video_id") == old["video_id"]
                              for x in entry["media"] + entry["distribution"]), 1)
+        for item in entries:
+            for asset in item["media"] + item["distribution"]:
+                exact_match = item["code"] == entry["code"] and asset.get("video_id") == old["video_id"]
+                self.assertEqual(asset["derived_from_version"], 1 if exact_match else None)
 
     def test_bad_url_or_duplicate_publication_must_fail(self):
         def validate(data):
@@ -132,6 +137,25 @@ class TikTokApprovedAssemblyTests(unittest.TestCase):
         duplicate = copy.deepcopy(self.registry)
         duplicate["videos"].append(copy.deepcopy(duplicate["videos"][0]))
         self.assertTrue(any("duplicados/inválidos" in e for e in validate(duplicate)))
+
+    def test_known_embedded_video_keeps_its_version_and_existing_piece_reference(self):
+        entries = self.fake_catalog()
+        entry = next(e for e in entries if e["code"] == "FR-PRO-01")
+        video = next(row for row in self.registry["videos"] if row["piece_code"] == "PRO-EDU-01")
+        old = {"id": "old-embedded-reference", "provider": "tiktok",
+               "video_id": video["video_id"], "derived_from_version": 2}
+        entry["media"].append(old)
+        entry["marketing_pieces"].append({"code": "PRO-EDU-01", "assets": [old]})
+        errors = []
+        catalog.attach_verified_tiktok(entries, errors)
+        self.assertEqual(errors, [])
+        group = next(group for group in entry["marketing_pieces"] if group["code"] == "PRO-EDU-01")
+        self.assertEqual(len(group["assets"]), 1)
+        asset = group["assets"][0]
+        self.assertEqual(asset["derived_from_version"], 2)
+        self.assertIn(asset, entry["media"])
+        self.assertNotIn(old, entry["media"])
+        self.assertTrue(asset["original_available"])
 
 
 if __name__ == "__main__":

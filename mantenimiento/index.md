@@ -32,7 +32,7 @@ Encuentra una ficha, consulta sus recursos y distingue lo publicado de lo que ne
   <section id="m-contenido" class="maintenance-view" data-maint-view aria-labelledby="content-view-title">
     <h2 id="content-view-title">Contenido y estructura</h2>
     <p class="maint-meta">Explora el recorrido o abre el control de una ficha para consultar su fuente, versión y estados.</p>
-    <section id="topic-control" class="topic-control" aria-labelledby="topic-control-title" hidden></section>
+    <section id="topic-control" class="topic-control" aria-labelledby="topic-control-title" hidden><h3 id="topic-control-title">Control de ficha</h3></section>
     {% include maintenance-hierarchy.html %}
     <section class="workspace-preparation" aria-labelledby="preparation-title">
       <h3 id="preparation-title">Contenido en preparación</h3>
@@ -93,4 +93,4 @@ Encuentra una ficha, consulta sus recursos y distingue lo publicado de lo que ne
 <link rel="stylesheet" href="{{ '/assets/css/maintenance-workspace.css' | relative_url }}?v=20261104-vistas">
 <script src="{{ '/assets/js/maintenance-workspace.js' | relative_url }}?v=20261104-vistas" defer></script>
 <script src="{{ '/assets/js/maintenance-status.js' | relative_url }}?v=20261104-base" defer></script>
-<script src="{{ '/assets/js/maintenance-search.js' | relative_url }}?v=20261104-ensamblaje-fr" defer></script>
+<script src="{{ '/assets/js/maintenance-search.js' | relative_url }}?v=20261105-revision" defer></script>

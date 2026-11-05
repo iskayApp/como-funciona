@@ -12,7 +12,7 @@
     var clear = controls.querySelector('[data-fr-filter-clear]');
     var status = controls.querySelector('[data-fr-filter-status]');
     var empty = controls.querySelector('[data-fr-filter-empty]');
-    var isCollaborator = hub.getAttribute('data-fr-role') === 'Colaboradores';
+    var isCollaborator = hub.getAttribute('data-section-layout') === 'areas';
     var groups = Object.create(null);
     var sections = Array.from(hub.querySelectorAll('.fr-section')).map(function (node) {
       var title = node.querySelector('.fr-section-heading strong').textContent.trim();
