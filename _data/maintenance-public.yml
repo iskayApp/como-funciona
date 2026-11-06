@@ -15,3 +15,20 @@ preparation: []
 # Campos: public, id, source_label (literal), section (opcional, literal),
 # title, reference_url, recorded_at. No modifica ni aprueba las fichas afectadas.
 guide_changes: []
+
+# Avance documental explícito por categoría; estos registros NO son fichas publicadas.
+category_preparation:
+  - public: true
+    category_id: donacion
+    title: Donación · 40 fichas identificadas
+    phase: identified
+    review_status: pending_review
+    updated_at: '2026-11-06'
+    reference_url: https://github.com/iskayApp/como-funciona/blob/main/.github/planificacion/DONACION_IDENTIFICACION_2026-11-06.md
+    roles:
+      - name: Promotores
+        records: 71
+      - name: Donantes
+        records: 42
+      - name: Colaboradores
+        records: 23

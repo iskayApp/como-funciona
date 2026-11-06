@@ -1,5 +1,7 @@
 # Mantenimiento · cuatro vistas
 
+Documento histórico. La [renovación del 6 de noviembre](MANTENIMIENTO_HUB_2026-11-06.md) añade Panorama, biblioteca de recursos únicos y controles de vigencia.
+
 ## Alcance
 
 Continuación del punto 3 aprobado: completar el centro de mantenimiento antes de propagar Donación. Se conserva íntegramente `ideas/`, sus 99 fichas FR, textos, códigos, URL, versiones y estados editoriales. No se realiza revisión editorial ni se altera Drive. No cambia la portada pública ni sus buscadores/orientación.

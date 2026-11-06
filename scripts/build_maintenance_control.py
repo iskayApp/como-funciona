@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only public projection for the four maintenance views.
+"""Read-only public projection for the maintenance workspace.
 
 Canonical front matter owns content/version/approval. share_catalog owns resource
 and marketing associations. This projection never exports bodies, private drafts,
@@ -105,6 +105,32 @@ def comparison(published_version, digest, prep):
     return 'unverified'
 
 
+def category_preparation_rows(registry, categories):
+    rows, seen = [], set()
+    allowed = {category['id'] for category in categories}
+    for raw in registry.get('category_preparation', []):
+        if raw.get('public') is not True:
+            continue
+        identity = text(raw.get('category_id'))
+        if identity not in allowed or identity in seen or raw.get('phase') not in PHASES:
+            raise ValueError('Preparación de categoría inválida o duplicada')
+        seen.add(identity)
+        roles = []
+        for role in raw.get('roles', []):
+            count = role.get('records')
+            if not isinstance(count, int) or isinstance(count, bool) or count < 0:
+                raise ValueError('Recuento de registros de preparación inválido')
+            roles.append({'name': text(role.get('name')), 'records': count})
+        status = raw.get('review_status')
+        if status not in ('pending_review', 'approved'):
+            raise ValueError('Estado de preparación no declarado')
+        rows.append({'category_id': identity, 'title': text(raw.get('title')),
+                     'phase': raw['phase'], 'review_status': status, 'roles': roles,
+                     'updated_at': stamp(raw.get('updated_at')),
+                     'reference_url': safe_url(raw.get('reference_url'))})
+    return rows
+
+
 def build_control(root=ROOT, revision=None):
     config = yaml.safe_load((root / '_config.yml').read_text(encoding='utf-8'))
     categories = yaml.safe_load((root / '_data/categories.yml').read_text(encoding='utf-8'))
@@ -151,6 +177,7 @@ def build_control(root=ROOT, revision=None):
         assets = list(entry.get('media', [])) + list(entry.get('distribution', []))
         stale = [a['id'] for a in assets if a.get('derived_from_version') is not None
                  and version is not None and str(a['derived_from_version']) != str(version)]
+        unverified = [a['id'] for a in assets if a.get('derived_from_version') is None or version is None]
         missing = []
         if editorial == 'unspecified': missing.append('editorial_state')
         if not source['label']: missing.append('functional_source')
@@ -167,7 +194,8 @@ def build_control(root=ROOT, revision=None):
             'publication_status': 'test_published' if config.get('noindex') else 'published',
             'content_version': version, 'content_sha256': digest,
             'preparation': prep, 'version_comparison': comparison(version, digest, prep),
-            'metadata_gaps': missing, 'stale_asset_ids': stale,
+            'metadata_gaps': missing, 'stale_asset_ids': stale, 'unverified_asset_ids': unverified,
+            'video_count': sum(a.get('type') == 'video' for a in assets),
             'embedded_count': len(entry.get('media', [])),
             'distribution_count': len(entry.get('distribution', [])),
             'marketing_codes': list(dict.fromkeys(
@@ -203,6 +231,7 @@ def build_control(root=ROOT, revision=None):
                         'with_stale_assets': sum(bool(i['stale_asset_ids']) for i in items),
                         'preparation_references': len(preparation)},
             'categories': category_rows, 'items': items, 'preparation': new_preparation,
+            'category_preparation': category_preparation_rows(registry, categories),
             'editorial_controls': controls, 'guide_changes': changes,
             'limitations': {'drive_sync': False, 'private_drafts_included': False, 'live_editorial_controls': False}}
 

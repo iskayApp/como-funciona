@@ -60,7 +60,7 @@ jobs:
         run: python scripts/smoke_fr_explorer.py _site
       - name: Test general home and category-role-section maintenance
         run: python scripts/smoke_category_base.py _site
-      - name: Test the four maintenance views and failure states
+      - name: Test the five maintenance views, exports and failure states
         run: python scripts/smoke_maintenance_workspace.py _site
       - name: Test refreshed design and catalog filters
         run: python scripts/smoke_visual_refresh.py _site

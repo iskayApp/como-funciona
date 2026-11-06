@@ -31,13 +31,14 @@ class CategoryBaseTests(unittest.TestCase):
 
     def test_review_snapshot_preserves_canonical_sources(self):
         # Revisión 2026-11-05: solo formato INV004 y correcciones verificadas de búsqueda/orientación.
-        # Las pruebas de comportamiento cubren cada corrección; códigos, URL y palabras se conservan.
+        # Centro de mantenimiento renovado el 2026-11-06: las pruebas de interfaz cubren la biblioteca.
+        # Códigos, URL y contenido funcional se conservan.
         tree = subprocess.check_output(['git', 'ls-tree', 'HEAD', 'ideas'], cwd=ROOT, text=True).split()[2]
         self.assertEqual(tree, '89d23ea6b5ba9548af66fe5eadf0aafdcb681291')
         protected = {
             'assets/js/public-search.js': '2184f044adf2daaee453a2a055acf0fcfcb79101',
             'assets/js/guidance.js': '053ea612c0a3b857f68607c00447d7849fa55819',
-            'assets/js/maintenance-search.js': 'cf5df58a8737a8570d8aa6f609f4c4c6168c661c',
+            'assets/js/maintenance-search.js': '38ee80acf1a103cea316a24b08145fe206b4f71a',
         }
         for path, expected in protected.items():
             actual = subprocess.check_output(['git', 'hash-object', path], cwd=ROOT, text=True).strip()
