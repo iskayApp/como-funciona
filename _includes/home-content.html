@@ -1,6 +1,8 @@
 {% assign public_topics = site.pages | where_exp: 'entry', 'entry.code != nil' | where_exp: 'entry', 'entry.published != false' | sort: 'code' %}
 <section class="home-resources" aria-labelledby="home-resources-title">
   <div class="section-heading"><div><h2 id="home-resources-title">{% include ui-icon.html name='play' %}Contenido para entender iskay.app</h2><p>Otra forma de comprender las explicaciones, siempre junto a su ficha.</p></div></div>
+  {% include home-video-gallery.html public_topics=public_topics %}
+  <h3 class="home-resource-subtitle">Otros recursos visuales</h3>
   <div class="resource-grid">
   {% for topic in public_topics %}
     {% include topic-context.html topic=topic %}
