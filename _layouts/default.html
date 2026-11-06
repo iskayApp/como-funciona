@@ -59,6 +59,11 @@
     {% if page.eyebrow and page.url != '/' %}<p class="eyebrow">{{ page.eyebrow }}{% if page.code %}<span class="canonical-code">{{ page.code }}</span>{% endif %}</p>{% endif %}
     {% if page.code %}<div class="topic-layout">{% endif %}
     <article class="content{% if fr_is_stage %} fr-stage-content{% endif %}">
+      {% if page.code and page.editorial_status == 'pending_review' %}
+        {% unless content contains 'Pendiente de revisión editorial.' %}
+        <div class="test-note" role="note"><strong>Pendiente de revisión editorial.</strong> Esta ficha se publica para revisión y puede recibir ajustes.</div>
+        {% endunless %}
+      {% endif %}
       {{ content }}
       {% include ficha-videos.html %}
     </article>

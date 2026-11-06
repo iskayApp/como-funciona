@@ -90,6 +90,7 @@ jobs:
           destination: ./_site
       - name: Audit generated canonical routes before publishing
         run: |
+          python scripts/check_donation_navigation.py verify _site
           python scripts/verify_maintenance_site.py _site
           python scripts/check_site_integrity.py _site
       - name: Upload artifact

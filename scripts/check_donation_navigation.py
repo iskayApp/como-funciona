@@ -163,6 +163,8 @@ def verify(site: Path, source: Path):
             assert len(jumps) == len(stages) and set(jumps) == stages, route
         if meta.get("code"):
             assert page.having_class("canonical-code")[0].text.strip() == meta["code"], route
+            notices = page.having_class("test-note")
+            assert len(notices) == 1 and "Pendiente de revisión editorial." in notices[0].text, route
             expected = [base + meta[key] for key in ("prev_url", "next_url") if meta.get(key)]
             nav = page.having_class("page-nav")[0]
             assert links(nav) == expected, f"Secuencia incorrecta o cruce de rol: {meta['code']}"
