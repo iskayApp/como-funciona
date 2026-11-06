@@ -15,7 +15,14 @@ class CategoryBaseTests(unittest.TestCase):
         self.assertEqual(len({c['url'] for c in categories}), 5)
         self.assertEqual([c['id'] for c in categories if c['status'] == 'available'], ['financiamiento-reembolsable'])
         self.assertEqual([r['name'] for r in categories[0]['roles']], ['Promotores', 'Inversores', 'Colaboradores'])
-        for category in categories[1:]:
+        donation = next(c for c in categories if c['id'] == 'donacion')
+        self.assertEqual(donation['status'], 'preparation')
+        self.assertEqual([r['name'] for r in donation['roles']], ['Promotores', 'Donantes', 'Colaboradores'])
+        self.assertEqual([r['url'] for r in donation['roles']], [
+            '/donacion/promotores/', '/donacion/donantes/', '/donacion/colaboradores/',
+        ])
+        self.assertNotIn('section_layout', donation['roles'][2])
+        for category in categories[2:]:
             self.assertEqual(category['status'], 'preparation')
             self.assertEqual(category['roles'], [])
 

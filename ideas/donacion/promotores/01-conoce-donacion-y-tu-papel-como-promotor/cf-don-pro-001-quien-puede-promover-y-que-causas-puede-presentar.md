@@ -7,11 +7,13 @@ category: "Donación"
 role: "Promotores"
 stage: "Conoce Donación y tu papel como promotor"
 stage_id: "ORG-DON-PRO-01"
+stage_url: "/donacion/promotores/01-conoce-donacion-y-tu-papel-como-promotor/"
 code: "CF-DON-PRO-001"
 content_version: 1
 guide_version: "No identificada expresamente en el documento consultado"
 source: "1 Donación.docx — § 1 Definición; § 2.1 Donantes; § 2.3 Promotores, Atiende emergencias y necesidades urgentes e Impulsa causas con sentido humano"
 source_modified_utc: "2026-11-06T11:00:41.160Z"
+classification_secondary_refs: []
 classification_refs:
   - "CL-DON-PRO-001"
   - "CL-DON-PRO-002"
@@ -22,8 +24,11 @@ published: false
 visibility: private
 reviewed: false
 source_checked_on: "2026-11-06"
+editorial_source: "CF-DON-PRO-001 · Quién puede promover una iniciativa en Donación y qué causas puede presentar · Borrador"
 permalink: /donacion/promotores/01-conoce-donacion-y-tu-papel-como-promotor/cf-don-pro-001-quien-puede-promover-y-que-causas-puede-presentar/
 prev_url: null
+prev_code: null
+prev_title: null
 next_url: null
 next_code: "CF-DON-PRO-002"
 next_title: "¿Cómo funciona el apoyo de los donantes en esta categoría?"

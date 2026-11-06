@@ -13,6 +13,7 @@ Las cinco categorías de Ideas son Donación, Recompensa, Precompra, Inversión 
 - **Financiamiento Reembolsable** incorpora tres recorridos: **Promotores (33 fichas y seis etapas), Inversores (37 fichas y siete etapas) y Colaboradores (29 fichas en base común y cuatro áreas)**.
 - En total existen **99 fichas publicadas**: 33 de Promotores y 66 fichas nuevas para Inversores y Colaboradores. Las que aún no cuentan con aprobación editorial muestran un aviso visible.
 - Todas las fichas disponen de URL canónica y los recorridos tienen navegación por rol y etapa.
+- **Donación** tiene **40 fichas desarrolladas en borrador**: 18 de Promotores en siete etapas, 14 de Donantes en cinco y 8 de Colaboradores en cuatro. El conjunto editorial completo se trasladó al repositorio después de presentarse para revisión; sus 20 índices reutilizan los componentes comunes. [Seguimiento y fuentes](.github/planificacion/DONACION_DESARROLLO_2026-11-06.md).
 - Las demás categorías conservan su estructura base, pero todavía no forman parte de la publicación pública activa.
 - El apartado Recursos permanece fuera del alcance actual.
 
@@ -83,6 +84,7 @@ Durante esta fase de prueba pública, el sitio mantiene `noindex: true` para evi
 - Rama principal: `main`.
 - GitHub Pages: **activo**.
 - Financiamiento Reembolsable: **99 fichas en tres roles · PRUEBA PÚBLICA** (59 nuevas pendientes de revisión editorial).
+- Donación: **40 fichas en tres roles y 16 etapas · BORRADOR**. Categoría en preparación, fichas excluidas de la publicación y pendientes de revisión editorial. La validación de navegación utiliza una copia temporal que no se despliega.
 - Promotores: 6 etapas; Inversores: 7 etapas; Colaboradores: base común y cuatro áreas de colaboración.
 
 ## Presentación y recursos visuales

@@ -1,5 +1,16 @@
-# Donación · Promotores
+---
+layout: default
+title: Donación · Promotores
+description: Conoce cómo presentar tu causa, organizar el apoyo y gestionar tu iniciativa de Donación.
+permalink: /donacion/promotores/
+category: Donación
+role: Promotores
+status: draft
+editorial_status: pending_review
+published: false
+visibility: private
+reviewed: false
+---
 
-Recorrido de **Cómo funciona** para promotores de Donación.
-
-**Estado:** estructura preparada. El contenido se desarrollará a partir de la guía vigente de Donación.
+{% include fr-context.html %}
+{% include fr-role-hub.html %}

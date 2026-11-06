@@ -7,6 +7,7 @@ category: "Donación"
 role: "Promotores"
 stage: "Conoce Donación y tu papel como promotor"
 stage_id: "ORG-DON-PRO-01"
+stage_url: "/donacion/promotores/01-conoce-donacion-y-tu-papel-como-promotor/"
 code: "CF-DON-PRO-002"
 content_version: 1
 guide_version: "No identificada expresamente en el documento consultado"
@@ -25,6 +26,7 @@ published: false
 visibility: private
 reviewed: false
 source_checked_on: "2026-11-06"
+editorial_source: "CF-DON-PRO-002 · Cómo funciona el apoyo de los donantes en esta categoría · Borrador"
 permalink: /donacion/promotores/01-conoce-donacion-y-tu-papel-como-promotor/cf-don-pro-002-como-funciona-el-apoyo-de-los-donantes-en-esta-categoria/
 prev_url: null
 prev_code: "CF-DON-PRO-001"

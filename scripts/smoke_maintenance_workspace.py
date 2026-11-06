@@ -30,7 +30,7 @@ def check_width(page, home, control, width):
     assert page.locator('.control-topic-button').count()==99
     assert 'Donación' in page.locator('#overview-preparation').inner_text()
     assert 'Preparada para revisión' in page.locator('#overview-preparation').inner_text()
-    assert '40 fichas identificadas' in page.locator('#overview-preparation').inner_text()
+    assert '40 fichas desarrolladas en borrador' in page.locator('#overview-preparation').inner_text()
     fits(page)
     page.screenshot(path=str(ARTIFACTS/f'maintenance-panorama-{width}.png'),full_page=True)
     page.locator('[data-maint-view-link="m-contenido"]').click()
