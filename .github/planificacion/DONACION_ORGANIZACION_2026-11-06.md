@@ -1,6 +1,6 @@
 # Donación · Organización de los recorridos
 
-Fecha de preparación: **6 de noviembre de 2026**. Fase: **ORGANIZAR**. Estado: **preparada para revisión**.
+Fecha de preparación: **6 de noviembre de 2026**. Fase: **ORGANIZAR**. Estado: **aceptada como base para IDENTIFICAR**.
 
 ## Punto de partida
 
@@ -14,7 +14,7 @@ La fuente funcional sigue siendo **1 Donación.docx**, original restaurado con e
 - El orden responde a necesidades de lectura y consulta. No establece una secuencia técnica de pantallas, condiciones de avance, plazos ni actos adicionales.
 - El seguimiento se organiza para su consulta durante la campaña y el desarrollo de la iniciativa. Reclamaciones y reversión tienen un área para las situaciones previstas y no constituyen pasos obligatorios de toda campaña.
 - La información sobre otro rol conserva su sujeto original. El Donante y el Colaborador no heredan las obligaciones bancarias, de configuración o de uso de fondos del Promotor.
-- Los identificadores **ORG-DON-PRO**, **ORG-DON-DON** y **ORG-DON-COL** solo identifican secciones en esta organización. Los códigos **CL** conservan la identidad de los registros clasificados. La fase IDENTIFICAR definirá las fichas canónicas.
+- Los identificadores **ORG-DON-PRO**, **ORG-DON-DON** y **ORG-DON-COL** solo identifican secciones en esta organización. Los códigos **CL** conservan la identidad de los registros clasificados. La identificación de fichas se recoge en el [catálogo de Donación](DONACION_IDENTIFICACION_2026-11-06.md).
 
 ## Resumen de cobertura
 
@@ -25,7 +25,7 @@ La fuente funcional sigue siendo **1 Donación.docx**, original restaurado con e
 | Colaboradores | 4 | 23 | 0 | 0 |
 | **Total** | **16** | **136** | **0** | **0** |
 
-Las cantidades cuentan secciones de organización y registros clasificados. La cantidad de fichas se determinará en IDENTIFICAR.
+Las cantidades cuentan secciones de organización y registros clasificados. El [catálogo de identificación](DONACION_IDENTIFICACION_2026-11-06.md), preparado para revisión, propone **40 fichas: 18 de Promotores, 14 de Donantes y 8 de Colaboradores**. Incluye 39 fichas vinculadas a registros CL y una ficha de identidad pública del donante sustentada en referencias operativas, sin registro CL.
 
 ## Promotores
 
@@ -502,4 +502,4 @@ Cada fila conserva el texto y el tipo de la clasificación. El destino principal
 - Las siete franjas tarifarias y las siete causales de reversión conservan sus registros de origen. La notificación del apartado 7 permanece vinculada a la transferencia de fondos.
 - El contenido funcional de la clasificación, la guía, los códigos de fichas existentes y la configuración de publicación permanecen sin cambios.
 
-El siguiente punto es **IDENTIFICAR** las fichas de cada sección: determinar la pregunta que resolverá cada una, agrupar los registros necesarios y asignar códigos propios con trazabilidad. La presente organización no concede aprobación editorial a fichas ni activa su publicación.
+El usuario autorizó avanzar a **IDENTIFICAR** sobre esta organización. El [catálogo de fichas](DONACION_IDENTIFICACION_2026-11-06.md) está **preparado para revisión**; el siguiente entregable será **DESARROLLAR** sus fichas. La presente organización no concede aprobación editorial a fichas ni activa su publicación.

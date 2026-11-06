@@ -8,7 +8,7 @@ Actualización documental de Donación: 6 de noviembre de 2026. Véanse las [acl
 
 Preparar la ampliación de Cómo funciona a las otras cuatro categorías de Ideas, con recorridos propios para los usuarios objetivo de cada una. Esta preparación identifica fuentes, roles, dependencias editoriales y condiciones de aceptación. No desarrolla fichas nuevas, no concede aprobaciones editoriales ni activa categorías en el sitio público.
 
-La clasificación de **Donación** se utiliza como base aceptada para ORGANIZAR, con avance autorizado por el usuario el 6 de noviembre de 2026. La [organización de los tres recorridos](DONACION_ORGANIZACION_2026-11-06.md) está preparada para revisión, conforme a la secuencia del plan `BASE_GENERAL_CATEGORIAS_2026-11-04.md`. Después se propone continuar con Recompensa, Precompra e Inversión en Acciones. El orden posterior a Donación es una propuesta de trabajo, no una aprobación previa de sus contenidos.
+La [organización de los tres recorridos de Donación](DONACION_ORGANIZACION_2026-11-06.md) se utiliza como base aceptada para **IDENTIFICAR**, con avance autorizado por el usuario el 6 de noviembre de 2026. El [catálogo de identificación](DONACION_IDENTIFICACION_2026-11-06.md) está preparado para revisión con **40 fichas: 18 de Promotores, 14 de Donantes y 8 de Colaboradores**, conforme a la secuencia del plan `BASE_GENERAL_CATEGORIAS_2026-11-04.md`. Después se propone continuar con Recompensa, Precompra e Inversión en Acciones. El orden posterior a Donación es una propuesta de trabajo, no una aprobación previa de sus contenidos.
 
 El proceso común sigue CF-CORE-001:
 
@@ -99,20 +99,20 @@ Este registro conserva los pendientes y las aclaraciones resueltas con su alcanc
 | PROP-ACC-01 | Inversión en Acciones · Procedimiento para reclamaciones y riesgo de pérdida | Un párrafo incorpora mora, cobro, ejecución de garantías y Representante Legal de los Inversionistas, términos que no se desarrollan como obligaciones de deuda en el resto del modelo accionario. | Revisar si existe arrastre de FR y precisar incumplimientos societarios, derechos y mecanismos aplicables. No prometer cuotas, intereses ni reembolso obligatorio del capital accionario. |
 | PROP-COM-01 | Donación, Recompensa y Precompra · Descuentos y tablas de tarifas | Donación: el usuario aclaró 0,50% por colaborador hasta 2,00% en total, restados directamente de la tasa de comisión, conservando la notación %. En Recompensa y Precompra sigue registrada la diferencia entre el texto «sobre la comisión» y los extremos de las tablas. | Cerrado en Donación por aclaración del usuario. Recompensa y Precompra mantienen pendiente definir la base y forma de cálculo en sus propias fuentes antes de publicar ejemplos numéricos o una calculadora. |
 | PROP-DON-01 | Donación · Decisión editorial del 6 de noviembre; [referencias](ACLARACIONES_DONACION_2026-11-06.md) | Beneficio tributario retirado por decisión del usuario del 6 de noviembre de 2026. | Cerrado por retirada editorial. No se desarrolla ficha sobre ese beneficio. La guía lo sustituye por «Sin comisión para el donante», con respaldo en su apartado 4.2. |
-| PROP-DON-02 | Donación · Inicio de campaña · Período; manual de precampaña y referencias del calendario | El detalle operativo procede del manual del 10 de agosto de 2026 y de los registros DON-EDU-02/DON-INS-02 con estado Aprobada en sus hojas; DON-VEN-02 es referencia complementaria. | Atendido para la clasificación. Tratar precampaña e identidad en manuales y fichas, con sus fuentes operativas separadas de la guía; no requiere ampliar el documento de categoría. |
+| PROP-DON-02 | Donación · Inicio de campaña · Período; manual de precampaña y referencias del calendario | El detalle operativo procede del manual del 10 de agosto de 2026 y de los registros DON-EDU-02/DON-INS-02 con estado Aprobada en sus hojas; DON-VEN-02 es referencia complementaria. | Referencias operativas verificadas para IDENTIFICAR; detalle en las [referencias de Donación](ACLARACIONES_DONACION_2026-11-06.md). Tratar precampaña e identidad en manuales y fichas, con sus fuentes separadas de la guía; no requiere ampliar el documento de categoría. |
 | PROP-COM-02 | Donación · apartado 7 «Transferencia de fondos»; demás guías · Transferencia y notificaciones | El usuario confirmó que la notificación a los donantes bajo el apartado 7 de Donación se refiere a la transferencia de fondos. | Cerrado en Donación. Clasificar el aviso dentro del procedimiento de transferencia. Las demás categorías conservan su aclaración independiente; la decisión de FR no se traslada automáticamente. |
 
 Este registro describe discrepancias documentales. No sustituye la revisión jurídica aplicable ni formula requisitos nuevos para los usuarios.
 
 ## Lista de trabajo de los doce recorridos
 
-«Identificados» significa que se han localizado la fuente y el nombre del rol. El usuario autorizó avanzar desde la [clasificación de Donación](DONACION_CLASIFICACION_2026-11-06.md) a la [organización de sus tres recorridos](DONACION_ORGANIZACION_2026-11-06.md), preparada para revisión. La clasificación de los otros nueve recorridos continúa pendiente.
+«Identificados» significa que se han localizado la fuente y el nombre del rol. El usuario autorizó avanzar desde la [organización de Donación](DONACION_ORGANIZACION_2026-11-06.md) a **IDENTIFICAR**. El [catálogo de sus tres roles](DONACION_IDENTIFICACION_2026-11-06.md) está preparado para revisión. La clasificación de los otros nueve recorridos continúa pendiente.
 
 | Categoría | Rol | Fuente y rol | Clasificar | Organizar | Identificar fichas | Desarrollar | Validar y aprobar | Publicar |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Donación | Promotores | Identificados | Base aceptada para organizar | Preparada para revisión | Pendiente | Pendiente | Pendiente | Pendiente |
-| Donación | Donantes | Identificados | Base aceptada para organizar | Preparada para revisión | Pendiente | Pendiente | Pendiente | Pendiente |
-| Donación | Colaboradores | Identificados | Base aceptada para organizar | Preparada para revisión | Pendiente | Pendiente | Pendiente | Pendiente |
+| Donación | Promotores | Identificados | Base aceptada para organizar | Base aceptada para identificar | Preparada para revisión | Pendiente | Pendiente | Pendiente |
+| Donación | Donantes | Identificados | Base aceptada para organizar | Base aceptada para identificar | Preparada para revisión | Pendiente | Pendiente | Pendiente |
+| Donación | Colaboradores | Identificados | Base aceptada para organizar | Base aceptada para identificar | Preparada para revisión | Pendiente | Pendiente | Pendiente |
 | Recompensa | Promotores | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 | Recompensa | Contribuyentes | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 | Recompensa | Colaboradores | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
@@ -123,11 +123,11 @@ Este registro describe discrepancias documentales. No sustituye la revisión jur
 | Inversión en Acciones | Inversionistas | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 | Inversión en Acciones | Colaboradores | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 
-### Organización de los recorridos y siguiente bloque
+### Identificación de las fichas y siguiente bloque
 
-La [organización de Donación](DONACION_ORGANIZACION_2026-11-06.md) para **Promotores, Donantes y Colaboradores** está preparada para revisión. Cubre los 136 registros de la clasificación con un destino principal por registro, sin omisiones ni asignaciones principales duplicadas.
+El [catálogo de identificación de Donación](DONACION_IDENTIFICACION_2026-11-06.md) está **preparado para revisión** con **40 fichas: 18 de Promotores, 14 de Donantes y 8 de Colaboradores**. Incluye 39 fichas vinculadas a los 136 registros CL y una de identidad pública del donante sustentada en referencias operativas, sin registro CL. La clasificación y los destinos principales de la organización se conservan.
 
-El siguiente bloque es IDENTIFICAR las fichas de las secciones propuestas. La organización responde a cada rol y admite consulta de seguimiento e incidencias cuando corresponda; no traslada automáticamente la estructura de Promotores FR ni da por terminada una categoría con un único rol.
+El siguiente bloque es **DESARROLLAR** las fichas identificadas. La organización responde a cada rol y admite consulta de seguimiento e incidencias cuando corresponda; no traslada automáticamente la estructura de Promotores FR ni da por terminada una categoría con un único rol.
 
 ## Entregables y condiciones por fase
 
@@ -181,9 +181,9 @@ Su preparación requerirá localizar y revisar su propia guía para pedidos, evi
 
 ### Actualización documental del 6 de noviembre de 2026
 
-PROP-DON-01 está cerrado por retirada editorial. PROP-DON-02 se trata en manuales y fichas con referencias operativas separadas de la guía. PROP-COM-01 y PROP-COM-02 están cerrados para Donación conforme a las aclaraciones del usuario sobre descuentos y notificación de transferencia; las demás categorías conservan su revisión independiente. El detalle está en [ACLARACIONES_DONACION_2026-11-06.md](ACLARACIONES_DONACION_2026-11-06.md).
+PROP-DON-01 está cerrado por retirada editorial. PROP-DON-02 cuenta con referencias operativas verificadas para IDENTIFICAR, separadas de la guía. PROP-COM-01 y PROP-COM-02 están cerrados para Donación conforme a las aclaraciones del usuario sobre descuentos y notificación de transferencia; las demás categorías conservan su revisión independiente. El detalle está en [ACLARACIONES_DONACION_2026-11-06.md](ACLARACIONES_DONACION_2026-11-06.md).
 
-El usuario autorizó avanzar desde la [matriz de clasificación de Donación](DONACION_CLASIFICACION_2026-11-06.md) a **ORGANIZAR**. La [organización de los tres recorridos](DONACION_ORGANIZACION_2026-11-06.md) está preparada para revisión con cobertura completa de los 136 registros. El siguiente entregable será **IDENTIFICAR** las fichas y después desarrollarlas. Las otras categorías pueden avanzar en la conciliación de sus fuentes mientras se consolida este bloque.
+El usuario autorizó avanzar desde la [organización de los tres recorridos](DONACION_ORGANIZACION_2026-11-06.md) a **IDENTIFICAR**. El [catálogo de identificación](DONACION_IDENTIFICACION_2026-11-06.md) está preparado para revisión con 40 fichas: 18 de Promotores, 14 de Donantes y 8 de Colaboradores. Son 39 fichas con registros CL y una de identidad pública del donante sustentada en referencias operativas, sin registro CL. El siguiente entregable será **DESARROLLAR** sus contenidos; la aprobación editorial y la publicación continúan pendientes. Las otras categorías pueden avanzar en la conciliación de sus fuentes mientras se consolida este bloque.
 
 Las ampliaciones mantendrán la cadena **guía y decisiones aprobadas → ficha canónica → multimedia → piezas y canales**, con registros distintos de aprobación editorial, publicación y comprobación técnica.
 
