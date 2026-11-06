@@ -1,0 +1,83 @@
+<div id="maintenance-workspace" class="maintenance-app" data-control-url="{{ '/mantenimiento/control_catalog.json' | relative_url }}" data-share-url="{{ '/mantenimiento/share_catalog.json' | relative_url }}">
+  <aside class="maintenance-sidebar">
+    <div class="workspace-brand">{% include ui-icon.html name='diagram' %}<span>Control de contenidos<small>Centro de mantenimiento</small></span></div>
+    <p class="sidebar-caption">ESPACIO DE TRABAJO</p>
+    <nav class="maintenance-view-nav" aria-label="Vistas de mantenimiento">
+      <a href="#m-resumen" data-maint-view-link="m-resumen">{% include ui-icon.html name='home' %}<span>Panorama</span><span class="nav-dot" aria-hidden="true"></span></a>
+      <a href="#m-contenido" data-maint-view-link="m-contenido">{% include ui-icon.html name='book' %}<span>Contenido y estructura</span></a>
+      <a href="#m-multimedia" data-maint-view-link="m-multimedia">{% include ui-icon.html name='play' %}<span>Multimedia y marketing</span></a>
+      <a href="#m-revisiones" data-maint-view-link="m-revisiones">{% include ui-icon.html name='document' %}<span>Revisiones y cambios</span><span id="nav-review-count" class="nav-count"></span></a>
+      <a href="#m-publicacion" data-maint-view-link="m-publicacion">{% include ui-icon.html name='chart' %}<span>Estado y publicación</span></a>
+    </nav>
+    <div class="sidebar-note"><span class="sidebar-orbit" aria-hidden="true">◎</span><strong>Un solo conocimiento.<br>Muchas formas de explicarlo.</strong><p>Fichas, recursos y fuentes conectados.</p></div>
+    <a class="sidebar-site-link" href="{{ '/' | relative_url }}">Ver Cómo funciona <span aria-hidden="true">→</span></a>
+    <p class="sidebar-public"><span aria-hidden="true">●</span> Consulta pública · Solo lectura</p>
+  </aside>
+  <div class="maintenance-main">
+    <header class="maintenance-heading">
+      <div><p class="workspace-overline">CÓMO FUNCIONA <span>/</span> OPERACIONES DE CONTENIDO</p><h1>Centro de mantenimiento<span class="heading-spark">{% include ui-icon.html name='compass' %}</span></h1><p class="maintenance-description">La visión completa. El siguiente paso, claro.</p></div>
+      <div class="workspace-actions"><button type="button" id="workspace-copy" class="workspace-button" disabled>Copiar vista →</button><button type="button" id="workspace-export" class="workspace-button workspace-primary" disabled>Exportar CSV ↓</button></div>
+    </header>
+    <div class="workspace-statusbar"><p id="workspace-load-status" role="status" aria-live="polite">Cargando el espacio de trabajo…</p><button type="button" id="workspace-reload" title="Recarga los datos publicados; no ejecuta una comprobación nueva">↻ Recargar datos</button></div>
+    <section id="workspace-filters" class="workspace-filters" aria-label="Filtros del espacio de trabajo" hidden>
+      <div class="workspace-search-line"><div class="maint-search-field workspace-query"><label class="workspace-sr-only" for="control-query">Buscar en el espacio de trabajo</label><span aria-hidden="true">⌕</span><input id="control-query" type="search" maxlength="160" placeholder="Busca una ficha, fuente o código de pieza…" autocomplete="off"><kbd title="Atajo de teclado">⌘ / Ctrl K</kbd></div><button type="button" id="control-clear" class="workspace-button">Limpiar</button></div>
+      <details class="workspace-filter-details" open><summary>Filtros <span id="filter-active-count"></span></summary><div class="workspace-filter-fields">
+        <div class="maint-search-field"><label for="control-category">Categoría</label><select id="control-category"><option value="">Todas las categorías</option></select></div>
+        <div class="maint-search-field"><label for="control-role">Rol</label><select id="control-role"><option value="">Todos los roles</option></select></div>
+        <div class="maint-search-field"><label for="control-section">Sección</label><select id="control-section"><option value="">Todas las secciones</option></select></div>
+      </div></details>
+      <div class="workspace-scope"><p id="control-count" role="status" aria-live="polite"></p><span>El mismo contexto en todas las vistas</span></div>
+    </section>
+    <p id="workspace-feedback" class="workspace-feedback" role="status" aria-live="polite"></p>
+
+    <section id="m-resumen" class="maintenance-view" data-maint-view aria-labelledby="overview-title">
+      <div class="view-heading"><div><p class="workspace-overline">PANORAMA</p><h2 id="overview-title">Todo conectado. Todo a la vista.</h2><p>Prioridades y cobertura de las fichas que estás consultando.</p></div><span class="workspace-readonly-badge">Consulta pública</span></div>
+      <div id="overview-metrics" class="overview-metrics" aria-live="polite"><p class="maint-meta">Preparando indicadores…</p></div>
+      <div class="overview-grid"><section class="workspace-panel priorities-panel"><div class="panel-heading"><span class="panel-kicker">TU SIGUIENTE PASO</span><span class="panel-symbol" aria-hidden="true">→</span></div><h3>Empieza por lo importante</h3><p class="maint-meta">Pendientes concretos. Sin convertir datos ausentes en aprobaciones.</p><div id="overview-priorities"></div></section>
+        <div class="overview-side"><section class="workspace-panel"><span class="panel-kicker">REVISIÓN EDITORIAL</span><h3>Estados que cuentan su historia</h3><div id="overview-editorial"></div></section><section class="workspace-panel coverage-panel"><div><span class="panel-kicker">COBERTURA MULTIMEDIA</span><h3>Explicaciones que también se ven</h3><div id="overview-coverage"></div></div></section></div></div>
+      <section class="workspace-panel preparation-panel"><div class="panel-heading"><div><span class="panel-kicker">LO QUE VIENE</span><h3>El conocimiento sigue creciendo</h3></div><span class="workspace-readonly-badge">Preparación documental</span></div><div id="overview-preparation"></div></section>
+      <div class="workspace-boundary"><strong>Un espacio de consulta, con contexto.</strong><span>La publicación, la aprobación editorial y la comprobación técnica son controles independientes. Los borradores privados permanecen en su sistema editorial.</span></div>
+    </section>
+
+    <section id="m-contenido" class="maintenance-view" data-maint-view aria-labelledby="content-view-title">
+      <div class="view-heading"><div><p class="workspace-overline">BIBLIOTECA CANÓNICA</p><h2 id="content-view-title">Contenido y estructura</h2><p>Explora por categoría, rol y sección. Abre una ficha sin perder tu lugar.</p></div><span class="workspace-readonly-badge">Fuente única</span></div>
+      <div class="workspace-panel content-tree-panel">{% include maintenance-hierarchy.html %}</div>
+      <section class="workspace-panel workspace-preparation" aria-labelledby="preparation-title"><span class="panel-kicker">EN PREPARACIÓN</span><h3 id="preparation-title">De la fuente a la próxima publicación</h3><p class="maint-meta">Clasificar → Organizar → Identificar → Desarrollar. El avance documental no aprueba ni publica fichas.</p><div id="preparation-records"></div></section>
+    </section>
+
+    <section id="m-multimedia" class="maintenance-view" data-maint-view aria-labelledby="media-view-title">
+      <div class="view-heading"><div><p class="workspace-overline">RECURSOS Y DISTRIBUCIÓN</p><h2 id="media-view-title">Multimedia y marketing</h2><p>Una publicación, todas sus conexiones. Conserva la referencia a la ficha oficial.</p></div></div>
+      <div id="media-coverage" class="media-coverage"></div>
+      <section id="maintenance-search" class="maint-search workspace-panel" data-catalog-url="{{ '/mantenimiento/share_catalog.json' | relative_url }}" aria-labelledby="maint-search-title">
+        <div class="panel-heading"><h3 id="maint-search-title">Explora los vínculos</h3><div class="media-mode-nav" role="group" aria-label="Presentación de multimedia"><button type="button" data-media-mode="resources" aria-pressed="true">Recursos únicos</button><button type="button" data-media-mode="fichas" aria-pressed="false">Por ficha</button><button type="button" data-media-mode="pieces" aria-pressed="false">Piezas de marketing</button></div></div>
+        <div class="maint-search-controls"><div class="maint-search-field maint-search-wide"><label for="maint-search-text">Refinar por concepto, recurso o pieza</label><input id="maint-search-text" type="search" maxlength="160" placeholder="Ej. PRO-EDU-03, FR-PRO-13, garantías" autocomplete="off"></div><div class="maint-search-field"><label for="media-kind">Contenido</label><select id="media-kind"><option value="">Todos los recursos</option><option value="video">Vídeos</option><option value="diagram">Diagramas</option><option value="animation">Animaciones</option><option value="no-video">Fichas sin vídeo</option><option value="unverified">Versión de origen desconocida</option><option value="missing-origin">Sin publicación original</option></select></div><div class="maint-search-field"><label for="media-provider">Proveedor</label><select id="media-provider"><option value="">Todos los proveedores</option></select></div><button type="button" id="maint-search-clear" class="workspace-button">Limpiar refinamiento</button></div>
+        <p id="maint-assembly-summary" class="maint-meta"></p><p id="maint-search-count" class="result-caption" role="status" aria-live="polite">Cargando relaciones…</p><p id="maint-search-feedback" class="maint-search-feedback" role="status" aria-live="polite"></p><div id="maint-search-results" class="maint-search-results"></div><button type="button" id="maint-search-more" class="workspace-button workspace-more" hidden>Mostrar más</button>
+      </section>
+      <section id="marketing-unlinked" class="workspace-panel"><h3>Pendientes de vinculación</h3><p class="maint-meta">Esperando el informe técnico. Un inventario no consultado no equivale a cero pendientes.</p></section>
+    </section>
+
+    <section id="m-revisiones" class="maintenance-view" data-maint-view aria-labelledby="review-view-title">
+      <div class="view-heading"><div><p class="workspace-overline">MEJORA CONTINUA</p><h2 id="review-view-title">Revisiones y cambios</h2><p>La causa, la ficha y la siguiente acción. Cada revisión conserva su contexto.</p></div></div>
+      <div id="review-quick-queues" class="review-quick-queues"></div>
+      <section class="workspace-panel"><div class="panel-heading"><div class="maint-search-field review-kind-field"><label for="review-kind">Qué necesitas revisar</label><select id="review-kind"><option value="pending">Pendientes de revisión editorial</option><option value="unspecified">Sin estado editorial explícito</option><option value="metadata">Todos los datos de control incompletos</option><option value="gap:guide_version">Versión de guía sin identificar</option><option value="gap:content_version">Versión de ficha sin registrar</option><option value="gap:functional_source">Fuente funcional sin registrar</option><option value="gap:source_section">Sección de fuente sin identificar</option><option value="versions">Diferencias con referencias en preparación</option><option value="media">Multimedia de otra versión</option><option value="unverified">Vigencia multimedia no evaluable</option><option value="no-video">Fichas sin vídeo publicado</option></select></div><span class="workspace-readonly-badge">La consulta no cambia estados</span></div><p id="review-count" class="result-caption" role="status" aria-live="polite"></p><div id="review-records"></div><button id="review-more" type="button" class="workspace-button workspace-more" hidden>Mostrar más fichas</button><div id="editorial-control-links"></div></section>
+      <section class="workspace-panel source-impact" aria-labelledby="impact-title"><span class="panel-kicker">TRAZABILIDAD</span><h3 id="impact-title">Cuando cambia una fuente, ¿qué hay que revisar?</h3><p class="maint-meta">Consulta las relaciones registradas dentro de los filtros actuales. Los nombres de archivo no se consideran ediciones equivalentes sin conciliación editorial.</p><div class="impact-controls"><div class="maint-search-field"><label for="impact-source">Fuente declarada</label><select id="impact-source"><option value="">Elige una fuente</option></select></div><div class="maint-search-field"><label for="impact-section">Sección de la fuente</label><select id="impact-section" disabled><option value="">Todas sus referencias</option></select></div></div><button type="button" id="impact-export" class="workspace-button" disabled>Exportar relaciones ↓</button><p id="impact-count" class="result-caption" role="status" aria-live="polite"></p><div id="impact-records"></div><button id="impact-more" type="button" class="workspace-button workspace-more" hidden>Mostrar más relaciones</button><details class="workspace-changes"><summary>Cambios de guía registrados</summary><div id="guide-change-records"></div></details></section>
+    </section>
+
+    <section id="m-publicacion" class="maintenance-view" data-maint-view aria-labelledby="publication-view-title">
+      <div class="view-heading"><div><p class="workspace-overline">EVIDENCIA Y DISPONIBILIDAD</p><h2 id="publication-view-title">Estado técnico y publicación</h2><p>Lo publicado, lo aprobado y lo comprobado. Tres preguntas distintas.</p></div></div>
+      <div id="publication-summary" class="workspace-summary"></div><div class="workspace-panel publication-evidence"><p id="publication-build" class="maint-meta"></p><div id="publication-freshness" role="status"></div></div><section class="workspace-panel"><p id="publication-count" class="result-caption"></p><div id="publication-records"></div><button id="publication-more" type="button" class="workspace-button workspace-more" hidden>Mostrar más fichas</button></section>
+      <div id="maintenance-dashboard" class="maintenance-dashboard workspace-panel" data-status-url="{{ '/mantenimiento/status.json' | relative_url }}" data-baseurl="{{ site.baseurl | escape }}" aria-live="polite"><p>Consultando el informe técnico…</p></div>
+    </section>
+    <footer class="workspace-footer"><span>Fuente única · Relaciones explícitas · Estados verificables</span><a href="{{ '/' | relative_url }}">Volver al sitio →</a></footer>
+  </div>
+  <dialog id="topic-control" class="topic-control" aria-labelledby="topic-control-title" hidden><h2 id="topic-control-title">Control de ficha</h2></dialog>
+</div>
+<noscript><p class="maintenance-noscript">Sin JavaScript puedes recorrer las cinco secciones y la jerarquía de fichas. Los filtros, exportación y diagnóstico interactivo necesitan JavaScript.</p></noscript>
+<script type="application/json" id="maintenance-category-registry">{{ site.data.categories | jsonify }}</script>
+<script type="application/json" id="maintenance-visual-previews">{% assign visual_previews = site.data.visual.previews %}{{ visual_previews | jsonify }}</script>
+<link rel="stylesheet" href="{{ '/assets/css/maintenance.css' | relative_url }}?v=20261106-hub">
+<link rel="stylesheet" href="{{ '/assets/css/maintenance-workspace.css' | relative_url }}?v=20261106-hub">
+<script src="{{ '/assets/js/maintenance-core.js' | relative_url }}?v=20261106-hub" defer></script>
+<script src="{{ '/assets/js/maintenance-workspace.js' | relative_url }}?v=20261106-hub" defer></script>
+<script src="{{ '/assets/js/maintenance-status.js' | relative_url }}?v=20261106-hub" defer></script>
+<script src="{{ '/assets/js/maintenance-search.js' | relative_url }}?v=20261106-hub" defer></script>

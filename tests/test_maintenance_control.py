@@ -9,7 +9,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from build_maintenance_control import build_control, comparison, preparation_rows, source_details
+from build_maintenance_control import build_control, comparison, preparation_rows, source_details, category_preparation_rows
 from verify_maintenance_site import audit
 
 
@@ -88,6 +88,33 @@ class PublicControlTests(unittest.TestCase):
             result=build_control(root,'a'*40)
             self.assertEqual(result['guide_changes'][0]['affected_codes'],[])
             self.assertEqual(result['guide_changes'][1]['affected_codes'],['A-001'])
+
+    def test_unknown_media_provenance_does_not_become_current(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td); self.fixture(root)
+            path = root / 'mantenimiento/share_catalog.json'
+            catalog = json.loads(path.read_text())
+            catalog['items'][0]['media'] = [{'id':'clip','type':'video','derived_from_version':None}]
+            path.write_text(json.dumps(catalog))
+            item = build_control(root, 'a'*40)['items'][0]
+            self.assertEqual(item['stale_asset_ids'], [])
+            self.assertEqual(item['unverified_asset_ids'], ['clip'])
+            self.assertEqual(item['video_count'], 1)
+
+    def test_category_preparation_is_explicit_and_does_not_publish_topics(self):
+        categories = [{'id':'a'}]
+        raw = {'public':True,'category_id':'a','title':'Categoría A','phase':'organized',
+               'review_status':'pending_review','roles':[{'name':'Participantes','records':12}],
+               'notes':'PRIVATE','body':'PRIVATE','reference_url':'javascript:alert(1)'}
+        result = category_preparation_rows({'category_preparation':[raw]},categories)
+        self.assertEqual(result[0]['review_status'],'pending_review')
+        self.assertEqual(result[0]['roles'][0]['records'],12)
+        self.assertIsNone(result[0]['reference_url'])
+        self.assertNotIn('PRIVATE',json.dumps(result))
+        self.assertEqual(category_preparation_rows({'category_preparation':[{**raw,'public':False}]},categories),[])
+        for changes in ({'phase':'guessed'},{'review_status':'guessed'},{'category_id':'unknown'},{'roles':[{'name':'X','records':True}]}):
+            with self.subTest(changes=changes), self.assertRaises(ValueError):
+                category_preparation_rows({'category_preparation':[{**raw,**changes}]},categories)
 
     def test_generated_site_audit_catches_missing_and_orphan_routes(self):
         with tempfile.TemporaryDirectory() as td:

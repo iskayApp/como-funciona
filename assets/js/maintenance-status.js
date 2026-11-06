@@ -37,17 +37,18 @@
   if (typeof document === 'undefined') return;
   const root = document.getElementById('maintenance-dashboard');
   if (!root) return;
-  const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
-  const base = root.dataset.baseurl || '';
-  const socialProviders = new Set(['youtube','facebook','instagram','tiktok','x','linkedin']);
-  const names = {youtube:'YouTube',facebook:'Facebook',instagram:'Instagram',tiktok:'TikTok',x:'X',linkedin:'LinkedIn'};
-  function safeUrl(value) {
-    const s = String(value || '');
-    if (/^https?:\/\//i.test(s)) return s;
-    if (/^\/(?!\/)/.test(s)) return base && !s.startsWith(base + '/') ? base + s : s;
-    return '';
-  }
-  function badge(status) { return `<span class="maint-status" data-status="${esc(status || 'SIN COMPROBAR')}">${esc(status || 'SIN COMPROBAR')}</span>`; }
+  const C=window.MaintenanceCore, el=C.node;
+  const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  const base=root.dataset.baseurl || '';
+  const socialProviders=new Set(['youtube','facebook','instagram','tiktok','x','linkedin']);
+  const names={youtube:'YouTube',facebook:'Facebook',instagram:'Instagram',tiktok:'TikTok',x:'X',linkedin:'LinkedIn'};
+  const safeUrl=value=>{
+    const path=String(value || '');
+    return C.safeURL(base && /^\/(?!\/)/.test(path) && !path.startsWith(base+'/') ? base+path : path,location.href);
+  };
+  let report=null, revision=null, selected=null, failed=false, lazy=new Map();
+  const freshness=()=>failed?{current:false,label:'Actualización no disponible · datos anteriores'}:C.reportState(report,revision);
+  function badge(status){const fresh=freshness(),label=fresh.current?(status || 'SIN COMPROBAR'):(status?'Anterior: '+status:'Sin comprobar');return '<span class="maint-status" data-status="'+esc(fresh.current?status:'SIN COMPROBAR')+'">'+esc(label)+'</span>';}
   function renderResource(resource) {
     const url = safeUrl(resource.url || resource.src);
     const provider = resource.storage === 'internal' ? (resource.type || 'Recurso propio') : (names[String(resource.provider || '').toLowerCase()] || resource.provider || resource.type || 'Recurso externo');
@@ -83,30 +84,54 @@
       ${issues.length ? `<div class="maint-checks"><div class="maint-layer-group-title">Comprobaciones de la ficha</div>${issues.map(c => `<div class="maint-check">${badge(c.status)} ${esc(c.label || c.kind || 'Comprobación')}: ${esc(c.detail || '')}</div>`).join('')}</div>` : ''}
       </article>`;
   }
-  function render(data, categories) {
-    const summary = data.summary || {};
-    const tik = data.services?.tiktok || {status:'SIN COMPROBAR', detail:'Sin información'};
-    const inventory = data.tiktok_inventory || {videos:[]};
-    const groups = groupItems(data.items || [], categories, base);
-    const pending = (inventory.videos || []).filter(v => v.status === 'SIN VINCULAR');
-    const checked = data.generated_at ? new Date(data.generated_at).toLocaleString('es-ES') : 'Sin fecha';
-    root.innerHTML = `<details class="maint-technical"><summary class="maint-technical-toggle"><strong>Ver mantenimiento técnico</strong><span>Estado de fichas, recursos, servicios y pendientes</span></summary><div class="maint-technical-body">
-      <p class="maint-meta">Última comprobación: ${esc(checked)}. El estado técnico no determina la aprobación editorial.</p>
-      <div class="maint-summary">${[['fichas','Fichas'],['recursos','Recursos propios'],['videos_tiktok','TikTok vinculados'],['rotos','Con error'],['revisar','Por revisar técnicamente']].map(([key,label]) => `<div class="maint-card"><strong>${esc(summary[key] || 0)}</strong><span>${label}</span></div>`).join('')}</div>
-      <div class="maint-service"><div class="maint-service-head"><div><strong>TikTok API</strong><div class="maint-meta">${esc(tik.detail || '')}</div><div class="maint-meta">Videos públicos detectados: ${esc(tik.recent_videos_checked ?? 0)}</div></div>${badge(tik.status)}</div></div>
-      <h2>Diagnóstico por categoría, rol y sección</h2>
-      ${groups.map(cat => `<details class="catalog-category" data-technical-category="${esc(cat.id)}"><summary><strong>${esc(cat.name)}</strong></summary>${cat.roles.map(role => `<details class="catalog-role" data-technical-role="${esc(role.id)}"><summary><strong>${esc(role.name)}</strong></summary>${role.sections.map(section => `<details class="catalog-section" data-technical-section="${esc(section.id)}"><summary><strong>${esc(section.name)}</strong><span>${section.items.length} fichas</span></summary>${section.items.map(renderFicha).join('')}</details>`).join('')}</details>`).join('')}</details>`).join('') || '<p class="maint-empty">No hay fichas en este reporte técnico.</p>'}
-      <section class="maint-pending"><h2>Pendientes de vinculación</h2><p class="maint-meta">Recursos detectados en redes sociales que todavía no tienen una ficha canónica asignada.</p><h3>TikTok</h3>
-      ${pending.length ? pending.map(video => {
-        const candidate = [video.share_url, video.embed_link].find(url => String(url || '').startsWith('https://www.tiktok.com/'));
-        return `<div class="maint-unlinked-card"><div class="maint-unlinked-title">${esc(video.title || 'Sin título')}</div><div class="maint-unlinked-id">Video ID: ${esc(video.video_id)}</div>${candidate ? `<div class="maint-resource-actions"><a href="${esc(candidate)}" target="_blank" rel="noopener noreferrer">Abrir en TikTok</a></div>` : ''}</div>`;
-      }).join('') : '<div class="maint-empty">No hay videos TikTok pendientes de vinculación.</div>'}</section></div></details>`;
+  let categories=[];
+  try{categories=JSON.parse(document.getElementById('maintenance-category-registry').textContent);}catch(_){root.textContent='No se pudo leer el registro de categorías.';return;}
+  function pending() {
+    const target=document.getElementById('marketing-unlinked'), state=C.inventoryState(report,failed?null:revision);
+    if(!target)return;
+    const list=state.pending.map(video=>{
+      const url=C.safeURL(video.share_url,location.href);
+      return el('article',{class:'maint-unlinked-card'},el('strong',{},video.title || 'Vídeo sin título registrado'),el('p',{class:'maint-meta'},'ID '+video.video_id),url?el('a',{href:url,target:'_blank',rel:'noopener noreferrer'},'Consultar publicación →'):null);
+    });
+    target.replaceChildren(el('section',{class:'maint-pending'},el('h3',{},'Pendientes de vinculación'),el('p',{class:'maint-meta'},'Inventario global de TikTok · No se limita por los filtros de fichas.'),el('span',{class:'workspace-tag','data-tone':state.known?'good':'neutral'},state.label),!state.known?el('p',{class:'maint-meta'},'No hay un inventario completo y vigente para afirmar cuántos recursos faltan por vincular. Las referencias anteriores, si existen, se conservan como históricas.'):null,...list));
   }
-  let categories;
-  try { categories = JSON.parse(document.getElementById('maintenance-category-registry').textContent); }
-  catch (_) { root.textContent = 'No se pudo leer la configuración de categorías. La estructura de contenido permanece disponible.'; return; }
-  fetch(root.dataset.statusUrl, {cache:'no-store'})
-    .then(response => { if (!response.ok) throw new Error('HTTP ' + response.status); return response.json(); })
-    .then(data => { window.__maintenanceData = data; render(data, categories); })
-    .catch(error => { root.textContent = 'No se pudo cargar el reporte de mantenimiento: ' + error.message + '. La estructura y el buscador de fichas permanecen disponibles.'; });
+  function render() {
+    pending();if(!report){return;}
+    const wasOpen=root.querySelector('.maint-technical')?.open || false;
+    const fresh=freshness(),rows=report.items.filter(i=>!selected||selected.has(i.code)), groups=groupItems(rows,categories,base);
+    const tik=report.services?.tiktok || {}, checked=report.generated_at?new Date(report.generated_at).toLocaleString('es-ES'):'Sin fecha';
+    lazy=new Map();
+    const graph=groups.map(cat=>`<details class="catalog-category" data-technical-category="${esc(cat.id)}"><summary><strong>${esc(cat.name)}</strong></summary>${cat.roles.map(role=>`<details class="catalog-role" data-technical-role="${esc(role.id)}"><summary><strong>${esc(role.name)}</strong></summary>${role.sections.map(section=>{
+      const key=cat.id+'|'+role.id+'|'+section.id;lazy.set(key,section.items);
+      return `<details class="catalog-section" data-technical-section="${esc(section.id)}" data-lazy-key="${esc(key)}"><summary><strong>${esc(section.name)}</strong><span>${section.items.length} fichas</span></summary><div data-lazy-content></div></details>`;
+    }).join('')}</details>`).join('')}</details>`).join('');
+    const videoIds=new Set(rows.flatMap(i=>(i.media||[]).filter(a=>a.provider==='tiktok'&&a.video_id).map(a=>a.video_id)));
+    const metrics=[[rows.length,'Fichas en este informe'],[videoIds.size,'Vídeos únicos registrados'],[fresh.current?rows.filter(i=>i.status==='ROTO').length:'—','Incidencias técnicas vigentes']];
+    root.innerHTML=`<details class="maint-technical"${wasOpen?' open':''}><summary class="maint-technical-toggle"><strong>Informe técnico en detalle</strong><span>Diagnóstico por categoría, rol y sección</span></summary><div class="maint-technical-body">
+      <div class="technical-freshness" data-current="${fresh.current}"><strong>${esc(fresh.label)}</strong><p class="maint-meta">Comprobación registrada: ${esc(checked)}. Vigencia: misma revisión del sitio y hasta 36 horas. El estado técnico no determina aprobación editorial.</p></div>
+      <div class="maint-summary">${metrics.map(([value,label])=>`<div class="maint-card"><strong>${esc(value)}</strong><span>${esc(label)}</span></div>`).join('')}</div>
+      <div class="maint-service"><div class="maint-service-head"><div><strong>TikTok · Servicio global</strong><p class="maint-meta">${esc(tik.detail || 'No se ha registrado una consulta al servicio.')}</p><p class="maint-meta">Vídeos detectados en la consulta registrada: ${esc(tik.recent_videos_checked ?? 'No determinado')}</p></div>${badge(tik.status)}</div></div>
+      <h3>Diagnóstico de la selección</h3>${graph || '<p class="maint-empty">No hay fichas de estos filtros en el informe.</p>'}</div></details>`;
+  }
+  root.addEventListener('toggle',event=>{
+    const details=event.target;
+    if(!details.open||!details.dataset.lazyKey)return;
+    const content=details.querySelector('[data-lazy-content]');
+    if(content&&!content.children.length)content.innerHTML=(lazy.get(details.dataset.lazyKey)||[]).map(renderFicha).join('');
+  },true);
+  async function load(reload=false) {
+    try {
+      const result=await C.load(root.dataset.statusUrl,reload);
+      if(!result||!Array.isArray(result.items))throw new Error('Formato de informe no válido');
+      report=result;failed=false;window.__maintenanceData=result;window.__maintenanceReportError=false;
+      render();window.dispatchEvent(new CustomEvent('maintenance:report',{detail:result}));
+    }catch(error){
+      failed=true;window.__maintenanceData=null;window.__maintenanceReportError=true;
+      root.replaceChildren(el('h3',{},'Informe técnico no disponible'),el('p',{class:'maint-meta'},'No se pudo cargar el reporte: '+error.message+'. Puedes recargar los datos. La navegación, las fichas y los recursos publicados permanecen disponibles.'));
+      pending();window.dispatchEvent(new Event('maintenance:report'));
+    }
+  }
+  window.addEventListener('maintenance:scope',event=>{revision=event.detail.revision;selected=new Set(event.detail.codes);render();});
+  window.addEventListener('maintenance:reload',()=>load(true));
+  load();
 })();

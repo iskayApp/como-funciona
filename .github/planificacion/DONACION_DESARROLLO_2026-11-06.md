@@ -62,6 +62,12 @@ Total de respaldo de esta ficha: **3 registros CL y 7 párrafos distintos: 3, 6,
 
 El registro se identifica por título y carpeta, sin incorporar una URL privada.
 
+## Comprobación técnica del borrador
+
+La validación inicial detectó que la prueba de conservación de fuentes congelaba todo el árbol `ideas/` y, por ello, rechazaba también la incorporación de una ficha nueva en otra categoría. La comprobación se ajusta al árbol completo de `ideas/financiamiento-reembolsable`, cuyo identificador permanece idéntico en la base, en `main` y en el borrador.
+
+El ajuste conserva la protección de las 99 fichas de FR y sus archivos de recorrido, junto con los controles existentes de códigos, rutas, estados, versiones y componentes compartidos. La validación automática de la solicitud de cambios comprueba también el sitio generado y la exclusión de fichas restringidas. Este cambio de prueba no habilita la publicación de Donación.
+
 ## Continuidad
 
 El siguiente paso de esta ficha es su revisión editorial y, cuando corresponda, aprobación. Las otras **39 fichas** conservan su estado pendiente de desarrollar. Ninguna ficha de Donación se cuenta como aprobada o publicada en este corte.

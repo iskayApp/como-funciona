@@ -23,7 +23,7 @@ class MaintenanceTikTokRegistryTests(unittest.TestCase):
         } for row in registry["videos"]]
         self.by_id = {row["id"]: row for row in self.videos}
 
-    def report(self, missing=None, connected=True):
+    def report(self, missing=None, connected=True, list_error=None):
         available = {key: value for key, value in self.by_id.items() if key != missing}
         service = {"status": "OK" if connected else "SIN COMPROBAR",
                    "detail": "Servicio simulado para esta prueba"}
@@ -33,8 +33,9 @@ class MaintenanceTikTokRegistryTests(unittest.TestCase):
                     patch.object(maintenance, "OUT_FILE", output), \
                     patch.object(maintenance, "TIKTOK_NEXT_REFRESH_FILE", Path(directory) / "token.next"), \
                     patch.object(maintenance, "refresh_tiktok_access", return_value=("fixture-token" if connected else None, service)), \
-                    patch.object(maintenance, "list_tiktok_all", return_value=(list(available.values()), None)), \
+                    patch.object(maintenance, "list_tiktok_all", return_value=(list(available.values()), list_error)), \
                     patch.object(maintenance, "query_tiktok_videos", return_value=(available, None)) as query, \
+                    patch.dict(maintenance.os.environ, {'GITHUB_SHA': 'a' * 40}), \
                     redirect_stdout(io.StringIO()):
                 maintenance.main()
             if connected:
@@ -49,6 +50,8 @@ class MaintenanceTikTokRegistryTests(unittest.TestCase):
 
     def test_registered_relations_are_checked_and_old_reference_is_not_counted_twice(self):
         report = self.report()
+        self.assertEqual(report['revision'], 'a' * 40)
+        self.assertTrue(report['tiktok_inventory']['complete'])
         rows = self.tiktok_rows(report)
         self.assertEqual(len(rows), self.expected_relations)
         self.assertEqual(report["summary"]["videos_tiktok"], len(self.by_id))
@@ -82,10 +85,18 @@ class MaintenanceTikTokRegistryTests(unittest.TestCase):
             self.assertTrue(row["url"].startswith("https://www.tiktok.com/@iskay.app/video/"))
 
     def test_unavailable_service_does_not_silently_approve_registered_videos(self):
-        rows = self.tiktok_rows(self.report(connected=False))
+        report = self.report(connected=False)
+        self.assertFalse(report['tiktok_inventory']['complete'])
+        rows = self.tiktok_rows(report)
         self.assertEqual(len(rows), self.expected_relations)
         self.assertTrue(all(row["status"] != "OK" for _, row in rows))
         self.assertTrue(all("Servicio simulado" in row["detail"] for _, row in rows))
+
+    def test_partial_inventory_retains_rows_without_claiming_completeness(self):
+        report = self.report(list_error='La segunda página no respondió')
+        self.assertFalse(report['tiktok_inventory']['complete'])
+        self.assertEqual(report['services']['tiktok']['status'], 'ROTO')
+        self.assertEqual(len(report['tiktok_inventory']['videos']), len(self.videos))
 
 
 if __name__ == "__main__":

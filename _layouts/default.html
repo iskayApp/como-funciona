@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/knowledge.css' | relative_url }}?v=20261104">
   <script src="{{ '/assets/js/knowledge.js' | relative_url }}?v=20261104" defer></script>
 </head>
-<body class="{% if page.url == '/' %}page-home{% elsif page.code %}page-topic{% elsif fr_current_role_ready and page.url == fr_current_url %}page-hub{% elsif fr_is_stage %}page-stage{% else %}page-document{% endif %}">
+<body class="{% if page.url == '/mantenimiento/' %}page-maintenance{% elsif page.url == '/' %}page-home{% elsif page.code %}page-topic{% elsif fr_current_role_ready and page.url == fr_current_url %}page-hub{% elsif fr_is_stage %}page-stage{% else %}page-document{% endif %}">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
     <div class="shell header-inner">

@@ -1,128 +1,210 @@
-"""Exercise the four rendered views; service reports are synthetic fixtures."""
+"""Exercise the maintenance hub using real catalogs and explicitly synthetic reports."""
+import csv
+import io
+import json
 import os
+from collections import Counter
+from datetime import datetime, timezone
 from functools import partial
 from http.server import ThreadingHTTPServer
 from threading import Thread
-import json
 from playwright.sync_api import sync_playwright, expect
 from smoke_fr_navigation import ROOT, SITE, BASE, ARTIFACTS, Handler, fits
 from smoke_category_base import report_fixture
 
 
+def advanced(page):
+    details=page.locator('.workspace-filter-details')
+    if not details.evaluate('(node) => node.open'):
+        details.locator('summary').click()
+
+
 def check_width(page, home, control, width):
     page.goto(home+'mantenimiento/')
     page.locator('#workspace-filters').wait_for(state='visible')
-    assert page.locator('[data-maint-view-link]').count()==4
+    assert page.locator('[data-maint-view-link]').count()==5
     expect(page.locator('[data-maint-view]:visible')).to_have_count(1)
+    expect(page.locator('#m-resumen')).to_be_visible()
+    expect(page.locator('#overview-metrics .overview-metric > strong').first).to_have_text('99')
     assert page.locator('[data-maint-topic]').count()==99
     assert page.locator('.control-topic-button').count()==99
+    assert 'Donación' in page.locator('#overview-preparation').inner_text()
+    assert 'Preparada para revisión' in page.locator('#overview-preparation').inner_text()
+    assert '40 fichas identificadas' in page.locator('#overview-preparation').inner_text()
+    fits(page)
+    page.screenshot(path=str(ARTIFACTS/f'maintenance-panorama-{width}.png'),full_page=True)
+    page.locator('[data-maint-view-link="m-contenido"]').click()
     page.locator('#control-query').fill('CF-FR-COL-003')
     expect(page.locator('[data-maint-topic]:visible')).to_have_count(1)
-    page.locator('.control-topic-button:visible').click()
+    origin=page.locator('.control-topic-button:visible')
+    origin.click()
     expect(page.locator('#topic-control')).to_be_visible()
     assert 'Pendiente de revisión' in page.locator('#topic-control').inner_text()
-    assert 'Sin referencia registrada' in page.locator('#topic-control').inner_text()
     expect(page.locator('#topic-control-title')).to_be_focused()
-    fits(page)
-    page.locator('[data-close-control]').click()
+    page.keyboard.press('Escape')
+    expect(page.locator('#topic-control')).not_to_be_visible()
+    expect(origin).to_be_focused()
     page.locator('#control-clear').click()
+    advanced(page)
     page.locator('#control-role').select_option('colaboradores')
+    page.locator('[data-maint-view-link="m-publicacion"]').click()
+    expect(page.locator('#publication-summary .overview-metric > strong').first).to_have_text('29')
+    expect(page.locator('#publication-freshness')).to_contain_text('Informe vigente · misma versión')
+    expect(page.locator('#publication-records [data-tone="good"]').filter(has_text='Técnico')).to_have_count(20)
     page.locator('[data-maint-view-link="m-revisiones"]').click()
-    expect(page.locator('#m-revisiones')).to_be_visible()
-    expect(page.locator('#review-count')).to_contain_text('27 fichas')
+    expect(page.locator('#review-count')).to_contain_text('de 27 fichas')
     expect(page.locator('#review-records [data-control-record]')).to_have_count(20)
     page.locator('#review-more').click()
     expect(page.locator('#review-records [data-control-record]')).to_have_count(27)
+    opener=page.locator('#review-records [data-open-control]').first
+    opener.click()
+    assert page.url.split('#')[-1]=='m-revisiones'
+    page.locator('[data-close-control]').click()
+    expect(opener).to_be_focused()
+    assert page.url.split('#')[-1]=='m-revisiones'
+    with page.expect_download() as download:
+        page.locator('#workspace-export').click()
+    rows=list(csv.reader(io.StringIO(download.value.path().read_text(encoding='utf-8-sig')),delimiter=';'))
+    assert len(rows)==28, len(rows)
+    assert all(row[3]=='Colaboradores' for row in rows[1:])
+    saved=page.url
+    page.reload()
+    page.locator('#workspace-filters').wait_for(state='visible')
+    assert page.locator('#control-role').input_value()=='colaboradores'
+    assert page.url.split('#')[-1]=='m-revisiones'
+    page.locator('#workspace-copy').click()
+    expect(page.locator('#workspace-feedback')).to_contain_text('Vista copiada')
+    assert page.evaluate('navigator.clipboard.readText()')==page.url
     page.locator('#control-clear').click()
-    page.locator('#review-kind').select_option('unspecified')
-    expect(page.locator('#review-count')).to_contain_text('33 fichas')
-    sources=page.locator('#impact-source option').evaluate_all('(options)=>options.map(o=>o.value).filter(Boolean)')
-    assert sources
-    page.locator('#impact-source').select_option(sources[0])
-    expected=sum(i['source']['label']==sources[0] for i in control['items'])
-    expect(page.locator('#impact-records [data-control-record]')).to_have_count(expected)
-    assert 'No hay cambios de guía registrados' in page.locator('#guide-change-records').inner_text()
-    fits(page)
+    page.locator('#review-kind').select_option('gap:guide_version')
+    expect(page.locator('#review-count')).to_contain_text('de 99 fichas')
+    page.locator('#review-kind').select_option('gap:content_version')
+    expect(page.locator('#review-count')).to_contain_text('de 30 fichas')
+    page.locator('#review-kind').select_option('unverified')
+    unknown=sum(bool(i['unverified_asset_ids']) for i in control['items'])
+    expect(page.locator('#review-count')).to_contain_text(f'de {unknown} fichas')
+    sources=Counter(i['source']['label'] for i in control['items'])
+    source=max(sources,key=sources.get)
+    page.locator('#impact-source').select_option(source)
+    expect(page.locator('#impact-records [data-control-record]')).to_have_count(20)
+    expect(page.locator('#impact-count')).to_contain_text(f'de {sources[source]} fichas')
+    page.locator('#impact-more').click()
+    expect(page.locator('#impact-records [data-control-record]')).to_have_count(40)
+    with page.expect_download() as download:
+        page.locator('#impact-export').click()
+    impact_rows=list(csv.reader(io.StringIO(download.value.path().read_text(encoding='utf-8-sig')),delimiter=';'))
+    assert len(impact_rows)==sources[source]+1
+    assert all(row[2]==source for row in impact_rows[1:])
+    page.reload()
+    page.locator('#workspace-filters').wait_for(state='visible')
+    assert page.locator('#impact-source').input_value()==source
+    expect(page.locator('#impact-count')).to_contain_text(f'de {sources[source]} fichas')
+    page.locator('[data-maint-view-link="m-multimedia"]').click()
+    expect(page.locator('.media-resource-card')).to_have_count(8)
+    page.locator('#media-provider').select_option('tiktok')
+    expect(page.locator('.media-resource-card')).to_have_count(6)
+    page.locator('#media-provider').select_option('')
+    page.locator('#maint-search-text').fill('PRO-EDU-01')
+    expect(page.locator('.media-resource-card')).to_have_count(1)
+    page.locator('#maint-search-clear').click()
+    page.locator('#media-kind').select_option('video')
+    expect(page.locator('.media-resource-card')).to_have_count(6)
+    with page.expect_download() as download:
+        page.locator('#workspace-export').click()
+    assert len(list(csv.reader(io.StringIO(download.value.path().read_text(encoding='utf-8-sig')),delimiter=';')))==7
+    page.locator('#maint-search-clear').click()
+    page.locator('[data-media-mode="fichas"]').click()
+    expect(page.locator('.maint-search-result')).to_have_count(12)
+    page.locator('#maint-search-more').click()
+    expect(page.locator('.maint-search-result')).to_have_count(24)
+    page.locator('#maint-search-text').fill('FR-PRO-13')
+    expect(page.locator('.maint-search-result')).to_have_count(1)
+    page.locator('.maint-search-result .media-placements > summary').click()
+    assert page.locator('#maint-search-results [data-copy-url]').count()>=3
+    page.locator('#maint-search-results [data-copy-url]').first.click()
+    expect(page.locator('#maint-search-feedback')).to_contain_text('Enlace copiado')
+    page.locator('#maint-search-clear').click()
+    page.locator('[data-media-mode="pieces"]').click()
+    expect(page.locator('#maint-search-count')).to_contain_text('de 61 piezas')
+    expect(page.locator('.piece-card')).to_have_count(12)
+    page.locator('#maint-search-text').fill('PRO-EDU-01')
+    expect(page.locator('.piece-card')).to_have_count(1)
+    page.locator('#media-kind').select_option('unverified')
+    expect(page.locator('.piece-card')).to_have_count(1)
     page.locator('[data-maint-view-link="m-contenido"]').click()
-    expect(page.locator('#m-contenido')).to_be_visible()
-    page.locator('#control-query').fill('FR-PRO-13')
-    page.locator('.control-topic-button:visible').click()
-    page.locator('[data-show-media]').click()
+    page.locator('#control-query').fill('CF-FR-COL-003')
+    page.go_back()
     expect(page.locator('#m-multimedia')).to_be_visible()
-    expect(page.locator('#maint-search-results')).to_contain_text('FR-PRO-13')
-    assert page.locator('#maint-search-results [data-copy-url]').count()>0
-    page.wait_for_selector('#marketing-unlinked .maint-pending',state='attached')
-    assert 'Recurso sintético de prueba' in page.locator('#marketing-unlinked').inner_text()
-    assert page.locator('#maintenance-dashboard .maint-pending').count()==0
+    assert page.locator('#control-query').input_value()==''
+    assert page.locator('#maint-search-text').input_value()=='PRO-EDU-01'
+    expect(page.locator('.piece-card')).to_have_count(1)
+    page.locator('#maint-search-clear').click()
+    assert 'Pendientes' in page.locator('#marketing-unlinked').inner_text()
     fits(page)
-    page.locator('[data-maint-view-link="m-publicacion"]').click()
-    expect(page.locator('#m-publicacion')).to_be_visible()
-    page.locator('#control-clear').click()
-    expect(page.locator('#publication-summary strong')).to_have_text(['99','59','7','33'])
-    expect(page.locator('#publication-records .workspace-tag')).to_have_count(60)
-    assert 'Sin comprobar' in page.locator('#publication-records').inner_text()
-    page.screenshot(path=str(ARTIFACTS/f'maintenance-publication-{width}.png'),full_page=True)
-    fits(page)
-    page.locator('[data-maint-view-link="m-contenido"]').focus()
-    page.keyboard.press('Enter')
-    expect(page.locator('#m-contenido')).to_be_visible()
-    page.locator('#control-category').select_option('donacion')
-    expect(page.locator('[data-maint-category="donacion"]')).to_be_visible()
-    expect(page.locator('#control-role')).to_be_disabled()
-    page.locator('#control-clear').click()
-    page.screenshot(path=str(ARTIFACTS/f'maintenance-content-{width}.png'),full_page=True)
+    page.evaluate('window.scrollTo(0,0)')
+    page.screenshot(path=str(ARTIFACTS/f'maintenance-library-{width}.png'),full_page=True)
 
 
 def main():
-    control=json.loads((SITE / 'mantenimiento/control_catalog.json').read_text())
+    control=json.loads((SITE/'mantenimiento/control_catalog.json').read_text())
     assert control['summary']['published']==99
-    assert control['summary']['editorial']=={'unspecified':33,'approved':7,'pending_review':59}
-    route_audit=json.loads((ARTIFACTS / 'maintenance-route-audit.json').read_text())
-    assert route_audit['reachable']==99 and not route_audit['unreachable_topics']
     server=ThreadingHTTPServer(('127.0.0.1',0),partial(Handler,directory=str(SITE)))
     Thread(target=server.serve_forever,daemon=True).start()
     home=f'http://127.0.0.1:{server.server_port}'+BASE+'/'
     fixture=report_fixture()
-    fixture['tiktok_inventory']={'videos':[{'video_id':'fixture-only','title':'Recurso sintético de prueba','status':'SIN VINCULAR'}]}
+    fixture['generated_at']=datetime.now(timezone.utc).isoformat()
+    fixture['revision']=control['revision']
+    fixture['services']['tiktok']={'status':'OK','detail':'Escenario simulado de interfaz; no consulta TikTok.','recent_videos_checked':1}
+    fixture['tiktok_inventory']={'complete':True,'videos':[{'video_id':'fixture-only','title':'Recurso sintético de prueba','status':'SIN VINCULAR'}]}
+    for item in fixture['items']: item['status']='OK'
     passed=[]
     try:
         with sync_playwright() as pw:
-            browser=pw.chromium.launch(executable_path=os.environ.get("CHROMIUM_EXECUTABLE_PATH"))
-            for width in (1280,390,320):
-                context=browser.new_context(viewport={'width':width,'height':900})
+            browser=pw.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE_PATH'))
+            for width in (1440,768,390,320):
+                context=browser.new_context(viewport={'width':width,'height':1000},permissions=['clipboard-read','clipboard-write'],reduced_motion='reduce')
                 context.route('**/mantenimiento/status.json',lambda route:route.fulfill(json=fixture))
                 page=context.new_page(); errors=[]
                 page.on('pageerror',lambda error:errors.append(str(error)))
                 try:
                     check_width(page,home,control,width)
-                    assert not errors,errors
+                    assert not errors, errors
                 except Exception:
                     page.screenshot(path=str(ARTIFACTS/f'maintenance-failure-{width}.png'),full_page=True)
-                    (ARTIFACTS/f'maintenance-failure-{width}.json').write_text(json.dumps({'url':page.url,'errors':errors,'panels':page.locator('[data-maint-view]').evaluate_all('(nodes)=>nodes.map(n=>({id:n.id,hidden:n.hidden}))')},ensure_ascii=False,indent=2))
+                    (ARTIFACTS/f'maintenance-failure-{width}.json').write_text(json.dumps({'url':page.url,'errors':errors},ensure_ascii=False))
                     raise
-                passed.append(f'{width}px: four views, filters, ficha controls, editorial states, impact, sharing, service fixture and keyboard')
+                passed.append(f'{width}px: panorama, filtered totals, persistent URLs, contextual drawer, CSV, unique resources, pagination, provenance and clipboard')
                 context.close()
+            # Historical success cannot become a current success or verified zero.
+            stale={**fixture,'generated_at':'2020-01-01T00:00:00Z','tiktok_inventory':{'videos':[]}}
+            context=browser.new_context()
+            context.route('**/mantenimiento/status.json',lambda route:route.fulfill(json=stale))
+            page=context.new_page();page.goto(home+'mantenimiento/#m-publicacion')
+            expect(page.locator('#publication-freshness')).to_contain_text('anterior')
+            assert page.locator('#publication-records [data-tone="good"]').filter(has_text='Técnico').count()==0
+            expect(page.locator('#marketing-unlinked')).to_contain_text('Pendientes sin comprobar')
+            assert 'sin pendientes' not in page.locator('#marketing-unlinked').inner_text().lower()
+            context.close();passed.append('Historical report and unknown inventory never present success or a false zero')
             context=browser.new_context(java_script_enabled=False,viewport={'width':320,'height':900})
-            page=context.new_page(); page.goto(home+'mantenimiento/')
-            assert page.locator('[data-maint-view]:visible').count()==4
+            page=context.new_page();page.goto(home+'mantenimiento/')
+            assert page.locator('[data-maint-view]:visible').count()==5
             page.locator('[data-maint-role="promotores"] > summary').click()
             page.locator('[data-maint-role="promotores"] [data-maint-section] > summary').first.click()
             page.locator('[data-maint-role="promotores"] [data-maint-topic]').first.click()
             assert '/promotores/' in page.url
-            fits(page); context.close(); passed.append('No JavaScript: four sections and native hierarchy remain navigable')
+            fits(page);context.close();passed.append('No JavaScript: five sections and native hierarchy remain navigable')
             context=browser.new_context()
             context.route('**/mantenimiento/control_catalog.json',lambda route:route.fulfill(status=503,body='Unavailable'))
             context.route('**/mantenimiento/status.json',lambda route:route.fulfill(status=503,body='Unavailable'))
-            page=context.new_page(); page.goto(home+'mantenimiento/')
+            page=context.new_page();page.goto(home+'mantenimiento/')
             expect(page.locator('#workspace-load-status')).to_contain_text('No se pudo cargar')
             assert page.locator('[data-maint-topic]').count()==99
             page.locator('[data-maint-view-link="m-multimedia"]').click()
             page.locator('#maint-search-text').fill('garantia')
-            page.wait_for_function('document.querySelector("#maint-search-results").children.length > 0')
-            context.close(); passed.append('Control/report outages preserve native navigation and independent marketing search')
+            expect(page.locator('#maint-search-count')).to_contain_text('Mostrando')
+            context.close();passed.append('Independent catalog remains usable when control and technical reports fail')
             browser.close()
-    finally:
-        server.shutdown()
+    finally: server.shutdown()
     (ARTIFACTS/'maintenance-workspace-report.json').write_text(json.dumps({'passed':passed,'service_report':'synthetic_fixture'},ensure_ascii=False,indent=2))
     print('\n'.join('PASS: '+line for line in passed))
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import json
 import os
+import subprocess
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -695,7 +696,15 @@ def main():
     }
 
     items.sort(key=lambda x: (x.get("stage_order", 999), x["code"]))
+    revision = os.environ.get('GITHUB_SHA', '')
+    if not re.fullmatch(r'[0-9a-f]{40}', revision):
+        try:
+            revision = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True, stderr=subprocess.DEVNULL).strip()
+        except (OSError, subprocess.CalledProcessError):
+            revision = None
+    tiktok_inventory['complete'] = tiktok_service.get('status') == 'OK'
     report = {
+        "revision": revision,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "summary": totals,
         "services": {"tiktok": tiktok_service},

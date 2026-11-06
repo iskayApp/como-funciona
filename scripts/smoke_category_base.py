@@ -73,11 +73,16 @@ def main():
                     group = page.locator(f'[data-maint-role="{role}"]')
                     assert group.locator('[data-maint-topic]').count() == count
                     assert group.locator('[data-maint-section]').count() == sections
+                page.locator('[data-maint-view-link="m-publicacion"]').click()
+                page.wait_for_selector('[data-technical-section]', state='attached')
+                page.locator('[data-technical-section]').evaluate_all('(nodes)=>nodes.forEach(node=>node.open=true)')
                 page.wait_for_selector('[data-technical-topic]', state='attached')
                 assert page.locator('[data-technical-topic]').count() == 99
                 assert page.locator('[data-technical-category]').count() == 1
                 assert page.locator('[data-technical-role]').count() == 3
                 assert page.locator('[data-technical-section]').count() == 21
+                assert page.locator('.maint-ficha-actions a').first.get_attribute('href').startswith(home)
+                page.locator('[data-maint-view-link="m-contenido"]').click()
                 page.locator('[data-maint-role="colaboradores"] > summary').click()
                 page.locator('[data-maint-role="colaboradores"] [data-maint-section] > summary').first.click()
                 assert page.locator('[data-maint-role="colaboradores"] [data-maint-topic]').first.is_visible()
