@@ -13,5 +13,7 @@
 .fr-tiktok-original { font-size: .86rem; margin: 9px 0 0; }
 .fr-tiktok-related ul { margin: 10px 0 18px; padding-left: 21px; }
 .fr-tiktok-related li { margin: 8px 0; font-size: .9rem; }
-.fr-tiktok-related-label { color: var(--muted, #687171); font-size: .8rem; }
+.fr-tiktok-related-label { display: inline-block; margin: 5px 0 0 8px; padding: 2px 7px; color: #53606b; background: var(--soft, #f2f5f4); border-radius: 6px; font-size: .75rem; font-weight: 400; }
+.fr-tiktok-card summary { min-height: 44px; }
+.ficha-videos-unavailable { padding: 18px; border: 1px solid var(--line, #DDE2E2); border-radius: 12px; background: var(--surface, #fff); color: #53606b; font-size: .9rem; }
 @media (max-width: 540px) { .fr-tiktok-card { padding: 12px 0; } .fr-tiktok-frame { width: min(100%, 300px); } }

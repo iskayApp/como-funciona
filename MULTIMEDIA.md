@@ -247,9 +247,13 @@ El componente común de las fichas genera automáticamente tres destinos: ficha 
 
 ## Ensamblaje verificado de TikTok en Financiamiento Reembolsable
 
-Para las publicaciones que ya existen en la cuenta oficial @iskay.app se utiliza el registro `_data/fr_tiktok_publicaciones.json`, contrastado con el catálogo aprobado de piezas. El componente `_includes/fr-tiktok-videos.html` reproduce los vídeos únicamente en las fichas de relación **Principal** mediante reproductores oficiales de TikTok, sin autoplay, abiertos voluntariamente; la relación **Complementaria** ofrece un enlace a la publicación original. Las URL de TikTok proceden de su API oficial, y el identificador técnico deriva de la combinación estable de ficha y pieza (no de su proximidad numérica).
+La herramienta `_includes/ficha-videos.html` está disponible en todas las fichas, independientemente de su categoría o rol. Cuando existe una publicación verificada y asociada expresamente a la ficha, muestra el botón «Reproducir vídeo explicativo». Cuando no existe, indica «Vídeo explicativo aún no disponible», sin controles ficticios ni vídeos de otros temas.
 
-La integración no cambia los textos de las fichas ni declara que un vídeo esté revisado contra una versión funcional si ese dato no se ha registrado. En el catálogo compartido, los ocho vídeos embebidos ofrecen URL de ancla dentro de la ficha y URL original; los ocho enlaces complementarios ofrecen únicamente la URL original, nunca un ancla ficticia. La misma ficha puede vincular varios vídeos y cada vídeo puede vincular varias fichas, sin duplicar archivos multimedia.
+Para los TikTok oficiales se utiliza `_data/fr_tiktok_publicaciones.json`, contrastado con el ensamblaje editorial aprobado. Tanto las relaciones **Principal** como las **Complementaria** disponen del mismo reproductor oficial y conservan su clasificación editorial; los vídeos complementarios se identifican como tales. Las URL proceden de la API oficial y el identificador técnico sigue siendo la combinación estable de ficha y pieza.
+
+Los seis vídeos publicados tienen 16 asociaciones en nueve fichas: ocho principales y ocho complementarias. Las 16 ofrecen un ancla real dentro de la ficha y su URL original; las demás fichas muestran el aviso de disponibilidad. El componente `_includes/video-player.html` mantiene la reproducción voluntaria, sin autoplay ni repetición, y funciona sin JavaScript. `_includes/fr-tiktok-videos.html` se conserva como alias de compatibilidad.
+
+Esta presentación no altera los textos de las fichas, sus relaciones editoriales ni la aprobación funcional de los recursos. Agregar una asociación publicada al registro correspondiente hace aparecer automáticamente su reproductor.
 
 ## Campos comunes
 

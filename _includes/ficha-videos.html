@@ -1,0 +1,34 @@
+{% comment %}
+  Herramienta compartida por todas las fichas. Solo reproduce publicaciones
+  verificadas que estén vinculadas expresamente a su código canónico.
+  Principal/complementaria conserva su significado editorial, no limita el reproductor.
+{% endcomment %}
+{% if page.code %}
+  {% assign has_ficha_video = false %}
+  {% for video in site.data.fr_tiktok_publicaciones.videos %}
+    {% assign piece = site.data.fr_ensamblaje_marketing.pieces | where: 'code', video.piece_code | first %}
+    {% if piece %}
+      {% if piece.principal contains page.code or piece.complementaria contains page.code %}
+        {% assign has_ficha_video = true %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  <section class="ficha-videos fr-tiktok-section{% unless has_ficha_video %} ficha-videos-empty{% endunless %}" aria-labelledby="ficha-videos-title" data-video-status="{% if has_ficha_video %}available{% else %}unavailable{% endif %}">
+    <h2 id="ficha-videos-title">Vídeos para comprender mejor</h2>
+    {% if has_ficha_video %}
+      <p class="fr-tiktok-intro">Publicaciones originales de iskay.app en TikTok que complementan esta explicación.</p>
+      {% for video in site.data.fr_tiktok_publicaciones.videos %}
+        {% assign piece = site.data.fr_ensamblaje_marketing.pieces | where: 'code', video.piece_code | first %}
+        {% if piece %}
+          {% if piece.principal contains page.code or piece.complementaria contains page.code %}
+            {% assign video_relation = 'Principal' %}
+            {% unless piece.principal contains page.code %}{% assign video_relation = 'Complementaria' %}{% endunless %}
+            {% include video-player.html video=video piece=piece relation=video_relation %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      <p class="ficha-videos-unavailable">Vídeo explicativo aún no disponible</p>
+    {% endif %}
+  </section>
+{% endif %}

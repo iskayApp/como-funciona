@@ -250,8 +250,8 @@ def apply_approved_assembly(catalog, errors):
 def attach_verified_tiktok(catalog, errors):
     """Asocia publicaciones reales de TikTok con el ensamblaje editorial aprobado.
 
-    Ficha principal: reproductor embebido con un ancla real generada por el
-    include fr-tiktok-videos.html. Ficha complementaria: publicación externa.
+    Todas las asociaciones tienen un reproductor y un ancla real generada por
+    ficha-videos.html. La relación principal/complementaria permanece editorial.
     Ninguna asociación se deduce por semejanza de números ni del título.
     """
     path = ROOT / "_data" / "fr_tiktok_publicaciones.json"
@@ -326,7 +326,8 @@ def attach_verified_tiktok(catalog, errors):
                 "id": asset_id, "type": "video", "title": association["title"],
                 "provider": "tiktok", "video_id": video_id,
                 "derived_from_version": None,  # No inventar revisión funcional.
-                "media_url": canonical + "#media-" + asset_id if relation == "Principal" else None,
+                "media_url": canonical + "#media-" + asset_id,
+                "editorial_relation": relation,
                 "original_url": url, "original_available": True,
             }
             # Evitar duplicar una referencia TikTok ya existente en el front matter;
@@ -353,7 +354,7 @@ def attach_verified_tiktok(catalog, errors):
                 group["assets"] = [asset if old in matched_originals else old
                                    for old in group["assets"]]
 
-            target = "media" if relation == "Principal" else "distribution"
+            target = "media"
             if any(x["id"] == asset_id for x in item[target]):
                 errors.append(f"{path}: asset_id duplicado en {ficha_code}: {asset_id}")
                 continue

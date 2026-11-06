@@ -87,13 +87,10 @@ class TikTokApprovedAssemblyTests(unittest.TestCase):
                 self.assertIn("/@iskay.app/video/", asset["original_url"])
                 self.assertIsNone(asset["derived_from_version"])
                 relation = next(p["relation"] for p in entry["editorial_pieces"] if p["code"] == group["code"])
-                if relation == "Principal":
-                    self.assertEqual(asset["media_url"],
-                        entry["canonical_url"] + "#media-" + asset["id"])
-                    self.assertIn(asset, entry["media"])
-                else:
-                    self.assertIsNone(asset["media_url"])
-                    self.assertIn(asset, entry["distribution"])
+                self.assertEqual(asset['editorial_relation'], relation)
+                self.assertEqual(asset["media_url"], entry["canonical_url"] + "#media-" + asset["id"])
+                self.assertIn(asset, entry["media"])
+                self.assertNotIn(asset, entry["distribution"])
 
     def test_old_reference_is_promoted_and_not_duplicated(self):
         entries = self.fake_catalog()
@@ -116,6 +113,18 @@ class TikTokApprovedAssemblyTests(unittest.TestCase):
             for asset in item["media"] + item["distribution"]:
                 exact_match = item["code"] == entry["code"] and asset.get("video_id") == old["video_id"]
                 self.assertEqual(asset["derived_from_version"], 1 if exact_match else None)
+
+    def test_unrelated_ficha_does_not_inherit_any_video(self):
+        entries = self.fake_catalog()
+        unrelated = copy.deepcopy(entries[0])
+        unrelated.update(code='CF-FR-INV-001', editorial_pieces=[], media=[], distribution=[], marketing_pieces=[], unassigned_assets=[])
+        entries.append(unrelated)
+        errors = []
+        catalog.attach_verified_tiktok(entries, errors)
+        self.assertEqual(errors, [])
+        self.assertEqual(unrelated['media'], [])
+        self.assertEqual(unrelated['distribution'], [])
+        self.assertEqual(unrelated['marketing_pieces'], [])
 
     def test_bad_url_or_duplicate_publication_must_fail(self):
         def validate(data):

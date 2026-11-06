@@ -76,6 +76,39 @@ def audit(site, config, data):
 
 
 
+class VideoPlayers(HTMLParser):
+    """Inspect each real player, rather than finding an unrelated iframe elsewhere."""
+    def __init__(self, html):
+        super().__init__()
+        self.cards = {}
+        self.current = None
+        self.summary = False
+        self.feed(html)
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == 'figure' and 'fr-tiktok-card' in attrs.get('class', '').split():
+            self.current = {'sources': [], 'labels': [], 'originals': []}
+            self.cards[attrs.get('id')] = self.current
+        if self.current is not None:
+            if tag == 'iframe':
+                self.current['sources'].append(attrs.get('src', ''))
+            if tag == 'a':
+                self.current['originals'].append(attrs.get('href', ''))
+            if tag == 'summary':
+                self.summary = True
+
+    def handle_data(self, text):
+        if self.current is not None and self.summary:
+            self.current['labels'].append(text.strip())
+
+    def handle_endtag(self, tag):
+        if tag == 'summary':
+            self.summary = False
+        if tag == 'figure':
+            self.current = None
+
+
 def audit_verified_tiktok(site, config, sharing):
     """Comprueba que el reproductor/ancla y los enlaces existen en el HTML real."""
     report = sharing.get("verified_tiktok")
@@ -102,22 +135,27 @@ def audit_verified_tiktok(site, config, sharing):
             errors.append(f'{ficha["code"]}: no se generó la ficha')
             continue
         html = path.read_text(encoding='utf-8')
+        cards = VideoPlayers(html).cards
         for asset in assets:
             if not asset.get("original_url"):
                 errors.append(f'{ficha["code"]}/{asset["id"]}: sin enlace original')
                 continue
-            if asset.get("media_url"):
-                anchor = 'id="media-' + asset["id"] + '"'
-                player = '/player/v1/' + str(asset.get("video_id"))
-                if anchor not in html:
-                    errors.append(f'{ficha["code"]}/{asset["id"]}: falta ancla multimedia')
-                if player not in html:
-                    errors.append(f'{ficha["code"]}/{asset["id"]}: falta iframe de TikTok')
+            anchor = 'media-' + asset['id']
+            card = cards.get(anchor)
+            if not asset.get('media_url') or not card:
+                errors.append(f'{ficha["code"]}/{asset["id"]}: falta reproductor/ancla multimedia')
+            elif (not any('/player/v1/' + str(asset.get('video_id')) in src for src in card['sources'])
+                  or 'Reproducir vídeo explicativo' not in card['labels']):
+                errors.append(f'{ficha["code"]}/{asset["id"]}: falta iframe o botón de reproducción')
+            if card and asset['original_url'] not in card['originals']:
+                errors.append(f'{ficha["code"]}/{asset["id"]}: falta enlace a la publicación original')
+            relation = asset.get('editorial_relation')
+            if relation == 'Principal':
                 observed_primary += 1
-            else:
-                if '/@iskay.app/video/' + str(asset.get("video_id")) not in html:
-                    errors.append(f'{ficha["code"]}/{asset["id"]}: falta enlace complementario')
+            elif relation == 'Complementaria':
                 observed_related += 1
+            else:
+                errors.append(f'{ficha["code"]}/{asset["id"]}: falta relación editorial')
     if observed_primary != report.get("principal") or observed_related != report.get("complementaria"):
         errors.append("El total multimedia del HTML no coincide con los enlaces verificados")
     return {"checked": observed_primary + observed_related, "principal": observed_primary,

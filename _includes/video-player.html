@@ -1,0 +1,17 @@
+{% assign ficha_slug = page.code | downcase %}
+{% assign piece_slug = include.video.piece_code | downcase %}
+{% assign video_anchor = 'media-' | append: ficha_slug | append: '-tiktok-' | append: piece_slug %}
+{% assign video_player = include.video.embed_link | replace: 'autoplay=1', 'autoplay=0' | replace: 'loop=1', 'loop=0' %}
+<figure id="{{ video_anchor }}" class="fr-tiktok-card media-block" data-video-id="{{ include.video.video_id | escape }}" data-video-relation="{{ include.relation | escape }}">
+  <figcaption><strong>{{ include.piece.title | escape }}</strong>{% if include.relation == 'Complementaria' %}<span class="fr-tiktok-related-label">Vídeo complementario</span>{% endif %}</figcaption>
+  <details>
+    <summary>Reproducir vídeo explicativo</summary>
+    <div class="fr-tiktok-frame">
+      <iframe title="Vídeo de TikTok: {{ include.piece.title | escape }}"
+        src="{{ video_player | escape }}" loading="lazy"
+        allow="fullscreen; picture-in-picture; encrypted-media"
+        allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </details>
+  <p class="fr-tiktok-original"><a href="{{ include.video.share_url | escape }}" target="_blank" rel="noopener noreferrer">Ver publicación original en TikTok</a></p>
+</figure>

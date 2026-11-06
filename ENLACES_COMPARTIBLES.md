@@ -129,3 +129,7 @@ El buscador público sigue mostrando solo fichas canónicas y no expone informac
 Marketing podrá seleccionar una ficha por su código, consultar el enlace canónico y compartir la multimedia o publicación original cuando exista. La ficha continúa respaldada por la guía aprobada; los videos y piezas derivadas conservan la relación `derived_from_version` para identificar cambios que necesitan revisión.
 
 La implementación disponible en este repositorio es **pública y de lectura/copia**. No sustituye todavía a un gestor editorial, ni publica por sí misma piezas nuevas en YouTube o TikTok.
+
+## Reproductor compartido en todas las fichas
+
+Los vídeos verificados con relación principal o complementaria se presentan dentro de su ficha y ofrecen los tres enlaces: ficha, reproductor mediante ancla y publicación original. El catálogo conserva `editorial_relation` para distinguir la relación editorial; ambas clases de vídeo pertenecen ahora a `media` porque están insertadas en la ficha. Las publicaciones externas que no se insertan continúan en `distribution`. Una ficha sin vídeo asociado muestra «Vídeo explicativo aún no disponible» y no genera anclas ni controles de reproducción ficticios.

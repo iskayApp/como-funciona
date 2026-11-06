@@ -69,7 +69,11 @@ Las URLs se derivan de page.url y de page.media; no se escriben manualmente.
   {% if page.category == "Financiamiento Reembolsable" %}
     {% for video in site.data.fr_tiktok_publicaciones.videos %}
       {% assign related_piece = site.data.fr_ensamblaje_marketing.pieces | where: "code", video.piece_code | first %}
-      {% if related_piece and related_piece.principal contains page.code %}
+      {% assign show_video_links = false %}
+      {% if related_piece %}
+        {% if related_piece.principal contains page.code or related_piece.complementaria contains page.code %}{% assign show_video_links = true %}{% endif %}
+      {% endif %}
+      {% if show_video_links %}
         {% assign ficha_code_key = page.code | downcase %}
         {% assign piece_code_key = video.piece_code | downcase %}
         {% assign asset_key = ficha_code_key | append: "-tiktok-" | append: piece_code_key %}
