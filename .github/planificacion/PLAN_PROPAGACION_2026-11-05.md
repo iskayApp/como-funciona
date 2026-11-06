@@ -2,6 +2,8 @@
 
 Fecha de consulta y preparación: 5 de noviembre de 2026.
 
+Actualización documental de Donación: 6 de noviembre de 2026. Véanse las [aclaraciones previas a las fichas](ACLARACIONES_DONACION_2026-11-06.md).
+
 ## Objetivo y estado
 
 Preparar la ampliación de Cómo funciona a las otras cuatro categorías de Ideas, con recorridos propios para los usuarios objetivo de cada una. Esta preparación identifica fuentes, roles, dependencias editoriales y condiciones de aceptación. No desarrolla fichas nuevas, no concede aprobaciones editoriales ni activa categorías en el sitio público.
@@ -37,6 +39,8 @@ Se consultaron las guías maestras de categoría, no copias de producción publi
 | 1 Precompra.docx | 2026-08-27 | Roles, oferta anticipada, modalidades, entrega, colaboradores y garantías; se utiliza la copia de categoría. |
 | 1 InversiónAcciones.docx | 2026-07-05 | Roles, emisión, derechos, información societaria, áreas técnicas y formalización de acciones. |
 | 00 CF-CORE-001 · Documento técnico maestro para propagar Cómo funciona · v1.0 | 2026-11-02 | Secuencia de trabajo, arquitectura compartida y separación de estados. |
+
+El 6 de noviembre de 2026 se incorporaron a **1 Donación.docx** la corrección de la afirmación tributaria, las decisiones previamente aprobadas sobre precampaña y presentación pública del donante, y una propuesta explícitamente pendiente de validación sobre confirmación del aporte. Las [aclaraciones de Donación](ACLARACIONES_DONACION_2026-11-06.md) registran fuentes oficiales, procedencia y estado de cada punto. La tabla anterior conserva los metadatos de la consulta inicial del 5 de noviembre; la fecha de esta incorporación no asigna una nueva versión aprobada de la guía.
 
 Las referencias de apartados se conservarán en las matrices de clasificación. Los enlaces de acceso y documentos privados permanecen en la gestión editorial; este plan público solo identifica títulos, fechas y secciones pertinentes.
 
@@ -94,9 +98,9 @@ La clasificación puede avanzar mientras se registran estas discrepancias. Las f
 | PROP-PRE-03 | Precompra · Transferencia de fondos · garantías | La guía enumera seguro de cumplimiento y prenda sobre activos, además de representación de precompradores, sin explicar de forma inequívoca si las garantías son alternativas o acumulativas. | Aclarar la regla y los documentos correspondientes. No sustituirla por pagaré o hipoteca de FR. |
 | PROP-ACC-01 | Inversión en Acciones · Procedimiento para reclamaciones y riesgo de pérdida | Un párrafo incorpora mora, cobro, ejecución de garantías y Representante Legal de los Inversionistas, términos que no se desarrollan como obligaciones de deuda en el resto del modelo accionario. | Revisar si existe arrastre de FR y precisar incumplimientos societarios, derechos y mecanismos aplicables. No prometer cuotas, intereses ni reembolso obligatorio del capital accionario. |
 | PROP-COM-01 | Donación, Recompensa y Precompra · Descuentos y tablas de tarifas | El texto habla de un porcentaje «sobre la comisión», mientras los extremos de las tablas muestran diferencias expresadas como puntos porcentuales. | Definir la base y forma de cálculo en la fuente antes de publicar ejemplos numéricos o una calculadora. |
-| PROP-DON-01 | Donación · Dirigido a · Beneficio tributario | La guía menciona una posible deducción tributaria sujeta a condiciones. | Verificar el respaldo oficial aplicable antes de desarrollar contenido tributario. No presentarlo como beneficio universal ni garantizado. |
-| PROP-DON-02 | Donación · Inicio de campaña · Período; decisiones aprobadas de producto | La guía permite una fecha futura para precampaña. El proyecto cuenta con decisiones más detalladas sobre activación y sobre presentación pública de la identidad del donante. | Vincular esas decisiones a la fuente editorial correspondiente antes de desarrollar fichas operativas; no inventar controles o permisos a partir de una frase general. |
-| PROP-COM-02 | Todas las guías · Transferencia y notificaciones | La expresión «confirmación de la operación» requiere distinguir la participación, el cierre y la transferencia al promotor. | Identificar el hito y las limitaciones en la clasificación de cada categoría. La aclaración aprobada para inversión FR no se traslada automáticamente a otras operaciones. |
+| PROP-DON-01 | Donación · Dirigido a · Beneficio tributario; [aclaraciones del 6 de noviembre](ACLARACIONES_DONACION_2026-11-06.md) | Comprobado y corregido en la guía: el carácter sin fines de lucro del receptor no concede por sí solo una deducción al donante. LRTI artículo 9, numeral 5 y reglamento tributario arts. 35.5, 28.20.5 y 28.21.1.d.ii. | Corrección general documentada. Antes de afirmar un beneficio concreto, identificar incentivo, contribuyente, destinatario o proyecto, canal, certificaciones, documentos, límites y período. |
+| PROP-DON-02 | Donación · Inicio de campaña · Período y presentación pública del donante; [aclaraciones del 6 de noviembre](ACLARACIONES_DONACION_2026-11-06.md) | Decisiones previas aprobadas documentadas en la guía: manual de precampaña del 10 de agosto de 2026 y registros DON-EDU-02/DON-INS-02 con estado Aprobada en sus hojas; DON-VEN-02 como referencia complementaria. | Dependencia documental atendida. Clasificar las reglas de publicación al pulsar, activación según fecha y acción del promotor, ausencia de aportes durante precampaña y elección de presentación visible o Anónimo, conservando su procedencia. |
+| PROP-COM-02 | Todas las guías · Transferencia y notificaciones; [propuesta de Donación del 6 de noviembre](ACLARACIONES_DONACION_2026-11-06.md) | Donación diferencia participación, cierre y transferencia. Propone confirmar el aporte con evidencia bancaria de recepción y aceptación efectivas, asociada a iniciativa, importe y operación; art. 33.4 del Reglamento General a la Ley Orgánica de Emprendimiento e Innovación. El criterio no tiene aprobación previa ni implementación comprobada. | Abierto en Donación para validar la integración bancaria y los pagos recibidos o conciliados alrededor del cierre antes de fijar el procedimiento. Se conservan eventos y notificaciones propios para cierre y liberación. Las demás categorías mantienen su aclaración independiente; la decisión de FR no se traslada automáticamente. |
 
 Este registro describe discrepancias documentales. No sustituye la revisión jurídica aplicable ni formula requisitos nuevos para los usuarios.
 
@@ -175,6 +179,11 @@ Su preparación requerirá localizar y revisar su propia guía para pedidos, evi
 
 ## Seguimiento del trabajo
 
-El primer resultado posterior a este plan será la matriz de clasificación de Donación por sus tres roles. A partir de ella se validarán los recorridos y se identificarán sus fichas. Las otras categorías pueden avanzar en la conciliación de sus fuentes mientras se consolida ese primer bloque.
+### Actualización documental del 6 de noviembre de 2026
+
+Se registran PROP-DON-01 como comprobado y corregido, y PROP-DON-02 como decisiones previamente aprobadas ya documentadas. PROP-COM-02 dispone de una propuesta para Donación y permanece abierto en la validación bancaria y el tratamiento de pagos alrededor del cierre; no queda resuelto para las demás categorías. El detalle y sus fuentes están en [ACLARACIONES_DONACION_2026-11-06.md](ACLARACIONES_DONACION_2026-11-06.md).
+
+El siguiente entregable sigue siendo la matriz de clasificación de Donación por sus tres roles. A partir de ella se validarán los recorridos y se identificarán sus fichas. Las otras categorías pueden avanzar en la conciliación de sus fuentes mientras se consolida ese primer bloque.
 
 Las ampliaciones mantendrán la cadena **guía y decisiones aprobadas → ficha canónica → multimedia → piezas y canales**, con registros distintos de aprobación editorial, publicación y comprobación técnica.
+
