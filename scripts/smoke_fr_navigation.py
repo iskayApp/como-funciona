@@ -47,7 +47,7 @@ def main():
                 errors = []
                 page.on('pageerror', lambda error: errors.append(str(error)))
                 page.goto(home)
-                assert page.locator('.fr-role-card').count() == 3
+                assert page.locator(f'.fr-role-card[href^="{BASE + FR}"]').count() == 3
                 fits(page)
                 menu = page.locator('.fr-menu')
                 summary = menu.locator('summary')
@@ -97,7 +97,7 @@ def main():
             page = context.new_page()
             page.goto(home)
             page.locator('.fr-menu > summary').click()
-            page.locator('.fr-menu-role').last.click()
+            page.locator(f'.fr-menu-role[href="{BASE + FR}colaboradores/"]').click()
             page.locator('.fr-section > summary').first.click()
             page.locator('[data-fr-topic]').first.click()
             assert page.locator('.fr-role-tabs [aria-current]').inner_text() == 'Colaboradores'

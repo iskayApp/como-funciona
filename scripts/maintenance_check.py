@@ -11,6 +11,11 @@ from urllib.request import Request, urlopen
 
 import yaml
 
+if __package__:
+    from .video_publications import load_explicit_tiktok
+else:
+    from video_publications import load_explicit_tiktok
+
 ROOT = Path(__file__).resolve().parents[1]
 IDEAS = ROOT / "ideas"
 OUT_DIR = ROOT / "mantenimiento"
@@ -247,6 +252,48 @@ def normalize_distribution_items(value):
         return [x for x in value if isinstance(x, dict)]
     return []
 
+
+def register_explicit_tiktok(pages, tiktok_ids, tiktok_links):
+    """Register Donación independently from FR, with pending editorial review."""
+    page_by_code = {page["data"].get("code"): page for page in pages if page["data"].get("code")}
+    errors = []
+    registry, associations = load_explicit_tiktok(
+        ROOT, {code: page["data"] for code, page in page_by_code.items()}, errors)
+    if errors:
+        raise ValueError("; ".join(errors))
+    if registry is None:
+        return
+    for video in registry["videos"]:
+        tiktok_ids.append(str(video["video_id"]))
+    for association in associations:
+        code, video_id = association["ficha_code"], association["video_id"]
+        page = page_by_code[code]
+        links = tiktok_links.setdefault(video_id, [])
+        if any(link.get("code") == code for link in links):
+            raise ValueError(f"{code}: publicación {video_id} duplicada fuera del registro explícito")
+        asset_id = f'{code.lower()}-tiktok-{association["piece_code"].lower()}'
+        record = {
+            "code": code, "title": page["data"].get("title"),
+            "canonical_url": normalize_url(page["data"].get("permalink")),
+            "relation": "media", "editorial_relation": association["relation"],
+            "category_code": association["category_code"], "piece_code": association["piece_code"],
+            "association_status": association["association_status"],
+            "asset_id": asset_id, "platform": "TikTok",
+            "content_version": page["data"].get("content_version"),
+            "derived_from_version": None, "reviewed": None,
+        }
+        links.append(record)
+        page.setdefault("registered_tiktok", []).append({
+            "id": asset_id, "type": "video", "provider": "tiktok", "storage": "external",
+            "video_id": video_id, "relation": "media", "title": association["title"],
+            "src": association["embed_link"], "url": association["share_url"],
+            "category_code": association["category_code"], "piece_code": association["piece_code"],
+            "editorial_relation": association["relation"],
+            "association_status": association["association_status"],
+            "version": None, "derived_from_version": None, "reviewed": None,
+        })
+
+
 def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     if TIKTOK_NEXT_REFRESH_FILE.exists():
@@ -360,6 +407,8 @@ def main():
                         "derived_from_version": record.get("derived_from_version"),
                         "reviewed": record.get("reviewed"),
                     })
+
+    register_explicit_tiktok(pages, tiktok_ids, tiktok_links)
 
     access_token, tiktok_service = refresh_tiktok_access()
     all_tiktok = []
@@ -477,6 +526,9 @@ def main():
             elif content_version is not None and derived is None:
                 mstatus.append("REVISAR")
                 detail.append("Falta derived_from_version.")
+            if media.get("association_status") == "pending_review":
+                mstatus.append("REVISAR")
+                detail.append("Asociación editorial pendiente de revisión; publicación autorizada por separado.")
 
             if storage == "internal":
                 src = media.get("src")
@@ -549,6 +601,11 @@ def main():
                 "url": ((resolved_video or {}).get("share_url") or (resolved_video or {}).get("embed_link")
                         or media.get("url") or media.get("src")),
             })
+            if media.get("association_status"):
+                media_rows[-1].update({
+                    key: media.get(key)
+                    for key in ("category_code", "piece_code", "editorial_relation", "association_status")
+                })
             page_statuses.append(st)
 
         distribution = data.get("distribution") or {}

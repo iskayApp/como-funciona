@@ -13,7 +13,6 @@ exclude:
   - README.md
   - PLANTILLA_FICHA.md
   - ideas/index.md
-  - ideas/donacion
   - ideas/recompensa
   - ideas/precompra
   - ideas/inversion-en-acciones

@@ -4,21 +4,29 @@
   Principal/complementaria conserva su significado editorial, no limita el reproductor.
 {% endcomment %}
 {% if page.code %}
+  {% assign ficha_videos = '' | split: '|' %}
+  {% assign ficha_videos_direct = false %}
+  {% if page.category == 'Financiamiento Reembolsable' %}
+    {% assign ficha_videos = site.data.fr_tiktok_publicaciones.videos %}
+  {% elsif page.category == 'Donación' and site.data.donacion_tiktok_publicaciones.category_code == 'DON' and site.data.donacion_tiktok_publicaciones.category == page.category %}
+    {% assign ficha_videos = site.data.donacion_tiktok_publicaciones.videos %}
+    {% assign ficha_videos_direct = true %}
+  {% endif %}
   {% assign has_ficha_video = false %}
-  {% for video in site.data.fr_tiktok_publicaciones.videos %}
-    {% assign piece = site.data.fr_ensamblaje_marketing.pieces | where: 'code', video.piece_code | first %}
+  {% for video in ficha_videos %}
+    {% if ficha_videos_direct %}{% assign piece = video %}{% else %}{% assign piece = site.data.fr_ensamblaje_marketing.pieces | where: 'code', video.piece_code | first %}{% endif %}
     {% if piece %}
       {% if piece.principal contains page.code or piece.complementaria contains page.code %}
         {% assign has_ficha_video = true %}
       {% endif %}
     {% endif %}
   {% endfor %}
-  <section class="ficha-videos fr-tiktok-section{% unless has_ficha_video %} ficha-videos-empty{% endunless %}" aria-labelledby="ficha-videos-title" data-video-status="{% if has_ficha_video %}available{% else %}unavailable{% endif %}">
+  <section class="ficha-videos fr-tiktok-section{% unless has_ficha_video %} ficha-videos-empty{% endunless %}" aria-labelledby="ficha-videos-title" data-video-status="{% if has_ficha_video %}available{% else %}unavailable{% endif %}"{% if ficha_videos_direct %} data-association-status="{{ site.data.donacion_tiktok_publicaciones.association_status | escape }}"{% endif %}>
     <h2 id="ficha-videos-title">Vídeos para comprender mejor</h2>
     {% if has_ficha_video %}
       <p class="fr-tiktok-intro">Publicaciones originales de iskay.app en TikTok que complementan esta explicación.</p>
-      {% for video in site.data.fr_tiktok_publicaciones.videos %}
-        {% assign piece = site.data.fr_ensamblaje_marketing.pieces | where: 'code', video.piece_code | first %}
+      {% for video in ficha_videos %}
+        {% if ficha_videos_direct %}{% assign piece = video %}{% else %}{% assign piece = site.data.fr_ensamblaje_marketing.pieces | where: 'code', video.piece_code | first %}{% endif %}
         {% if piece %}
           {% if piece.principal contains page.code or piece.complementaria contains page.code %}
             {% assign video_relation = 'Principal' %}

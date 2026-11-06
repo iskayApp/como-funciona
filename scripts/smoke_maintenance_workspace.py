@@ -25,12 +25,10 @@ def check_width(page, home, control, width):
     assert page.locator('[data-maint-view-link]').count()==5
     expect(page.locator('[data-maint-view]:visible')).to_have_count(1)
     expect(page.locator('#m-resumen')).to_be_visible()
-    expect(page.locator('#overview-metrics .overview-metric > strong').first).to_have_text('99')
-    assert page.locator('[data-maint-topic]').count()==99
-    assert page.locator('.control-topic-button').count()==99
-    assert 'Donación' in page.locator('#overview-preparation').inner_text()
-    assert 'Preparada para revisión' in page.locator('#overview-preparation').inner_text()
-    assert '40 fichas identificadas' in page.locator('#overview-preparation').inner_text()
+    expect(page.locator('#overview-metrics .overview-metric > strong').first).to_have_text('139')
+    assert page.locator('[data-maint-topic]').count()==139
+    assert page.locator('.control-topic-button').count()==139
+    assert 'Donación' not in page.locator('#overview-preparation').inner_text()
     fits(page)
     page.screenshot(path=str(ARTIFACTS/f'maintenance-panorama-{width}.png'),full_page=True)
     page.locator('[data-maint-view-link="m-contenido"]').click()
@@ -46,6 +44,7 @@ def check_width(page, home, control, width):
     expect(origin).to_be_focused()
     page.locator('#control-clear').click()
     advanced(page)
+    page.locator('#control-category').select_option('financiamiento-reembolsable')
     page.locator('#control-role').select_option('colaboradores')
     page.locator('[data-maint-view-link="m-publicacion"]').click()
     expect(page.locator('#publication-summary .overview-metric > strong').first).to_have_text('29')
@@ -70,6 +69,7 @@ def check_width(page, home, control, width):
     saved=page.url
     page.reload()
     page.locator('#workspace-filters').wait_for(state='visible')
+    assert page.locator('#control-category').input_value()=='financiamiento-reembolsable'
     assert page.locator('#control-role').input_value()=='colaboradores'
     assert page.url.split('#')[-1]=='m-revisiones'
     page.locator('#workspace-copy').click()
@@ -77,7 +77,7 @@ def check_width(page, home, control, width):
     assert page.evaluate('navigator.clipboard.readText()')==page.url
     page.locator('#control-clear').click()
     page.locator('#review-kind').select_option('gap:guide_version')
-    expect(page.locator('#review-count')).to_contain_text('de 99 fichas')
+    expect(page.locator('#review-count')).to_contain_text('de 139 fichas')
     page.locator('#review-kind').select_option('gap:content_version')
     expect(page.locator('#review-count')).to_contain_text('de 30 fichas')
     page.locator('#review-kind').select_option('unverified')
@@ -99,6 +99,8 @@ def check_width(page, home, control, width):
     page.locator('#workspace-filters').wait_for(state='visible')
     assert page.locator('#impact-source').input_value()==source
     expect(page.locator('#impact-count')).to_contain_text(f'de {sources[source]} fichas')
+    advanced(page)
+    page.locator('#control-category').select_option('financiamiento-reembolsable')
     page.locator('[data-maint-view-link="m-multimedia"]').click()
     expect(page.locator('.media-resource-card')).to_have_count(8)
     page.locator('#media-provider').select_option('tiktok')
@@ -140,6 +142,20 @@ def check_width(page, home, control, width):
     expect(page.locator('.piece-card')).to_have_count(1)
     page.locator('#maint-search-clear').click()
     assert 'Pendientes' in page.locator('#marketing-unlinked').inner_text()
+    # Keep FR's resource and piece counts protected, then exercise Donación separately.
+    page.locator('#control-category').select_option('donacion')
+    page.locator('[data-media-mode="resources"]').click()
+    expect(page.locator('.media-resource-card')).to_have_count(3)
+    page.locator('#media-provider').select_option('tiktok')
+    expect(page.locator('.media-resource-card')).to_have_count(3)
+    page.locator('#maint-search-clear').click()
+    page.locator('[data-media-mode="fichas"]').click()
+    expect(page.locator('#maint-search-count')).to_contain_text('de 40 fichas')
+    expect(page.locator('.maint-search-result')).to_have_count(12)
+    page.locator('[data-maint-view-link="m-revisiones"]').click()
+    page.locator('#review-kind').select_option('pending')
+    expect(page.locator('#review-count')).to_contain_text('de 40 fichas')
+    page.locator('[data-maint-view-link="m-multimedia"]').click()
     fits(page)
     page.evaluate('window.scrollTo(0,0)')
     page.screenshot(path=str(ARTIFACTS/f'maintenance-library-{width}.png'),full_page=True)
@@ -147,7 +163,8 @@ def check_width(page, home, control, width):
 
 def main():
     control=json.loads((SITE/'mantenimiento/control_catalog.json').read_text())
-    assert control['summary']['published']==99
+    assert control['summary']['published']==139
+    assert Counter(item['category'] for item in control['items'])=={'Financiamiento Reembolsable':99,'Donación':40}
     server=ThreadingHTTPServer(('127.0.0.1',0),partial(Handler,directory=str(SITE)))
     Thread(target=server.serve_forever,daemon=True).start()
     home=f'http://127.0.0.1:{server.server_port}'+BASE+'/'
@@ -188,17 +205,18 @@ def main():
             context=browser.new_context(java_script_enabled=False,viewport={'width':320,'height':900})
             page=context.new_page();page.goto(home+'mantenimiento/')
             assert page.locator('[data-maint-view]:visible').count()==5
-            page.locator('[data-maint-role="promotores"] > summary').click()
-            page.locator('[data-maint-role="promotores"] [data-maint-section] > summary').first.click()
-            page.locator('[data-maint-role="promotores"] [data-maint-topic]').first.click()
-            assert '/promotores/' in page.url
+            group=page.locator('[data-maint-category="donacion"] [data-maint-role="promotores"]')
+            group.locator(':scope > summary').click()
+            group.locator('[data-maint-section] > summary').first.click()
+            group.locator('[data-maint-topic]').first.click()
+            assert '/donacion/promotores/' in page.url
             fits(page);context.close();passed.append('No JavaScript: five sections and native hierarchy remain navigable')
             context=browser.new_context()
             context.route('**/mantenimiento/control_catalog.json',lambda route:route.fulfill(status=503,body='Unavailable'))
             context.route('**/mantenimiento/status.json',lambda route:route.fulfill(status=503,body='Unavailable'))
             page=context.new_page();page.goto(home+'mantenimiento/')
             expect(page.locator('#workspace-load-status')).to_contain_text('No se pudo cargar')
-            assert page.locator('[data-maint-topic]').count()==99
+            assert page.locator('[data-maint-topic]').count()==139
             page.locator('[data-maint-view-link="m-multimedia"]').click()
             page.locator('#maint-search-text').fill('garantia')
             expect(page.locator('#maint-search-count')).to_contain_text('Mostrando')

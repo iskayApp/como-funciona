@@ -6,6 +6,9 @@ editorial_controls:
   - category_id: financiamiento-reembolsable
     title: Revisión editorial y hallazgos de FR
     url: https://github.com/iskayApp/como-funciona/issues/9
+  - category_id: donacion
+    title: Donación · revisión editorial pendiente tras publicación autorizada
+    url: https://github.com/iskayApp/como-funciona/blob/main/.github/planificacion/DONACION_DESARROLLO_2026-11-06.md#revisión-editorial-posterior
 # Solo referencias expresamente publicables, nunca el texto del borrador.
 # Campos: public, code, title (solo para nuevas fichas), category_id, role_id,
 # phase (classified|organized|identified|developed), version, content_sha256,
@@ -17,18 +20,4 @@ preparation: []
 guide_changes: []
 
 # Avance documental explícito por categoría; estos registros NO son fichas publicadas.
-category_preparation:
-  - public: true
-    category_id: donacion
-    title: Donación · 40 fichas identificadas
-    phase: identified
-    review_status: pending_review
-    updated_at: '2026-11-06'
-    reference_url: https://github.com/iskayApp/como-funciona/blob/main/.github/planificacion/DONACION_IDENTIFICACION_2026-11-06.md
-    roles:
-      - name: Promotores
-        records: 71
-      - name: Donantes
-        records: 42
-      - name: Colaboradores
-        records: 23
+category_preparation: []

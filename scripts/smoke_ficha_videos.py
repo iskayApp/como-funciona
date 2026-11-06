@@ -32,7 +32,7 @@ class VideoPage(HTMLParser):
 
 
 def expected_videos():
-    """Use the editorial registry independently of the generated catalog."""
+    """Use both source registries independently of the generated catalog."""
     registry = json.loads((ROOT / '_data/fr_tiktok_publicaciones.json').read_text())
     assembly = json.loads((ROOT / '_data/fr_ensamblaje_marketing.json').read_text())
     pieces = {piece['code']: piece for piece in assembly['pieces']}
@@ -41,6 +41,14 @@ def expected_videos():
         piece = pieces[video['piece_code']]
         for relation in ('principal', 'complementaria'):
             for code in piece[relation]:
+                expected.setdefault(code, []).append(video['video_id'])
+    donation = json.loads((ROOT / '_data/donacion_tiktok_publicaciones.json').read_text())
+    assert donation['category_code'] == 'DON' and donation['association_status'] == 'pending_review'
+    assert len(donation['videos']) == donation['expected_videos'] == 3
+    for video in donation['videos']:
+        for relation in ('principal', 'complementaria'):
+            for code in video[relation]:
+                assert code.startswith('CF-DON-'), code
                 expected.setdefault(code, []).append(video['video_id'])
     return expected
 
@@ -65,7 +73,12 @@ def main():
     server = ThreadingHTTPServer(('127.0.0.1', 0), partial(Handler, directory=str(SITE)))
     Thread(target=server.serve_forever, daemon=True).start()
     origin = f'http://127.0.0.1:{server.server_port}'
-    samples = ('FR-PRO-01', 'FR-PRO-02', 'FR-PRO-03', 'CF-FR-INV-001', 'CF-FR-COL-001')
+    samples = ['FR-PRO-01', 'FR-PRO-02', 'FR-PRO-03', 'CF-FR-INV-001', 'CF-FR-COL-001']
+    donation_with_video = next(item['code'] for item in topics if item['category'] == 'Donación' and expected.get(item['code']))
+    samples.append(donation_with_video)
+    donation_without_video = next((item['code'] for item in topics if item['category'] == 'Donación' and not expected.get(item['code'])), None)
+    if donation_without_video:
+        samples.append(donation_without_video)
     try:
         with sync_playwright() as pw:
             browser = pw.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE_PATH'))
@@ -110,7 +123,7 @@ def main():
                         expect(section).to_contain_text('Vídeo explicativo aún no disponible')
                         assert section.locator('summary, iframe, button').count() == 0
                     fits(page)
-                    if code in ('FR-PRO-02', 'CF-FR-INV-001'):
+                    if code in ('FR-PRO-02', 'CF-FR-INV-001', donation_with_video):
                         page.screenshot(path=str(ARTIFACTS / f'videos-{code.lower()}-{width}.png'))
                 context.close()
                 passed.append(f'{width}px: relaciones principales, complementarias, mixtas y fichas sin vídeo; teclado, apertura/cierre, enlace original y ancla para compartir')

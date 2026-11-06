@@ -66,9 +66,16 @@ Las URLs se derivan de page.url y de page.media; no se escriben manualmente.
     {% endif %}
   {% endfor %}
 
+  {% assign share_videos = '' | split: '|' %}
+  {% assign share_videos_direct = false %}
   {% if page.category == "Financiamiento Reembolsable" %}
-    {% for video in site.data.fr_tiktok_publicaciones.videos %}
-      {% assign related_piece = site.data.fr_ensamblaje_marketing.pieces | where: "code", video.piece_code | first %}
+    {% assign share_videos = site.data.fr_tiktok_publicaciones.videos %}
+  {% elsif page.category == 'Donación' and site.data.donacion_tiktok_publicaciones.category_code == 'DON' and site.data.donacion_tiktok_publicaciones.category == page.category %}
+    {% assign share_videos = site.data.donacion_tiktok_publicaciones.videos %}
+    {% assign share_videos_direct = true %}
+  {% endif %}
+    {% for video in share_videos %}
+      {% if share_videos_direct %}{% assign related_piece = video %}{% else %}{% assign related_piece = site.data.fr_ensamblaje_marketing.pieces | where: "code", video.piece_code | first %}{% endif %}
       {% assign show_video_links = false %}
       {% if related_piece %}
         {% if related_piece.principal contains page.code or related_piece.complementaria contains page.code %}{% assign show_video_links = true %}{% endif %}
@@ -99,7 +106,6 @@ Las URLs se derivan de page.url y de page.media; no se escriben manualmente.
         </div>
       {% endif %}
     {% endfor %}
-  {% endif %}
 
   <p class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></p>
 </section>

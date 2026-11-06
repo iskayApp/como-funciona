@@ -21,8 +21,20 @@
 - id: donacion
   name: Donación
   url: /donacion/
-  status: preparation
-  roles: []
+  status: available
+  roles:
+    - id: promotores
+      name: Promotores
+      url: /donacion/promotores/
+      description: Quiero presentar una causa y reunir apoyo.
+    - id: donantes
+      name: Donantes
+      url: /donacion/donantes/
+      description: Quiero apoyar voluntariamente una causa.
+    - id: colaboradores
+      name: Colaboradores
+      url: /donacion/colaboradores/
+      description: Quiero aportar conocimientos o trabajo a una causa.
 - id: recompensa
   name: Recompensa
   url: /recompensa/
