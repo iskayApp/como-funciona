@@ -2,7 +2,7 @@
 
 Fecha de seguimiento: **6 de noviembre de 2026**. Fase: **DESARROLLAR**. Estado: **en curso**.
 
-Rama de trabajo: `feat/cf-donacion-pro-001`. Alcance actual: **solo CF-DON-PRO-001 en borrador**, sin integración en `main` ni publicación.
+Rama de trabajo: `feat/cf-donacion-pro-001`. Alcance actual: **CF-DON-PRO-001 y CF-DON-PRO-002 en borrador**, desarrolladas una a una, sin integración en `main` ni publicación.
 
 ## Base aceptada y corte de identificación
 
@@ -14,12 +14,12 @@ El catálogo y el PDF ya entregado mantienen el corte original de IDENTIFICAR co
 
 | Rol | Objetivo de fichas | En borrador | Pendientes de desarrollar | Aprobadas | Publicadas |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Promotores | 18 | 1 | 17 | 0 | 0 |
+| Promotores | 18 | 2 | 16 | 0 | 0 |
 | Donantes | 14 | 0 | 14 | 0 | 0 |
 | Colaboradores | 8 | 0 | 8 | 0 | 0 |
-| **Total** | **40** | **1** | **39** | **0** | **0** |
+| **Total** | **40** | **2** | **38** | **0** | **0** |
 
-El avance actual es Promotores **1/18**, Donantes **0/14** y Colaboradores **0/8**. La revisión editorial, la aprobación y la publicación siguen pendientes.
+El avance actual es Promotores **2/18**, Donantes **0/14** y Colaboradores **0/8**. La revisión editorial, la aprobación y la publicación siguen pendientes.
 
 ## Primer borrador
 
@@ -54,9 +54,39 @@ Fuente: **1 Donación.docx**, guía vigente utilizada en CLASIFICAR. Los párraf
 
 Total de respaldo de esta ficha: **3 registros CL y 7 párrafos distintos: 3, 6, 9, 34, 35, 40 y 42**.
 
+## Segundo borrador
+
+**CF-DON-PRO-002 · ¿Cómo funciona el apoyo de los donantes en esta categoría?**
+
+- **Categoría y rol:** Donación · Promotores.
+- **Sección:** ORG-DON-PRO-01 · Conoce Donación y tu papel como promotor.
+- **Archivo relativo al repositorio:** `ideas/donacion/promotores/01-conoce-donacion-y-tu-papel-como-promotor/cf-don-pro-002-como-funciona-el-apoyo-de-los-donantes-en-esta-categoria.md`.
+- **Borrador:** [abrir archivo](../../ideas/donacion/promotores/01-conoce-donacion-y-tu-papel-como-promotor/cf-don-pro-002-como-funciona-el-apoyo-de-los-donantes-en-esta-categoria.md).
+- **Estado:** versión 1; `draft`, `pending_review`, `published: false`, `visibility: private` y `reviewed: false`; fuente contrastada el 6 de noviembre de 2026.
+
+La ficha explica el apoyo voluntario, la libertad del donante, la modalidad exclusivamente flexible y la ausencia de deuda o recompensa. Conserva las comisiones del promotor y los criterios de revisión y reversión como límites de contexto, sin desarrollar aquí sus procedimientos. No fija mínimos, plazos bancarios, garantías de recaudación ni pasos de pago.
+
+### Trazabilidad de CF-DON-PRO-002
+
+| Registro | Carácter en esta ficha | Párrafos de la fuente | Contenido |
+| --- | --- | --- | --- |
+| CL-DON-PRO-004 | Principal | 35 y 44 | Red de apoyo voluntario, confianza y compromiso colectivo. |
+| CL-DON-PRO-005 | Principal | 37 | Financiamiento exclusivamente flexible. |
+| CL-DON-PRO-007 | Principal | 46 | Ausencia de deuda y de obligación de entregar recompensas; transparencia y buen uso de los recursos. |
+| CL-DON-PRO-015 | Principal | 17 | Elección libre de causa, importe y momento por el donante. |
+| CL-DON-PRO-006 | Secundario | 37 | Lo efectivamente recaudado al cierre sin alcanzar necesariamente el monto propuesto; desarrollo principal en CF-DON-PRO-013. |
+
+Son **4 registros principales y 1 secundario**, respaldados por **5 párrafos distintos: 17, 35, 37, 44 y 46**. Los límites expresos de CL-DON-PRO-006 y CL-DON-PRO-007 remiten además a **§ 4.1 Comisión al promotor** y **§ 8 Criterios para la Reversión de Fondos**. No se modifica el destino principal de ninguno de los 136 registros.
+
+El destino siguiente es **CF-DON-PRO-003**. Los enlaces públicos anterior y siguiente permanecen vacíos hasta disponer de destinos publicados y comprobados.
+
 ## Registro editorial en Drive
 
 - **Título:** CF-DON-PRO-001 · Quién puede promover una iniciativa en Donación y qué causas puede presentar · Borrador.
+- **Carpeta:** `12 como-funciona/02 Donación`.
+- **Estado:** documento creado y verificado; borrador pendiente de revisión editorial.
+
+- **Segundo documento:** CF-DON-PRO-002 · Cómo funciona el apoyo de los donantes en esta categoría · Borrador.
 - **Carpeta:** `12 como-funciona/02 Donación`.
 - **Estado:** documento creado y verificado; borrador pendiente de revisión editorial.
 
@@ -70,4 +100,4 @@ El ajuste conserva la protección de las 99 fichas de FR y sus archivos de recor
 
 ## Continuidad
 
-El siguiente paso de esta ficha es su revisión editorial y, cuando corresponda, aprobación. Las otras **39 fichas** conservan su estado pendiente de desarrollar. Ninguna ficha de Donación se cuenta como aprobada o publicada en este corte.
+CF-DON-PRO-001 y CF-DON-PRO-002 quedan pendientes de revisión editorial y, cuando corresponda, aprobación. Las otras **38 fichas** conservan su estado pendiente de desarrollar. La siguiente en el orden del inventario es **CF-DON-PRO-003 · ¿Qué vínculo se establece con el donante y qué riesgos existen?**. Ninguna ficha de Donación se cuenta como aprobada o publicada en este corte.
