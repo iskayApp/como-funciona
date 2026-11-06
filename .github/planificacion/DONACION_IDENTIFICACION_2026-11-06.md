@@ -1,6 +1,6 @@
 # Donación · Identificación de fichas
 
-Fecha de preparación: **6 de noviembre de 2026**. Fase: **IDENTIFICAR**. Estado: **preparada para revisión**.
+Fecha de preparación: **6 de noviembre de 2026**. Fase: **IDENTIFICAR**. Estado: **aceptada como base para DESARROLLAR**.
 
 ## Resultado y alcance
 
@@ -8,7 +8,9 @@ Se identifican **40 fichas**: **18 de Promotores, 14 de Donantes y 8 de Colabora
 
 Los **136 registros** de la [matriz de clasificación](DONACION_CLASIFICACION_2026-11-06.md) conservan un único destino principal, dentro de su rol y sección original. **39 fichas** reúnen esos registros; **CF-DON-DON-004** se incorpora con fuentes operativas propias sobre la presentación pública del donante. Esta ficha adicional no crea un registro atribuido a la guía.
 
-El inventario identifica el contenido que se desarrollará. Todas las fichas quedan **identificadas y pendientes de desarrollar**, sin aprobación editorial, contenido final ni URL pública asignada. El PDF de seguimiento del mismo corte contiene una página por sección y recoge ese estado inicial.
+Este documento conserva el **corte de IDENTIFICAR**: las 40 fichas se registraron como **identificadas y pendientes de desarrollar**, sin aprobación editorial, contenido final ni URL pública asignada. El catálogo y el mapa de los 136 registros permanecen íntegros. El PDF ya entregado corresponde a ese mismo corte y mantiene su estado inicial.
+
+La identificación está **aceptada como base para DESARROLLAR**. El avance actual se registra por separado en [DONACION_DESARROLLO_2026-11-06.md](DONACION_DESARROLLO_2026-11-06.md); los estados del catálogo y del PDF conservan el corte de identificación y no sustituyen ese seguimiento.
 
 ## Convención de identificación
 
@@ -1013,13 +1015,13 @@ Cada registro aparece una sola vez en este mapa. La columna de sección conserva
 | CL-DON-COL-022 | ORG-DON-COL-04 | CF-DON-COL-007 |
 | CL-DON-COL-023 | ORG-DON-COL-04 | CF-DON-COL-008 |
 
-## Comprobaciones y siguiente fase
+## Comprobaciones del corte y paso a DESARROLLAR
 
 - **40 códigos únicos**, distribuidos en las 16 secciones organizadas.
 - **136 de 136 registros** con destino principal único; sin omisiones, cambios de sección ni cruces de rol.
 - Las 39 fichas con base CL y la ficha de identidad pública con fuente operativa quedan diferenciadas.
 - Todas las referencias secundarias corresponden a registros existentes del mismo rol y su función se explica en el alcance de la ficha.
-- El PDF de seguimiento recoge las 40 fichas pendientes, con una página por cada una de las 16 secciones.
+- El PDF de seguimiento ya entregado conserva el corte original de las 40 fichas pendientes, con una página por cada una de las 16 secciones; el avance posterior consta en el registro de DESARROLLAR.
 - Esta fase no modifica la guía ni publica fichas; el contenido funcional de la clasificación y la asignación principal de ORGANIZAR se conservan.
 
-El siguiente punto es **DESARROLLAR**, de forma progresiva y con la plantilla vigente. El orden del inventario comienza en **CF-DON-PRO-001 · ¿Quién puede promover una iniciativa en Donación y qué causas puede presentar?**. Cada ficha desarrollada pasará después por VALIDAR/APROBAR antes de PUBLICAR.
+La identificación queda **aceptada como base para DESARROLLAR**. El desarrollo está en curso con el borrador **CF-DON-PRO-001 · ¿Quién puede promover una iniciativa en Donación y qué causas puede presentar?**, en la rama `feat/cf-donacion-pro-001`. El [registro de desarrollo](DONACION_DESARROLLO_2026-11-06.md) conserva el estado actual. La revisión editorial, la aprobación y la publicación siguen pendientes.

@@ -6,9 +6,9 @@ Actualización documental de Donación: 6 de noviembre de 2026. Véanse las [acl
 
 ## Objetivo y estado
 
-Preparar la ampliación de Cómo funciona a las otras cuatro categorías de Ideas, con recorridos propios para los usuarios objetivo de cada una. Esta preparación identifica fuentes, roles, dependencias editoriales y condiciones de aceptación. No desarrolla fichas nuevas, no concede aprobaciones editoriales ni activa categorías en el sitio público.
+Preparar la ampliación de Cómo funciona a las otras cuatro categorías de Ideas, con recorridos propios para los usuarios objetivo de cada una. Esta planificación identifica fuentes, roles, dependencias editoriales y condiciones de aceptación, y registra el avance de cada fase. Donación inicia DESARROLLAR con un primer borrador en la rama de trabajo; la revisión editorial, la aprobación y la publicación siguen pendientes.
 
-La [organización de los tres recorridos de Donación](DONACION_ORGANIZACION_2026-11-06.md) se utiliza como base aceptada para **IDENTIFICAR**, con avance autorizado por el usuario el 6 de noviembre de 2026. El [catálogo de identificación](DONACION_IDENTIFICACION_2026-11-06.md) está preparado para revisión con **40 fichas: 18 de Promotores, 14 de Donantes y 8 de Colaboradores**, conforme a la secuencia del plan `BASE_GENERAL_CATEGORIAS_2026-11-04.md`. Después se propone continuar con Recompensa, Precompra e Inversión en Acciones. El orden posterior a Donación es una propuesta de trabajo, no una aprobación previa de sus contenidos.
+La [organización de los tres recorridos de Donación](DONACION_ORGANIZACION_2026-11-06.md) y el [catálogo de identificación](DONACION_IDENTIFICACION_2026-11-06.md) se conservan como bases aceptadas. **IDENTIFICAR está aceptada como base para DESARROLLAR**, con **40 fichas: 18 de Promotores, 14 de Donantes y 8 de Colaboradores**. El usuario autorizó avanzar el 6 de noviembre de 2026 y **DESARROLLAR está en curso únicamente con CF-DON-PRO-001 en borrador**, conforme a la secuencia del plan `BASE_GENERAL_CATEGORIAS_2026-11-04.md`. El estado actual figura en el [registro de desarrollo](DONACION_DESARROLLO_2026-11-06.md). Después se propone continuar con Recompensa, Precompra e Inversión en Acciones. El orden posterior a Donación es una propuesta de trabajo, no una aprobación previa de sus contenidos.
 
 El proceso común sigue CF-CORE-001:
 
@@ -106,13 +106,13 @@ Este registro describe discrepancias documentales. No sustituye la revisión jur
 
 ## Lista de trabajo de los doce recorridos
 
-«Identificados» significa que se han localizado la fuente y el nombre del rol. El usuario autorizó avanzar desde la [organización de Donación](DONACION_ORGANIZACION_2026-11-06.md) a **IDENTIFICAR**. El [catálogo de sus tres roles](DONACION_IDENTIFICACION_2026-11-06.md) está preparado para revisión. La clasificación de los otros nueve recorridos continúa pendiente.
+«Identificados» significa que se han localizado la fuente y el nombre del rol. El usuario aceptó el [catálogo de los tres roles de Donación](DONACION_IDENTIFICACION_2026-11-06.md) como base para **DESARROLLAR**. El [seguimiento actual](DONACION_DESARROLLO_2026-11-06.md) registra un único borrador, CF-DON-PRO-001; Donantes y Colaboradores continúan pendientes de desarrollo. La clasificación de los otros nueve recorridos continúa pendiente.
 
 | Categoría | Rol | Fuente y rol | Clasificar | Organizar | Identificar fichas | Desarrollar | Validar y aprobar | Publicar |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Donación | Promotores | Identificados | Base aceptada para organizar | Base aceptada para identificar | Preparada para revisión | Pendiente | Pendiente | Pendiente |
-| Donación | Donantes | Identificados | Base aceptada para organizar | Base aceptada para identificar | Preparada para revisión | Pendiente | Pendiente | Pendiente |
-| Donación | Colaboradores | Identificados | Base aceptada para organizar | Base aceptada para identificar | Preparada para revisión | Pendiente | Pendiente | Pendiente |
+| Donación | Promotores | Identificados | Base aceptada para organizar | Base aceptada para identificar | Aceptada como base para desarrollar | En curso · 1/18 en borrador | Pendiente | Pendiente |
+| Donación | Donantes | Identificados | Base aceptada para organizar | Base aceptada para identificar | Aceptada como base para desarrollar | Pendiente · 0/14 | Pendiente | Pendiente |
+| Donación | Colaboradores | Identificados | Base aceptada para organizar | Base aceptada para identificar | Aceptada como base para desarrollar | Pendiente · 0/8 | Pendiente | Pendiente |
 | Recompensa | Promotores | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 | Recompensa | Contribuyentes | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 | Recompensa | Colaboradores | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
@@ -123,11 +123,11 @@ Este registro describe discrepancias documentales. No sustituye la revisión jur
 | Inversión en Acciones | Inversionistas | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 | Inversión en Acciones | Colaboradores | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 
-### Identificación de las fichas y siguiente bloque
+### Identificación aceptada y desarrollo en curso
 
-El [catálogo de identificación de Donación](DONACION_IDENTIFICACION_2026-11-06.md) está **preparado para revisión** con **40 fichas: 18 de Promotores, 14 de Donantes y 8 de Colaboradores**. Incluye 39 fichas vinculadas a los 136 registros CL y una de identidad pública del donante sustentada en referencias operativas, sin registro CL. La clasificación y los destinos principales de la organización se conservan.
+El [catálogo de identificación de Donación](DONACION_IDENTIFICACION_2026-11-06.md) está **aceptado como base para DESARROLLAR** con **40 fichas: 18 de Promotores, 14 de Donantes y 8 de Colaboradores**. Incluye 39 fichas vinculadas a los 136 registros CL y una de identidad pública del donante sustentada en referencias operativas, sin registro CL. El catálogo, la clasificación y los destinos principales de la organización se conservan como corte de identificación.
 
-El siguiente bloque es **DESARROLLAR** las fichas identificadas. La organización responde a cada rol y admite consulta de seguimiento e incidencias cuando corresponda; no traslada automáticamente la estructura de Promotores FR ni da por terminada una categoría con un único rol.
+**DESARROLLAR está en curso** solo con **CF-DON-PRO-001** en la rama `feat/cf-donacion-pro-001`: **1 borrador, 39 fichas pendientes de desarrollar, 0 aprobadas y 0 publicadas**. El avance por rol es Promotores **1/18**, Donantes **0/14** y Colaboradores **0/8**. La revisión editorial, la aprobación y la publicación siguen pendientes; el detalle se mantiene en [DONACION_DESARROLLO_2026-11-06.md](DONACION_DESARROLLO_2026-11-06.md). La organización responde a cada rol y admite consulta de seguimiento e incidencias cuando corresponda; no traslada automáticamente la estructura de Promotores FR ni da por terminada una categoría con un único rol.
 
 ## Entregables y condiciones por fase
 
@@ -183,7 +183,7 @@ Su preparación requerirá localizar y revisar su propia guía para pedidos, evi
 
 PROP-DON-01 está cerrado por retirada editorial. PROP-DON-02 cuenta con referencias operativas verificadas para IDENTIFICAR, separadas de la guía. PROP-COM-01 y PROP-COM-02 están cerrados para Donación conforme a las aclaraciones del usuario sobre descuentos y notificación de transferencia; las demás categorías conservan su revisión independiente. El detalle está en [ACLARACIONES_DONACION_2026-11-06.md](ACLARACIONES_DONACION_2026-11-06.md).
 
-El usuario autorizó avanzar desde la [organización de los tres recorridos](DONACION_ORGANIZACION_2026-11-06.md) a **IDENTIFICAR**. El [catálogo de identificación](DONACION_IDENTIFICACION_2026-11-06.md) está preparado para revisión con 40 fichas: 18 de Promotores, 14 de Donantes y 8 de Colaboradores. Son 39 fichas con registros CL y una de identidad pública del donante sustentada en referencias operativas, sin registro CL. El siguiente entregable será **DESARROLLAR** sus contenidos; la aprobación editorial y la publicación continúan pendientes. Las otras categorías pueden avanzar en la conciliación de sus fuentes mientras se consolida este bloque.
+El usuario aceptó la [identificación de los tres roles](DONACION_IDENTIFICACION_2026-11-06.md) como base para **DESARROLLAR**: 40 fichas, con 18 de Promotores, 14 de Donantes y 8 de Colaboradores. Son 39 fichas con registros CL y una de identidad pública del donante sustentada en referencias operativas, sin registro CL. El catálogo y el PDF entregado conservan ese corte de identificación. El [registro de desarrollo](DONACION_DESARROLLO_2026-11-06.md) recoge ahora **1 borrador, 39 pendientes de desarrollar, 0 aprobadas y 0 publicadas**, únicamente con CF-DON-PRO-001 en la rama de trabajo. La revisión editorial, la aprobación y la publicación continúan pendientes. Las otras categorías pueden avanzar en la conciliación de sus fuentes mientras se consolida este bloque.
 
 Las ampliaciones mantendrán la cadena **guía y decisiones aprobadas → ficha canónica → multimedia → piezas y canales**, con registros distintos de aprobación editorial, publicación y comprobación técnica.
 
