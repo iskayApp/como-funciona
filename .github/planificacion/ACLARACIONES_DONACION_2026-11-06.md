@@ -50,7 +50,7 @@ La presentación pública del donante se trata con las referencias del calendari
 
 ## Trabajo siguiente
 
-La [matriz de clasificación](DONACION_CLASIFICACION_2026-11-06.md) de **Promotores, Donantes y Colaboradores** está **preparada para revisión**. La revisión comprobará cobertura, tipo de elemento, rol, fuente y decisiones aplicables.
+El usuario autorizó avanzar a ORGANIZAR tras la entrega de la [matriz de clasificación](DONACION_CLASIFICACION_2026-11-06.md) de **Promotores, Donantes y Colaboradores**. La [organización de sus recorridos](DONACION_ORGANIZACION_2026-11-06.md) está **preparada para revisión** y asigna un destino principal a cada uno de los 136 registros.
 
-Tras revisar la clasificación, el siguiente entregable será **ORGANIZAR** los recorridos de los tres roles. Después corresponderá **IDENTIFICAR** sus fichas y **DESARROLLARLAS**, siguiendo el [plan de propagación](PLAN_PROPAGACION_2026-11-05.md). Este estado no aprueba fichas ni activa su publicación.
+El siguiente entregable será **IDENTIFICAR** las fichas de cada sección y luego **DESARROLLARLAS**, siguiendo el [plan de propagación](PLAN_PROPAGACION_2026-11-05.md). La organización conserva las decisiones anteriores y no aprueba fichas ni activa su publicación.
 

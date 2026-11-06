@@ -8,7 +8,7 @@ Actualización documental de Donación: 6 de noviembre de 2026. Véanse las [acl
 
 Preparar la ampliación de Cómo funciona a las otras cuatro categorías de Ideas, con recorridos propios para los usuarios objetivo de cada una. Esta preparación identifica fuentes, roles, dependencias editoriales y condiciones de aceptación. No desarrolla fichas nuevas, no concede aprobaciones editoriales ni activa categorías en el sitio público.
 
-La clasificación de **Donación** está preparada para revisión, conforme al plan `BASE_GENERAL_CATEGORIAS_2026-11-04.md`. Después se propone continuar con Recompensa, Precompra e Inversión en Acciones. El orden posterior a Donación es una propuesta de trabajo, no una aprobación previa de sus contenidos.
+La clasificación de **Donación** se utiliza como base aceptada para ORGANIZAR, con avance autorizado por el usuario el 6 de noviembre de 2026. La [organización de los tres recorridos](DONACION_ORGANIZACION_2026-11-06.md) está preparada para revisión, conforme a la secuencia del plan `BASE_GENERAL_CATEGORIAS_2026-11-04.md`. Después se propone continuar con Recompensa, Precompra e Inversión en Acciones. El orden posterior a Donación es una propuesta de trabajo, no una aprobación previa de sus contenidos.
 
 El proceso común sigue CF-CORE-001:
 
@@ -46,7 +46,7 @@ Las referencias de apartados se conservarán en las matrices de clasificación. 
 
 ## Usuarios objetivo y ámbitos a clasificar
 
-Los nombres de los roles se han comprobado en «Dirigido a» o «Dirigido» de cada guía. La tabla recoge ámbitos de trabajo para la clasificación; **todavía no fija etapas, su orden, cantidad de fichas, códigos ni URL nuevas**.
+Los nombres de los roles se han comprobado en «Dirigido a» o «Dirigido» de cada guía. La tabla recoge los ámbitos iniciales de clasificación. Donación ya dispone de una [organización por rol](DONACION_ORGANIZACION_2026-11-06.md); las otras categorías conservan pendiente esta fase. La tabla inicial no fija cantidad de fichas, códigos ni URL nuevas.
 
 | Categoría | Rol confirmado | Intención principal | Preguntas y ámbitos para CLASIFICAR |
 | --- | --- | --- | --- |
@@ -106,13 +106,13 @@ Este registro describe discrepancias documentales. No sustituye la revisión jur
 
 ## Lista de trabajo de los doce recorridos
 
-«Identificados» significa que se han localizado la fuente y el nombre del rol. La [clasificación de Donación](DONACION_CLASIFICACION_2026-11-06.md) está preparada para revisión para sus tres roles. La clasificación de los otros nueve recorridos continúa pendiente.
+«Identificados» significa que se han localizado la fuente y el nombre del rol. El usuario autorizó avanzar desde la [clasificación de Donación](DONACION_CLASIFICACION_2026-11-06.md) a la [organización de sus tres recorridos](DONACION_ORGANIZACION_2026-11-06.md), preparada para revisión. La clasificación de los otros nueve recorridos continúa pendiente.
 
 | Categoría | Rol | Fuente y rol | Clasificar | Organizar | Identificar fichas | Desarrollar | Validar y aprobar | Publicar |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Donación | Promotores | Identificados | Preparada para revisión | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
-| Donación | Donantes | Identificados | Preparada para revisión | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
-| Donación | Colaboradores | Identificados | Preparada para revisión | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
+| Donación | Promotores | Identificados | Base aceptada para organizar | Preparada para revisión | Pendiente | Pendiente | Pendiente | Pendiente |
+| Donación | Donantes | Identificados | Base aceptada para organizar | Preparada para revisión | Pendiente | Pendiente | Pendiente | Pendiente |
+| Donación | Colaboradores | Identificados | Base aceptada para organizar | Preparada para revisión | Pendiente | Pendiente | Pendiente | Pendiente |
 | Recompensa | Promotores | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 | Recompensa | Contribuyentes | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 | Recompensa | Colaboradores | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
@@ -123,11 +123,11 @@ Este registro describe discrepancias documentales. No sustituye la revisión jur
 | Inversión en Acciones | Inversionistas | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 | Inversión en Acciones | Colaboradores | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 
-### Revisión de la clasificación y siguiente bloque
+### Organización de los recorridos y siguiente bloque
 
-La [matriz de clasificación de Donación](DONACION_CLASIFICACION_2026-11-06.md) para **Promotores, Donantes y Colaboradores** está preparada para revisión. La revisión comprobará la cobertura de elementos individuales, su tipo —concepto, procedimiento, derecho, obligación o estado—, rol, sección de la fuente y decisiones aplicables.
+La [organización de Donación](DONACION_ORGANIZACION_2026-11-06.md) para **Promotores, Donantes y Colaboradores** está preparada para revisión. Cubre los 136 registros de la clasificación con un destino principal por registro, sin omisiones ni asignaciones principales duplicadas.
 
-Después de revisar esa clasificación se organizará cada recorrido. No se asignarán seis etapas a los donantes o colaboradores por analogía con Promotores FR, ni se dará por terminada una categoría únicamente porque exista su recorrido de Promotores.
+El siguiente bloque es IDENTIFICAR las fichas de las secciones propuestas. La organización responde a cada rol y admite consulta de seguimiento e incidencias cuando corresponda; no traslada automáticamente la estructura de Promotores FR ni da por terminada una categoría con un único rol.
 
 ## Entregables y condiciones por fase
 
@@ -183,7 +183,7 @@ Su preparación requerirá localizar y revisar su propia guía para pedidos, evi
 
 PROP-DON-01 está cerrado por retirada editorial. PROP-DON-02 se trata en manuales y fichas con referencias operativas separadas de la guía. PROP-COM-01 y PROP-COM-02 están cerrados para Donación conforme a las aclaraciones del usuario sobre descuentos y notificación de transferencia; las demás categorías conservan su revisión independiente. El detalle está en [ACLARACIONES_DONACION_2026-11-06.md](ACLARACIONES_DONACION_2026-11-06.md).
 
-La [matriz de clasificación de Donación](DONACION_CLASIFICACION_2026-11-06.md) está preparada para revisión para los tres roles. Tras revisarla, el siguiente entregable será **ORGANIZAR** sus recorridos; después se identificarán y desarrollarán las fichas. Las otras categorías pueden avanzar en la conciliación de sus fuentes mientras se consolida este bloque.
+El usuario autorizó avanzar desde la [matriz de clasificación de Donación](DONACION_CLASIFICACION_2026-11-06.md) a **ORGANIZAR**. La [organización de los tres recorridos](DONACION_ORGANIZACION_2026-11-06.md) está preparada para revisión con cobertura completa de los 136 registros. El siguiente entregable será **IDENTIFICAR** las fichas y después desarrollarlas. Las otras categorías pueden avanzar en la conciliación de sus fuentes mientras se consolida este bloque.
 
 Las ampliaciones mantendrán la cadena **guía y decisiones aprobadas → ficha canónica → multimedia → piezas y canales**, con registros distintos de aprobación editorial, publicación y comprobación técnica.
 

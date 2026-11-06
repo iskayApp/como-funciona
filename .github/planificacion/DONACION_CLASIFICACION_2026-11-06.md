@@ -1,6 +1,6 @@
 # Donación · Matriz de clasificación
 
-Fecha de preparación: **6 de noviembre de 2026**. Estado: **preparada para revisión editorial**. Fase: **CLASIFICAR**.
+Fecha de preparación: **6 de noviembre de 2026**. Estado: **base aceptada para ORGANIZAR**. Fase: **CLASIFICAR**.
 
 ## Fuente y alcance
 
@@ -211,10 +211,10 @@ La revisión cubre los enunciados sustantivos de los ocho apartados de la guía 
 | CL-DON-COL-022 | Concepto | El compromiso de usar los fondos para el destino declarado y mantener informados a los donantes corresponde al promotor. | § 2.3 · Promotores · Sin comprometer tu sostenibilidad; § 5 · Procedimiento para reclamaciones y riesgo de incumplimiento (Donación); párr. 46, 72 | — | El colaborador puede apoyar estas tareas según su función; la guía no le transfiere por defecto esa responsabilidad general. |
 | CL-DON-COL-023 | Concepto | Las causales de reversión previstas afectan a la iniciativa mediante un proceso de revisión cuya decisión se comunica a donantes y promotor. | § 8 · Criterios para la Reversión de Fondos (Donación) · regla general; párr. 105 | — | Contexto de la iniciativa; no otorga al colaborador la condición de donante, un derecho a reembolso ni la condición de destinatario de esas notificaciones. |
 
-## Revisión y siguiente fase
+## Revisión y avance a la siguiente fase
 
-La revisión editorial de esta matriz debe confirmar que los elementos conservan el significado de la fuente, que el tipo y el rol son adecuados y que las aclaraciones aprobadas se aplican con su alcance real.
+El 6 de noviembre de 2026, tras presentar esta clasificación, el usuario autorizó avanzar al siguiente punto. Los 136 registros conservan su contenido, tipo, fuente y decisiones aplicables.
 
-El siguiente entregable es **ORGANIZAR** el recorrido propio de cada rol y asignar un destino a sus registros. Después se **IDENTIFICARÁN** las fichas y se **DESARROLLARÁN** con su trazabilidad. Esta matriz no fija todavía etapas, preguntas, cantidad de fichas, códigos canónicos ni rutas de publicación.
+La fase **ORGANIZAR** se recoge en la [organización de los recorridos de Donación](DONACION_ORGANIZACION_2026-11-06.md), que asigna un destino principal a cada registro. Después se **IDENTIFICARÁN** las fichas y se **DESARROLLARÁN** con su trazabilidad. Los códigos de esta matriz siguen identificando registros, no fichas ni rutas de publicación.
 
 La aprobación de la clasificación no equivale a la aprobación de una ficha ni a una autorización de publicación. Se conserva el proceso del [plan de propagación de Cómo funciona](PLAN_PROPAGACION_2026-11-05.md).
