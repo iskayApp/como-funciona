@@ -94,5 +94,6 @@ eyebrow: "Guía de uso · iskay.app"
 
 <script src="{{ '/assets/js/public-search.js' | relative_url }}?v=20261105-revision" defer></script>
 <script src="{{ '/assets/js/guidance.js' | relative_url }}?v=20261105-revision" defer></script>
+<script src="{{ '/assets/js/home-videos.js' | relative_url }}?v=20261106-galeria" defer></script>
 
 <div class="fr-editorial-note">Publicación de prueba. Las fichas pendientes de revisión editorial conservan su aviso. Estamos validando la experiencia pública y móvil antes de integrar esta documentación al dominio institucional de iskay.app.</div>
