@@ -1,0 +1,41 @@
+{% comment %}
+  Inventario común para la portada. Un vídeo se dibuja una sola vez por registro
+  de publicación, con acceso a cada ficha canónica vinculada y publicable.
+  Nuevas categorías pueden incorporar su registro sin alterar las fichas.
+{% endcomment %}
+{% capture home_video_cards %}
+  {% for video in site.data.fr_tiktok_publicaciones.videos %}
+    {% assign piece = site.data.fr_ensamblaje_marketing.pieces | where: 'code', video.piece_code | first %}
+    {% if piece %}
+      {% include home-video-card.html video=video piece=piece category='Financiamiento Reembolsable' public_topics=include.public_topics %}
+    {% endif %}
+  {% endfor %}
+  {% if site.data.donacion_tiktok_publicaciones.category_code == 'DON' and site.data.donacion_tiktok_publicaciones.category == 'Donación' %}
+    {% for video in site.data.donacion_tiktok_publicaciones.videos %}
+      {% include home-video-card.html video=video piece=video category='Donación' public_topics=include.public_topics %}
+    {% endfor %}
+  {% endif %}
+{% endcapture %}
+{% if home_video_cards contains 'class="home-video-card"' %}
+<section class="home-video-gallery" id="videos" aria-labelledby="home-video-title">
+  <div class="home-video-heading">
+    <h3 id="home-video-title">Vídeos vinculados a las fichas</h3>
+    <p>Explora las publicaciones originales y profundiza en los conceptos explicados en cada ficha.</p>
+  </div>
+  <div class="home-video-filters" id="home-video-filters" hidden>
+    <label for="home-video-category">Categoría
+      <select id="home-video-category"><option value="">Todas las categorías</option></select>
+    </label>
+    <label for="home-video-role">Dirigido a
+      <select id="home-video-role"><option value="">Todos los públicos</option></select>
+    </label>
+    <label for="home-video-stage">Etapa
+      <select id="home-video-stage"><option value="">Todas las etapas</option></select>
+    </label>
+    <button type="button" id="home-video-reset" hidden>Limpiar filtros</button>
+  </div>
+  <p class="home-video-count" id="home-video-count" role="status" aria-live="polite">Vídeos publicados y vinculados a fichas canónicas.</p>
+  <div class="home-video-grid">{{ home_video_cards }}</div>
+  <p class="home-video-empty" id="home-video-empty" hidden>No hay vídeos vinculados a fichas con estos filtros.</p>
+</section>
+{% endif %}
