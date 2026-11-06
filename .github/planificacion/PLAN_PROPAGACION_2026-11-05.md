@@ -8,7 +8,7 @@ Actualización documental de Donación: 6 de noviembre de 2026. Véanse las [acl
 
 Preparar la ampliación de Cómo funciona a las otras cuatro categorías de Ideas, con recorridos propios para los usuarios objetivo de cada una. Esta preparación identifica fuentes, roles, dependencias editoriales y condiciones de aceptación. No desarrolla fichas nuevas, no concede aprobaciones editoriales ni activa categorías en el sitio público.
 
-La siguiente categoría es **Donación**, conforme al plan `BASE_GENERAL_CATEGORIAS_2026-11-04.md`. Después se propone continuar con Recompensa, Precompra e Inversión en Acciones. El orden posterior a Donación es una propuesta de trabajo, no una aprobación previa de sus contenidos.
+La clasificación de **Donación** está preparada para revisión, conforme al plan `BASE_GENERAL_CATEGORIAS_2026-11-04.md`. Después se propone continuar con Recompensa, Precompra e Inversión en Acciones. El orden posterior a Donación es una propuesta de trabajo, no una aprobación previa de sus contenidos.
 
 El proceso común sigue CF-CORE-001:
 
@@ -40,7 +40,7 @@ Se consultaron las guías maestras de categoría, no copias de producción publi
 | 1 InversiónAcciones.docx | 2026-07-05 | Roles, emisión, derechos, información societaria, áreas técnicas y formalización de acciones. |
 | 00 CF-CORE-001 · Documento técnico maestro para propagar Cómo funciona · v1.0 | 2026-11-02 | Secuencia de trabajo, arquitectura compartida y separación de estados. |
 
-La actualización editorial de **1 Donación.docx** del 6 de noviembre de 2026 incorpora «Sin comisión de iskay.app para el donante» como fortaleza, respaldada por el apartado 4.2 «Comisión al donante», las decisiones previamente aprobadas sobre precampaña y presentación pública del donante, y una propuesta explícitamente pendiente de validación sobre confirmación del aporte. Las [aclaraciones de Donación](ACLARACIONES_DONACION_2026-11-06.md) registran procedencia y estado de cada punto. La tabla anterior conserva los metadatos de la consulta inicial del 5 de noviembre; la fecha de esta incorporación no asigna una nueva versión aprobada de la guía.
+Para la clasificación de Donación se utiliza **1 Donación.docx**, original restaurado con el único reemplazo autorizado por «Sin comisión para el donante» y su párrafo sobre cargos bancarios, respaldados por el apartado 4.2 «Comisión al donante». El archivo informa como fecha de última modificación el 6 de noviembre de 2026 a las 11:00:41 UTC. Las [referencias de Donación](ACLARACIONES_DONACION_2026-11-06.md) distinguen la guía vigente, las aclaraciones del usuario y la documentación operativa externa de precampaña e identidad pública. La tabla anterior conserva los metadatos de la consulta inicial del 5 de noviembre; la fecha de modificación no asigna una nueva versión editorial.
 
 Las referencias de apartados se conservarán en las matrices de clasificación. Los enlaces de acceso y documentos privados permanecen en la gestión editorial; este plan público solo identifica títulos, fechas y secciones pertinentes.
 
@@ -86,33 +86,33 @@ Los colaboradores de Donación, Recompensa y Precompra no deben heredar las cuat
 | Identidad editorial | Una ficha, un archivo y una URL estable. Los códigos de fichas, piezas publicitarias y recursos multimedia permanecen separados. |
 | Estados | Distinguir preparación, revisión, aprobación editorial, publicación de prueba, publicación técnica y verificación de recursos. |
 
-## Discrepancias que deben resolverse en las fuentes
+## Registro de discrepancias y aclaraciones
 
-La clasificación puede avanzar mientras se registran estas discrepancias. Las fichas afectadas no deben presentarse como definitivas hasta resolverlas en la fuente o mediante una aclaración editorial expresamente aprobada.
+Este registro conserva los pendientes y las aclaraciones resueltas con su alcance por categoría. Las fichas afectadas por un pendiente no deben presentarse como definitivas hasta resolverlo en la fuente o mediante una aclaración editorial expresamente aprobada.
 
-| ID de preparación | Fuente y apartado | Evidencia encontrada | Acción previa al desarrollo de la ficha afectada |
+| ID de preparación | Fuente y apartado | Evidencia encontrada | Estado y acción para la ficha afectada |
 | --- | --- | --- | --- |
 | PROP-REC-01 | Recompensa · Dirigido a; Promotores; Inicio de campaña | La guía conserva niveles de contribución y recompensas por rango, mientras la decisión aprobada del proyecto elimina los niveles. | Conciliar la guía con la decisión aprobada. Conservar la modalidad flexible; no volver a introducir niveles en fichas o interfaces. |
 | PROP-PRE-01 | Precompra · Descuentos; Inicio de campaña; tabla de descuentos | Descuentos enumera producción, presupuesto, postventa y comunicación. Campaña y tabla enumeran producción, postventa, calidad y logística. | Precisar funciones, elegibilidad para el descuento y relación entre ambas listas. No escoger una silenciosamente. |
 | PROP-PRE-02 | Precompra · Dirigido a; Descuentos; Inicio de campaña | Unas descripciones presentan colaboradores en toda iniciativa y participación necesaria; otras los califican como opcionales. | Unificar el carácter de la colaboración y sus condiciones antes de redactar obligaciones de promotores o colaboradores. |
 | PROP-PRE-03 | Precompra · Transferencia de fondos · garantías | La guía enumera seguro de cumplimiento y prenda sobre activos, además de representación de precompradores, sin explicar de forma inequívoca si las garantías son alternativas o acumulativas. | Aclarar la regla y los documentos correspondientes. No sustituirla por pagaré o hipoteca de FR. |
 | PROP-ACC-01 | Inversión en Acciones · Procedimiento para reclamaciones y riesgo de pérdida | Un párrafo incorpora mora, cobro, ejecución de garantías y Representante Legal de los Inversionistas, términos que no se desarrollan como obligaciones de deuda en el resto del modelo accionario. | Revisar si existe arrastre de FR y precisar incumplimientos societarios, derechos y mecanismos aplicables. No prometer cuotas, intereses ni reembolso obligatorio del capital accionario. |
-| PROP-COM-01 | Donación, Recompensa y Precompra · Descuentos y tablas de tarifas | El texto habla de un porcentaje «sobre la comisión», mientras los extremos de las tablas muestran diferencias expresadas como puntos porcentuales. | Definir la base y forma de cálculo en la fuente antes de publicar ejemplos numéricos o una calculadora. |
-| PROP-DON-01 | Donación · Decisión editorial del 6 de noviembre; [aclaraciones](ACLARACIONES_DONACION_2026-11-06.md) | Beneficio tributario retirado por decisión del usuario del 6 de noviembre de 2026. | Cerrado por retirada editorial. No se desarrolla ficha sobre ese beneficio. La guía lo sustituye por «Sin comisión de iskay.app para el donante», con respaldo en su apartado 4.2. |
-| PROP-DON-02 | Donación · Inicio de campaña · Período y presentación pública del donante; [aclaraciones del 6 de noviembre](ACLARACIONES_DONACION_2026-11-06.md) | Decisiones previas aprobadas documentadas en la guía: manual de precampaña del 10 de agosto de 2026 y registros DON-EDU-02/DON-INS-02 con estado Aprobada en sus hojas; DON-VEN-02 como referencia complementaria. | Dependencia documental atendida. Clasificar las reglas de publicación al pulsar, activación según fecha y acción del promotor, ausencia de aportes durante precampaña y elección de presentación visible o Anónimo, conservando su procedencia. |
-| PROP-COM-02 | Todas las guías · Transferencia y notificaciones; [propuesta de Donación del 6 de noviembre](ACLARACIONES_DONACION_2026-11-06.md) | Donación diferencia participación, cierre y transferencia. Propone confirmar el aporte con evidencia bancaria de recepción y aceptación efectivas, asociada a iniciativa, importe y operación; art. 33.4 del Reglamento General a la Ley Orgánica de Emprendimiento e Innovación. El criterio no tiene aprobación previa ni implementación comprobada. | Abierto en Donación para validar la integración bancaria y los pagos recibidos o conciliados alrededor del cierre antes de fijar el procedimiento. Se conservan eventos y notificaciones propios para cierre y liberación. Las demás categorías mantienen su aclaración independiente; la decisión de FR no se traslada automáticamente. |
+| PROP-COM-01 | Donación, Recompensa y Precompra · Descuentos y tablas de tarifas | Donación: el usuario aclaró 0,50% por colaborador hasta 2,00% en total, restados directamente de la tasa de comisión, conservando la notación %. En Recompensa y Precompra sigue registrada la diferencia entre el texto «sobre la comisión» y los extremos de las tablas. | Cerrado en Donación por aclaración del usuario. Recompensa y Precompra mantienen pendiente definir la base y forma de cálculo en sus propias fuentes antes de publicar ejemplos numéricos o una calculadora. |
+| PROP-DON-01 | Donación · Decisión editorial del 6 de noviembre; [referencias](ACLARACIONES_DONACION_2026-11-06.md) | Beneficio tributario retirado por decisión del usuario del 6 de noviembre de 2026. | Cerrado por retirada editorial. No se desarrolla ficha sobre ese beneficio. La guía lo sustituye por «Sin comisión para el donante», con respaldo en su apartado 4.2. |
+| PROP-DON-02 | Donación · Inicio de campaña · Período; manual de precampaña y referencias del calendario | El detalle operativo procede del manual del 10 de agosto de 2026 y de los registros DON-EDU-02/DON-INS-02 con estado Aprobada en sus hojas; DON-VEN-02 es referencia complementaria. | Atendido para la clasificación. Tratar precampaña e identidad en manuales y fichas, con sus fuentes operativas separadas de la guía; no requiere ampliar el documento de categoría. |
+| PROP-COM-02 | Donación · apartado 7 «Transferencia de fondos»; demás guías · Transferencia y notificaciones | El usuario confirmó que la notificación a los donantes bajo el apartado 7 de Donación se refiere a la transferencia de fondos. | Cerrado en Donación. Clasificar el aviso dentro del procedimiento de transferencia. Las demás categorías conservan su aclaración independiente; la decisión de FR no se traslada automáticamente. |
 
 Este registro describe discrepancias documentales. No sustituye la revisión jurídica aplicable ni formula requisitos nuevos para los usuarios.
 
 ## Lista de trabajo de los doce recorridos
 
-«Identificados» significa que se han localizado la fuente y el nombre del rol. La clasificación exhaustiva de conceptos, procedimientos, derechos, obligaciones y estados todavía está pendiente para estos doce recorridos.
+«Identificados» significa que se han localizado la fuente y el nombre del rol. La [clasificación de Donación](DONACION_CLASIFICACION_2026-11-06.md) está preparada para revisión para sus tres roles. La clasificación de los otros nueve recorridos continúa pendiente.
 
 | Categoría | Rol | Fuente y rol | Clasificar | Organizar | Identificar fichas | Desarrollar | Validar y aprobar | Publicar |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Donación | Promotores | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
-| Donación | Donantes | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
-| Donación | Colaboradores | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
+| Donación | Promotores | Identificados | Preparada para revisión | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
+| Donación | Donantes | Identificados | Preparada para revisión | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
+| Donación | Colaboradores | Identificados | Preparada para revisión | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 | Recompensa | Promotores | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 | Recompensa | Contribuyentes | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 | Recompensa | Colaboradores | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
@@ -123,9 +123,9 @@ Este registro describe discrepancias documentales. No sustituye la revisión jur
 | Inversión en Acciones | Inversionistas | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 | Inversión en Acciones | Colaboradores | Identificados | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 
-### Primer bloque de trabajo
+### Revisión de la clasificación y siguiente bloque
 
-Clasificar Donación para **los tres roles** en una matriz trazable. Cada fila recogerá el elemento individual, tipo —concepto, procedimiento, derecho, obligación o estado—, rol afectado, sección exacta de la fuente, decisión editorial aplicable y duda o dependencia pendiente.
+La [matriz de clasificación de Donación](DONACION_CLASIFICACION_2026-11-06.md) para **Promotores, Donantes y Colaboradores** está preparada para revisión. La revisión comprobará la cobertura de elementos individuales, su tipo —concepto, procedimiento, derecho, obligación o estado—, rol, sección de la fuente y decisiones aplicables.
 
 Después de revisar esa clasificación se organizará cada recorrido. No se asignarán seis etapas a los donantes o colaboradores por analogía con Promotores FR, ni se dará por terminada una categoría únicamente porque exista su recorrido de Promotores.
 
@@ -181,10 +181,11 @@ Su preparación requerirá localizar y revisar su propia guía para pedidos, evi
 
 ### Actualización documental del 6 de noviembre de 2026
 
-Se registra PROP-DON-01 como cerrado por retirada editorial, y PROP-DON-02 como decisiones previamente aprobadas ya documentadas. PROP-COM-02 dispone de una propuesta para Donación y permanece abierto en la validación bancaria y el tratamiento de pagos alrededor del cierre; no queda resuelto para las demás categorías. El detalle y sus fuentes están en [ACLARACIONES_DONACION_2026-11-06.md](ACLARACIONES_DONACION_2026-11-06.md).
+PROP-DON-01 está cerrado por retirada editorial. PROP-DON-02 se trata en manuales y fichas con referencias operativas separadas de la guía. PROP-COM-01 y PROP-COM-02 están cerrados para Donación conforme a las aclaraciones del usuario sobre descuentos y notificación de transferencia; las demás categorías conservan su revisión independiente. El detalle está en [ACLARACIONES_DONACION_2026-11-06.md](ACLARACIONES_DONACION_2026-11-06.md).
 
-El siguiente entregable sigue siendo la matriz de clasificación de Donación por sus tres roles. A partir de ella se validarán los recorridos y se identificarán sus fichas. Las otras categorías pueden avanzar en la conciliación de sus fuentes mientras se consolida ese primer bloque.
+La [matriz de clasificación de Donación](DONACION_CLASIFICACION_2026-11-06.md) está preparada para revisión para los tres roles. Tras revisarla, el siguiente entregable será **ORGANIZAR** sus recorridos; después se identificarán y desarrollarán las fichas. Las otras categorías pueden avanzar en la conciliación de sus fuentes mientras se consolida este bloque.
 
 Las ampliaciones mantendrán la cadena **guía y decisiones aprobadas → ficha canónica → multimedia → piezas y canales**, con registros distintos de aprobación editorial, publicación y comprobación técnica.
+
 
 
