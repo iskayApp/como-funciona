@@ -8,10 +8,10 @@ role: Promotores
 stage: Usa los fondos según lo declarado y comunica avances
 stage_id: ORG-DON-PRO-06
 stage_url: /donacion/promotores/
-status: draft
+status: "published"
 editorial_status: pending_review
-published: false
-visibility: private
+published: true
+visibility: "public"
 reviewed: false
 ---
 

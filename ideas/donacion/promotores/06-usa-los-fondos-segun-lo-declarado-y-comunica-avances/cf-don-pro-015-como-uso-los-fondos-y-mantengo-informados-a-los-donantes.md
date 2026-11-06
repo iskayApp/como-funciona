@@ -25,18 +25,18 @@ classification_secondary_refs:
   - "CL-DON-PRO-022"
   - "CL-DON-PRO-025"
   - "CL-DON-PRO-043"
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-PRO-015 · ¿Cómo uso los fondos y mantengo informados a los donantes? · Borrador"
 permalink: "/donacion/promotores/06-usa-los-fondos-segun-lo-declarado-y-comunica-avances/cf-don-pro-015-como-uso-los-fondos-y-mantengo-informados-a-los-donantes/"
-prev_url: null
+prev_url: "/donacion/promotores/05-cierre-y-transferencia-de-fondos/cf-don-pro-014-que-cuenta-y-certificado-bancario-necesito-para-recibir-los-fondos/"
 prev_code: "CF-DON-PRO-014"
 prev_title: "¿Qué cuenta y certificado bancario necesito para recibir los fondos?"
-next_url: null
+next_url: "/donacion/promotores/07-reclamaciones-y-posibles-reversiones/cf-don-pro-016-que-sucede-ante-el-uso-indebido-de-recursos-o-un-incumplimiento-grave/"
 next_code: "CF-DON-PRO-016"
 next_title: "¿Qué sucede ante el uso indebido de recursos o un incumplimiento grave?"
 media: []

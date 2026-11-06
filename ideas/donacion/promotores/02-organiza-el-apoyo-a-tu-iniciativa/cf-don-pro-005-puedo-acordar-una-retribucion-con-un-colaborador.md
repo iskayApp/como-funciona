@@ -20,18 +20,18 @@ classification_refs:
   - "CL-DON-PRO-019"
 classification_secondary_refs:
   - "CL-DON-PRO-028"
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-PRO-005 · ¿Puedo acordar una retribución con un colaborador? · Borrador"
 permalink: "/donacion/promotores/02-organiza-el-apoyo-a-tu-iniciativa/cf-don-pro-005-puedo-acordar-una-retribucion-con-un-colaborador/"
-prev_url: null
+prev_url: "/donacion/promotores/02-organiza-el-apoyo-a-tu-iniciativa/cf-don-pro-004-necesito-colaboradores-y-que-pueden-aportar-a-mi-iniciativa/"
 prev_code: "CF-DON-PRO-004"
 prev_title: "¿Necesito colaboradores y qué pueden aportar a mi iniciativa?"
-next_url: null
+next_url: "/donacion/promotores/03-conoce-las-comisiones-y-los-descuentos/cf-don-pro-006-que-comision-pago-como-promotor-y-cuando-se-calcula/"
 next_code: "CF-DON-PRO-006"
 next_title: "¿Qué comisión pago como promotor y cuándo se calcula?"
 media: []

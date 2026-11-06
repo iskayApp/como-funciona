@@ -19,18 +19,18 @@ classification_refs:
   - "CL-DON-PRO-049"
   - "CL-DON-PRO-050"
 classification_secondary_refs: []
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-PRO-014 · ¿Qué cuenta y certificado bancario necesito para recibir los fondos? · Borrador"
 permalink: "/donacion/promotores/05-cierre-y-transferencia-de-fondos/cf-don-pro-014-que-cuenta-y-certificado-bancario-necesito-para-recibir-los-fondos/"
-prev_url: null
+prev_url: "/donacion/promotores/05-cierre-y-transferencia-de-fondos/cf-don-pro-013-que-pasa-con-lo-recaudado-al-finalizar-la-campana/"
 prev_code: "CF-DON-PRO-013"
 prev_title: "¿Qué pasa con lo recaudado al finalizar la campaña?"
-next_url: null
+next_url: "/donacion/promotores/06-usa-los-fondos-segun-lo-declarado-y-comunica-avances/cf-don-pro-015-como-uso-los-fondos-y-mantengo-informados-a-los-donantes/"
 next_code: "CF-DON-PRO-015"
 next_title: "¿Cómo uso los fondos y mantengo informados a los donantes?"
 media: []

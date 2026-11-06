@@ -18,10 +18,10 @@ classification_refs:
   - "CL-DON-PRO-001"
   - "CL-DON-PRO-002"
   - "CL-DON-PRO-003"
-status: draft
+status: "published"
 editorial_status: pending_review
-published: false
-visibility: private
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-PRO-001 · Quién puede promover una iniciativa en Donación y qué causas puede presentar · Borrador"
@@ -29,7 +29,7 @@ permalink: /donacion/promotores/01-conoce-donacion-y-tu-papel-como-promotor/cf-d
 prev_url: null
 prev_code: null
 prev_title: null
-next_url: null
+next_url: "/donacion/promotores/01-conoce-donacion-y-tu-papel-como-promotor/cf-don-pro-002-como-funciona-el-apoyo-de-los-donantes-en-esta-categoria/"
 next_code: "CF-DON-PRO-002"
 next_title: "¿Cómo funciona el apoyo de los donantes en esta categoría?"
 media: []

@@ -21,15 +21,15 @@ classification_refs:
 classification_secondary_refs:
   - "CL-DON-DON-006"
   - "CL-DON-DON-007"
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-DON-014 · ¿Cómo se comunica una reversión y dónde se devuelven los fondos? · Borrador"
 permalink: "/donacion/donantes/05-reclamar-y-conocer-las-situaciones-de-reversion/cf-don-don-014-como-se-comunica-una-reversion-y-donde-se-devuelven-los-fondos/"
-prev_url: null
+prev_url: "/donacion/donantes/05-reclamar-y-conocer-las-situaciones-de-reversion/cf-don-don-013-en-que-situaciones-se-revisa-la-reversion-de-fondos/"
 prev_code: "CF-DON-DON-013"
 prev_title: "¿En qué situaciones se revisa la reversión de fondos?"
 next_url: null

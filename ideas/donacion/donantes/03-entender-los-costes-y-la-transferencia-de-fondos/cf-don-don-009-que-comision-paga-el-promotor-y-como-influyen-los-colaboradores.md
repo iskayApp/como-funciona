@@ -19,18 +19,18 @@ classification_refs:
   - "CL-DON-DON-013"
   - "CL-DON-DON-014"
 classification_secondary_refs: []
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-DON-009 · ¿Qué comisión paga el promotor y cómo influyen los colaboradores? · Borrador"
 permalink: "/donacion/donantes/03-entender-los-costes-y-la-transferencia-de-fondos/cf-don-don-009-que-comision-paga-el-promotor-y-como-influyen-los-colaboradores/"
-prev_url: null
+prev_url: "/donacion/donantes/03-entender-los-costes-y-la-transferencia-de-fondos/cf-don-don-008-que-costes-puede-tener-mi-donacion/"
 prev_code: "CF-DON-DON-008"
 prev_title: "¿Qué costes puede tener mi donación?"
-next_url: null
+next_url: "/donacion/donantes/03-entender-los-costes-y-la-transferencia-de-fondos/cf-don-don-010-como-se-entrega-al-promotor-lo-recaudado/"
 next_code: "CF-DON-DON-010"
 next_title: "¿Cómo se entrega al promotor lo recaudado?"
 media: []

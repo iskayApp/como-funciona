@@ -20,18 +20,18 @@ classification_refs:
   - "CL-DON-DON-028"
   - "CL-DON-DON-029"
 classification_secondary_refs: []
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-DON-003 · ¿Qué vínculo tengo con el promotor y qué riesgos debo conocer? · Borrador"
 permalink: "/donacion/donantes/01-comprender-que-implica-donar/cf-don-don-003-que-vinculo-tengo-con-el-promotor-y-que-riesgos-debo-conocer/"
-prev_url: null
+prev_url: "/donacion/donantes/01-comprender-que-implica-donar/cf-don-don-002-que-causas-puedo-apoyar-y-que-puedo-elegir-al-donar/"
 prev_code: "CF-DON-DON-002"
 prev_title: "¿Qué causas puedo apoyar y qué puedo elegir al donar?"
-next_url: null
+next_url: "/donacion/donantes/01-comprender-que-implica-donar/cf-don-don-004-como-se-presenta-publicamente-mi-apoyo-como-donante/"
 next_code: "CF-DON-DON-004"
 next_title: "¿Cómo se presenta públicamente mi apoyo como donante?"
 media: []

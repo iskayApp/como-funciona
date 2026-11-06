@@ -8,10 +8,10 @@ role: Promotores
 stage: Organiza el apoyo a tu iniciativa
 stage_id: ORG-DON-PRO-02
 stage_url: /donacion/promotores/
-status: draft
+status: "published"
 editorial_status: pending_review
-published: false
-visibility: private
+published: true
+visibility: "public"
 reviewed: false
 ---
 

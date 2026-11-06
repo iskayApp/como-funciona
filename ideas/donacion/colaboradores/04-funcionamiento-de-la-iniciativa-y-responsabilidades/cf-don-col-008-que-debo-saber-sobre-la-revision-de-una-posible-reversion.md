@@ -18,15 +18,15 @@ operational_sources: []
 classification_refs:
   - "CL-DON-COL-023"
 classification_secondary_refs: []
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-COL-008 · ¿Qué debo saber sobre la revisión de una posible reversión? · Borrador"
 permalink: "/donacion/colaboradores/04-funcionamiento-de-la-iniciativa-y-responsabilidades/cf-don-col-008-que-debo-saber-sobre-la-revision-de-una-posible-reversion/"
-prev_url: null
+prev_url: "/donacion/colaboradores/04-funcionamiento-de-la-iniciativa-y-responsabilidades/cf-don-col-007-quien-recibe-lo-recaudado-y-responde-por-su-uso/"
 prev_code: "CF-DON-COL-007"
 prev_title: "¿Quién recibe lo recaudado y responde por su uso?"
 next_url: null

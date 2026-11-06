@@ -8,10 +8,10 @@ role: Promotores
 stage: Cierre y transferencia de fondos
 stage_id: ORG-DON-PRO-05
 stage_url: /donacion/promotores/
-status: draft
+status: "published"
 editorial_status: pending_review
-published: false
-visibility: private
+published: true
+visibility: "public"
 reviewed: false
 ---
 

@@ -5,10 +5,10 @@ description: Conoce qué implica donar, cómo revisar una iniciativa y cómo seg
 permalink: /donacion/donantes/
 category: Donación
 role: Donantes
-status: draft
+status: "published"
 editorial_status: pending_review
-published: false
-visibility: private
+published: true
+visibility: "public"
 reviewed: false
 ---
 

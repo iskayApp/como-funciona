@@ -8,10 +8,10 @@ role: Promotores
 stage: Conoce Donación y tu papel como promotor
 stage_id: ORG-DON-PRO-01
 stage_url: /donacion/promotores/
-status: draft
+status: "published"
 editorial_status: pending_review
-published: false
-visibility: private
+published: true
+visibility: "public"
 reviewed: false
 ---
 

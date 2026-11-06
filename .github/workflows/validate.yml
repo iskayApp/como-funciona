@@ -37,6 +37,7 @@ jobs:
       - name: Validate canonical routes and reachability
         run: |
           python scripts/check_fr_navigation.py _site
+          python scripts/check_donation_navigation.py verify _site
           python scripts/verify_maintenance_site.py _site
           python scripts/check_site_integrity.py _site
       - name: Prepare isolated category and role fixture
@@ -48,15 +49,6 @@ jobs:
           destination: ./_navigation-fixture-site
       - name: Verify generic category and role navigation
         run: python scripts/check_category_navigation.py verify _navigation-fixture-site
-      - name: Prepare isolated preview of the 40 real Donation drafts
-        run: python scripts/check_donation_navigation.py prepare _navigation-fixture/donacion-real
-      - name: Render isolated Donation preview
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./_navigation-fixture/donacion-real
-          destination: ./_navigation-fixture-site/donacion-real
-      - name: Verify the 60 Donation routes and shared catalog
-        run: python scripts/check_donation_navigation.py verify _navigation-fixture-site/donacion-real
       - name: Install browser testing dependencies
         run: |
           python -m pip install --disable-pip-version-check playwright==1.57.0
@@ -66,7 +58,7 @@ jobs:
       - name: Test another category and role in mobile navigation
         run: python scripts/check_category_navigation.py smoke _navigation-fixture-site
       - name: Test real Donation journeys, filters and ficha navigation
-        run: python scripts/check_donation_navigation.py smoke _navigation-fixture-site/donacion-real
+        run: python scripts/check_donation_navigation.py smoke _site
       - name: Test role-local search and section filters
         run: python scripts/smoke_fr_explorer.py _site
       - name: Test general home and category-role-section maintenance

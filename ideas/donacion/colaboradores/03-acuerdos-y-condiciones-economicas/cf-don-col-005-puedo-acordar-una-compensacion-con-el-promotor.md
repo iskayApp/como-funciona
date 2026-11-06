@@ -21,18 +21,18 @@ classification_refs:
   - "CL-DON-COL-010"
 classification_secondary_refs:
   - "CL-DON-COL-021"
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-COL-005 · ¿Puedo acordar una compensación con el promotor? · Borrador"
 permalink: "/donacion/colaboradores/03-acuerdos-y-condiciones-economicas/cf-don-col-005-puedo-acordar-una-compensacion-con-el-promotor/"
-prev_url: null
+prev_url: "/donacion/colaboradores/02-formas-de-aportar-y-compartir-documentos/cf-don-col-004-puedo-publicar-documentos-como-colaborador/"
 prev_code: "CF-DON-COL-004"
 prev_title: "¿Puedo publicar documentos como colaborador?"
-next_url: null
+next_url: "/donacion/colaboradores/03-acuerdos-y-condiciones-economicas/cf-don-col-006-como-influye-mi-colaboracion-en-la-comision-del-promotor/"
 next_code: "CF-DON-COL-006"
 next_title: "¿Cómo influye mi colaboración en la comisión del promotor?"
 media: []

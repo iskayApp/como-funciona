@@ -20,18 +20,18 @@ classification_refs:
   - "CL-DON-DON-031"
 classification_secondary_refs:
   - "CL-DON-DON-029"
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-DON-012 · ¿Qué puedo hacer ante un uso indebido de fondos o un incumplimiento grave? · Borrador"
 permalink: "/donacion/donantes/05-reclamar-y-conocer-las-situaciones-de-reversion/cf-don-don-012-que-puedo-hacer-ante-un-uso-indebido-de-fondos-o-un-incumplimiento-grave/"
-prev_url: null
+prev_url: "/donacion/donantes/04-seguir-la-iniciativa-y-pedir-informacion/cf-don-don-011-como-puedo-informarme-sobre-los-avances-y-el-uso-de-los-fondos/"
 prev_code: "CF-DON-DON-011"
 prev_title: "¿Cómo puedo informarme sobre los avances y el uso de los fondos?"
-next_url: null
+next_url: "/donacion/donantes/05-reclamar-y-conocer-las-situaciones-de-reversion/cf-don-don-013-en-que-situaciones-se-revisa-la-reversion-de-fondos/"
 next_code: "CF-DON-DON-013"
 next_title: "¿En qué situaciones se revisa la reversión de fondos?"
 media: []

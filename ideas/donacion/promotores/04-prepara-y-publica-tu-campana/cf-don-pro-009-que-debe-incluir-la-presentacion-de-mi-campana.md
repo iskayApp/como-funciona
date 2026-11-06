@@ -25,18 +25,18 @@ classification_refs:
   - "CL-DON-PRO-047"
 classification_secondary_refs:
   - "CL-DON-PRO-017"
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-PRO-009 · ¿Qué debe incluir la presentación de mi campaña? · Borrador"
 permalink: "/donacion/promotores/04-prepara-y-publica-tu-campana/cf-don-pro-009-que-debe-incluir-la-presentacion-de-mi-campana/"
-prev_url: null
+prev_url: "/donacion/promotores/03-conoce-las-comisiones-y-los-descuentos/cf-don-pro-008-donar-en-mi-campana-tiene-comisiones-o-cargos/"
 prev_code: "CF-DON-PRO-008"
 prev_title: "¿Donar en mi campaña tiene comisiones o cargos?"
-next_url: null
+next_url: "/donacion/promotores/04-prepara-y-publica-tu-campana/cf-don-pro-010-que-debo-indicar-sobre-el-monto-y-los-tiempos-de-mi-iniciativa/"
 next_code: "CF-DON-PRO-010"
 next_title: "¿Qué debo indicar sobre el monto y los tiempos de mi iniciativa?"
 media: []

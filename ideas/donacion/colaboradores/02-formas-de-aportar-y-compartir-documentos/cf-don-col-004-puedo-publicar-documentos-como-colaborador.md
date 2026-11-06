@@ -18,18 +18,18 @@ operational_sources: []
 classification_refs:
   - "CL-DON-COL-017"
 classification_secondary_refs: []
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-COL-004 · ¿Puedo publicar documentos como colaborador? · Borrador"
 permalink: "/donacion/colaboradores/02-formas-de-aportar-y-compartir-documentos/cf-don-col-004-puedo-publicar-documentos-como-colaborador/"
-prev_url: null
+prev_url: "/donacion/colaboradores/02-formas-de-aportar-y-compartir-documentos/cf-don-col-003-de-que-formas-puedo-apoyar-una-iniciativa/"
 prev_code: "CF-DON-COL-003"
 prev_title: "¿De qué formas puedo apoyar una iniciativa?"
-next_url: null
+next_url: "/donacion/colaboradores/03-acuerdos-y-condiciones-economicas/cf-don-col-005-puedo-acordar-una-compensacion-con-el-promotor/"
 next_code: "CF-DON-COL-005"
 next_title: "¿Puedo acordar una compensación con el promotor?"
 media: []

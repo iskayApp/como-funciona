@@ -24,18 +24,18 @@ classification_refs:
   - "CL-DON-DON-023"
 classification_secondary_refs:
   - "CL-DON-DON-019"
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-DON-005 · ¿Qué información puedo revisar de una iniciativa? · Borrador"
 permalink: "/donacion/donantes/02-conocer-la-iniciativa-y-a-su-equipo/cf-don-don-005-que-informacion-puedo-revisar-de-una-iniciativa/"
-prev_url: null
+prev_url: "/donacion/donantes/01-comprender-que-implica-donar/cf-don-don-004-como-se-presenta-publicamente-mi-apoyo-como-donante/"
 prev_code: "CF-DON-DON-004"
 prev_title: "¿Cómo se presenta públicamente mi apoyo como donante?"
-next_url: null
+next_url: "/donacion/donantes/02-conocer-la-iniciativa-y-a-su-equipo/cf-don-don-006-quien-impulsa-la-iniciativa-y-que-hacen-sus-colaboradores/"
 next_code: "CF-DON-DON-006"
 next_title: "¿Quién impulsa la iniciativa y qué hacen sus colaboradores?"
 media: []

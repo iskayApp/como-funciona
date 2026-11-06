@@ -23,18 +23,18 @@ classification_secondary_refs:
   - "CL-DON-PRO-036"
   - "CL-DON-PRO-037"
   - "CL-DON-PRO-056"
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-PRO-013 · ¿Qué pasa con lo recaudado al finalizar la campaña? · Borrador"
 permalink: "/donacion/promotores/05-cierre-y-transferencia-de-fondos/cf-don-pro-013-que-pasa-con-lo-recaudado-al-finalizar-la-campana/"
-prev_url: null
+prev_url: "/donacion/promotores/04-prepara-y-publica-tu-campana/cf-don-pro-012-que-compromiso-de-actualizacion-asumo-al-publicar-mi-campana/"
 prev_code: "CF-DON-PRO-012"
 prev_title: "¿Qué compromiso de actualización asumo al publicar mi campaña?"
-next_url: null
+next_url: "/donacion/promotores/05-cierre-y-transferencia-de-fondos/cf-don-pro-014-que-cuenta-y-certificado-bancario-necesito-para-recibir-los-fondos/"
 next_code: "CF-DON-PRO-014"
 next_title: "¿Qué cuenta y certificado bancario necesito para recibir los fondos?"
 media: []

@@ -8,10 +8,10 @@ role: Donantes
 stage: Entender los costes y la transferencia de fondos
 stage_id: ORG-DON-DON-03
 stage_url: /donacion/donantes/
-status: draft
+status: "published"
 editorial_status: pending_review
-published: false
-visibility: private
+published: true
+visibility: "public"
 reviewed: false
 ---
 

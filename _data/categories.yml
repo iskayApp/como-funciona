@@ -21,7 +21,7 @@
 - id: donacion
   name: Donación
   url: /donacion/
-  status: preparation
+  status: available
   roles:
     - id: promotores
       name: Promotores

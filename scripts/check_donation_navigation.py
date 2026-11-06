@@ -1,19 +1,15 @@
-"""Preview the 40 real Donación drafts in an isolated, unpublished Jekyll copy.
+"""Check the 40 published Donación fichas and their real Jekyll navigation.
 
-prepare checks the restricted sources before changing visibility only in the copy.
-CI builds that copy, then verify and smoke exercise its real routes and catalog.
-No editorial approval, source body or production publication setting is changed.
+Publication is authorized independently of editorial approval. Source metadata
+continues to require pending_review and reviewed:false for all 60 pages.
+Browser checks serve the built output locally, including canonical search links.
 """
 from __future__ import annotations
 
 import argparse
 from collections import Counter
-import hashlib
 import json
 from pathlib import Path
-import shutil
-import subprocess
-import sys
 from urllib.parse import urlsplit
 
 import yaml
@@ -25,8 +21,7 @@ from verify_maintenance_site import audit as audit_routes
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "_navigation-fixture/donacion-real"
-ORIGIN = "https://donacion-preview.invalid"
+SOURCE = ROOT
 ROLES = {
     "PRO": {"id": "promotores", "name": "Promotores", "topics": 18, "stages": 7, "classification": 71},
     "DON": {"id": "donantes", "name": "Donantes", "topics": 14, "stages": 5, "classification": 42},
@@ -38,16 +33,14 @@ def normalized(value):
     return " ".join(str(value).split())
 
 
-def inventory(root: Path, preview=False):
+def inventory(root: Path):
     """Derive titles, routes and stages from the real front matter, not a fixture catalog."""
     config = yaml.safe_load((root / "_config.yml").read_text(encoding="utf-8"))
     categories = yaml.safe_load((root / "_data/categories.yml").read_text(encoding="utf-8"))
     category = next(c for c in categories if c["id"] == "donacion")
-    assert config.get("noindex") is True, "El preview y la fuente deben conservar noindex"
-    assert category["status"] == ("available" if preview else "preparation")
-    assert ("ideas/donacion" in config.get("exclude", [])) == (not preview)
-    if preview:
-        assert config["url"] == ORIGIN, "El preview no debe usar el origen público"
+    assert config.get("noindex") is True, "La publicación conserva noindex"
+    assert category["status"] == "available"
+    assert "ideas/donacion" not in config.get("exclude", [])
     assert category["url"] == "/donacion/"
     assert len(category["roles"]) == 3, "Se requieren exactamente tres roles"
     roles = {r["id"]: r for r in category["roles"]}
@@ -63,9 +56,9 @@ def inventory(root: Path, preview=False):
                 and ".." not in route.split("/") and "//" not in route), path
         assert route not in pages, f"Ruta duplicada: {route}"
         assert meta.get("category") == "Donación" and meta.get("title"), path
-        assert meta.get("status") == ("published" if preview else "draft"), path
-        assert meta.get("published") is preview, path
-        assert meta.get("visibility") == ("public" if preview else "private"), path
+        assert meta.get("status") == "published", path
+        assert meta.get("published") is True, path
+        assert meta.get("visibility") == "public", path
         assert meta.get("editorial_status") == "pending_review" and meta.get("reviewed") is False, path
         record = {"path": path.relative_to(root), "meta": meta, "body": body}
         pages[route] = record
@@ -105,7 +98,7 @@ def inventory(root: Path, preview=False):
                 neighbor = ordered[index + offset] if 0 <= index + offset < len(ordered) else None
                 assert meta.get(direction + "_code") == (neighbor["code"] if neighbor else None), meta["code"]
                 assert meta.get(direction + "_title") == (neighbor["title"] if neighbor else None), meta["code"]
-                expected_url = neighbor["permalink"] if preview and neighbor else None
+                expected_url = neighbor["permalink"] if neighbor else None
                 assert meta.get(direction + "_url") == expected_url, meta["code"]
             expected_routes.add(route)
         expected_refs = {f"CL-DON-{code}-{n:03d}" for n in range(1, spec["classification"] + 1)}
@@ -116,44 +109,6 @@ def inventory(root: Path, preview=False):
     return config, categories, category, pages, topics
 
 
-def fingerprint(paths):
-    return {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in paths}
-
-
-def prepare(destination: Path):
-    destination = destination.resolve()
-    assert destination != ROOT and not ROOT.is_relative_to(destination), "El destino debe estar aislado"
-    if destination.is_relative_to(ROOT):
-        ignored = subprocess.run(["git", "check-ignore", "-q", "--", str(destination.relative_to(ROOT))], cwd=ROOT)
-        assert ignored.returncode == 0, "Dentro del repositorio solo se permite un destino ignorado por git"
-    assert not destination.exists() or not any(destination.iterdir()), "El destino debe estar vacío"
-    config, categories, category, pages, topics = inventory(ROOT)
-    protected = [ROOT / "_config.yml", ROOT / "_data/categories.yml"] + [ROOT / p["path"] for p in pages.values()]
-    before = fingerprint(protected)
-    shutil.copytree(ROOT, destination, dirs_exist_ok=True, ignore=shutil.ignore_patterns(
-        ".git", ".github", "_site", "_navigation-fixture", "_navigation-fixture-site",
-        "ui-artifacts", "__pycache__", "*.pyc", ".jekyll-cache", ".sass-cache"))
-    config["exclude"] = [value for value in config.get("exclude", []) if value != "ideas/donacion"]
-    config["url"] = ORIGIN
-    category["status"] = "available"
-    (destination / "_config.yml").write_text(yaml.safe_dump(config, allow_unicode=True, sort_keys=False), encoding="utf-8")
-    (destination / "_data/categories.yml").write_text(yaml.safe_dump(categories, allow_unicode=True, sort_keys=False), encoding="utf-8")
-    for record in pages.values():
-        meta = dict(record["meta"], status="published", published=True, visibility="public")
-        if meta.get("code"):
-            for direction in ("prev", "next"):
-                neighbor = topics.get(meta.get(direction + "_code"))
-                meta[direction + "_url"] = neighbor["meta"]["permalink"] if neighbor else None
-        (destination / record["path"]).write_text(
-            "---\n" + yaml.safe_dump(meta, allow_unicode=True, sort_keys=False) + "---\n" + record["body"], encoding="utf-8")
-    copied = inventory(destination, preview=True)[3]
-    assert all(copied[route]["body"] == record["body"] for route, record in pages.items()), "Se alteró un cuerpo"
-    for script in ("build_share_catalog.py", "build_maintenance_control.py"):
-        subprocess.run([sys.executable, str(destination / "scripts" / script)], cwd=destination, check=True)
-    assert fingerprint(protected) == before, "La fuente real cambió durante la preparación; repetir con el árbol estable"
-    print(f"PASS: copia aislada en {destination}; 40 fichas, 3 roles, 16 etapas, 136 CL principales; fuente restringida intacta")
-
-
 def save_report(name, data):
     artifacts = ROOT / "ui-artifacts"
     artifacts.mkdir(exist_ok=True)
@@ -161,8 +116,9 @@ def save_report(name, data):
 
 
 def verify(site: Path, source: Path):
-    config, _, category, pages, topics = inventory(source.resolve(), preview=True)
+    config, _, category, pages, topics = inventory(source.resolve())
     base = config.get("baseurl", "").rstrip("/")
+    origin = config["url"].rstrip("/")
     site = site.resolve()
     built = {"/" + path.parent.relative_to(site).as_posix() + "/"
              for path in (site / "donacion").rglob("index.html")}
@@ -191,7 +147,7 @@ def verify(site: Path, source: Path):
         assert any(n.tag == "title" and normalized(n.text) == meta["title"] + " · " + config["title"]
                    for n in page.all()), route
         assert any(n.tag == "link" and n.attrs.get("rel") == "canonical"
-                   and n.attrs.get("href") == ORIGIN + base + route for n in page.all()), route
+                   and n.attrs.get("href") == origin + base + route for n in page.all()), route
         assert any(n.tag == "meta" and n.attrs.get("name") == "robots"
                    and "noindex" in n.attrs.get("content", "") for n in page.all()), route
         assert links(page.having_class("fr-role-tabs")[0]) == role_links, route
@@ -214,7 +170,7 @@ def verify(site: Path, source: Path):
             assert titles == [meta[key] for key in ("prev_title", "next_title") if meta.get(key)], route
             entry = donation[meta["code"]]
             assert (entry["title"], entry["role"], entry["stage"], entry["canonical_url"]) == (
-                meta["title"], meta["role"], meta["stage"], ORIGIN + base + route), meta["code"]
+                meta["title"], meta["role"], meta["stage"], origin + base + route), meta["code"]
         elif role and route != role["url"]:
             expected = {base + t["meta"]["permalink"] for t in topics.values() if t["meta"]["stage_url"] == route}
             observed = [href for href in links(page.having_class("fr-stage-content")[0]) if href in all_topic_links]
@@ -236,7 +192,7 @@ def verify(site: Path, source: Path):
     assert {item["code"] for item in control["items"]} == {item["code"] for item in items}
     routes = audit_routes(site, config, control)
     integrity = audit_integrity(site, root=source.resolve())
-    save_report("donation-navigation.json", {"scope": "isolated_preview", "donation_routes": len(built),
+    save_report("donation-navigation.json", {"scope": "rendered_public_site", "donation_routes": len(built),
                 "donation_topics": len(topics), "catalog_topics": len(items), "routes": routes, "integrity": integrity})
     assert routes["checked"] == routes["reachable"] == 139 and not routes["missing_routes"] and not routes["unreachable_topics"], routes
     assert routes["unique_codes"] and routes["unique_routes"], routes
@@ -251,8 +207,9 @@ def smoke(site: Path, source: Path):
     from threading import Thread
     from playwright.sync_api import sync_playwright, expect
 
-    config, _, category, _, topics = inventory(source.resolve(), preview=True)
+    config, _, category, _, topics = inventory(source.resolve())
     base = config.get("baseurl", "").rstrip("/")
+    origin = config["url"].rstrip("/")
     roles = {role["id"]: role for role in category["roles"]}
     artifacts = ROOT / "ui-artifacts"
     artifacts.mkdir(exist_ok=True)
@@ -272,7 +229,7 @@ def smoke(site: Path, source: Path):
 
     def local_only(route):
         request = urlsplit(route.request.url)
-        if request.netloc != urlsplit(ORIGIN).netloc:
+        if request.netloc != urlsplit(origin).netloc:
             return route.abort()
         response = route.fetch(url=local + request.path + ("?" + request.query if request.query else ""))
         route.fulfill(response=response)
@@ -295,7 +252,7 @@ def smoke(site: Path, source: Path):
                     first = topics[f"CF-DON-{code}-001"]["meta"]
                     second = topics[f"CF-DON-{code}-002"]["meta"]
                     last = topics[f"CF-DON-{code}-{spec['topics']:03d}"]["meta"]
-                    page.goto(ORIGIN + base + category["url"])
+                    page.goto(origin + base + category["url"])
                     page.locator(f'.fr-role-card[href="{base + role["url"]}"]').click()
                     expect(page.locator("h1")).to_have_text(role["name"])
                     expect(page.locator("[data-fr-topic]")).to_have_count(spec["topics"])
@@ -312,11 +269,11 @@ def smoke(site: Path, source: Path):
                     page.locator("[data-fr-filter-clear]").click()
                     page.locator("[data-fr-filter-query]").fill(first["code"])
                     page.locator("[data-fr-topic]:visible").click()
-                    expect(page).to_have_url(ORIGIN + base + first["permalink"])
+                    expect(page).to_have_url(origin + base + first["permalink"])
                     page.locator(".page-nav-next").click()
-                    expect(page).to_have_url(ORIGIN + base + second["permalink"])
+                    expect(page).to_have_url(origin + base + second["permalink"])
                     page.locator(".page-nav-item:not(.page-nav-next)").click()
-                    expect(page).to_have_url(ORIGIN + base + first["permalink"])
+                    expect(page).to_have_url(origin + base + first["permalink"])
                     fits(page)
                     page.locator(".fr-jump > summary").click()
                     page.locator(f'.fr-jump-panel a[href="{base + last["stage_url"]}"]').click()
@@ -325,7 +282,7 @@ def smoke(site: Path, source: Path):
                     expect(page.locator("h1")).to_have_text(last["title"])
                     expect(page.locator(".page-nav-next")).to_have_count(0)
                     fits(page)
-                    page.goto(ORIGIN + base + "/#buscar")
+                    page.goto(origin + base + "/#buscar")
                     expect(page.locator("#public-search-query")).to_be_enabled()
                     page.locator("#public-search-query").fill("Donación")
                     page.locator("#public-search-filter-toggle").click()
@@ -336,31 +293,42 @@ def smoke(site: Path, source: Path):
                     page.locator("#public-search-stage").select_option(first["stage"])
                     page.locator("#public-search-query").fill(first["code"])
                     expect(page.locator(".public-search-result")).to_have_count(1)
-                    expect(page.locator(".public-search-result")).to_have_attribute("href", ORIGIN + base + first["permalink"])
+                    expect(page.locator(".public-search-result")).to_have_attribute("href", origin + base + first["permalink"])
                     page.locator(".public-search-result").click()
                     expect(page.locator("h1")).to_have_text(first["title"])
                     fits(page)
                     passed.append(f'{width}px / {role["name"]}: recorrido, etapa, filtros, buscador y anterior/siguiente')
+                first = topics["CF-DON-DON-001"]["meta"]
+                page.goto(origin + base + "/#orientacion")
+                page.locator("#guidance-start").click()
+                page.locator(".guidance-choice").filter(has_text="Apoyar o invertir en una iniciativa").click()
+                page.get_by_role("button", name="Donación Aportes sin obligación de devolución", exact=True).click()
+                page.get_by_role("button", name="Donantes", exact=True).click()
+                page.get_by_role("button", name=first["stage"], exact=True).click()
+                page.get_by_role("button", name=first["title"], exact=True).click()
+                expect(page.locator(".guidance-context")).to_have_text("Donación · Donantes · " + first["stage"])
+                expect(page.locator(".guidance-canonical-link")).to_have_attribute("href", origin + base + first["permalink"])
+                page.locator(".guidance-canonical-link").click()
+                expect(page.locator("h1")).to_have_text(first["title"])
+                fits(page)
+                passed.append(f"{width}px: orientación Donación → Donantes → etapa → ficha canónica")
                 assert not errors, errors
                 context.close()
             browser.close()
     finally:
         server.shutdown()
         server.server_close()
-    save_report("donation-browser.json", {"scope": "isolated_preview", "passed": passed})
+    save_report("donation-browser.json", {"scope": "rendered_public_site", "passed": passed})
     print("\n".join("PASS: " + case for case in passed))
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("prepare", "verify", "smoke"))
+    parser.add_argument("command", choices=("verify", "smoke"))
     parser.add_argument("directory", type=Path)
-    parser.add_argument("--source", type=Path, default=SOURCE, help="Copia preparada, para verify y smoke")
+    parser.add_argument("--source", type=Path, default=SOURCE, help="Raíz de las fuentes públicas que produjo el sitio")
     args = parser.parse_args()
-    if args.command == "prepare":
-        prepare(args.directory)
-    else:
-        {"verify": verify, "smoke": smoke}[args.command](args.directory, args.source)
+    {"verify": verify, "smoke": smoke}[args.command](args.directory, args.source)
 
 
 if __name__ == "__main__":

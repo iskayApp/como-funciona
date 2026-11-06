@@ -21,18 +21,18 @@ classification_refs:
   - "CL-DON-DON-021"
 classification_secondary_refs:
   - "CL-DON-DON-022"
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-DON-007 · ¿Cuánto dura la campaña y qué es la precampaña? · Borrador"
 permalink: "/donacion/donantes/02-conocer-la-iniciativa-y-a-su-equipo/cf-don-don-007-cuanto-dura-la-campana-y-que-es-la-precampana/"
-prev_url: null
+prev_url: "/donacion/donantes/02-conocer-la-iniciativa-y-a-su-equipo/cf-don-don-006-quien-impulsa-la-iniciativa-y-que-hacen-sus-colaboradores/"
 prev_code: "CF-DON-DON-006"
 prev_title: "¿Quién impulsa la iniciativa y qué hacen sus colaboradores?"
-next_url: null
+next_url: "/donacion/donantes/03-entender-los-costes-y-la-transferencia-de-fondos/cf-don-don-008-que-costes-puede-tener-mi-donacion/"
 next_code: "CF-DON-DON-008"
 next_title: "¿Qué costes puede tener mi donación?"
 media: []

@@ -20,18 +20,18 @@ classification_refs:
   - "CL-DON-DON-025"
   - "CL-DON-DON-026"
 classification_secondary_refs: []
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-DON-011 · ¿Cómo puedo informarme sobre los avances y el uso de los fondos? · Borrador"
 permalink: "/donacion/donantes/04-seguir-la-iniciativa-y-pedir-informacion/cf-don-don-011-como-puedo-informarme-sobre-los-avances-y-el-uso-de-los-fondos/"
-prev_url: null
+prev_url: "/donacion/donantes/03-entender-los-costes-y-la-transferencia-de-fondos/cf-don-don-010-como-se-entrega-al-promotor-lo-recaudado/"
 prev_code: "CF-DON-DON-010"
 prev_title: "¿Cómo se entrega al promotor lo recaudado?"
-next_url: null
+next_url: "/donacion/donantes/05-reclamar-y-conocer-las-situaciones-de-reversion/cf-don-don-012-que-puedo-hacer-ante-un-uso-indebido-de-fondos-o-un-incumplimiento-grave/"
 next_code: "CF-DON-DON-012"
 next_title: "¿Qué puedo hacer ante un uso indebido de fondos o un incumplimiento grave?"
 media: []

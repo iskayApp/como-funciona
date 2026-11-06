@@ -20,10 +20,10 @@ classification_refs:
   - "CL-DON-DON-003"
   - "CL-DON-DON-004"
 classification_secondary_refs: []
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-DON-001 · ¿Qué significa donar en iskay.app? · Borrador"
@@ -31,7 +31,7 @@ permalink: "/donacion/donantes/01-comprender-que-implica-donar/cf-don-don-001-qu
 prev_url: null
 prev_code: null
 prev_title: null
-next_url: null
+next_url: "/donacion/donantes/01-comprender-que-implica-donar/cf-don-don-002-que-causas-puedo-apoyar-y-que-puedo-elegir-al-donar/"
 next_code: "CF-DON-DON-002"
 next_title: "¿Qué causas puedo apoyar y qué puedo elegir al donar?"
 media: []

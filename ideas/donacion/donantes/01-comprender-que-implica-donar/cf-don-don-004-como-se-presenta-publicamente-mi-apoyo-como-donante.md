@@ -19,18 +19,18 @@ operational_sources:
   - "DON-VEN-02 - Producción: Contenido aprobado sobre perfil visible y anonimato."
 classification_refs: []
 classification_secondary_refs: []
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-DON-004 · ¿Cómo se presenta públicamente mi apoyo como donante? · Borrador"
 permalink: "/donacion/donantes/01-comprender-que-implica-donar/cf-don-don-004-como-se-presenta-publicamente-mi-apoyo-como-donante/"
-prev_url: null
+prev_url: "/donacion/donantes/01-comprender-que-implica-donar/cf-don-don-003-que-vinculo-tengo-con-el-promotor-y-que-riesgos-debo-conocer/"
 prev_code: "CF-DON-DON-003"
 prev_title: "¿Qué vínculo tengo con el promotor y qué riesgos debo conocer?"
-next_url: null
+next_url: "/donacion/donantes/02-conocer-la-iniciativa-y-a-su-equipo/cf-don-don-005-que-informacion-puedo-revisar-de-una-iniciativa/"
 next_code: "CF-DON-DON-005"
 next_title: "¿Qué información puedo revisar de una iniciativa?"
 media: []

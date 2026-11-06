@@ -20,18 +20,18 @@ classification_refs:
   - "CL-DON-DON-032"
   - "CL-DON-DON-033"
 classification_secondary_refs: []
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-DON-010 · ¿Cómo se entrega al promotor lo recaudado? · Borrador"
 permalink: "/donacion/donantes/03-entender-los-costes-y-la-transferencia-de-fondos/cf-don-don-010-como-se-entrega-al-promotor-lo-recaudado/"
-prev_url: null
+prev_url: "/donacion/donantes/03-entender-los-costes-y-la-transferencia-de-fondos/cf-don-don-009-que-comision-paga-el-promotor-y-como-influyen-los-colaboradores/"
 prev_code: "CF-DON-DON-009"
 prev_title: "¿Qué comisión paga el promotor y cómo influyen los colaboradores?"
-next_url: null
+next_url: "/donacion/donantes/04-seguir-la-iniciativa-y-pedir-informacion/cf-don-don-011-como-puedo-informarme-sobre-los-avances-y-el-uso-de-los-fondos/"
 next_code: "CF-DON-DON-011"
 next_title: "¿Cómo puedo informarme sobre los avances y el uso de los fondos?"
 media: []

@@ -21,18 +21,18 @@ classification_refs:
 classification_secondary_refs:
   - "CL-DON-PRO-012"
   - "CL-DON-PRO-054"
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-PRO-016 · ¿Qué sucede ante el uso indebido de recursos o un incumplimiento grave? · Borrador"
 permalink: "/donacion/promotores/07-reclamaciones-y-posibles-reversiones/cf-don-pro-016-que-sucede-ante-el-uso-indebido-de-recursos-o-un-incumplimiento-grave/"
-prev_url: null
+prev_url: "/donacion/promotores/06-usa-los-fondos-segun-lo-declarado-y-comunica-avances/cf-don-pro-015-como-uso-los-fondos-y-mantengo-informados-a-los-donantes/"
 prev_code: "CF-DON-PRO-015"
 prev_title: "¿Cómo uso los fondos y mantengo informados a los donantes?"
-next_url: null
+next_url: "/donacion/promotores/07-reclamaciones-y-posibles-reversiones/cf-don-pro-017-que-situaciones-llevan-a-revisar-una-posible-reversion-de-fondos/"
 next_code: "CF-DON-PRO-017"
 next_title: "¿Qué situaciones llevan a revisar una posible reversión de fondos?"
 media: []

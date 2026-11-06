@@ -1,22 +1,25 @@
 """Review snapshot: preserve FR sources and the verified shared components."""
 from pathlib import Path
 import subprocess
+import sys
 import unittest
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'scripts'))
+from check_donation_navigation import inventory
 
 
 class CategoryBaseTests(unittest.TestCase):
-    def test_registry_has_one_available_category_and_four_preparations(self):
+    def test_registry_has_two_available_categories_and_three_preparations(self):
         categories = yaml.safe_load((ROOT / '_data/categories.yml').read_text())
         self.assertEqual(len(categories), 5)
         self.assertEqual(len({c['id'] for c in categories}), 5)
         self.assertEqual(len({c['url'] for c in categories}), 5)
-        self.assertEqual([c['id'] for c in categories if c['status'] == 'available'], ['financiamiento-reembolsable'])
+        self.assertEqual([c['id'] for c in categories if c['status'] == 'available'], ['financiamiento-reembolsable', 'donacion'])
         self.assertEqual([r['name'] for r in categories[0]['roles']], ['Promotores', 'Inversores', 'Colaboradores'])
         donation = next(c for c in categories if c['id'] == 'donacion')
-        self.assertEqual(donation['status'], 'preparation')
+        self.assertEqual(donation['status'], 'available')
         self.assertEqual([r['name'] for r in donation['roles']], ['Promotores', 'Donantes', 'Colaboradores'])
         self.assertEqual([r['url'] for r in donation['roles']], [
             '/donacion/promotores/', '/donacion/donantes/', '/donacion/colaboradores/',
@@ -25,6 +28,15 @@ class CategoryBaseTests(unittest.TestCase):
         for category in categories[2:]:
             self.assertEqual(category['status'], 'preparation')
             self.assertEqual(category['roles'], [])
+
+    def test_donation_publication_keeps_editorial_review_pending(self):
+        config, _, _, pages, topics = inventory(ROOT)
+        self.assertEqual(len(pages), 60)
+        self.assertEqual(len(topics), 40)
+        self.assertNotIn('ideas/donacion', config['exclude'])
+        for record in pages.values():
+            self.assertEqual(record['meta']['editorial_status'], 'pending_review')
+            self.assertIs(record['meta']['reviewed'], False)
 
     def test_home_is_generic_and_keeps_existing_search_and_guidance(self):
         home = (ROOT / 'index.md').read_text()
@@ -39,7 +51,7 @@ class CategoryBaseTests(unittest.TestCase):
     def test_review_snapshot_preserves_canonical_sources(self):
         # Revisión 2026-11-05: solo formato INV004 y correcciones verificadas de búsqueda/orientación.
         # Centro de mantenimiento renovado el 2026-11-06: las pruebas de interfaz cubren la biblioteca.
-        # El corte protege íntegramente FR y permite añadir borradores de otras categorías.
+        # El corte protege íntegramente FR durante la publicación de otras categorías.
         # Códigos, URL y contenido funcional de las 99 fichas existentes se conservan.
         tree = subprocess.check_output(
             ['git', 'ls-tree', 'HEAD', 'ideas/financiamiento-reembolsable'],

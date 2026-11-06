@@ -8,10 +8,10 @@ role: Colaboradores
 stage: Formas de aportar y compartir documentos
 stage_id: ORG-DON-COL-02
 stage_url: /donacion/colaboradores/
-status: draft
+status: "published"
 editorial_status: pending_review
-published: false
-visibility: private
+published: true
+visibility: "public"
 reviewed: false
 ---
 

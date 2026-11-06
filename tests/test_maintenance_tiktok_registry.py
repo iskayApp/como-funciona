@@ -32,6 +32,7 @@ class MaintenanceTikTokRegistryTests(unittest.TestCase):
             with patch.object(maintenance, "OUT_DIR", Path(directory)), \
                     patch.object(maintenance, "OUT_FILE", output), \
                     patch.object(maintenance, "TIKTOK_NEXT_REFRESH_FILE", Path(directory) / "token.next"), \
+                    patch.object(maintenance, "register_explicit_tiktok"), \
                     patch.object(maintenance, "refresh_tiktok_access", return_value=("fixture-token" if connected else None, service)), \
                     patch.object(maintenance, "list_tiktok_all", return_value=(list(available.values()), list_error)), \
                     patch.object(maintenance, "query_tiktok_videos", return_value=(available, None)) as query, \

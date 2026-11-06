@@ -21,18 +21,18 @@ classification_refs:
   - "CL-DON-PRO-045"
   - "CL-DON-PRO-066"
 classification_secondary_refs: []
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-PRO-010 · ¿Qué debo indicar sobre el monto y los tiempos de mi iniciativa? · Borrador"
 permalink: "/donacion/promotores/04-prepara-y-publica-tu-campana/cf-don-pro-010-que-debo-indicar-sobre-el-monto-y-los-tiempos-de-mi-iniciativa/"
-prev_url: null
+prev_url: "/donacion/promotores/04-prepara-y-publica-tu-campana/cf-don-pro-009-que-debe-incluir-la-presentacion-de-mi-campana/"
 prev_code: "CF-DON-PRO-009"
 prev_title: "¿Qué debe incluir la presentación de mi campaña?"
-next_url: null
+next_url: "/donacion/promotores/04-prepara-y-publica-tu-campana/cf-don-pro-011-como-funciona-la-precampana-y-como-se-inicia-la-campana/"
 next_code: "CF-DON-PRO-011"
 next_title: "¿Cómo funciona la precampaña y cómo se inicia la campaña?"
 media: []

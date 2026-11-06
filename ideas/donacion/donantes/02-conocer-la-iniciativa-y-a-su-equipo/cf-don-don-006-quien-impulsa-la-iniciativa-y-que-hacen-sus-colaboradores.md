@@ -22,18 +22,18 @@ classification_refs:
   - "CL-DON-DON-011"
   - "CL-DON-DON-012"
 classification_secondary_refs: []
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-DON-006 · ¿Quién impulsa la iniciativa y qué hacen sus colaboradores? · Borrador"
 permalink: "/donacion/donantes/02-conocer-la-iniciativa-y-a-su-equipo/cf-don-don-006-quien-impulsa-la-iniciativa-y-que-hacen-sus-colaboradores/"
-prev_url: null
+prev_url: "/donacion/donantes/02-conocer-la-iniciativa-y-a-su-equipo/cf-don-don-005-que-informacion-puedo-revisar-de-una-iniciativa/"
 prev_code: "CF-DON-DON-005"
 prev_title: "¿Qué información puedo revisar de una iniciativa?"
-next_url: null
+next_url: "/donacion/donantes/02-conocer-la-iniciativa-y-a-su-equipo/cf-don-don-007-cuanto-dura-la-campana-y-que-es-la-precampana/"
 next_code: "CF-DON-DON-007"
 next_title: "¿Cuánto dura la campaña y qué es la precampaña?"
 media: []

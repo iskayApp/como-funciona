@@ -19,18 +19,18 @@ classification_refs:
   - "CL-DON-PRO-043"
 classification_secondary_refs:
   - "CL-DON-PRO-013"
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-PRO-012 · ¿Qué compromiso de actualización asumo al publicar mi campaña? · Borrador"
 permalink: "/donacion/promotores/04-prepara-y-publica-tu-campana/cf-don-pro-012-que-compromiso-de-actualizacion-asumo-al-publicar-mi-campana/"
-prev_url: null
+prev_url: "/donacion/promotores/04-prepara-y-publica-tu-campana/cf-don-pro-011-como-funciona-la-precampana-y-como-se-inicia-la-campana/"
 prev_code: "CF-DON-PRO-011"
 prev_title: "¿Cómo funciona la precampaña y cómo se inicia la campaña?"
-next_url: null
+next_url: "/donacion/promotores/05-cierre-y-transferencia-de-fondos/cf-don-pro-013-que-pasa-con-lo-recaudado-al-finalizar-la-campana/"
 next_code: "CF-DON-PRO-013"
 next_title: "¿Qué pasa con lo recaudado al finalizar la campaña?"
 media: []

@@ -8,10 +8,10 @@ role: Promotores
 stage: Conoce las comisiones y los descuentos
 stage_id: ORG-DON-PRO-03
 stage_url: /donacion/promotores/
-status: draft
+status: "published"
 editorial_status: pending_review
-published: false
-visibility: private
+published: true
+visibility: "public"
 reviewed: false
 ---
 

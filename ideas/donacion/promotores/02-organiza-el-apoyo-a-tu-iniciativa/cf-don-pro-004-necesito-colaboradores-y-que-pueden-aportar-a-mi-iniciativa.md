@@ -27,18 +27,18 @@ classification_refs:
 classification_secondary_refs:
   - "CL-DON-PRO-026"
   - "CL-DON-PRO-027"
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-PRO-004 · ¿Necesito colaboradores y qué pueden aportar a mi iniciativa? · Borrador"
 permalink: "/donacion/promotores/02-organiza-el-apoyo-a-tu-iniciativa/cf-don-pro-004-necesito-colaboradores-y-que-pueden-aportar-a-mi-iniciativa/"
-prev_url: null
+prev_url: "/donacion/promotores/01-conoce-donacion-y-tu-papel-como-promotor/cf-don-pro-003-que-vinculo-se-establece-con-el-donante-y-que-riesgos-existen/"
 prev_code: "CF-DON-PRO-003"
 prev_title: "¿Qué vínculo se establece con el donante y qué riesgos existen?"
-next_url: null
+next_url: "/donacion/promotores/02-organiza-el-apoyo-a-tu-iniciativa/cf-don-pro-005-puedo-acordar-una-retribucion-con-un-colaborador/"
 next_code: "CF-DON-PRO-005"
 next_title: "¿Puedo acordar una retribución con un colaborador?"
 media: []

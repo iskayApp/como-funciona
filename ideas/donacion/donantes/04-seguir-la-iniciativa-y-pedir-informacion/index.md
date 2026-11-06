@@ -8,10 +8,10 @@ role: Donantes
 stage: Seguir la iniciativa y pedir información
 stage_id: ORG-DON-DON-04
 stage_url: /donacion/donantes/
-status: draft
+status: "published"
 editorial_status: pending_review
-published: false
-visibility: private
+published: true
+visibility: "public"
 reviewed: false
 ---
 

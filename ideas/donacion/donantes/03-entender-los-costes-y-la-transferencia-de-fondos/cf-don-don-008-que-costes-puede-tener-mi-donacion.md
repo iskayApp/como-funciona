@@ -19,18 +19,18 @@ classification_refs:
   - "CL-DON-DON-006"
   - "CL-DON-DON-007"
 classification_secondary_refs: []
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-DON-008 · ¿Qué costes puede tener mi donación? · Borrador"
 permalink: "/donacion/donantes/03-entender-los-costes-y-la-transferencia-de-fondos/cf-don-don-008-que-costes-puede-tener-mi-donacion/"
-prev_url: null
+prev_url: "/donacion/donantes/02-conocer-la-iniciativa-y-a-su-equipo/cf-don-don-007-cuanto-dura-la-campana-y-que-es-la-precampana/"
 prev_code: "CF-DON-DON-007"
 prev_title: "¿Cuánto dura la campaña y qué es la precampaña?"
-next_url: null
+next_url: "/donacion/donantes/03-entender-los-costes-y-la-transferencia-de-fondos/cf-don-don-009-que-comision-paga-el-promotor-y-como-influyen-los-colaboradores/"
 next_code: "CF-DON-DON-009"
 next_title: "¿Qué comisión paga el promotor y cómo influyen los colaboradores?"
 media: []

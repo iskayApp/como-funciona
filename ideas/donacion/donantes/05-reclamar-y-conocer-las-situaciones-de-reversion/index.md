@@ -8,10 +8,10 @@ role: Donantes
 stage: Reclamar y conocer las situaciones de reversión
 stage_id: ORG-DON-DON-05
 stage_url: /donacion/donantes/
-status: draft
+status: "published"
 editorial_status: pending_review
-published: false
-visibility: private
+published: true
+visibility: "public"
 reviewed: false
 ---
 

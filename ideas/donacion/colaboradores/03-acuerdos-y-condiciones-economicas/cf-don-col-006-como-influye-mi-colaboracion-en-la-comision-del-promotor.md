@@ -20,18 +20,18 @@ classification_refs:
   - "CL-DON-COL-019"
   - "CL-DON-COL-020"
 classification_secondary_refs: []
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-COL-006 · ¿Cómo influye mi colaboración en la comisión del promotor? · Borrador"
 permalink: "/donacion/colaboradores/03-acuerdos-y-condiciones-economicas/cf-don-col-006-como-influye-mi-colaboracion-en-la-comision-del-promotor/"
-prev_url: null
+prev_url: "/donacion/colaboradores/03-acuerdos-y-condiciones-economicas/cf-don-col-005-puedo-acordar-una-compensacion-con-el-promotor/"
 prev_code: "CF-DON-COL-005"
 prev_title: "¿Puedo acordar una compensación con el promotor?"
-next_url: null
+next_url: "/donacion/colaboradores/04-funcionamiento-de-la-iniciativa-y-responsabilidades/cf-don-col-007-quien-recibe-lo-recaudado-y-responde-por-su-uso/"
 next_code: "CF-DON-COL-007"
 next_title: "¿Quién recibe lo recaudado y responde por su uso?"
 media: []

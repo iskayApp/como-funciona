@@ -19,18 +19,18 @@ classification_refs:
   - "CL-DON-COL-021"
   - "CL-DON-COL-022"
 classification_secondary_refs: []
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-COL-007 · ¿Quién recibe lo recaudado y responde por su uso? · Borrador"
 permalink: "/donacion/colaboradores/04-funcionamiento-de-la-iniciativa-y-responsabilidades/cf-don-col-007-quien-recibe-lo-recaudado-y-responde-por-su-uso/"
-prev_url: null
+prev_url: "/donacion/colaboradores/03-acuerdos-y-condiciones-economicas/cf-don-col-006-como-influye-mi-colaboracion-en-la-comision-del-promotor/"
 prev_code: "CF-DON-COL-006"
 prev_title: "¿Cómo influye mi colaboración en la comisión del promotor?"
-next_url: null
+next_url: "/donacion/colaboradores/04-funcionamiento-de-la-iniciativa-y-responsabilidades/cf-don-col-008-que-debo-saber-sobre-la-revision-de-una-posible-reversion/"
 next_code: "CF-DON-COL-008"
 next_title: "¿Qué debo saber sobre la revisión de una posible reversión?"
 media: []

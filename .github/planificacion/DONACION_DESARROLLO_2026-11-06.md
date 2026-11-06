@@ -1,23 +1,23 @@
-# Donación · Seguimiento de desarrollo e incorporación técnica
+# Donación · Desarrollo, publicación y vinculación multimedia
 
-Fecha de seguimiento: **6 de noviembre de 2026**. Fase: **DESARROLLAR completada**. Estado editorial: **borrador para revisión del conjunto**.
+Fecha de seguimiento: **6 de noviembre de 2026**. Fase: **DESARROLLAR completada; publicación autorizada**. Estado editorial: **pendiente de revisión del conjunto**.
 
 Rama de trabajo: `feat/cf-donacion-pro-001`. Solicitud de cambios: [PR #15](https://github.com/iskayApp/como-funciona/pull/15).
 
-## Secuencia y alcance de esta incorporación
+## Secuencia y autorización
 
-Las 40 fichas se desarrollaron y presentaron completas en sus tres roles y 16 etapas antes de continuar el código, conforme a la indicación del usuario. La entrega editorial tiene un documento maestro por ficha, un índice conjunto y un PDF completo de revisión. Después de esa presentación se autorizó el traslado al repositorio.
+Las 40 fichas se desarrollaron y presentaron completas en sus tres roles y 16 etapas antes de continuar el código, conforme a la indicación del usuario. La entrega editorial tiene un documento maestro por ficha, un índice conjunto y un PDF completo de revisión. Después se autorizó el traslado al repositorio.
 
-Esta incorporación completa el espejo técnico del conjunto presentado. Conserva los cuerpos públicos, los códigos y la trazabilidad; prepara las portadas de categoría, rol y etapa con los componentes comunes. La autorización para trabajar el código no se registra como una aprobación editorial o una publicación de las fichas.
+El usuario autorizó expresamente el siguiente paso: **«La revisión editorial la realizo posteriormente. Avanza con Donación hasta su publicación y vinculación con los vídeos existentes para esa categoría Donación»**. Esta decisión habilita la publicación del conjunto y su multimedia existente, manteniendo pendiente la revisión editorial. No aprueba las versiones de las fichas ni modifica la guía funcional.
 
 ## Avance por rol
 
-| Rol | Etapas | Fichas desarrolladas | Pendientes de desarrollar | Aprobadas | Publicadas | Registros CL principales |
+| Rol | Etapas | Fichas desarrolladas | Pendientes de desarrollar | Aprobadas editorialmente | Con publicación autorizada | Registros CL principales |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Promotores | 7 | 18 | 0 | 0 | 0 | 71 |
-| Donantes | 5 | 14 | 0 | 0 | 0 | 42 |
-| Colaboradores | 4 | 8 | 0 | 0 | 0 | 23 |
-| **Total** | **16** | **40** | **0** | **0** | **0** | **136** |
+| Promotores | 7 | 18 | 0 | 0 | 18 | 71 |
+| Donantes | 5 | 14 | 0 | 0 | 14 | 42 |
+| Colaboradores | 4 | 8 | 0 | 0 | 8 | 23 |
+| **Total** | **16** | **40** | **0** | **0** | **40** | **136** |
 
 Las 39 fichas sustentadas en la clasificación conservan el destino principal único de los 136 registros. CF-DON-DON-004 utiliza fuentes operativas propias, sin crear un registro CL. Los recuentos de registros y de fichas son unidades diferentes.
 
@@ -35,30 +35,30 @@ Se conserva el texto de la entrega editorial, incluidos los siete tramos de comi
 
 | Campo | Valor del conjunto |
 | --- | --- |
-| `status` | `draft` |
+| `status` | `published` |
 | `editorial_status` | `pending_review` |
-| `published` | `false` |
-| `visibility` | `private` |
+| `published` | `true` |
+| `visibility` | `public` |
 | `reviewed` | `false` |
 | `content_version` | `1` |
 | `source_checked_on` | `2026-11-06` |
-| `stage_id` / `stage_url` | Etapa propia y ruta reservada de cada ficha |
+| `stage_id` / `stage_url` | Etapa propia y ruta de cada ficha |
 | `classification_refs` | Registros principales completos, expandidos con tres dígitos |
 | `classification_secondary_refs` | Referencias secundarias diferenciadas |
 | `prev_code` / `next_code` | Secuencia dentro del mismo rol |
-| `prev_url` / `next_url` | Nulos hasta contar con destinos públicos comprobados |
+| `prev_url` / `next_url` | Rutas existentes dentro del mismo rol, nulas en los extremos |
 
-`source_checked_on` acredita el contraste de la fuente; no sustituye la revisión editorial. `visibility` controla la salida del sitio, no la visibilidad de los archivos en GitHub: el repositorio es público.
+`source_checked_on` acredita el contraste de la fuente; no sustituye la revisión editorial. La publicación autorizada y la aprobación editorial son estados separados. Las 60 páginas conservan `pending_review` y `reviewed: false`.
 
-Las rutas de CF-DON-PRO-001 y CF-DON-PRO-002 se conservan. Las otras 38 se reservan con código y pregunta propios. No hay multimedia, activos de distribución ni asociaciones de marketing añadidas por inferencia.
+Las rutas y los cuerpos de las 40 fichas se conservan. Los recursos multimedia se vinculan mediante un registro separado; no se reescribe el contenido funcional para incorporar vídeos.
 
-## Índices y catálogo común
+## Índices, búsqueda y mantenimiento
 
-Se preparan **20 índices**: una portada de Donación, tres recorridos por rol y 16 etapas. Reutilizan la navegación, el buscador y la orientación existentes. Donación Colaboradores utiliza cuatro etapas, sin copiar las áreas profesionales de FR.
+Los **20 índices** comprenden una portada de Donación, tres recorridos por rol y 16 etapas. Reutilizan navegación, búsqueda y orientación. Donación Colaboradores utiliza cuatro etapas propias, sin copiar las áreas profesionales de FR.
 
-El registro de categorías declara los tres roles de Donación y conserva `status: preparation`. `_config.yml` mantiene excluido `ideas/donacion`, y las 60 páginas del conjunto conservan los estados de borrador. El catálogo compartido debe tener **139 fichas inventariadas**, de las cuales **99 FR son públicas y buscables**; las 40 Donación tienen `public_searchable: false`.
+El registro de categorías declara Donación como `available` y `_config.yml` permite construir sus 60 páginas. El catálogo compartido contiene **139 fichas públicas y buscables: 99 FR y 40 Donación**. Las tres categorías todavía no desarrolladas conservan sus exclusiones. `noindex: true` permanece durante la prueba pública del sitio.
 
-El control público de mantenimiento refleja **40 fichas desarrolladas en borrador** y mantiene los recuentos de clasificación 71/42/23. Los catálogos JSON son resultados generados, no fuentes duplicadas ni archivos que deban incorporarse al commit.
+Donación pasa de la tarjeta de preparación a las fichas publicadas del control de mantenimiento. Las 40 aparecen pendientes de revisión editorial, con un acceso a este seguimiento. Los catálogos JSON siguen siendo resultados generados, no fuentes duplicadas.
 
 ## Fichas incorporadas
 
@@ -158,22 +158,43 @@ Los enlaces siguientes abren los archivos de revisión del repositorio. No son e
 - **CF-DON-COL-007** · [¿Quién recibe lo recaudado y responde por su uso?](../../ideas/donacion/colaboradores/04-funcionamiento-de-la-iniciativa-y-responsabilidades/cf-don-col-007-quien-recibe-lo-recaudado-y-responde-por-su-uso.md)
 - **CF-DON-COL-008** · [¿Qué debo saber sobre la revisión de una posible reversión?](../../ideas/donacion/colaboradores/04-funcionamiento-de-la-iniciativa-y-responsabilidades/cf-don-col-008-que-debo-saber-sobre-la-revision-de-una-posible-reversion.md)
 
+## Vinculación de vídeos existentes
+
+La vinculación utiliza publicaciones públicas verificadas de la cuenta oficial **@iskay.app**, contrastadas con los documentos de producción de Donación. El registro separa el código de categoría, el código de pieza y los códigos de ficha; un código publicitario repetido en FR no permite cruzar categorías.
+
+El registro `_data/donacion_tiktok_publicaciones.json` conserva los IDs y las URLs oficiales, las relaciones principales y complementarias y su evidencia. La autorización para vincular estos recursos no se transforma en una aprobación editorial: `association_status` permanece `pending_review` y no se inventa una versión de ficha de la que derive el vídeo.
+
+| Pieza Donación | Publicación oficial | Ficha principal | Fichas complementarias |
+| --- | --- | --- | --- |
+| PRO-EDU-02 · Cuatro elementos que ayudan a presentar una iniciativa con claridad | [TikTok · 15 de agosto de 2026](https://www.tiktok.com/@iskay.app/video/7674293282129595670) | CF-DON-PRO-009 | Ninguna |
+| PRO-ENT-02 · Adaptación «Reflexión personal» | [TikTok · 21 de agosto de 2026](https://www.tiktok.com/@iskay.app/video/7675772626580638998) | CF-DON-PRO-009 | Ninguna |
+| DON-VEN-02 · Apoya una campaña en iskay.app: así realizas tu aporte | [TikTok · 19 de agosto de 2026](https://www.tiktok.com/@iskay.app/video/7675768314064358678) | CF-DON-DON-005 | CF-DON-DON-002, CF-DON-DON-004 y CF-DON-DON-008 |
+
+Son **tres vídeos, seis vinculaciones y cinco fichas con vídeo**. El inventario autenticado del canal, completo al generar el informe del 6 de noviembre de 2026 a las 13:15:39 UTC, acredita las publicaciones. El contraste con Producción, los subtítulos y el calendario identifica las piezas. Algunos documentos conservan un estado de publicación pendiente anterior: la existencia de estas publicaciones se acredita con la cuenta oficial, sin reescribir esos documentos.
+
+La carpeta de producción contiene seis MP4 correspondientes a esas tres piezas, incluidas variantes de montaje y una base sin audio. No se duplican variantes como vídeos nuevos. No se encontró una publicación de vídeo de Colaboradores; COL-ENT-02 conserva preproducción de imagen estática. No se deducen enlaces de Facebook de archivos locales ni se cambian permisos de Drive.
+
+Las piezas de Promotores se vinculan a la claridad de la presentación; no acreditan el inicio de Campaña o Precampaña ni se asocian a PRO-011. DON-VEN-02 se relaciona con la información de la iniciativa, la elección del aporte, perfil/anonimato y costes explícitos en sus subtítulos.
+
+Los reproductores, los enlaces compartibles y mantenimiento consumen ese mismo registro. Cada vínculo dispone de ancla multimedia y acceso al original. Las fichas sin correspondencia comprobada muestran que todavía no tienen vídeo explicativo.
+
 ## Validación técnica
 
-La validación comprueba el conjunto real y la conservación de FR. La vista de prueba aislada activa temporalmente las 40 fichas en una copia, resuelve sus enlaces por código y genera sus 60 rutas; no cambia ni despliega la configuración real.
+La validación comprueba ahora el sitio publicable real: las 60 rutas de Donación y las 99 fichas de FR. Se conserva la prueba aislada de una categoría ficticia para comprobar que los componentes siguen siendo extensibles.
 
-- Contraste exacto de los 40 cuerpos con la entrega editorial; conservación literal de los cuerpos y permalinks de PRO-001/002.
+- Contraste de los 40 cuerpos con la entrega editorial y conservación de sus permalinks.
 - Identidad única de códigos, rutas y etapas; cobertura principal única de los 136 registros CL y secuencia dentro de cada rol.
-- Pruebas existentes Python y JavaScript, catálogos e integridad del sitio real, sin rutas públicas de Donación.
-- Construcción Jekyll y comprobación de las 60 rutas y 139 fichas en la copia aislada.
+- Pruebas Python y JavaScript, catálogos e integridad del sitio con 139 fichas públicas.
+- Construcción Jekyll y comprobación de las 60 rutas de Donación.
 - Navegación, filtros y búsqueda en escritorio y móvil, sin mezclar roles o categorías.
+- Reproductores, anclas multimedia, enlaces al original y diagnóstico de los vídeos registrados.
 
-**Validación local del conjunto:** 51 pruebas Python, 25 pruebas JavaScript y comprobación de sintaxis de los 10 scripts JavaScript superadas. El catálogo real contiene 139 fichas inventariadas: 99 FR públicas y buscables, y 40 Donación excluidas de la búsqueda pública. La preparación de la copia aislada verifica las 40 fichas, sus tres roles, 16 etapas y 136 referencias principales; conserva los cuerpos y la configuración de las fuentes. El árbol de FR y los componentes compartidos permanecen sin cambios.
+La comprobación local de esta publicación superó **59 pruebas Python, 25 pruebas JavaScript y la sintaxis de los 10 scripts JavaScript**. Los catálogos contienen 139 fichas públicas; las 40 Donación siguen pendientes de revisión. Las 99 entradas FR del catálogo coinciden íntegramente con las anteriores a la ampliación multimedia. Donación incorpora tres vídeos, seis relaciones y cinco fichas con vídeo.
 
-**Construcción y navegación:** el workflow de [validación de la PR #15](https://github.com/iskayApp/como-funciona/pull/15/checks) construye el sitio real y la copia aislada con Jekyll, comprueba las rutas y ejecuta las pruebas de escritorio y móvil. La ejecución asociada al commit que se vaya a revisar determina su resultado vigente; un resultado de un commit anterior no acredita uno posterior.
+El workflow de [validación de la PR #15](https://github.com/iskayApp/como-funciona/pull/15/checks) determina el resultado vigente del commit que se vaya a publicar. El despliegue se ejecuta en [GitHub Pages](https://github.com/iskayApp/como-funciona/actions/workflows/pages.yml); se comprueban después las URLs y catálogos públicos. Un resultado técnico anterior no acredita un commit posterior.
 
-## Cortes conservados y continuidad
+## Revisión editorial posterior
 
-La [clasificación](DONACION_CLASIFICACION_2026-11-06.md), la [organización](DONACION_ORGANIZACION_2026-11-06.md) y la [identificación](DONACION_IDENTIFICACION_2026-11-06.md) conservan sus cortes originales. El primer avance técnico contenía únicamente PRO-001 y PRO-002; este registro lo sustituye como estado actual del desarrollo.
+Las 40 fichas conservan `editorial_status: pending_review` y `reviewed: false`, con aviso público y seguimiento en mantenimiento. La revisión posterior podrá introducir correcciones de contenido y versiones con su trazabilidad; la publicación actual no anticipa su resultado.
 
-Las 40 fichas están desarrolladas y representadas en el código. La revisión del conjunto, la aprobación de sus versiones y la activación pública permanecen diferenciadas. La propuesta se mantiene revisable en la PR; esta incorporación no fusiona el cambio ni habilita la publicación de Donación.
+La [clasificación](DONACION_CLASIFICACION_2026-11-06.md), la [organización](DONACION_ORGANIZACION_2026-11-06.md) y la [identificación](DONACION_IDENTIFICACION_2026-11-06.md) conservan sus cortes originales. El primer avance técnico tenía solo PRO-001 y PRO-002; la incorporación de las 40 fichas antes de la autorización de publicación quedó en el commit `9c7b1b5`. Este registro recoge la autorización posterior para publicar y vincular los vídeos existentes.

@@ -19,18 +19,18 @@ classification_refs:
   - "CL-DON-DON-002"
   - "CL-DON-DON-005"
 classification_secondary_refs: []
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-DON-002 · ¿Qué causas puedo apoyar y qué puedo elegir al donar? · Borrador"
 permalink: "/donacion/donantes/01-comprender-que-implica-donar/cf-don-don-002-que-causas-puedo-apoyar-y-que-puedo-elegir-al-donar/"
-prev_url: null
+prev_url: "/donacion/donantes/01-comprender-que-implica-donar/cf-don-don-001-que-significa-donar-en-iskay-app/"
 prev_code: "CF-DON-DON-001"
 prev_title: "¿Qué significa donar en iskay.app?"
-next_url: null
+next_url: "/donacion/donantes/01-comprender-que-implica-donar/cf-don-don-003-que-vinculo-tengo-con-el-promotor-y-que-riesgos-debo-conocer/"
 next_code: "CF-DON-DON-003"
 next_title: "¿Qué vínculo tengo con el promotor y qué riesgos debo conocer?"
 media: []

@@ -21,10 +21,10 @@ classification_refs:
   - "CL-DON-COL-003"
   - "CL-DON-COL-011"
 classification_secondary_refs: []
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-COL-001 · ¿Qué significa ser colaborador en una iniciativa de Donación? · Borrador"
@@ -32,7 +32,7 @@ permalink: "/donacion/colaboradores/01-tu-papel-como-colaborador/cf-don-col-001-
 prev_url: null
 prev_code: null
 prev_title: null
-next_url: null
+next_url: "/donacion/colaboradores/01-tu-papel-como-colaborador/cf-don-col-002-como-elijo-con-que-iniciativas-colaborar/"
 next_code: "CF-DON-COL-002"
 next_title: "¿Cómo elijo con qué iniciativas colaborar?"
 media: []

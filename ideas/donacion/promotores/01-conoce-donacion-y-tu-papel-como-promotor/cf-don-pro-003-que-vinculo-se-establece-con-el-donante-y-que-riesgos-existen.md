@@ -21,18 +21,18 @@ classification_refs:
   - "CL-DON-PRO-055"
 classification_secondary_refs:
   - "CL-DON-PRO-012"
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-PRO-003 · ¿Qué vínculo se establece con el donante y qué riesgos existen? · Borrador"
 permalink: "/donacion/promotores/01-conoce-donacion-y-tu-papel-como-promotor/cf-don-pro-003-que-vinculo-se-establece-con-el-donante-y-que-riesgos-existen/"
-prev_url: null
+prev_url: "/donacion/promotores/01-conoce-donacion-y-tu-papel-como-promotor/cf-don-pro-002-como-funciona-el-apoyo-de-los-donantes-en-esta-categoria/"
 prev_code: "CF-DON-PRO-002"
 prev_title: "¿Cómo funciona el apoyo de los donantes en esta categoría?"
-next_url: null
+next_url: "/donacion/promotores/02-organiza-el-apoyo-a-tu-iniciativa/cf-don-pro-004-necesito-colaboradores-y-que-pueden-aportar-a-mi-iniciativa/"
 next_code: "CF-DON-PRO-004"
 next_title: "¿Necesito colaboradores y qué pueden aportar a mi iniciativa?"
 media: []

@@ -27,15 +27,15 @@ classification_secondary_refs:
   - "CL-DON-PRO-062"
   - "CL-DON-PRO-063"
   - "CL-DON-PRO-064"
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-PRO-018 · ¿Qué ocurre durante la revisión y si se decide revertir los fondos? · Borrador"
 permalink: "/donacion/promotores/07-reclamaciones-y-posibles-reversiones/cf-don-pro-018-que-ocurre-durante-la-revision-y-si-se-decide-revertir-los-fondos/"
-prev_url: null
+prev_url: "/donacion/promotores/07-reclamaciones-y-posibles-reversiones/cf-don-pro-017-que-situaciones-llevan-a-revisar-una-posible-reversion-de-fondos/"
 prev_code: "CF-DON-PRO-017"
 prev_title: "¿Qué situaciones llevan a revisar una posible reversión de fondos?"
 next_url: null

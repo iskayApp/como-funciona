@@ -85,7 +85,9 @@ def main():
             assert Counter(a['data-section-kind'] for a in groups) == {'common': 4, 'area': 4}
     for route in ('/', FR):
         _, page = read(route)
-        assert len(page.matching('a', cls='fr-role-card')) == 3, route
+        cards = [a['href'] for a in page.matching('a', cls='fr-role-card')
+                 if a.get('href', '').startswith(BASE + FR)]
+        assert len(cards) == 3 and set(cards) == {BASE + FR + role + '/' for role in ROLES}, route
     print('PASS: 99 canonical pages; 3 uniform role hubs; 21 sections; 59 review notices; all generated FR links resolve.')
 
 

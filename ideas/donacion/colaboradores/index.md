@@ -5,10 +5,10 @@ description: Conoce cómo aportar a una iniciativa, acordar tu participación y 
 permalink: /donacion/colaboradores/
 category: Donación
 role: Colaboradores
-status: draft
+status: "published"
 editorial_status: pending_review
-published: false
-visibility: private
+published: true
+visibility: "public"
 reviewed: false
 ---
 

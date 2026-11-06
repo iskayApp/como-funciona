@@ -92,14 +92,18 @@ def main():
             page.goto(home)
             expect(page.locator('#public-search-count')).to_contain_text('no está disponible')
             assert page.locator('.resource-card').count() == 2
-            assert page.locator('.fr-role-card').count() == 3
+            assert page.locator('.fr-role-card').count() == 6
+            assert page.locator(f'.fr-role-card[href^="{BASE}/financiamiento-reembolsable/"]').count() == 3
+            assert page.locator(f'.fr-role-card[href^="{BASE}/donacion/"]').count() == 3
             fits(page)
             context.close()
-            passed.append('Catalog failure: static resources and three role routes remain available')
+            passed.append('Catalog failure: static resources and six role routes across FR and Donación remain available')
             context = browser.new_context(java_script_enabled=False, viewport={'width':320,'height':900})
             page = context.new_page()
             page.goto(home)
-            assert page.locator('.fr-role-card').count() == 3
+            assert page.locator('.fr-role-card').count() == 6
+            assert page.locator(f'.fr-role-card[href^="{BASE}/financiamiento-reembolsable/"]').count() == 3
+            assert page.locator(f'.fr-role-card[href^="{BASE}/donacion/"]').count() == 3
             fits(page)
             page.goto(home + topic)
             assert page.locator('table th').count() == 3

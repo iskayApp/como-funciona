@@ -8,10 +8,10 @@ role: Colaboradores
 stage: Acuerdos y condiciones económicas
 stage_id: ORG-DON-COL-03
 stage_url: /donacion/colaboradores/
-status: draft
+status: "published"
 editorial_status: pending_review
-published: false
-visibility: private
+published: true
+visibility: "public"
 reviewed: false
 ---
 

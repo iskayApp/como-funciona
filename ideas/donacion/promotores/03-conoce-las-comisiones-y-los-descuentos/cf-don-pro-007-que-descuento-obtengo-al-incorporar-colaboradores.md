@@ -22,18 +22,18 @@ classification_refs:
 classification_secondary_refs:
   - "CL-DON-PRO-017"
   - "CL-DON-PRO-018"
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-PRO-007 · ¿Qué descuento obtengo al incorporar colaboradores? · Borrador"
 permalink: "/donacion/promotores/03-conoce-las-comisiones-y-los-descuentos/cf-don-pro-007-que-descuento-obtengo-al-incorporar-colaboradores/"
-prev_url: null
+prev_url: "/donacion/promotores/03-conoce-las-comisiones-y-los-descuentos/cf-don-pro-006-que-comision-pago-como-promotor-y-cuando-se-calcula/"
 prev_code: "CF-DON-PRO-006"
 prev_title: "¿Qué comisión pago como promotor y cuándo se calcula?"
-next_url: null
+next_url: "/donacion/promotores/03-conoce-las-comisiones-y-los-descuentos/cf-don-pro-008-donar-en-mi-campana-tiene-comisiones-o-cargos/"
 next_code: "CF-DON-PRO-008"
 next_title: "¿Donar en mi campaña tiene comisiones o cargos?"
 media: []

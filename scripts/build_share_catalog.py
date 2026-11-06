@@ -13,6 +13,11 @@ from urllib.parse import quote, urlsplit
 
 import yaml
 
+if __package__:
+    from .video_publications import load_explicit_tiktok
+else:
+    from video_publications import load_explicit_tiktok
+
 ROOT = Path(__file__).resolve().parents[1]
 IDEAS = ROOT / "ideas"
 OUTPUT = ROOT / "mantenimiento" / "share_catalog.json"
@@ -274,7 +279,8 @@ def attach_verified_tiktok(catalog, errors):
     piece_index = {}
     for item in catalog:
         for piece in item.get("editorial_pieces", []):
-            piece_index.setdefault(piece["code"], []).append((item, piece))
+            if item.get("category") == "Financiamiento Reembolsable":
+                piece_index.setdefault((piece.get("category_code"), piece["code"]), []).append((item, piece))
 
     seen_video_ids = set()
     seen_piece_codes = set()
@@ -313,7 +319,7 @@ def attach_verified_tiktok(catalog, errors):
             errors.append(f"{path}: URL de publicación no verificable: {piece_code}")
             continue
 
-        associations = piece_index.get(piece_code, [])
+        associations = piece_index.get(("FR", piece_code), [])
         if not associations:
             errors.append(f"{path}: {piece_code} no consta en el ensamblaje aprobado")
             continue
@@ -359,7 +365,8 @@ def attach_verified_tiktok(catalog, errors):
                 errors.append(f"{path}: asset_id duplicado en {ficha_code}: {asset_id}")
                 continue
             item[target].append(asset)
-            group = next((g for g in item["marketing_pieces"] if g["code"] == piece_code), None)
+            group = next((g for g in item["marketing_pieces"]
+                          if g["code"] == piece_code and (g.get("category_code") or "FR") == "FR"), None)
             if group is None:
                 group = {
                     "code": piece_code,
@@ -390,6 +397,72 @@ def attach_verified_tiktok(catalog, errors):
         "links": links,
         "principal": primary,
         "complementaria": related,
+    }
+
+
+def attach_explicit_tiktok(catalog, errors):
+    """Attach Donación's verified publications, keeping their review pending."""
+    by_code = {item["code"]: item for item in catalog}
+    registry, associations = load_explicit_tiktok(ROOT, by_code, errors)
+    if registry is None:
+        return None
+    linked_pages = set()
+    primary = related = 0
+    for association in associations:
+        item = by_code[association["ficha_code"]]
+        piece_code, video_id = association["piece_code"], association["video_id"]
+        asset_id = f'{item["code"].lower()}-tiktok-{piece_code.lower()}'
+        if any(asset.get("id") == asset_id or (
+                asset.get("provider") == "tiktok" and asset.get("video_id") == video_id)
+                for asset in item["media"] + item["distribution"]):
+            errors.append(f'{item["code"]}: la publicación {video_id} ya está declarada; usar una sola fuente')
+            continue
+        asset = {
+            "id": asset_id, "type": "video", "title": association["title"],
+            "provider": "tiktok", "video_id": video_id,
+            "derived_from_version": None,
+            "media_url": item["canonical_url"] + "#media-" + asset_id,
+            "editorial_relation": association["relation"],
+            "association_status": association["association_status"],
+            "category_code": association["category_code"],
+            "original_url": association["share_url"], "original_available": True,
+        }
+        item["media"].append(asset)
+        group = next((g for g in item["marketing_pieces"]
+                      if (g.get("category_code"), g.get("code")) == ("DON", piece_code)), None)
+        if group is None:
+            group = {
+                "code": piece_code, "category_code": "DON", "title": association["title"],
+                "relation": association["relation"], "association_status": "pending_review",
+                "assets": [],
+            }
+            item["marketing_pieces"].append(group)
+        group["assets"].append(asset)
+        linked_pages.add(item["code"])
+        if association["relation"] == "Principal":
+            primary += 1
+        else:
+            related += 1
+    return {
+        "platform": registry["platform"], "account": registry["account"],
+        "category_code": registry["category_code"], "category": registry["category"],
+        "verified_at": registry["verified_at"], "source": registry["source"],
+        "association_status": registry["association_status"],
+        "publication_authorized_on": registry["publication_authorized_on"],
+        "videos": len(registry["videos"]), "linked_fichas": len(linked_pages),
+        "links": primary + related, "principal": primary, "complementaria": related,
+    }
+
+
+def combined_tiktok_report(fr_report, donation_report):
+    """Keep the legacy FR result unchanged when no other registry is present."""
+    if donation_report is None:
+        return fr_report
+    reports = [report for report in (fr_report, donation_report) if report]
+    return {
+        "platform": "tiktok", "account": "@iskay.app", "scope": "combined_categories",
+        **{key: sum(report[key] for report in reports)
+           for key in ("videos", "linked_fichas", "links", "principal", "complementaria")},
     }
 
 
@@ -521,7 +594,9 @@ def build_catalog():
         catalog.append(entry)
 
     assembly_report = apply_approved_assembly(catalog, errors)
-    tiktok_report = attach_verified_tiktok(catalog, errors)
+    fr_tiktok_report = attach_verified_tiktok(catalog, errors)
+    donation_tiktok_report = attach_explicit_tiktok(catalog, errors)
+    tiktok_report = combined_tiktok_report(fr_tiktok_report, donation_tiktok_report)
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -536,6 +611,10 @@ def build_catalog():
         "total_editorial_links": assembly_report["relations"] if assembly_report else 0,
         "items": catalog,
     }
+    if donation_tiktok_report:
+        output["verified_tiktok_categories"] = {
+            key: value for key, value in (("FR", fr_tiktok_report), ("DON", donation_tiktok_report)) if value
+        }
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     for warning in warnings:

@@ -22,18 +22,18 @@ classification_refs:
 classification_secondary_refs:
   - "CL-DON-PRO-041"
   - "CL-DON-PRO-066"
-status: "draft"
+status: "published"
 editorial_status: "pending_review"
-published: false
-visibility: "private"
+published: true
+visibility: "public"
 reviewed: false
 source_checked_on: "2026-11-06"
 editorial_source: "CF-DON-PRO-011 · ¿Cómo funciona la precampaña y cómo se inicia la campaña? · Borrador"
 permalink: "/donacion/promotores/04-prepara-y-publica-tu-campana/cf-don-pro-011-como-funciona-la-precampana-y-como-se-inicia-la-campana/"
-prev_url: null
+prev_url: "/donacion/promotores/04-prepara-y-publica-tu-campana/cf-don-pro-010-que-debo-indicar-sobre-el-monto-y-los-tiempos-de-mi-iniciativa/"
 prev_code: "CF-DON-PRO-010"
 prev_title: "¿Qué debo indicar sobre el monto y los tiempos de mi iniciativa?"
-next_url: null
+next_url: "/donacion/promotores/04-prepara-y-publica-tu-campana/cf-don-pro-012-que-compromiso-de-actualizacion-asumo-al-publicar-mi-campana/"
 next_code: "CF-DON-PRO-012"
 next_title: "¿Qué compromiso de actualización asumo al publicar mi campaña?"
 media: []

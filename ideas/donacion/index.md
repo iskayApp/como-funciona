@@ -4,10 +4,10 @@ title: Donación
 description: Explora los recorridos de Promotores, Donantes y Colaboradores.
 permalink: /donacion/
 category: Donación
-status: draft
+status: "published"
 editorial_status: pending_review
-published: false
-visibility: private
+published: true
+visibility: "public"
 reviewed: false
 ---
 
