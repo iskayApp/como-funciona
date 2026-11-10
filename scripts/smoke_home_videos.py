@@ -40,7 +40,7 @@ def main():
                 errors = []
                 requests = []
                 page.on('pageerror', lambda error: errors.append(str(error)))
-                context.route('https://www.tiktok.com/player/**', lambda route: (requests.append(route.request.url), route.fulfill(content_type='text/html', body='<p>Vídeo de prueba</p>')))
+                context.route('https://www.tiktok.com/player/**', lambda route: (requests.append(route.request.url), route.fulfill(content_type='text/html; charset=utf-8', body='<p>Vídeo de prueba</p>')))
                 page.goto(home)
                 cards = page.locator('.home-video-card')
                 assert cards.count() == len(expected), f'{width}px: {cards.count()} tarjetas de 9'
@@ -86,7 +86,7 @@ def main():
                 passed.append(f'{width}px: 9 vídeos reales sin duplicados, acceso original y canónico, filtro categoría/rol/etapa, teclado y reproductor sin autoplay')
 
             context = browser.new_context(java_script_enabled=False, viewport={'width':320,'height':900})
-            context.route('https://www.tiktok.com/player/**', lambda route: route.fulfill(content_type='text/html', body='<p>Vídeo de prueba</p>'))
+            context.route('https://www.tiktok.com/player/**', lambda route: route.fulfill(content_type='text/html; charset=utf-8', body='<p>Vídeo de prueba</p>'))
             page = context.new_page()
             page.goto(home)
             assert page.locator('.home-video-card').count() == 9
