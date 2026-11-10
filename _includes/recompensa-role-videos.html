@@ -1,0 +1,38 @@
+{% comment %}
+Recompensa: vídeos por audiencia real, sin trasladar piezas PRO a otros roles.
+Las URLs/IDs vienen del inventario verificado. La revisión editorial sigue pendiente.
+{% endcomment %}
+{% assign rec_role_prefix = 'PRO-' %}
+{% if page.role == 'Contribuyentes' %}{% assign rec_role_prefix = 'CON-' %}{% endif %}
+{% if page.role == 'Colaboradores' %}{% assign rec_role_prefix = 'COL-' %}{% endif %}
+{% assign rec_role_video_count = 0 %}
+<section class="ficha-videos fr-tiktok-section rec-role-videos" aria-labelledby="rec-role-videos-heading" data-video-category="Recompensa" data-video-role="{{ page.role | escape }}">
+  <h2 id="rec-role-videos-heading">Vídeos de TikTok para {{ page.role | escape }}</h2>
+  <p>Publicaciones originales de la cuenta @iskay.app asociadas al recorrido de este grupo.</p>
+  <ul class="rec-role-video-list">
+    {% for video in site.data.recompensa_tiktok_publicaciones.videos %}
+      {% assign rec_piece_prefix = video.piece_code | slice: 0, 4 %}
+      {% if rec_piece_prefix == rec_role_prefix %}
+        {% assign rec_role_video_count = rec_role_video_count | plus: 1 %}
+        {% assign rec_target_code = video.principal | first | default: video.complementaria.first %}
+        {% assign rec_target_page = site.pages | where: 'code', rec_target_code | first %}
+        {% assign rec_video_anchor = 'media-' | append: rec_target_code | downcase | append: '-tiktok-' | append: video.piece_code | downcase %}
+        <li>
+          <strong>{{ video.title | escape }}</strong>
+          <span class="fr-tiktok-related-label">Orientación inicial · {{ video.piece_code | escape }}</span>
+          <div class="home-video-actions">
+            {% if rec_target_page %}
+              <a href="{{ rec_target_page.url | relative_url }}#{{ rec_video_anchor }}">Ver vídeo en la ficha</a>
+            {% endif %}
+            <a href="{{ video.share_url | escape }}" target="_blank" rel="noopener noreferrer">Publicación original en TikTok</a>
+          </div>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% if rec_role_video_count == 0 %}
+    <p class="ficha-videos-unavailable">Todavía no hay vídeos de TikTok publicados y verificados específicamente para {{ page.role | downcase }}. Puedes consultar todas las fichas de este recorrido.</p>
+  {% else %}
+    <p class="fr-editorial-note">Estos vídeos orientan sobre necesidades iniciales; no sustituyen las instrucciones ni los requisitos de las fichas.</p>
+  {% endif %}
+</section>
