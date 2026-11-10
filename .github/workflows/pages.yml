@@ -83,11 +83,6 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-        with:
-          # Recreate the Pages site if disabled; use the existing maintenance App token,
-          # since the default GITHUB_TOKEN cannot enable Pages.
-          enablement: true
-          token: ${{ steps.maintenance-app-token.outputs.token }}
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
