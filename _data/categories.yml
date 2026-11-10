@@ -38,8 +38,20 @@
 - id: recompensa
   name: Recompensa
   url: /recompensa/
-  status: preparation
-  roles: []
+  status: available
+  roles:
+    - id: promotores
+      name: Promotores
+      url: /recompensa/promotores/
+      description: Quiero presentar una iniciativa y ofrecer recompensas.
+    - id: contribuyentes
+      name: Contribuyentes
+      url: /recompensa/contribuyentes/
+      description: Quiero apoyar una iniciativa y conocer mi recompensa.
+    - id: colaboradores
+      name: Colaboradores
+      url: /recompensa/colaboradores/
+      description: Quiero aportar trabajo o conocimientos a la iniciativa.
 - id: precompra
   name: Precompra
   url: /precompra/

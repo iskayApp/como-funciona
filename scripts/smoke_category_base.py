@@ -15,6 +15,7 @@ from smoke_fr_navigation import ROOT, SITE, BASE, ARTIFACTS, Handler, fits
 PUBLIC_ROLES = {
     'financiamiento-reembolsable': [('promotores',33,6),('inversores',37,7),('colaboradores',29,8)],
     'donacion': [('promotores',18,7),('donantes',14,5),('colaboradores',8,4)],
+    'recompensa': [('promotores',30,9),('contribuyentes',14,5),('colaboradores',9,4)],
 }
 
 
@@ -46,9 +47,10 @@ def main():
     origin = f'http://127.0.0.1:{server.server_port}'
     home = origin + BASE + '/'
     fixture = report_fixture()
-    assert len(fixture['items']) == 139
+    assert len(fixture['items']) == 192
     assert sum(i['category'] == 'Financiamiento Reembolsable' for i in fixture['items']) == 99
     assert sum(i['category'] == 'Donación' for i in fixture['items']) == 40
+    assert sum(i['category'] == 'Recompensa' for i in fixture['items']) == 53
     tested = []
     try:
         with sync_playwright() as pw:
@@ -61,11 +63,12 @@ def main():
                 page.on('pageerror', lambda error: errors.append(str(error)))
                 page.goto(home)
                 assert page.locator('.category-card').count() == 5
-                assert page.locator('.category-card[data-availability="available"]').count() == 2
+                assert page.locator('.category-card[data-availability="available"]').count() == 3
                 assert page.locator('.category-card[data-category="financiamiento-reembolsable"]').get_attribute('data-availability') == 'available'
                 assert page.locator('.category-card[data-category="donacion"]').get_attribute('data-availability') == 'available'
+                assert page.locator('.category-card[data-category="recompensa"]').get_attribute('data-availability') == 'available'
                 assert page.locator('.category-card-pending a').count() == 0
-                assert page.locator('.category-role-link').count() == 6
+                assert page.locator('.category-role-link').count() == 9
                 assert page.evaluate('(document.querySelector("#buscar").compareDocumentPosition(document.querySelector("#categorias")) & 4) !== 0')
                 assert page.evaluate('(document.querySelector("#orientacion").compareDocumentPosition(document.querySelector("#categorias")) & 4) !== 0')
                 assert page.locator('h1').inner_text() == 'Aprende a usar iskay.app'
@@ -79,8 +82,8 @@ def main():
                 page.screenshot(path=str(ARTIFACTS / f'category-home-{width}.png'), full_page=True)
                 page.goto(home + 'mantenimiento/')
                 assert page.locator('[data-maint-category]').count() == 5
-                assert page.locator('[data-maint-role]').count() == 6
-                assert page.locator('[data-maint-topic]').count() == 139
+                assert page.locator('[data-maint-role]').count() == 9
+                assert page.locator('[data-maint-topic]').count() == 192
                 for category, roles in PUBLIC_ROLES.items():
                     category_group = page.locator(f'[data-maint-category="{category}"]')
                     assert category_group.locator('[data-maint-topic]').count() == sum(r[1] for r in roles)
@@ -91,10 +94,10 @@ def main():
                 page.locator('[data-maint-view-link="m-publicacion"]').click()
                 page.wait_for_selector('[data-technical-section]', state='attached')
                 page.locator('[data-technical-section]').evaluate_all('(nodes)=>nodes.forEach(node=>node.open=true)')
-                page.wait_for_function('document.querySelectorAll("[data-technical-topic]").length === 139')
-                assert page.locator('[data-technical-category]').count() == 2
-                assert page.locator('[data-technical-role]').count() == 6
-                assert page.locator('[data-technical-section]').count() == 37
+                page.wait_for_function('document.querySelectorAll("[data-technical-topic]").length === 192')
+                assert page.locator('[data-technical-category]').count() == 3
+                assert page.locator('[data-technical-role]').count() == 9
+                assert page.locator('[data-technical-section]').count() == 55
                 for category, roles in PUBLIC_ROLES.items():
                     group = page.locator(f'[data-technical-category="{category}"]')
                     assert group.locator('[data-technical-topic]').count() == sum(r[1] for r in roles)
@@ -108,12 +111,12 @@ def main():
                 fits(page)
                 page.screenshot(path=str(ARTIFACTS / f'category-maintenance-{width}.png'))
                 assert not errors, errors
-                tested.append(f'{width}px: five categories, two available, six roles, 139 topics (99 FR + 40 DON), 37 isolated sections')
+                tested.append(f'{width}px: five categories, three available, nine roles, 192 topics (99 FR + 40 DON + 53 REC), 55 isolated sections')
                 context.close()
             context = browser.new_context(java_script_enabled=False, viewport={'width':320,'height':900})
             page = context.new_page()
             page.goto(home)
-            assert page.locator('.category-role-link').count() == 6
+            assert page.locator('.category-role-link').count() == 9
             page.locator(f'.category-role-link[href="{BASE}/donacion/colaboradores/"]').click()
             assert '/donacion/colaboradores/' in page.url
             for category in PUBLIC_ROLES:
@@ -131,7 +134,7 @@ def main():
             page = context.new_page()
             page.goto(home + 'mantenimiento/')
             page.wait_for_function('document.querySelector("#maintenance-dashboard").textContent.includes("No se pudo cargar")')
-            assert page.locator('[data-maint-topic]').count() == 139
+            assert page.locator('[data-maint-topic]').count() == 192
             tested.append('Technical report failure does not remove native hierarchy')
             context.close()
             browser.close()

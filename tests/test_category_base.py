@@ -11,12 +11,12 @@ from check_donation_navigation import inventory
 
 
 class CategoryBaseTests(unittest.TestCase):
-    def test_registry_has_two_available_categories_and_three_preparations(self):
+    def test_registry_has_three_available_categories_and_two_preparations(self):
         categories = yaml.safe_load((ROOT / '_data/categories.yml').read_text())
         self.assertEqual(len(categories), 5)
         self.assertEqual(len({c['id'] for c in categories}), 5)
         self.assertEqual(len({c['url'] for c in categories}), 5)
-        self.assertEqual([c['id'] for c in categories if c['status'] == 'available'], ['financiamiento-reembolsable', 'donacion'])
+        self.assertEqual([c['id'] for c in categories if c['status'] == 'available'], ['financiamiento-reembolsable', 'donacion', 'recompensa'])
         self.assertEqual([r['name'] for r in categories[0]['roles']], ['Promotores', 'Inversores', 'Colaboradores'])
         donation = next(c for c in categories if c['id'] == 'donacion')
         self.assertEqual(donation['status'], 'available')
@@ -25,7 +25,12 @@ class CategoryBaseTests(unittest.TestCase):
             '/donacion/promotores/', '/donacion/donantes/', '/donacion/colaboradores/',
         ])
         self.assertNotIn('section_layout', donation['roles'][2])
-        for category in categories[2:]:
+        reward = next(c for c in categories if c['id'] == 'recompensa')
+        self.assertEqual(reward['status'], 'available')
+        self.assertEqual([r['name'] for r in reward['roles']], [
+            'Promotores', 'Contribuyentes', 'Colaboradores',
+        ])
+        for category in categories[3:]:
             self.assertEqual(category['status'], 'preparation')
             self.assertEqual(category['roles'], [])
 
@@ -37,6 +42,43 @@ class CategoryBaseTests(unittest.TestCase):
         for record in pages.values():
             self.assertEqual(record['meta']['editorial_status'], 'pending_review')
             self.assertIs(record['meta']['reviewed'], False)
+
+    def test_reward_53_topics_review_states_and_primary_sources(self):
+        from collections import Counter
+        root = ROOT / 'ideas/recompensa'
+        records = []
+        for source in sorted(root.rglob('cf-rec-*.md')):
+            raw = source.read_text(encoding='utf-8')
+            self.assertTrue(raw.startswith('---'), source)
+            meta = yaml.safe_load(raw.split('---', 2)[1])
+            records.append(meta)
+        self.assertEqual(len(records), 53)
+        self.assertEqual(Counter(row['role'] for row in records), {
+            'Promotores': 30, 'Contribuyentes': 14, 'Colaboradores': 9,
+        })
+        self.assertEqual(len({row['stage_id'] for row in records}), 18)
+        self.assertEqual(len({row['code'] for row in records}), 53)
+        self.assertEqual(len({row['permalink'] for row in records}), 53)
+        refs = [code for row in records for code in row['classification_refs']]
+        self.assertEqual(Counter(refs), Counter(
+            f'CL-REC-{i:03}' for i in range(1, 114)
+        ))
+        flagged = {row['code'] for row in records if row['pending_implementation']}
+        self.assertEqual(flagged, {
+            'CF-REC-PRO-011', 'CF-REC-PRO-012', 'CF-REC-PRO-013',
+            'CF-REC-PRO-014', 'CF-REC-CON-004',
+        })
+        for row in records:
+            self.assertEqual(row['status'], 'published')
+            self.assertTrue(row['published'])
+            self.assertEqual(row['editorial_status'], 'pending_review')
+            self.assertIs(row['reviewed'], False)
+            self.assertEqual(row['media'], [])
+            self.assertEqual(row['marketing_pieces'], [])
+            self.assertEqual(row['source_checked_on'], '2026-11-10')
+            self.assertTrue(row['permalink'].startswith('/recompensa/'))
+        config = yaml.safe_load((ROOT / '_config.yml').read_text())
+        self.assertNotIn('ideas/recompensa', config['exclude'])
 
     def test_home_is_generic_and_keeps_existing_search_and_guidance(self):
         home = (ROOT / 'index.md').read_text()

@@ -1,5 +1,16 @@
-# Recompensa · Promotores
+---
+layout: default
+title: "Recompensa · Promotores"
+description: "Aprende a preparar, publicar y cumplir los compromisos de tu campaña de Recompensa."
+permalink: /recompensa/promotores/
+category: "Recompensa"
+role: "Promotores"
+status: "published"
+editorial_status: pending_review
+published: true
+visibility: "public"
+reviewed: false
+---
 
-Recorrido de **Cómo funciona** para promotores de Recompensa.
-
-**Estado:** estructura preparada. El contenido se desarrollará a partir de la guía vigente de Recompensa.
+{% include fr-context.html %}
+{% include fr-role-hub.html %}
