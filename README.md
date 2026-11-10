@@ -11,10 +11,11 @@ Las cinco categorías de Ideas son Donación, Recompensa, Precompra, Inversión 
 ## Alcance actual
 
 - **Financiamiento Reembolsable** incorpora tres recorridos: **Promotores (33 fichas y seis etapas), Inversores (37 fichas y siete etapas) y Colaboradores (29 fichas en base común y cuatro áreas)**.
-- En total existen **139 fichas publicadas: 99 de FR y 40 de Donación**. Las que aún no cuentan con aprobación editorial muestran un aviso visible.
+- En total se han preparado **192 fichas para prueba pública: 99 de FR, 40 de Donación y 53 de Recompensa**; la publicación efectiva depende del despliegue verificado. Las que aún no cuentan con aprobación editorial muestran un aviso visible.
 - Todas las fichas disponen de URL canónica y los recorridos tienen navegación por rol y etapa.
 - **Donación** incorpora **40 fichas con publicación autorizada y revisión editorial pendiente**: 18 de Promotores en siete etapas, 14 de Donantes en cinco y 8 de Colaboradores en cuatro. El conjunto editorial completo se presentó antes de trasladarse al código; el usuario autorizó después su publicación y la vinculación con los vídeos existentes. Sus 20 índices reutilizan los componentes comunes. [Seguimiento y fuentes](.github/planificacion/DONACION_DESARROLLO_2026-11-06.md).
-- Las demás categorías conservan su estructura base, pero todavía no forman parte de la publicación pública activa.
+- **Recompensa** incorpora 53 fichas con revisión editorial pendiente: 30 de Promotores en nueve etapas, 14 de Contribuyentes en cinco y 9 de Colaboradores en cuatro. Las cinco fichas sobre niveles de recompensa señalan que esa funcionalidad no está implementada; no se publican enlaces multimedia sin verificar.
+- Precompra e Inversión en Acciones conservan su estructura base, pero todavía no se incorporan al catálogo público.
 - El apartado Recursos permanece fuera del alcance actual.
 
 ## Criterios editoriales
@@ -84,9 +85,10 @@ Durante esta fase de prueba pública, el sitio mantiene `noindex: true` para evi
 
 - Repositorio: **público**.
 - Rama principal: `main`.
-- GitHub Pages: **activo**.
+- GitHub Pages: **pendiente de verificar el siguiente despliegue** (último despliegue correcto previo: 9 de noviembre de 2026; ejecución programada de 10 de noviembre falló en Setup Pages).
 - Financiamiento Reembolsable: **99 fichas en tres roles · PRUEBA PÚBLICA** (59 nuevas pendientes de revisión editorial).
 - Donación: **40 fichas en tres roles y 16 etapas · PRUEBA PÚBLICA**. Publicación autorizada el 6 de noviembre de 2026 con revisión editorial posterior; las 40 fichas conservan el aviso de revisión pendiente.
+- Recompensa: **53 fichas en tres roles y 18 etapas · PRUEBA PÚBLICA PENDIENTE DE DESPLIEGUE**. Revisión editorial pendiente, cinco avisos de funcionalidad en desarrollo y multimedia no verificada.
 - Promotores: 6 etapas; Inversores: 7 etapas; Colaboradores: base común y cuatro áreas de colaboración.
 
 ## Presentación y recursos visuales

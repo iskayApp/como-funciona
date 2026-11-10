@@ -1,9 +1,23 @@
+---
+layout: default
+title: "Recompensa"
+description: "Explora los recorridos de Promotores, Contribuyentes y Colaboradores en Recompensa."
+permalink: /recompensa/
+category: "Recompensa"
+status: "published"
+editorial_status: pending_review
+published: true
+visibility: "public"
+reviewed: false
+---
+
 # Recompensa
 
-Documentación didáctica de la categoría **Recompensa**.
+Comprende cómo apoyar una iniciativa a cambio de una recompensa previamente definida. Esta categoría utiliza exclusivamente **financiamiento flexible**.
 
-## Recorridos
+> **Publicación de prueba:** las fichas están pendientes de revisión editorial. Los niveles opcionales de contribución y recompensa permanecen en desarrollo y no están disponibles actualmente.
 
-- [Promotores](./promotores/)
+{% include fr-context.html %}
+{% include fr-role-cards.html %}
 
-Otros recorridos se incorporarán cuando sean desarrollados y aprobados.
+[Buscar una explicación]({{ '/' | relative_url }}#buscar) · [Recibir orientación]({{ '/' | relative_url }}#orientacion)
