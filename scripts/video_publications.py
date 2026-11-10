@@ -122,6 +122,9 @@ def load_explicit_tiktok(root, fichas, errors, category_code="DON"):
                     errors.append(f"{path}: referencia duplicada o de otra categoría en {piece_code}: {code}")
                     continue
                 seen_fichas.add(code)
+                if category_code == "REC" and piece_code.split("-")[0] != match[1]:
+                    errors.append(f"{path}: vídeo {piece_code} no está dirigido al rol de {code}")
+                    continue
                 ficha = fichas.get(code)
                 if not ficha:
                     errors.append(f"{path}: {piece_code} referencia ficha inexistente: {code}")
