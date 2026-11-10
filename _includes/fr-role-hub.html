@@ -104,3 +104,7 @@
   <p class="fr-editorial-note">Las fichas pendientes de revisión editorial conservan su aviso. La publicación de prueba no implica aprobación de su contenido.</p>
   {% endif %}
 </div>
+
+{% if page.category == 'Recompensa' and fr_current_role_ready %}
+  {% include recompensa-role-videos.html %}
+{% endif %}
