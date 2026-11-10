@@ -117,7 +117,7 @@ def main():
                         assert not requests, (code, requests)
                         card = cards.first
                         button = card.locator('summary')
-                        expect(button).to_have_text('Reproducir vídeo')
+                        expect(button).to_have_text('Reproducir vídeo explicativo')
                         assert not card.locator('details').evaluate('(node) => node.open')
                         assert not card.locator('iframe').is_visible()
                         button.focus()
