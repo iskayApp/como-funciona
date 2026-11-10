@@ -45,7 +45,7 @@ def main():
                 cards = page.locator('.home-video-card')
                 assert cards.count() == len(expected), f'{width}px: {cards.count()} tarjetas de 9'
                 ids = cards.evaluate_all('(items) => items.map((item) => item.dataset.videoId)')
-                assert Counter(ids) == Counter(expected), ids
+                assert Counter(ids) == Counter(expected.keys()), ids
                 assert cards.locator('a[href*="/@iskay.app/video/"]').count() == len(expected)
                 assert cards.locator('a[href*="#media-"]').count() == len(expected)
                 assert page.locator('.resource-card').count() == 2, 'Los diagramas originales deben mantenerse'
