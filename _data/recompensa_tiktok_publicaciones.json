@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "platform": "tiktok",
+  "account": "@iskay.app",
+  "category_code": "REC",
+  "category": "Recompensa",
+  "verified_at": "2026-11-10T21:35:33.164086+00:00",
+  "source": "TikTok Display API video.list de la cuenta oficial @iskay.app, inventario completo generado por GitHub Pages 2026-11-10 (workflow 42904735807); cotejo editorial con los documentos de Producción de Recompensa.",
+  "source_url": "https://iskayapp.github.io/como-funciona/mantenimiento/status.json",
+  "source_revision": "aa8eb039b51d352db5e141dfd72fd1682639df62",
+  "inventory_complete": true,
+  "expected_videos": 2,
+  "expected_relations": 2,
+  "audience_summary": {
+    "Promotores": 2,
+    "Contribuyentes": 0,
+    "Colaboradores": 0
+  },
+  "association_status": "pending_review",
+  "publication_authorized_on": "2026-11-10",
+  "publication_authorization": "El usuario solicitó vincular los vídeos de TikTok existentes para Recompensa y pospuso la revisión editorial general.",
+  "videos": [
+    {
+      "piece_code": "PRO-ENT-01",
+      "video_id": "7678066820368059670",
+      "title": "¿Qué te detiene? Recursos, estructura o equipo",
+      "published_at": "2026-08-25T21:00:00Z",
+      "share_url": "https://www.tiktok.com/@iskay.app/video/7678066820368059670?utm_campaign=tt4d_open_api&utm_source=sbawfpo3hbb1g27jaz",
+      "embed_link": "https://www.tiktok.com/player/v1/7678066820368059670?music_info=1&description=1&autoplay=1&loop=1&utm_campaign=tt4d_open_api&utm_source=sbawfpo3hbb1g27jaz",
+      "principal": [],
+      "complementaria": [
+        "CF-REC-PRO-001"
+      ],
+      "evidence": {
+        "production_document": "PRO-ENT-01 - Producción (Recompensa)",
+        "production_document_url": "https://docs.google.com/document/d/1il15XjAlBpEM2Z28E32mQKVtRZhr8iMWvNh-jSXEyd4/edit",
+        "location": "Apartado 4 · TikTok; concepto Tracy 1 / Prospecting",
+        "relationship_basis": "Primer reconocimiento del rol promotor y de posibles frenos (recursos, estructura, equipo), antes de empezar a preparar la iniciativa.",
+        "scope_limit": "Contenido introductorio; no responde quién está legalmente habilitado, requisitos de registro o condiciones operativas. Asociación solo complementaria a la primera ficha del recorrido."
+      }
+    },
+    {
+      "piece_code": "PRO-ENT-02",
+      "video_id": "7678427855948221718",
+      "title": "Si pudieras resolver una cosa hoy, ¿cuál sería?",
+      "published_at": "2026-08-26T21:00:00Z",
+      "share_url": "https://www.tiktok.com/@iskay.app/video/7678427855948221718?utm_campaign=tt4d_open_api&utm_source=sbawfpo3hbb1g27jaz",
+      "embed_link": "https://www.tiktok.com/player/v1/7678427855948221718?music_info=1&description=1&autoplay=1&loop=1&utm_campaign=tt4d_open_api&utm_source=sbawfpo3hbb1g27jaz",
+      "principal": [],
+      "complementaria": [
+        "CF-REC-PRO-004"
+      ],
+      "evidence": {
+        "production_document": "PRO-ENT-02 - Producción (Recompensa)",
+        "production_document_url": "https://docs.google.com/document/d/1PaN9tuwJrmS06aJ61ZdQyGXvuk4tKv9PDsnTVzgmFyw/edit",
+        "location": "Apartado 4 · TikTok; Tracy 3 / Identificación de necesidades",
+        "relationship_basis": "Priorizar recursos, estructura, equipo o recompensa antes de organizar la información básica de la iniciativa.",
+        "scope_limit": "Orientación previa; no enseña los campos del formulario ni define un monto, nivel, plazo o requisito. Asociación solo complementaria a la preparación de datos generales."
+      }
+    }
+  ]
+}
