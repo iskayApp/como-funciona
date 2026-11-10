@@ -5,7 +5,7 @@
 <figure id="{{ video_anchor }}" class="fr-tiktok-card media-block" data-video-id="{{ include.video.video_id | escape }}" data-video-relation="{{ include.relation | escape }}">
   <figcaption><strong>{{ include.piece.title | escape }}</strong>{% if include.relation == 'Complementaria' %}<span class="fr-tiktok-related-label">Vídeo complementario</span>{% endif %}</figcaption>
   <details>
-    <summary>Reproducir vídeo</summary>
+    <summary>Reproducir vídeo explicativo</summary>
     <div class="fr-tiktok-frame">
       <iframe title="Vídeo de TikTok: {{ include.piece.title | escape }}"
         src="{{ video_player | escape }}" loading="lazy"
