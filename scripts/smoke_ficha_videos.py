@@ -32,7 +32,7 @@ class VideoPage(HTMLParser):
 
 
 def expected_videos():
-    """Use both source registries independently of the generated catalog."""
+    """Use all three category registries independently of generated catalog."""
     registry = json.loads((ROOT / '_data/fr_tiktok_publicaciones.json').read_text())
     assembly = json.loads((ROOT / '_data/fr_ensamblaje_marketing.json').read_text())
     pieces = {piece['code']: piece for piece in assembly['pieces']}
@@ -49,6 +49,17 @@ def expected_videos():
         for relation in ('principal', 'complementaria'):
             for code in video[relation]:
                 assert code.startswith('CF-DON-'), code
+                expected.setdefault(code, []).append(video['video_id'])
+    reward = json.loads((ROOT / '_data/recompensa_tiktok_publicaciones.json').read_text())
+    assert reward['category_code'] == 'REC' and reward['association_status'] == 'pending_review'
+    assert reward['audience_summary'] == {
+        'Promotores': 2, 'Contribuyentes': 0, 'Colaboradores': 0,
+    }
+    for video in reward['videos']:
+        assert video['piece_code'].startswith('PRO-'), 'No inventar videos de otros roles'
+        for relation in ('principal', 'complementaria'):
+            for code in video[relation]:
+                assert code.startswith('CF-REC-PRO-'), code
                 expected.setdefault(code, []).append(video['video_id'])
     return expected
 
@@ -79,6 +90,8 @@ def main():
     donation_without_video = next((item['code'] for item in topics if item['category'] == 'Donación' and not expected.get(item['code'])), None)
     if donation_without_video:
         samples.append(donation_without_video)
+    samples.extend(['CF-REC-PRO-001', 'CF-REC-PRO-004',
+                    'CF-REC-CON-001', 'CF-REC-COL-001'])
     try:
         with sync_playwright() as pw:
             browser = pw.chromium.launch(executable_path=os.environ.get('CHROMIUM_EXECUTABLE_PATH'))

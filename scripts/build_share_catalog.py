@@ -400,10 +400,10 @@ def attach_verified_tiktok(catalog, errors):
     }
 
 
-def attach_explicit_tiktok(catalog, errors):
-    """Attach Donación's verified publications, keeping their review pending."""
+def attach_explicit_tiktok(catalog, errors, category_code="DON"):
+    """Attach explicit Donación or Recompensa posts without editorial approval."""
     by_code = {item["code"]: item for item in catalog}
-    registry, associations = load_explicit_tiktok(ROOT, by_code, errors)
+    registry, associations = load_explicit_tiktok(ROOT, by_code, errors, category_code=category_code)
     if registry is None:
         return None
     linked_pages = set()
@@ -429,10 +429,10 @@ def attach_explicit_tiktok(catalog, errors):
         }
         item["media"].append(asset)
         group = next((g for g in item["marketing_pieces"]
-                      if (g.get("category_code"), g.get("code")) == ("DON", piece_code)), None)
+                      if (g.get("category_code"), g.get("code")) == (category_code, piece_code)), None)
         if group is None:
             group = {
-                "code": piece_code, "category_code": "DON", "title": association["title"],
+                "code": piece_code, "category_code": category_code, "title": association["title"],
                 "relation": association["relation"], "association_status": "pending_review",
                 "assets": [],
             }
@@ -454,11 +454,11 @@ def attach_explicit_tiktok(catalog, errors):
     }
 
 
-def combined_tiktok_report(fr_report, donation_report):
-    """Keep the legacy FR result unchanged when no other registry is present."""
-    if donation_report is None:
+def combined_tiktok_report(fr_report, donation_report, recompensa_report=None):
+    """Combine verified publications across categories; preserve legacy FR-only output."""
+    if donation_report is None and recompensa_report is None:
         return fr_report
-    reports = [report for report in (fr_report, donation_report) if report]
+    reports = [report for report in (fr_report, donation_report, recompensa_report) if report]
     return {
         "platform": "tiktok", "account": "@iskay.app", "scope": "combined_categories",
         **{key: sum(report[key] for report in reports)
@@ -596,7 +596,8 @@ def build_catalog():
     assembly_report = apply_approved_assembly(catalog, errors)
     fr_tiktok_report = attach_verified_tiktok(catalog, errors)
     donation_tiktok_report = attach_explicit_tiktok(catalog, errors)
-    tiktok_report = combined_tiktok_report(fr_tiktok_report, donation_tiktok_report)
+    recompensa_tiktok_report = attach_explicit_tiktok(catalog, errors, category_code="REC")
+    tiktok_report = combined_tiktok_report(fr_tiktok_report, donation_tiktok_report, recompensa_tiktok_report)
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -611,9 +612,12 @@ def build_catalog():
         "total_editorial_links": assembly_report["relations"] if assembly_report else 0,
         "items": catalog,
     }
-    if donation_tiktok_report:
+    if donation_tiktok_report or recompensa_tiktok_report:
         output["verified_tiktok_categories"] = {
-            key: value for key, value in (("FR", fr_tiktok_report), ("DON", donation_tiktok_report)) if value
+            key: value for key, value in (
+                ("FR", fr_tiktok_report), ("DON", donation_tiktok_report),
+                ("REC", recompensa_tiktok_report),
+            ) if value
         }
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

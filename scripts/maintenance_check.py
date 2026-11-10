@@ -253,12 +253,13 @@ def normalize_distribution_items(value):
     return []
 
 
-def register_explicit_tiktok(pages, tiktok_ids, tiktok_links):
-    """Register Donación independently from FR, with pending editorial review."""
+def register_explicit_tiktok(pages, tiktok_ids, tiktok_links, category_code="DON"):
+    """Register Donación or Recompensa independently, without approving editorial content."""
     page_by_code = {page["data"].get("code"): page for page in pages if page["data"].get("code")}
     errors = []
     registry, associations = load_explicit_tiktok(
-        ROOT, {code: page["data"] for code, page in page_by_code.items()}, errors)
+        ROOT, {code: page["data"] for code, page in page_by_code.items()}, errors,
+        category_code=category_code)
     if errors:
         raise ValueError("; ".join(errors))
     if registry is None:
@@ -409,6 +410,7 @@ def main():
                     })
 
     register_explicit_tiktok(pages, tiktok_ids, tiktok_links)
+    register_explicit_tiktok(pages, tiktok_ids, tiktok_links, category_code="REC")
 
     access_token, tiktok_service = refresh_tiktok_access()
     all_tiktok = []

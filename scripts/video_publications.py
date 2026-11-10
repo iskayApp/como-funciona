@@ -12,6 +12,12 @@ from urllib.parse import urlsplit
 
 
 ROLE_NAMES = {"PRO": "Promotores", "DON": "Donantes", "COL": "Colaboradores"}
+CATEGORY_ROLES = {
+    "DON": ROLE_NAMES,
+    "REC": {"PRO": "Promotores", "CON": "Contribuyentes", "COL": "Colaboradores"},
+}
+CATEGORY_NAMES = {"DON": "Donación", "REC": "Recompensa"}
+
 
 
 def official_tiktok_urls(video_id, share_url, embed_link):
@@ -38,14 +44,21 @@ def iso_timestamp(value):
         return False
 
 
-def load_explicit_tiktok(root, fichas, errors):
-    """Return the checked Donación registry and explicit ficha/video relations.
+def load_explicit_tiktok(root, fichas, errors, category_code="DON"):
+    """Validate Donación or Recompensa explicitly, never approve editorial content.
 
-    Missing registries are supported. Invalid registries return no relations so
-    callers cannot attach a partially valid publication before failing their gate.
-    The ficha mapping contains canonical front matter or catalog entry metadata.
+    Each category has an independent registry; production codes are scoped by
+    category. Missing registries return no relations, and any malformed registry
+    returns no relations so a partial publication cannot leak into the catalog.
     """
-    path = Path(root) / "_data/donacion_tiktok_publicaciones.json"
+    if category_code not in CATEGORY_NAMES:
+        errors.append(f"Categoría TikTok no admitida: {category_code}")
+        return None, []
+    category_name = CATEGORY_NAMES[category_code]
+    role_names = CATEGORY_ROLES[category_code]
+    accepted_roles = "|".join(role_names)
+    filename = "donacion_tiktok_publicaciones.json" if category_code == "DON" else "recompensa_tiktok_publicaciones.json"
+    path = Path(root) / "_data" / filename
     if not path.is_file():
         return None, []
     start_errors = len(errors)
@@ -58,8 +71,8 @@ def load_explicit_tiktok(root, fichas, errors):
             registry.get("schema_version") != 1
             or registry.get("platform") != "tiktok"
             or registry.get("account") != "@iskay.app"
-            or registry.get("category_code") != "DON"
-            or registry.get("category") != "Donación"
+            or registry.get("category_code") != category_code
+            or registry.get("category") != category_name
             or registry.get("association_status") != "pending_review"
             or not isinstance(registry.get("videos"), list)):
         errors.append(f"{path}: esquema, categoría o estado de asociación inválidos")
@@ -83,7 +96,7 @@ def load_explicit_tiktok(root, fichas, errors):
         piece_key = (registry["category_code"], piece_code)
         if (not re.fullmatch(r"\d{12,25}", video_id)
                 or not isinstance(piece_code, str)
-                or not re.fullmatch(r"(?:PRO|DON|COL)-(?:EDU|INS|ENT|VEN)-\d{2}", piece_code)
+                or not re.fullmatch(rf"(?:{accepted_roles})-(?:EDU|INS|ENT|VEN)-\d{{2}}", piece_code)
                 or video_id in seen_ids or piece_key in seen_pieces):
             errors.append(f"{path}: vídeo o pieza duplicados/inválidos: {piece_code}/{video_id}")
             continue
@@ -104,17 +117,20 @@ def load_explicit_tiktok(root, fichas, errors):
                 errors.append(f"{path}: {piece_code} debe declarar {key} como lista")
                 continue
             for code in codes:
-                match = re.fullmatch(r"CF-DON-(PRO|DON|COL)-\d{3}", code) if isinstance(code, str) else None
+                match = re.fullmatch(rf"CF-{category_code}-({accepted_roles})-\d{{3}}", code) if isinstance(code, str) else None
                 if not match or code in seen_fichas:
                     errors.append(f"{path}: referencia duplicada o de otra categoría en {piece_code}: {code}")
                     continue
                 seen_fichas.add(code)
+                if category_code == "REC" and piece_code.split("-")[0] != match[1]:
+                    errors.append(f"{path}: vídeo {piece_code} no está dirigido al rol de {code}")
+                    continue
                 ficha = fichas.get(code)
                 if not ficha:
                     errors.append(f"{path}: {piece_code} referencia ficha inexistente: {code}")
                     continue
                 if (ficha.get("category") != registry["category"]
-                        or str(ficha.get("role", "")).casefold() != ROLE_NAMES[match[1]].casefold()):
+                        or str(ficha.get("role", "")).casefold() != role_names[match[1]].casefold()):
                     errors.append(f"{path}: categoría o rol de ficha incorrectos: {piece_code}/{code}")
                     continue
                 associations.append({
@@ -128,6 +144,15 @@ def load_explicit_tiktok(root, fichas, errors):
                 })
         if not seen_fichas:
             errors.append(f"{path}: {piece_code} no declara ninguna ficha relacionada")
+    if category_code == "REC" and "audience_summary" in registry:
+        actual_audience = {role: 0 for role in role_names.values()}
+        for video in registry["videos"]:
+            audience = role_names.get(str(video.get("piece_code") or "").split("-")[0])
+            if audience:
+                actual_audience[audience] += 1
+        if actual_audience != registry["audience_summary"]:
+            errors.append(f"{path}: número de vídeos por rol no corresponde al inventario")
+
     if len(seen_ids) != registry.get("expected_videos"):
         errors.append(f"{path}: total de vídeos diferente del registro")
     if len(associations) != registry.get("expected_relations"):

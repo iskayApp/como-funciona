@@ -73,6 +73,9 @@ Las URLs se derivan de page.url y de page.media; no se escriben manualmente.
   {% elsif page.category == 'Donación' and site.data.donacion_tiktok_publicaciones.category_code == 'DON' and site.data.donacion_tiktok_publicaciones.category == page.category %}
     {% assign share_videos = site.data.donacion_tiktok_publicaciones.videos %}
     {% assign share_videos_direct = true %}
+  {% elsif page.category == 'Recompensa' and site.data.recompensa_tiktok_publicaciones.category_code == 'REC' and site.data.recompensa_tiktok_publicaciones.category == page.category %}
+    {% assign share_videos = site.data.recompensa_tiktok_publicaciones.videos %}
+    {% assign share_videos_direct = true %}
   {% endif %}
     {% for video in share_videos %}
       {% if share_videos_direct %}{% assign related_piece = video %}{% else %}{% assign related_piece = site.data.fr_ensamblaje_marketing.pieces | where: "code", video.piece_code | first %}{% endif %}
