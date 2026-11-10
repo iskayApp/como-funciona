@@ -15,6 +15,11 @@
       {% include home-video-card.html video=video piece=video category='Donación' public_topics=include.public_topics %}
     {% endfor %}
   {% endif %}
+  {% if site.data.recompensa_tiktok_publicaciones.category_code == 'REC' and site.data.recompensa_tiktok_publicaciones.category == 'Recompensa' %}
+    {% for video in site.data.recompensa_tiktok_publicaciones.videos %}
+      {% include home-video-card.html video=video piece=video category='Recompensa' public_topics=include.public_topics %}
+    {% endfor %}
+  {% endif %}
 {% endcapture %}
 {% if home_video_cards contains 'class="home-video-card"' %}
 <section class="home-video-gallery" id="videos" aria-labelledby="home-video-title">
