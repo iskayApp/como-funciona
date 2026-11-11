@@ -1,5 +1,21 @@
+---
+layout: default
+title: "Precompra · Promotores"
+description: "Recorrido de Promotores para comprender la Precompra en iskay.app."
+permalink: /precompra/promotores/
+category: "Precompra"
+role: "Promotores"
+status: "draft"
+publication_status: "not_published"
+editorial_status: "pending_review"
+published: false
+visibility: "private"
+reviewed: false
+---
+
 # Precompra · Promotores
 
-Recorrido de **Cómo funciona** para promotores de Precompra.
+> Documento de trabajo: fichas sin aprobación editorial y no publicadas.
 
-**Estado:** estructura preparada. El contenido se desarrollará a partir de la guía vigente de Precompra.
+{% include fr-context.html %}
+{% include fr-role-hub.html %}
