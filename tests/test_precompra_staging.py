@@ -5,7 +5,7 @@ import unittest
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = ROOT / "ideas" / "precompra"
+BASE = ROOT / ".github" / "staging" / "precompra" / "ideas" / "precompra"
 ROLES = {"Promotores": 36, "Precompradores": 21, "Colaboradores": 9}
 STAGES = {"Promotores": 9, "Precompradores": 6, "Colaboradores": 4}
 
@@ -58,6 +58,7 @@ class PrecompraStagingTests(unittest.TestCase):
     def test_safeguards_prevent_publication(self):
         config = yaml.safe_load((ROOT / "_config.yml").read_text(encoding="utf-8"))
         self.assertIn("ideas/precompra", config["exclude"])
+        self.assertEqual(list((ROOT / "ideas" / "precompra").rglob("cf-pre-*.md")), [])
         categories = yaml.safe_load((ROOT / "_data/categories.yml").read_text(encoding="utf-8"))
         precompra = next(item for item in categories if item["id"] == "precompra")
         self.assertEqual(precompra["status"], "preparation")

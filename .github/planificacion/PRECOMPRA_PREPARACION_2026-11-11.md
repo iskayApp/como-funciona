@@ -2,6 +2,8 @@
 
 ## Alcance
 
+Los borradores residen en `.github/staging/precompra/ideas/precompra/`, fuera de `ideas/` y de la lectura del catálogo público. Sus rutas de destino y metadatos quedan preparados para una futura publicación autorizada.
+
 - Fuente editorial: [66 fichas completas](https://docs.google.com/document/d/16SG6hjAa2TXkppRTC4nFiEJ3WcTKYMtJfr0ZVH1ORBc/edit).
 - Índice de documentos individuales: [00 CF-PRE](https://docs.google.com/document/d/1OsF4P-KNwlsw3v4FlDDs10bSebXoT448OZQz2CQ1IVY/edit).
 - Guía original: «1 Precompra.docx» (sin modificaciones).
