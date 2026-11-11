@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "category": "Precompra",
+  "prepared_on": "2026-11-11",
+  "record_status": "pending_editorial_review",
+  "guide_source": "https://docs.google.com/document/d/1byJkrnBQb14cghOFYyt7J-b_ZPt3jxYr/edit",
+  "fichas_master": "https://docs.google.com/document/d/16SG6hjAa2TXkppRTC4nFiEJ3WcTKYMtJfr0ZVH1ORBc/edit",
+  "status_note": "Se recopilan observaciones preexistentes sin alterar la guía ni decidir por inferencia.",
+  "observations": [
+    {
+      "id": "OBS-PRE-01",
+      "issue": "Carácter opcional de colaboradores frente a expresiones que parecen exigir su presencia",
+      "sections": [
+        "Precompra en iskay.app — Confianza y acompañamiento",
+        "Descuentos aplicables (Precompra)",
+        "Inicio de campaña — Colaboradores (opcional)"
+      ],
+      "decision": "Confirmar redacción y alcance del carácter opcional sin imponer condiciones nuevas",
+      "affected_codes": [
+        "CF-PRE-PRO-019"
+      ],
+      "status": "open_pending_owner_review",
+      "guide_modified": false,
+      "authorized_resolution": false
+    },
+    {
+      "id": "OBS-PRE-02",
+      "issue": "Listas diferentes de perfiles de colaboradores en los apartados de descuentos y de inicio de campaña",
+      "sections": [
+        "Descuentos aplicables (Precompra)",
+        "Inicio de campaña — Colaboradores (opcional)"
+      ],
+      "decision": "Definir si son listados distintos según su finalidad o si necesitan armonización editorial autorizada",
+      "affected_codes": [
+        "CF-PRE-PRO-020",
+        "CF-PRE-PRO-022",
+        "CF-PRE-COL-004"
+      ],
+      "status": "open_pending_owner_review",
+      "guide_modified": false,
+      "authorized_resolution": false
+    },
+    {
+      "id": "OBS-PRE-03",
+      "issue": "No se precisa de modo inequívoco cómo combinar seguro de cumplimiento, prenda y carta de compromiso",
+      "sections": [
+        "Transferencia de fondos (Precompra) — campañas USD 10.000–470.000",
+        "Seguro de Cumplimiento",
+        "Garantía Real",
+        "Carta de compromiso"
+      ],
+      "decision": "Confirmar si cada garantía es alternativa, acumulativa o condicional; no completar por inferencia",
+      "affected_codes": [
+        "CF-PRE-PRO-026",
+        "CF-PRE-PRO-027",
+        "CF-PRE-PRC-021"
+      ],
+      "status": "open_pending_owner_review",
+      "guide_modified": false,
+      "authorized_resolution": false
+    },
+    {
+      "id": "OBS-PRE-04",
+      "issue": "La modalidad flexible no acredita una facultad de modificar unilateralmente prestaciones contratadas",
+      "sections": [
+        "Promotores — Modalidad flexible",
+        "Inicio de campaña — Modalidad",
+        "Procedimiento para reclamaciones y riesgo de pérdida"
+      ],
+      "decision": "Distinguir planificación de producción según fondos y preservación de condiciones ya contratadas",
+      "affected_codes": [
+        "CF-PRE-PRO-004",
+        "CF-PRE-PRO-006",
+        "CF-PRE-PRO-031",
+        "CF-PRE-PRC-013"
+      ],
+      "status": "open_pending_owner_review",
+      "guide_modified": false,
+      "authorized_resolution": false
+    },
+    {
+      "id": "OBS-PRE-05",
+      "issue": "Diferencia entre regla de modalidad fija y procedimiento de revisión para reversión",
+      "sections": [
+        "Promotores — Modalidad fija",
+        "Criterios para la Reversión de Fondos (Precompra)"
+      ],
+      "decision": "Precisar cuándo aplica la reversión por meta y qué revisión/notificación corresponde sin anticipar un resultado",
+      "affected_codes": [
+        "CF-PRE-PRO-007",
+        "CF-PRE-PRO-034",
+        "CF-PRE-PRO-036",
+        "CF-PRE-PRC-012",
+        "CF-PRE-PRC-019"
+      ],
+      "status": "open_pending_owner_review",
+      "guide_modified": false,
+      "authorized_resolution": false
+    },
+    {
+      "id": "OBS-PRE-06",
+      "issue": "La notificación en Transferencia de fondos no prueba confirmación bancaria individual de la precompra",
+      "sections": [
+        "Transferencia de fondos (Precompra) — Envío de notificación",
+        "Transferencia de fondos (Precompra) — Modalidad elegida"
+      ],
+      "decision": "Identificar con precisión el evento notificado y distinguirlo del pago individual",
+      "affected_codes": [
+        "CF-PRE-PRO-029",
+        "CF-PRE-PRC-011"
+      ],
+      "status": "open_pending_owner_review",
+      "guide_modified": false,
+      "authorized_resolution": false
+    },
+    {
+      "id": "OBS-PRE-07",
+      "issue": "Alcance de los siete tramos, la comisión mínima de USD 20 y el límite documentado de USD 470.000",
+      "sections": [
+        "Tarifas (Precompra)",
+        "Comisión al Financiamiento — tabla de tramos",
+        "Nota — Comisión mínima"
+      ],
+      "decision": "Mantener exactamente los siete tramos de la guía y no extrapolar precios, topes ni requisitos fuera del rango documentado",
+      "affected_codes": [
+        "CF-PRE-PRO-024"
+      ],
+      "status": "open_pending_owner_review",
+      "guide_modified": false,
+      "authorized_resolution": false
+    },
+    {
+      "id": "OBS-PRE-08",
+      "issue": "El mecanismo de reclamación no asegura resolución favorable ni reembolso automático",
+      "sections": [
+        "Procedimiento para reclamaciones y riesgo de pérdida (Precompra)",
+        "Criterios para la Reversión de Fondos (Precompra)"
+      ],
+      "decision": "Diferenciar mecanismo disponible, resolución y resultado; comprobar disponibilidad operativa antes de anunciarlo",
+      "affected_codes": [
+        "CF-PRE-PRO-033",
+        "CF-PRE-PRC-002",
+        "CF-PRE-PRC-017"
+      ],
+      "status": "open_pending_owner_review",
+      "guide_modified": false,
+      "authorized_resolution": false
+    }
+  ]
+}

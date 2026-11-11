@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "category": "Precompra",
+  "prepared_on": "2026-11-11",
+  "purpose": "Inventario de correspondencias conceptuales candidatas; no es autorización de publicación ni vinculación audiovisual.",
+  "calendar_source": "https://drive.google.com/file/d/1GDd5KqeicPLC3c4UNEWzd2m4I3_mPXBn/view",
+  "marketing_plan": "https://docs.google.com/document/d/1Etd_iTMmMXiqQk5OuOkK0SkaomO2ojuI/edit",
+  "source_validation": "Se contrastaron documentos de producción con el calendario. Ninguna URL original pública de Facebook o TikTok fue validada.",
+  "public_urls_verified": 0,
+  "items": [
+    {
+      "code": "PRE-EDU-01",
+      "title": "Qué es Precompra y cómo funciona en iskay.app",
+      "role": "Precompradores",
+      "production_document": "https://docs.google.com/document/d/1KHemLMrMHtPmeITJmVSvwk0zDaX0kKTfGSuaAMDyDE4/edit",
+      "calendar_status": "Publicada",
+      "production_status": "Facebook y TikTok aprobados para publicación; documento de producción exige registrar la publicación efectiva.",
+      "social_publication_verified": false,
+      "facebook_original_url": null,
+      "tiktok_original_url": null,
+      "candidate_ficha_codes": [
+        "CF-PRE-PRC-001",
+        "CF-PRE-PRC-002"
+      ],
+      "candidate_status": "pending_editorial_and_social_url_verification",
+      "rationale": "El contenido explica la naturaleza de la Precompra y la necesidad de comprender las condiciones y riesgos de la compra anticipada."
+    },
+    {
+      "code": "PRO-VEN-04",
+      "title": "Vender no es prometer: presenta valor con evidencia",
+      "role": "Promotores",
+      "production_document": "https://docs.google.com/document/d/1zNnpeSGdtUZBotK4aJbxPowCeLPdbZ3kbwxu3FBKHvs/edit",
+      "calendar_status": "Publicada",
+      "production_status": "Producción lista para publicación; documento aún solicita publicar y registrar el cierre tras la publicación efectiva.",
+      "social_publication_verified": false,
+      "facebook_original_url": null,
+      "tiktok_original_url": null,
+      "candidate_ficha_codes": [
+        "CF-PRE-PRO-015",
+        "CF-PRE-PRO-017",
+        "CF-PRE-PRO-018"
+      ],
+      "candidate_status": "pending_editorial_and_social_url_verification",
+      "rationale": "El contenido desarrolla descripción verificable, condiciones y multimedia del bien o servicio ofertado."
+    },
+    {
+      "code": "PRO-ENT-01",
+      "title": "¿Qué te falta para convertir tu idea en una oferta de Precompra?",
+      "role": "Promotores",
+      "production_document": "https://docs.google.com/document/d/1d--0vr6iGx_GL6GxM9bAfRMBU9ptLepxos6EtjwyhN0/edit",
+      "calendar_status": "En producción",
+      "production_status": "Historia de Facebook aprobada/lista; montaje TikTok corregido, pendiente de revisión, aprobación y publicación.",
+      "social_publication_verified": false,
+      "facebook_original_url": null,
+      "tiktok_original_url": null,
+      "candidate_ficha_codes": [
+        "CF-PRE-PRO-008",
+        "CF-PRE-PRO-009",
+        "CF-PRE-PRO-016",
+        "CF-PRE-PRO-018"
+      ],
+      "candidate_status": "pending_editorial_and_social_url_verification",
+      "rationale": "La pieza presenta los elementos iniciales para definir una oferta: producto/servicio, unidades, precio, entrega y multimedia."
+    }
+  ],
+  "publication_gate": "No crear marketing_pieces, media, distribution ni enlaces públicos en ninguna ficha sin URL oficial comprobada, categoría y rol confirmados y autorización correspondiente."
+}
