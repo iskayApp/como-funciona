@@ -1,7 +1,6 @@
 """Garantiza que las 66 fichas de Precompra sigan en borrador fuera del sitio."""
 from collections import Counter
 from pathlib import Path
-import re
 import unittest
 import yaml
 
@@ -46,7 +45,7 @@ class PrecompraStagingTests(unittest.TestCase):
                 self.assertEqual(data["content_version"], 1)
                 self.assertEqual(data["guide_version"], "No indicada expresamente")
                 self.assertTrue(data["source"].startswith("1 Precompra.docx"))
-                self.assertRegex(data["editorial_source_url"], r"^https://docs\\.google\\.com/document/d/")
+                self.assertTrue(data["editorial_source_url"].startswith("https://docs.google.com/document/d/"))
                 self.assertEqual(data["media"], [])
                 self.assertEqual(data["marketing_pieces"], [])
                 self.assertEqual(data["distribution"], [])
