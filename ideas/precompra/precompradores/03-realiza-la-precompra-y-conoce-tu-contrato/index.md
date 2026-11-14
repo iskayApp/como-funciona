@@ -1,0 +1,26 @@
+---
+layout: default
+title: "Realiza la precompra y conoce tu contrato · Precompradores"
+description: "Consulta las fichas de Precompradores en esta etapa de Precompra."
+permalink: /precompra/precompradores/03-realiza-la-precompra-y-conoce-tu-contrato/
+category: "Precompra"
+role: "Precompradores"
+stage: "Realiza la precompra y conoce tu contrato"
+stage_id: "PRE-PRC-E03"
+stage_url: /precompra/precompradores/
+status: "published"
+publication_status: "published"
+editorial_status: "pending_review"
+published: true
+visibility: "public"
+reviewed: false
+---
+
+# Realiza la precompra y conoce tu contrato
+
+{% assign stage_topics = site.pages | where: 'category', page.category | where: 'role', page.role | where: 'stage_id', page.stage_id | where_exp: 'entry', 'entry.code != nil' | where_exp: 'entry', 'entry.published != false' | where_exp: 'entry', 'entry.visibility != "private"' | where_exp: 'entry', 'entry.status != "draft"' | where_exp: 'entry', 'entry.status != "review"' | where_exp: 'entry', 'entry.status != "archived"' | sort: 'code' %}
+{% for topic in stage_topics %}
+- [{{ topic.title }}]({{ topic.url | relative_url }}){% if topic.editorial_status == 'pending_review' %} · pendiente de revisión editorial{% endif %}
+{% endfor %}
+
+[Volver al recorrido de {{ page.role }}]({{ page.stage_url | relative_url }}).

@@ -20,15 +20,17 @@ def advanced(page):
 
 
 def check_width(page, home, control, width):
+    total = control['summary']['published']
     page.goto(home+'mantenimiento/')
     page.locator('#workspace-filters').wait_for(state='visible')
     assert page.locator('[data-maint-view-link]').count()==5
     expect(page.locator('[data-maint-view]:visible')).to_have_count(1)
     expect(page.locator('#m-resumen')).to_be_visible()
-    expect(page.locator('#overview-metrics .overview-metric > strong').first).to_have_text('192')
-    assert page.locator('[data-maint-topic]').count()==192
-    assert page.locator('.control-topic-button').count()==192
+    expect(page.locator('#overview-metrics .overview-metric > strong').first).to_have_text(str(total))
+    assert page.locator('[data-maint-topic]').count()==total
+    assert page.locator('.control-topic-button').count()==total
     assert 'Donación' not in page.locator('#overview-preparation').inner_text()
+    assert 'Precompra' not in page.locator('#overview-preparation').inner_text()
     fits(page)
     page.screenshot(path=str(ARTIFACTS/f'maintenance-panorama-{width}.png'),full_page=True)
     page.locator('[data-maint-view-link="m-contenido"]').click()
@@ -77,7 +79,8 @@ def check_width(page, home, control, width):
     assert page.evaluate('navigator.clipboard.readText()')==page.url
     page.locator('#control-clear').click()
     page.locator('#review-kind').select_option('gap:guide_version')
-    expect(page.locator('#review-count')).to_contain_text('de 192 fichas')
+    guide_version_gaps = sum('guide_version' in item['metadata_gaps'] for item in control['items'])
+    expect(page.locator('#review-count')).to_contain_text(f'de {guide_version_gaps} fichas')
     page.locator('#review-kind').select_option('gap:content_version')
     expect(page.locator('#review-count')).to_contain_text('de 30 fichas')
     page.locator('#review-kind').select_option('unverified')
@@ -155,6 +158,19 @@ def check_width(page, home, control, width):
     page.locator('[data-maint-view-link="m-revisiones"]').click()
     page.locator('#review-kind').select_option('pending')
     expect(page.locator('#review-count')).to_contain_text('de 40 fichas')
+    # Publicar las fichas no aprueba su texto ni vincula candidatos audiovisuales.
+    page.locator('#control-category').select_option('precompra')
+    expect(page.locator('#review-count')).to_contain_text('de 66 fichas')
+    page.locator('[data-maint-view-link="m-multimedia"]').click()
+    page.locator('[data-media-mode="resources"]').click()
+    expect(page.locator('.media-resource-card')).to_have_count(0)
+    page.locator('[data-media-mode="pieces"]').click()
+    expect(page.locator('.piece-card')).to_have_count(0)
+    page.locator('[data-media-mode="fichas"]').click()
+    expect(page.locator('#maint-search-count')).to_contain_text('de 66 fichas')
+    expect(page.locator('.maint-search-result')).to_have_count(12)
+    page.locator('[data-maint-view-link="m-publicacion"]').click()
+    expect(page.locator('#publication-summary .overview-metric > strong').first).to_have_text('66')
     page.locator('[data-maint-view-link="m-multimedia"]').click()
     fits(page)
     page.evaluate('window.scrollTo(0,0)')
@@ -163,8 +179,13 @@ def check_width(page, home, control, width):
 
 def main():
     control=json.loads((SITE/'mantenimiento/control_catalog.json').read_text())
-    assert control['summary']['published']==192
-    assert Counter(item['category'] for item in control['items'])=={'Financiamiento Reembolsable':99,'Donación':40,'Recompensa':53}
+    assert control['summary']['published']==258
+    assert Counter(item['category'] for item in control['items'])=={'Financiamiento Reembolsable':99,'Donación':40,'Recompensa':53,'Precompra':66}
+    assert sum(item['editorial_status']=='pending_review' for item in control['items'])==218
+    precompra=[item for item in control['items'] if item['category']=='Precompra']
+    assert Counter(item['role'] for item in precompra)=={'Promotores':36,'Precompradores':21,'Colaboradores':9}
+    assert len({item['stage_url'] for item in precompra})==19
+    assert all(item['editorial_status']=='pending_review' and item['reviewed_at']=='' for item in precompra)
     server=ThreadingHTTPServer(('127.0.0.1',0),partial(Handler,directory=str(SITE)))
     Thread(target=server.serve_forever,daemon=True).start()
     home=f'http://127.0.0.1:{server.server_port}'+BASE+'/'
@@ -216,7 +237,7 @@ def main():
             context.route('**/mantenimiento/status.json',lambda route:route.fulfill(status=503,body='Unavailable'))
             page=context.new_page();page.goto(home+'mantenimiento/')
             expect(page.locator('#workspace-load-status')).to_contain_text('No se pudo cargar')
-            assert page.locator('[data-maint-topic]').count()==192
+            assert page.locator('[data-maint-topic]').count()==control['summary']['published']
             page.locator('[data-maint-view-link="m-multimedia"]').click()
             page.locator('#maint-search-text').fill('garantia')
             expect(page.locator('#maint-search-count')).to_contain_text('Mostrando')

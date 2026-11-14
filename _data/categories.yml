@@ -55,8 +55,20 @@
 - id: precompra
   name: Precompra
   url: /precompra/
-  status: preparation
-  roles: []
+  status: available
+  roles:
+    - id: promotores
+      name: Promotores
+      url: /precompra/promotores/
+      description: Quiero ofrecer un bien o servicio mediante precompra.
+    - id: precompradores
+      name: Precompradores
+      url: /precompra/precompradores/
+      description: Quiero adquirir un bien o servicio por anticipado.
+    - id: colaboradores
+      name: Colaboradores
+      url: /precompra/colaboradores/
+      description: Quiero aportar trabajo o conocimientos a la iniciativa.
 - id: inversion-en-acciones
   name: Inversión en Acciones
   url: /inversion-en-acciones/

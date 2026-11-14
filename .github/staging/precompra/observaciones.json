@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "category": "Precompra",
+  "prepared_on": "2026-11-11",
+  "record_status": "functional_review_completed_editorial_pending",
+  "guide_source": "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit",
+  "fichas_master": "https://docs.google.com/document/d/16SG6hjAa2TXkppRTC4nFiEJ3WcTKYMtJfr0ZVH1ORBc/edit",
+  "status_note": "Los ajustes indispensables de la guía están cerrados. Las observaciones se conservan como resoluciones o criterios aplicados. El propietario autoriza publicar las 66 fichas y realizar después la aprobación editorial.",
+  "observations": [
+    {
+      "id": "OBS-PRE-01",
+      "issue": "Carácter opcional de colaboradores frente a expresiones que parecen exigir su presencia",
+      "sections": [
+        "Precompra en iskay.app — Confianza y acompañamiento",
+        "Descuentos aplicables (Precompra)",
+        "Inicio de campaña — Colaboradores (opcional)"
+      ],
+      "decision": "Resuelta en la guía vigente: la incorporación de colaboradores es opcional y no sustituye la responsabilidad del promotor sobre el cumplimiento de lo ofrecido.",
+      "affected_codes": [
+        "CF-PRE-PRO-019"
+      ],
+      "status": "resolved_in_guide",
+      "guide_modified": false,
+      "authorized_resolution": true,
+      "resolution_source": "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit",
+      "functional_reviewed_on": "2026-11-14",
+      "issue_scope": "Observación original conservada para trazabilidad; consultar la decisión vigente."
+    },
+    {
+      "id": "OBS-PRE-02",
+      "issue": "Listas diferentes de perfiles de colaboradores en los apartados de descuentos y de inicio de campaña",
+      "sections": [
+        "Descuentos aplicables (Precompra)",
+        "Inicio de campaña — Colaboradores (opcional)"
+      ],
+      "decision": "Resuelta en la guía vigente: descuentos y formulario coinciden en producción, atención al cliente, calidad y logística. Pueden acordarse otros roles; no deben presentarse como perfiles expresamente enumerados para el descuento.",
+      "affected_codes": [
+        "CF-PRE-PRO-020",
+        "CF-PRE-PRO-022",
+        "CF-PRE-COL-004"
+      ],
+      "status": "resolved_in_guide",
+      "guide_modified": false,
+      "authorized_resolution": true,
+      "resolution_source": "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit",
+      "functional_reviewed_on": "2026-11-14",
+      "issue_scope": "Observación original conservada para trazabilidad; consultar la decisión vigente."
+    },
+    {
+      "id": "OBS-PRE-03",
+      "issue": "No se precisa de modo inequívoco cómo combinar seguro de cumplimiento, prenda y carta de compromiso",
+      "sections": [
+        "Transferencia de fondos (Precompra) — campañas USD 10.000–470.000",
+        "Seguro de Cumplimiento",
+        "Garantía Real",
+        "Carta de compromiso"
+      ],
+      "decision": "Resuelta en la guía vigente: en campañas de USD 10.000,00 a USD 470.000,00 se elige seguro de cumplimiento o prenda; la carta con el representante acompaña a la prenda. La garantía se presenta dentro de los 15 días hábiles posteriores al cierre y debe validarse antes de transferir los fondos.",
+      "affected_codes": [
+        "CF-PRE-PRO-026",
+        "CF-PRE-PRO-027",
+        "CF-PRE-PRC-021"
+      ],
+      "status": "resolved_in_guide",
+      "guide_modified": false,
+      "authorized_resolution": true,
+      "resolution_source": "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit",
+      "functional_reviewed_on": "2026-11-14",
+      "issue_scope": "Observación original conservada para trazabilidad; consultar la decisión vigente."
+    },
+    {
+      "id": "OBS-PRE-04",
+      "issue": "La modalidad flexible no acredita una facultad de modificar unilateralmente prestaciones contratadas",
+      "sections": [
+        "Promotores — Modalidad flexible",
+        "Inicio de campaña — Modalidad",
+        "Procedimiento para reclamaciones y riesgo de pérdida"
+      ],
+      "decision": "Criterio aplicado: la modalidad flexible exige ejecutar con los recursos disponibles y no autoriza a alterar unilateralmente las unidades, características, plazos o condiciones contratadas.",
+      "affected_codes": [
+        "CF-PRE-PRO-004",
+        "CF-PRE-PRO-006",
+        "CF-PRE-PRO-031",
+        "CF-PRE-PRC-013"
+      ],
+      "status": "criterion_applied",
+      "guide_modified": false,
+      "authorized_resolution": true,
+      "resolution_source": "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit",
+      "functional_reviewed_on": "2026-11-14",
+      "issue_scope": "Observación original conservada para trazabilidad; consultar la decisión vigente."
+    },
+    {
+      "id": "OBS-PRE-05",
+      "issue": "Diferencia entre regla de modalidad fija y procedimiento de revisión para reversión",
+      "sections": [
+        "Promotores — Modalidad fija",
+        "Criterios para la Reversión de Fondos (Precompra)"
+      ],
+      "decision": "Criterio aplicado: la meta no alcanzada en modalidad fija es causal de reversión; deben distinguirse las causales, el proceso de revisión, la decisión y la devolución procedente.",
+      "affected_codes": [
+        "CF-PRE-PRO-007",
+        "CF-PRE-PRO-034",
+        "CF-PRE-PRO-036",
+        "CF-PRE-PRC-012",
+        "CF-PRE-PRC-019"
+      ],
+      "status": "criterion_applied",
+      "guide_modified": false,
+      "authorized_resolution": true,
+      "resolution_source": "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit",
+      "functional_reviewed_on": "2026-11-14",
+      "issue_scope": "Observación original conservada para trazabilidad; consultar la decisión vigente."
+    },
+    {
+      "id": "OBS-PRE-06",
+      "issue": "La notificación en Transferencia de fondos no prueba confirmación bancaria individual de la precompra",
+      "sections": [
+        "Transferencia de fondos (Precompra) — Envío de notificación",
+        "Transferencia de fondos (Precompra) — Modalidad elegida"
+      ],
+      "decision": "Criterio aplicado: la notificación descrita corresponde al apartado de transferencia de fondos; no se equipara a una confirmación bancaria individual de cada precompra.",
+      "affected_codes": [
+        "CF-PRE-PRO-029",
+        "CF-PRE-PRC-011"
+      ],
+      "status": "criterion_applied",
+      "guide_modified": false,
+      "authorized_resolution": true,
+      "resolution_source": "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit",
+      "functional_reviewed_on": "2026-11-14",
+      "issue_scope": "Observación original conservada para trazabilidad; consultar la decisión vigente."
+    },
+    {
+      "id": "OBS-PRE-07",
+      "issue": "Alcance de los siete tramos, la comisión mínima de USD 20 y el límite documentado de USD 470.000",
+      "sections": [
+        "Tarifas (Precompra)",
+        "Comisión al Financiamiento — tabla de tramos",
+        "Nota — Comisión mínima"
+      ],
+      "decision": "Criterio aplicado: se conservan los siete tramos de comisión y el mínimo de USD 20,00, sin extender las tasas fuera del intervalo documentado.",
+      "affected_codes": [
+        "CF-PRE-PRO-024"
+      ],
+      "status": "criterion_applied",
+      "guide_modified": false,
+      "authorized_resolution": true,
+      "resolution_source": "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit",
+      "functional_reviewed_on": "2026-11-14",
+      "issue_scope": "Observación original conservada para trazabilidad; consultar la decisión vigente."
+    },
+    {
+      "id": "OBS-PRE-08",
+      "issue": "El mecanismo de reclamación no asegura resolución favorable ni reembolso automático",
+      "sections": [
+        "Procedimiento para reclamaciones y riesgo de pérdida (Precompra)",
+        "Criterios para la Reversión de Fondos (Precompra)"
+      ],
+      "decision": "Actualizada con la guía vigente: iskay.app registra y deriva las reclamaciones; no asume representación jurídica, ejecución de garantías ni seguimiento jurídico. Las garantías no aseguran por sí solas la entrega ni la recuperación íntegra de lo pagado.",
+      "affected_codes": [
+        "CF-PRE-PRO-033",
+        "CF-PRE-PRC-002",
+        "CF-PRE-PRC-017"
+      ],
+      "status": "resolved_in_guide",
+      "guide_modified": false,
+      "authorized_resolution": true,
+      "resolution_source": "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit",
+      "functional_reviewed_on": "2026-11-14",
+      "issue_scope": "Observación original conservada para trazabilidad; consultar la decisión vigente."
+    }
+  ],
+  "guide_review_closed_on": "2026-11-14",
+  "source_checked_on": "2026-11-14",
+  "functional_reviewed_on": "2026-11-14",
+  "guide_modification_scope": "guide_modified se refiere solo a esta sincronización de fichas: no se modifica la guía. La fuente vigente ya incorpora los ajustes cerrados por el propietario el 2026-11-14.",
+  "publication_authorization": {
+    "status": "authorized",
+    "authorized_on": "2026-11-14",
+    "scope": "66 fichas, tres roles y 19 etapas de Precompra en Cómo funciona",
+    "editorial_review_deferred": true,
+    "source": "Instrucción expresa del propietario en la conversación del proyecto",
+    "canonical_source_path": "ideas/precompra/"
+  }
+}

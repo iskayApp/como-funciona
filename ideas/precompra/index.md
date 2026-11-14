@@ -1,9 +1,22 @@
+---
+layout: default
+title: "Precompra"
+description: "Comprende la Precompra desde las perspectivas de Promotores, Precompradores y Colaboradores."
+permalink: /precompra/
+category: "Precompra"
+status: "published"
+publication_status: "published"
+editorial_status: "pending_review"
+published: true
+visibility: "public"
+reviewed: false
+---
+
 # Precompra
 
-Documentación didáctica de la categoría **Precompra**.
+Conoce el funcionamiento de las campañas de Precompra desde el recorrido que corresponda a tu participación.
 
-## Recorridos
+{% include fr-context.html %}
+{% include fr-role-cards.html %}
 
-- [Promotores](./promotores/)
-
-Otros recorridos se incorporarán cuando sean desarrollados y aprobados.
+[Buscar una explicación]({{ '/' | relative_url }}#buscar) · [Recibir orientación]({{ '/' | relative_url }}#orientacion)

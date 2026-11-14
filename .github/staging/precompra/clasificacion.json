@@ -1,0 +1,841 @@
+{
+  "schema_version": 1,
+  "category": "Precompra",
+  "record_status": "functional_review_completed_editorial_pending",
+  "guide_source": "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit",
+  "guide_version": "No indicada expresamente",
+  "guide_review_closed_on": "2026-11-14",
+  "source_checked_on": "2026-11-14",
+  "functional_review_status": "completed",
+  "functional_reviewed_on": "2026-11-14",
+  "editorial_source_url": "https://docs.google.com/document/d/1Pd2yV_rvyVJF1PaCr-3zaPm92HS6oKIOXt__I5gFxME",
+  "source_note": "Transcripción de los 116 registros de CLASIFICAR contrastados con la guía vigente. No acredita implementación operativa ni aprobación editorial de las fichas.",
+  "counts": {
+    "records": 116,
+    "source_sections": 12,
+    "types": {
+      "CON": 17,
+      "COND": 44,
+      "DER": 3,
+      "OBL": 26,
+      "FAC": 12,
+      "EST": 3,
+      "PRO": 9,
+      "RIES": 2
+    }
+  },
+  "records": [
+    {
+      "id": "CL-PRE-001",
+      "type": "CON",
+      "actor": "Todos",
+      "text": "Precompra consiste en anticipar dinero para producir un bien o gestionar un servicio.",
+      "source_section": "Definición."
+    },
+    {
+      "id": "CL-PRE-002",
+      "type": "COND",
+      "actor": "Promotor / Precomprador",
+      "text": "El bien o servicio se entrega o ejecuta cuando se cumplen las condiciones publicadas por el promotor.",
+      "source_section": "Definición."
+    },
+    {
+      "id": "CL-PRE-003",
+      "type": "CON",
+      "actor": "Todos",
+      "text": "La categoría busca medir la aceptación del mercado y captar futuros consumidores o usuarios.",
+      "source_section": "Definición."
+    },
+    {
+      "id": "CL-PRE-004",
+      "type": "DER",
+      "actor": "Precomprador",
+      "text": "Puede acceder anticipadamente a productos o servicios aún no lanzados al mercado.",
+      "source_section": "Dirigido a > Precompradores."
+    },
+    {
+      "id": "CL-PRE-005",
+      "type": "COND",
+      "actor": "Precomprador",
+      "text": "El promotor define el precio del producto o servicio ofertado.",
+      "source_section": "Precompra en iskay.app > Precios justos."
+    },
+    {
+      "id": "CL-PRE-006",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe informar especificaciones, plazos de entrega y condiciones de reembolso.",
+      "source_section": "Precompra en iskay.app > Transparencia en condiciones."
+    },
+    {
+      "id": "CL-PRE-007",
+      "type": "CON",
+      "actor": "Todos",
+      "text": "La producción, calidad, atención y logística pueden contar con colaboradores de la iniciativa.",
+      "source_section": "Precompra en iskay.app > Confianza y acompañamiento."
+    },
+    {
+      "id": "CL-PRE-008",
+      "type": "CON",
+      "actor": "Promotor",
+      "text": "Puede ser persona natural o jurídica de sectores público, privado, comunitario o de economía popular y solidaria.",
+      "source_section": "Promotores."
+    },
+    {
+      "id": "CL-PRE-009",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Se compromete a entregar el bien o servicio ofrecido bajo las condiciones de campaña.",
+      "source_section": "Promotores."
+    },
+    {
+      "id": "CL-PRE-010",
+      "type": "CON",
+      "actor": "Promotor",
+      "text": "La campaña permite anticipar ingresos y validar la aceptación con compradores reales.",
+      "source_section": "Promotores."
+    },
+    {
+      "id": "CL-PRE-011",
+      "type": "CON",
+      "actor": "Colaborador",
+      "text": "Participa directamente en funciones operativas y en el cumplimiento de entregables.",
+      "source_section": "Colaboradores."
+    },
+    {
+      "id": "CL-PRE-012",
+      "type": "FAC",
+      "actor": "Promotor / Colaborador",
+      "text": "Pueden pactar servicios y una eventual retribución económica de forma independiente.",
+      "source_section": "Colaboradores."
+    },
+    {
+      "id": "CL-PRE-013",
+      "type": "COND",
+      "actor": "iskay.app",
+      "text": "La plataforma no interviene en el acuerdo económico entre promotor y colaborador.",
+      "source_section": "Colaboradores."
+    },
+    {
+      "id": "CL-PRE-014",
+      "type": "COND",
+      "actor": "Colaborador",
+      "text": "Su nombre y rol se presentan públicamente en la campaña según la guía.",
+      "source_section": "Sé un colaborador en Precompra de iskay.app."
+    },
+    {
+      "id": "CL-PRE-015",
+      "type": "CON",
+      "actor": "Colaborador",
+      "text": "Puede aportar en producción, atención, control de calidad, logística y postventa.",
+      "source_section": "Sé un colaborador en Precompra de iskay.app."
+    },
+    {
+      "id": "CL-PRE-016",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "Debe elegir una sola modalidad antes de iniciar la campaña: fija o flexible.",
+      "source_section": "Promotores > Modalidades."
+    },
+    {
+      "id": "CL-PRE-017",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "En modalidad fija debe alcanzar el 100 % de la meta en el plazo publicado para recibir los fondos.",
+      "source_section": "Promotores > Modalidad fija."
+    },
+    {
+      "id": "CL-PRE-018",
+      "type": "EST",
+      "actor": "Promotor / Precomprador",
+      "text": "En modalidad fija, la meta no alcanzada conduce a reversión conforme a la guía.",
+      "source_section": "Promotores > Modalidad fija."
+    },
+    {
+      "id": "CL-PRE-019",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "En modalidad flexible puede recibir el monto efectivamente recaudado después del cierre aunque no alcance la meta, una vez cumplidos los requisitos de transferencia aplicables.",
+      "source_section": "Promotores > Modalidad flexible; Transferencia de fondos > Modalidad elegida y Garantías aplicables."
+    },
+    {
+      "id": "CL-PRE-020",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "En modalidad flexible debe planificar la ejecución con los recursos disponibles.",
+      "source_section": "Promotores > Modalidad flexible."
+    },
+    {
+      "id": "CL-PRE-021",
+      "type": "PRO",
+      "actor": "Promotor",
+      "text": "La modalidad seleccionada determina la planificación de la producción, ejecución y riesgo.",
+      "source_section": "Promotores > Elección de modalidad."
+    },
+    {
+      "id": "CL-PRE-022",
+      "type": "COND",
+      "actor": "Todos",
+      "text": "La modalidad publicada condiciona cómo se procesará la transferencia de fondos.",
+      "source_section": "Transferencia de fondos (Precompra) > Modalidad elegida."
+    },
+    {
+      "id": "CL-PRE-023",
+      "type": "FAC",
+      "actor": "Promotor",
+      "text": "Puede incorporar colaboradores como opción, sin imponer colaboración universal a toda campaña.",
+      "source_section": "Descuentos aplicables (Precompra)."
+    },
+    {
+      "id": "CL-PRE-024",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "Los colaboradores para descuentos deben incorporarse antes del inicio de la campaña.",
+      "source_section": "Descuentos aplicables (Precompra) > Importante."
+    },
+    {
+      "id": "CL-PRE-025",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe identificar a los colaboradores con roles y responsabilidades asignados.",
+      "source_section": "Descuentos aplicables (Precompra) > Importante."
+    },
+    {
+      "id": "CL-PRE-026",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "Cada colaborador registrado representa 0,50 % de descuento sobre la comisión general.",
+      "source_section": "Descuentos aplicables (Precompra)."
+    },
+    {
+      "id": "CL-PRE-027",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "El descuento acumulado máximo es 2,00 %.",
+      "source_section": "Descuentos aplicables (Precompra)."
+    },
+    {
+      "id": "CL-PRE-028",
+      "type": "FAC",
+      "actor": "Promotor",
+      "text": "Puede agregar más colaboradores que los necesarios para alcanzar el descuento máximo.",
+      "source_section": "Descuentos aplicables (Precompra) > Importante."
+    },
+    {
+      "id": "CL-PRE-029",
+      "type": "CON",
+      "actor": "Colaborador",
+      "text": "La guía menciona al responsable de producción entre los perfiles de descuento.",
+      "source_section": "Descuentos aplicables (Precompra) > Responsable de Producción."
+    },
+    {
+      "id": "CL-PRE-030",
+      "type": "CON",
+      "actor": "Colaborador",
+      "text": "La guía menciona al gestor de calidad o control técnico entre los perfiles de descuento.",
+      "source_section": "Descuentos aplicables (Precompra) > Gestor de Calidad o Control Técnico."
+    },
+    {
+      "id": "CL-PRE-031",
+      "type": "CON",
+      "actor": "Colaborador",
+      "text": "La guía menciona atención al cliente y postventa entre los perfiles de descuento.",
+      "source_section": "Descuentos aplicables (Precompra) > Atención al cliente y postventa."
+    },
+    {
+      "id": "CL-PRE-032",
+      "type": "CON",
+      "actor": "Colaborador",
+      "text": "La guía menciona al encargado de entregas o logística entre los perfiles de descuento.",
+      "source_section": "Descuentos aplicables (Precompra) > Encargado de Entregas o Logística."
+    },
+    {
+      "id": "CL-PRE-033",
+      "type": "COND",
+      "actor": "Promotor / Colaborador",
+      "text": "Los descuentos no dependen del eventual acuerdo de retribución pactado entre ambas partes.",
+      "source_section": "Descuentos al agregar Colaboradores > Nota."
+    },
+    {
+      "id": "CL-PRE-034",
+      "type": "COND",
+      "actor": "Precomprador",
+      "text": "iskay.app no cobra comisión a la persona que realiza la precompra.",
+      "source_section": "Tarifas (Precompra) > Comisión al Precomprador."
+    },
+    {
+      "id": "CL-PRE-035",
+      "type": "COND",
+      "actor": "Precomprador",
+      "text": "Puede afrontar gastos bancarios relacionados con transferencias o reversiones.",
+      "source_section": "Tarifas (Precompra) > Comisión al Precomprador."
+    },
+    {
+      "id": "CL-PRE-036",
+      "type": "PRO",
+      "actor": "Promotor",
+      "text": "La comisión de financiamiento se calcula al finalizar la campaña según el monto recaudado.",
+      "source_section": "Comisión al Financiamiento > Nota."
+    },
+    {
+      "id": "CL-PRE-037",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "La comisión mínima es USD 20,00.",
+      "source_section": "Comisión al Financiamiento > Nota."
+    },
+    {
+      "id": "CL-PRE-038",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "Tramo USD 1,00–9.999,99: 5,50 % sin descuento y 3,50 % con descuento máximo.",
+      "source_section": "Comisión al Financiamiento > Tabla."
+    },
+    {
+      "id": "CL-PRE-039",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "Tramo USD 10.000,00–19.999,99: 5,00 % sin descuento y 3,00 % con descuento máximo.",
+      "source_section": "Comisión al Financiamiento > Tabla."
+    },
+    {
+      "id": "CL-PRE-040",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "Tramo USD 20.000,00–39.999,99: 4,50 % sin descuento y 2,50 % con descuento máximo.",
+      "source_section": "Comisión al Financiamiento > Tabla."
+    },
+    {
+      "id": "CL-PRE-041",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "Tramo USD 40.000,00–59.999,99: 4,00 % sin descuento y 2,00 % con descuento máximo.",
+      "source_section": "Comisión al Financiamiento > Tabla."
+    },
+    {
+      "id": "CL-PRE-042",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "Tramo USD 60.000,00–99.999,99: 3,50 % sin descuento y 1,50 % con descuento máximo.",
+      "source_section": "Comisión al Financiamiento > Tabla."
+    },
+    {
+      "id": "CL-PRE-043",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "Tramo USD 100.000,00–199.999,99: 3,00 % sin descuento y 1,00 % con descuento máximo.",
+      "source_section": "Comisión al Financiamiento > Tabla."
+    },
+    {
+      "id": "CL-PRE-044",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "Tramo USD 200.000,00–470.000,00: 2,50 % sin descuento y 0,50 % con descuento máximo.",
+      "source_section": "Comisión al Financiamiento > Tabla."
+    },
+    {
+      "id": "CL-PRE-045",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Se espera que utilice los fondos conforme al destino declarado.",
+      "source_section": "Procedimiento para reclamaciones y riesgo de pérdida."
+    },
+    {
+      "id": "CL-PRE-046",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe informar avances, logros o dificultades mediante actualizaciones dentro de la plataforma.",
+      "source_section": "Procedimiento para reclamaciones y riesgo de pérdida."
+    },
+    {
+      "id": "CL-PRE-047",
+      "type": "EST",
+      "actor": "Promotor / Precomprador",
+      "text": "El contrato electrónico entre promotor y comprador se activa al realizar la precompra.",
+      "source_section": "Procedimiento para reclamaciones y riesgo de pérdida."
+    },
+    {
+      "id": "CL-PRE-048",
+      "type": "COND",
+      "actor": "Promotor / Precomprador",
+      "text": "El contrato fija las condiciones para entregar el bien o servicio una vez finalizada la campaña.",
+      "source_section": "Procedimiento para reclamaciones y riesgo de pérdida."
+    },
+    {
+      "id": "CL-PRE-049",
+      "type": "DER",
+      "actor": "Precomprador",
+      "text": "Puede iniciar un reclamo ante incumplimiento del promotor bajo normativa aplicable.",
+      "source_section": "Procedimiento para reclamaciones y riesgo de pérdida."
+    },
+    {
+      "id": "CL-PRE-050",
+      "type": "PRO",
+      "actor": "Precomprador",
+      "text": "Puede registrar una reclamación en iskay.app si el promotor no cumple la entrega en los términos ofrecidos.",
+      "source_section": "Procedimiento para reclamaciones y riesgo de pérdida."
+    },
+    {
+      "id": "CL-PRE-051",
+      "type": "PRO",
+      "actor": "iskay.app",
+      "text": "Registra la incidencia comunicada por el precomprador y la deriva al canal correspondiente.",
+      "source_section": "Procedimiento para reclamaciones y riesgo de pérdida."
+    },
+    {
+      "id": "CL-PRE-052",
+      "type": "COND",
+      "actor": "iskay.app",
+      "text": "No asume la representación jurídica, la ejecución de garantías ni el seguimiento jurídico del procedimiento.",
+      "source_section": "Procedimiento para reclamaciones y riesgo de pérdida."
+    },
+    {
+      "id": "CL-PRE-053",
+      "type": "RIES",
+      "actor": "Precomprador",
+      "text": "La compra anticipada tiene riesgos de incumplimiento o entrega deficiente que no desaparecen por los controles de plataforma.",
+      "source_section": "Procedimiento para reclamaciones y riesgo de pérdida."
+    },
+    {
+      "id": "CL-PRE-054",
+      "type": "OBL",
+      "actor": "Precomprador",
+      "text": "Debe leer las condiciones de cada iniciativa y realizar una decisión informada.",
+      "source_section": "Procedimiento para reclamaciones y riesgo de pérdida."
+    },
+    {
+      "id": "CL-PRE-055",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "Los canales oficiales de contacto y resolución de reclamos son gestionados por el equipo de la iniciativa o un consultor externo.",
+      "source_section": "Procedimiento para reclamaciones y riesgo de pérdida."
+    },
+    {
+      "id": "CL-PRE-056",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe identificar comercialmente el producto o servicio mediante el nombre de la iniciativa.",
+      "source_section": "Inicio de campaña > Datos generales > Nombre."
+    },
+    {
+      "id": "CL-PRE-057",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe incorporar una descripción corta del proyecto y del uso principal de los fondos.",
+      "source_section": "Inicio de campaña > Datos generales > Descripción corta."
+    },
+    {
+      "id": "CL-PRE-058",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe especificar la cantidad total de unidades a producir o servicios a ejecutar.",
+      "source_section": "Inicio de campaña > Datos generales > Unidades a producir."
+    },
+    {
+      "id": "CL-PRE-059",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe fijar el precio por unidad durante la campaña.",
+      "source_section": "Inicio de campaña > Datos generales > Precio por unidad."
+    },
+    {
+      "id": "CL-PRE-060",
+      "type": "FAC",
+      "actor": "Promotor",
+      "text": "Puede aplicar un descuento al precio de Precompra.",
+      "source_section": "Inicio de campaña > Datos generales > Descuento (si aplica)."
+    },
+    {
+      "id": "CL-PRE-061",
+      "type": "FAC",
+      "actor": "Promotor",
+      "text": "Puede fijar una cantidad mínima por pedido cuando se requiera producción por volumen.",
+      "source_section": "Inicio de campaña > Datos generales > Cantidad mínima por pedido."
+    },
+    {
+      "id": "CL-PRE-062",
+      "type": "PRO",
+      "actor": "Sistema",
+      "text": "Calcula el monto solicitado a partir de unidades, precio unitario y descuentos aplicables.",
+      "source_section": "Inicio de campaña > Datos generales > Monto solicitado."
+    },
+    {
+      "id": "CL-PRE-063",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "La meta económica es orientativa y puede alcanzarse o no, con efectos según la modalidad.",
+      "source_section": "Inicio de campaña > Datos generales > Monto solicitado."
+    },
+    {
+      "id": "CL-PRE-064",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "El período de recaudación no puede superar seis meses.",
+      "source_section": "Inicio de campaña > Datos generales > Período de campaña."
+    },
+    {
+      "id": "CL-PRE-065",
+      "type": "FAC",
+      "actor": "Promotor",
+      "text": "Puede indicar una fecha futura de inicio y publicar en modo Precampaña.",
+      "source_section": "Inicio de campaña > Datos generales > Período de campaña."
+    },
+    {
+      "id": "CL-PRE-066",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe seleccionar la modalidad fija o flexible para la campaña.",
+      "source_section": "Inicio de campaña > Datos generales > Modalidad."
+    },
+    {
+      "id": "CL-PRE-067",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe confirmar el compromiso de efectuar al menos una publicación informativa posterior.",
+      "source_section": "Inicio de campaña > Datos generales > Compromiso de actualización."
+    },
+    {
+      "id": "CL-PRE-068",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe describir con precisión materiales, tamaño, presentación, alcance u otras características relevantes.",
+      "source_section": "Inicio de campaña > Descripción completa."
+    },
+    {
+      "id": "CL-PRE-069",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe informar el plazo de entrega en días.",
+      "source_section": "Inicio de campaña > Descripción completa > Plazo de entrega."
+    },
+    {
+      "id": "CL-PRE-070",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe indicar la forma de entrega del producto o de prestación del servicio.",
+      "source_section": "Inicio de campaña > Descripción completa > Forma de entrega."
+    },
+    {
+      "id": "CL-PRE-071",
+      "type": "PRO",
+      "actor": "Promotor",
+      "text": "La forma de entrega se elige de una lista según la guía.",
+      "source_section": "Inicio de campaña > Descripción completa > Forma de entrega."
+    },
+    {
+      "id": "CL-PRE-072",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe detallar políticas de cancelación o reembolso ante imposibilidad de cumplir la entrega.",
+      "source_section": "Inicio de campaña > Descripción completa > Condiciones de cancelación o reembolso."
+    },
+    {
+      "id": "CL-PRE-073",
+      "type": "FAC",
+      "actor": "Promotor",
+      "text": "Puede definir restricciones o condiciones especiales cuando correspondan.",
+      "source_section": "Inicio de campaña > Descripción completa > Condiciones especiales."
+    },
+    {
+      "id": "CL-PRE-074",
+      "type": "PRO",
+      "actor": "Promotor",
+      "text": "Las condiciones especiales se seleccionan de una lista según la guía.",
+      "source_section": "Inicio de campaña > Descripción completa > Condiciones especiales."
+    },
+    {
+      "id": "CL-PRE-075",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe declarar la ubicación geográfica donde se desarrollará la iniciativa.",
+      "source_section": "Inicio de campaña > Descripción completa > Ubicación."
+    },
+    {
+      "id": "CL-PRE-076",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe añadir al menos una imagen o vídeo del bien o servicio ofrecido.",
+      "source_section": "Inicio de campaña > Multimedia."
+    },
+    {
+      "id": "CL-PRE-077",
+      "type": "FAC",
+      "actor": "Promotor",
+      "text": "Puede agregar colaboradores opcionalmente a la iniciativa.",
+      "source_section": "Inicio de campaña > Colaboradores (opcional)."
+    },
+    {
+      "id": "CL-PRE-078",
+      "type": "CON",
+      "actor": "Colaborador",
+      "text": "La lista del formulario incluye responsable de producción o fabricación.",
+      "source_section": "Inicio de campaña > Colaboradores (opcional) > Producción."
+    },
+    {
+      "id": "CL-PRE-079",
+      "type": "CON",
+      "actor": "Colaborador",
+      "text": "La lista del formulario incluye encargado de servicio al cliente o postventa.",
+      "source_section": "Inicio de campaña > Colaboradores (opcional) > Servicio al cliente."
+    },
+    {
+      "id": "CL-PRE-080",
+      "type": "CON",
+      "actor": "Colaborador",
+      "text": "La lista del formulario incluye gestor de calidad o control técnico.",
+      "source_section": "Inicio de campaña > Colaboradores (opcional) > Calidad."
+    },
+    {
+      "id": "CL-PRE-081",
+      "type": "CON",
+      "actor": "Colaborador",
+      "text": "La lista del formulario incluye encargado de entregas o logística.",
+      "source_section": "Inicio de campaña > Colaboradores (opcional) > Logística."
+    },
+    {
+      "id": "CL-PRE-082",
+      "type": "FAC",
+      "actor": "Promotor",
+      "text": "Puede agregar otros colaboradores y roles distintos de los enumerados.",
+      "source_section": "Inicio de campaña > Colaboradores (opcional)."
+    },
+    {
+      "id": "CL-PRE-083",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe registrar una cuenta bancaria activa una sola vez en su perfil.",
+      "source_section": "Transferencia de fondos > Registro de cuenta bancaria."
+    },
+    {
+      "id": "CL-PRE-084",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe presentar certificado bancario reciente de titularidad, número y estado activo.",
+      "source_section": "Transferencia de fondos > Registro de cuenta bancaria."
+    },
+    {
+      "id": "CL-PRE-085",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "La cuenta registrada debe poder recibir los fondos correspondientes.",
+      "source_section": "Transferencia de fondos > Registro de cuenta bancaria."
+    },
+    {
+      "id": "CL-PRE-086",
+      "type": "PRO",
+      "actor": "iskay.app",
+      "text": "Los precompradores reciben notificación de confirmación en el apartado de transferencia de fondos.",
+      "source_section": "Transferencia de fondos > Envío de notificación."
+    },
+    {
+      "id": "CL-PRE-087",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "La entrega de fondos bajo modalidad fija exige recaudar el 100 % del objetivo publicado.",
+      "source_section": "Transferencia de fondos > Modalidad elegida."
+    },
+    {
+      "id": "CL-PRE-088",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "La entrega bajo modalidad flexible corresponde al monto recaudado aunque no alcance el objetivo.",
+      "source_section": "Transferencia de fondos > Modalidad elegida."
+    },
+    {
+      "id": "CL-PRE-089",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "La guía exige una garantía para campañas desde USD 10.000,00 hasta USD 470.000,00.",
+      "source_section": "Transferencia de fondos > Garantías aplicables."
+    },
+    {
+      "id": "CL-PRE-090",
+      "type": "CON",
+      "actor": "Promotor",
+      "text": "El seguro de cumplimiento cubre el riesgo de no entrega o entrega defectuosa del bien o servicio.",
+      "source_section": "Transferencia de fondos > Seguro de Cumplimiento."
+    },
+    {
+      "id": "CL-PRE-091",
+      "type": "CON",
+      "actor": "Promotor",
+      "text": "La garantía real consiste en un contrato de prenda sobre activos.",
+      "source_section": "Transferencia de fondos > Garantía Real."
+    },
+    {
+      "id": "CL-PRE-092",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Al optar por la garantía real, debe suscribir una carta de compromiso con el representante legal de los precompradores.",
+      "source_section": "Transferencia de fondos > Garantía Real > Carta de compromiso con el representante legal de los precompradores."
+    },
+    {
+      "id": "CL-PRE-093",
+      "type": "COND",
+      "actor": "Promotor / Representante",
+      "text": "La carta se firma con un abogado o una entidad legal debidamente constituida que represente a los precompradores en reclamos colectivos o procesos legales.",
+      "source_section": "Transferencia de fondos > Garantía Real > Carta de compromiso con el representante legal de los precompradores."
+    },
+    {
+      "id": "CL-PRE-094",
+      "type": "COND",
+      "actor": "Promotor / Representante",
+      "text": "La carta debe establecer mecanismos de actuación ante fraude, negligencia o incumplimiento y procedimientos para defender y proteger los intereses de los precompradores.",
+      "source_section": "Transferencia de fondos > Garantía Real > Carta de compromiso con el representante legal de los precompradores."
+    },
+    {
+      "id": "CL-PRE-109",
+      "type": "FAC",
+      "actor": "Promotor",
+      "text": "Puede elegir entre seguro de cumplimiento y garantía real mediante prenda la garantía que mejor se adecue a su situación.",
+      "source_section": "Transferencia de fondos > Garantías aplicables."
+    },
+    {
+      "id": "CL-PRE-110",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "Debe presentar la garantía exigible después del cierre de la campaña y dentro de un plazo de 15 días hábiles.",
+      "source_section": "Transferencia de fondos > Garantías aplicables."
+    },
+    {
+      "id": "CL-PRE-111",
+      "type": "COND",
+      "actor": "Promotor / iskay.app",
+      "text": "Los fondos no se transferirán mientras no se haya validado la garantía exigible.",
+      "source_section": "Transferencia de fondos > Garantías aplicables."
+    },
+    {
+      "id": "CL-PRE-112",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "La póliza debe identificar a los precompradores protegidos.",
+      "source_section": "Transferencia de fondos > Seguro de Cumplimiento."
+    },
+    {
+      "id": "CL-PRE-113",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "La póliza debe identificar el importe asegurado.",
+      "source_section": "Transferencia de fondos > Seguro de Cumplimiento."
+    },
+    {
+      "id": "CL-PRE-114",
+      "type": "OBL",
+      "actor": "Promotor",
+      "text": "La póliza debe identificar el procedimiento para presentar una reclamación.",
+      "source_section": "Transferencia de fondos > Seguro de Cumplimiento."
+    },
+    {
+      "id": "CL-PRE-115",
+      "type": "FAC",
+      "actor": "Promotor",
+      "text": "Puede elegir la aseguradora entre las autorizadas para operar en Ecuador.",
+      "source_section": "Transferencia de fondos > Seguro de Cumplimiento."
+    },
+    {
+      "id": "CL-PRE-116",
+      "type": "RIES",
+      "actor": "Precomprador",
+      "text": "Las garantías no aseguran por sí solas la entrega ni la recuperación íntegra de lo pagado.",
+      "source_section": "Procedimiento para reclamaciones y riesgo de pérdida."
+    },
+    {
+      "id": "CL-PRE-095",
+      "type": "EST",
+      "actor": "Todos",
+      "text": "Las causales enumeradas activan un proceso de revisión de iskay.app.",
+      "source_section": "Criterios para la Reversión de Fondos."
+    },
+    {
+      "id": "CL-PRE-096",
+      "type": "PRO",
+      "actor": "iskay.app",
+      "text": "Notifica al promotor y a precompradores la decisión de reversión y pasos a seguir.",
+      "source_section": "Criterios para la Reversión de Fondos."
+    },
+    {
+      "id": "CL-PRE-097",
+      "type": "DER",
+      "actor": "Precomprador",
+      "text": "Una reversión procedente devuelve el dinero a la cuenta utilizada para precomprar.",
+      "source_section": "Criterios para la Reversión de Fondos."
+    },
+    {
+      "id": "CL-PRE-098",
+      "type": "COND",
+      "actor": "Precomprador",
+      "text": "iskay.app no aplica comisión por la reversión.",
+      "source_section": "Criterios para la Reversión de Fondos."
+    },
+    {
+      "id": "CL-PRE-099",
+      "type": "COND",
+      "actor": "Precomprador",
+      "text": "Los posibles gastos bancarios de la reversión corresponden al precomprador.",
+      "source_section": "Criterios para la Reversión de Fondos."
+    },
+    {
+      "id": "CL-PRE-100",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "No alcanzar el 100 % de la meta en modalidad fija es causal de reversión.",
+      "source_section": "Criterios para la Reversión de Fondos > Meta no alcanzada."
+    },
+    {
+      "id": "CL-PRE-101",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "El retiro voluntario antes del cierre es causal de revisión.",
+      "source_section": "Criterios para la Reversión de Fondos > Retiro voluntario."
+    },
+    {
+      "id": "CL-PRE-102",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "Presentar información falsa o fraudulenta durante la recaudación es causal de revisión.",
+      "source_section": "Criterios para la Reversión de Fondos > Falsedad."
+    },
+    {
+      "id": "CL-PRE-103",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "La información incompleta o la falta de documentación necesaria en cualquiera de las etapas es causal de revisión.",
+      "source_section": "Criterios para la Reversión de Fondos > Falta de información o documentación básica."
+    },
+    {
+      "id": "CL-PRE-104",
+      "type": "FAC",
+      "actor": "iskay.app",
+      "text": "Ante información incompleta o falta de documentación necesaria puede suspender, cancelar o rechazar la campaña y proceder a la reversión de los fondos recaudados.",
+      "source_section": "Criterios para la Reversión de Fondos > Falta de información o documentación básica."
+    },
+    {
+      "id": "CL-PRE-105",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "Antecedentes de mala ejecución, fraude o negligencia son causal de revisión.",
+      "source_section": "Criterios para la Reversión de Fondos > Antecedentes."
+    },
+    {
+      "id": "CL-PRE-106",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "Insolvencia, quiebra, liquidación o inhabilitación legal son causal de revisión.",
+      "source_section": "Criterios para la Reversión de Fondos > Quiebra."
+    },
+    {
+      "id": "CL-PRE-107",
+      "type": "COND",
+      "actor": "Promotor",
+      "text": "Actividades ilegales o contrarias a las políticas de iskay.app son causal de revisión.",
+      "source_section": "Criterios para la Reversión de Fondos > Incumplimiento de políticas."
+    },
+    {
+      "id": "CL-PRE-108",
+      "type": "COND",
+      "actor": "Todos",
+      "text": "Fuerza mayor o causas externas que impidan continuar, determinadas por plataforma o autoridad, son causal de revisión.",
+      "source_section": "Criterios para la Reversión de Fondos > Fuerza mayor."
+    }
+  ]
+}

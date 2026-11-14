@@ -11,12 +11,14 @@ from check_donation_navigation import inventory
 
 
 class CategoryBaseTests(unittest.TestCase):
-    def test_registry_has_three_available_categories_and_two_preparations(self):
+    def test_registry_has_four_available_categories_and_one_preparation(self):
         categories = yaml.safe_load((ROOT / '_data/categories.yml').read_text())
         self.assertEqual(len(categories), 5)
         self.assertEqual(len({c['id'] for c in categories}), 5)
         self.assertEqual(len({c['url'] for c in categories}), 5)
-        self.assertEqual([c['id'] for c in categories if c['status'] == 'available'], ['financiamiento-reembolsable', 'donacion', 'recompensa'])
+        self.assertEqual([c['id'] for c in categories if c['status'] == 'available'], [
+            'financiamiento-reembolsable', 'donacion', 'recompensa', 'precompra',
+        ])
         self.assertEqual([r['name'] for r in categories[0]['roles']], ['Promotores', 'Inversores', 'Colaboradores'])
         donation = next(c for c in categories if c['id'] == 'donacion')
         self.assertEqual(donation['status'], 'available')
@@ -30,9 +32,17 @@ class CategoryBaseTests(unittest.TestCase):
         self.assertEqual([r['name'] for r in reward['roles']], [
             'Promotores', 'Contribuyentes', 'Colaboradores',
         ])
-        for category in categories[3:]:
-            self.assertEqual(category['status'], 'preparation')
-            self.assertEqual(category['roles'], [])
+        precompra = next(c for c in categories if c['id'] == 'precompra')
+        self.assertEqual(precompra['status'], 'available')
+        self.assertEqual([r['name'] for r in precompra['roles']], [
+            'Promotores', 'Precompradores', 'Colaboradores',
+        ])
+        self.assertEqual([r['url'] for r in precompra['roles']], [
+            '/precompra/promotores/', '/precompra/precompradores/', '/precompra/colaboradores/',
+        ])
+        preparation = [c for c in categories if c['status'] == 'preparation']
+        self.assertEqual([c['id'] for c in preparation], ['inversion-en-acciones'])
+        self.assertEqual(preparation[0]['roles'], [])
 
     def test_donation_publication_keeps_editorial_review_pending(self):
         config, _, _, pages, topics = inventory(ROOT)

@@ -70,7 +70,7 @@ def source_details(meta):
     label = parts[0] if parts else ''
     sections = [s.strip().rstrip('.') for s in parts[1].split(';') if s.strip()] if len(parts) > 1 else []
     version = text(meta.get('guide_version'))
-    known = bool(version) and not any(s in version.casefold() for s in ('no identificada', 'sin identificar', 'sin versión'))
+    known = bool(version) and not any(s in version.casefold() for s in ('no identificada', 'no indicada', 'sin identificar', 'sin versión'))
     return {'label': label, 'sections': sections, 'reference': raw,
             'version': version or None, 'version_identified': known}
 
