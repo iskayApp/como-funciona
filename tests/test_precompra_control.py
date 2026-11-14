@@ -1,4 +1,4 @@
-"""Pruebas de controles no publicables de Precompra."""
+"""Trazabilidad de fichas públicas y controles documentales de Precompra."""
 import json
 from pathlib import Path
 import unittest
@@ -7,7 +7,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 STAGING = ROOT / ".github" / "staging" / "precompra"
-FICHAS = STAGING / "ideas" / "precompra"
+FICHAS = ROOT / "ideas" / "precompra"
 REVIEW_DATE = "2026-11-14"
 GUIDE_SOURCE = "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
 

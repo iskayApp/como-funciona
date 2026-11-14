@@ -2,7 +2,7 @@
   "schema_version": 1,
   "category": "Precompra",
   "prepared_on": "2026-11-11",
-  "purpose": "Inventario de correspondencias conceptuales candidatas; no es autorización de publicación ni vinculación audiovisual.",
+  "purpose": "Inventario de correspondencias audiovisuales candidatas; no acredita publicaciones sociales ni vínculos comprobados.",
   "calendar_source": "https://drive.google.com/file/d/1GDd5KqeicPLC3c4UNEWzd2m4I3_mPXBn/view",
   "marketing_plan": "https://docs.google.com/document/d/1Etd_iTMmMXiqQk5OuOkK0SkaomO2ojuI/edit",
   "source_validation": "Se contrastaron documentos de producción con el calendario. Ninguna URL original pública de Facebook o TikTok fue validada.",
@@ -63,7 +63,7 @@
       "rationale": "La pieza presenta los elementos iniciales para definir una oferta: producto/servicio, unidades, precio, entrega y multimedia."
     }
   ],
-  "publication_gate": "No crear marketing_pieces, media, distribution ni enlaces públicos en ninguna ficha sin URL oficial comprobada, categoría y rol confirmados y autorización correspondiente.",
+  "publication_gate": "No crear marketing_pieces, media, distribution ni enlaces a publicaciones audiovisuales sin URL oficial comprobada, categoría y rol confirmados y autorización correspondiente.",
   "reconciled_on": "2026-11-14",
   "review_scope": "Se conservan los tres candidatos y la evidencia histórica de sus documentos y calendario. Esta revisión de fichas no verifica nuevas publicaciones sociales ni autoriza vincular piezas."
 }

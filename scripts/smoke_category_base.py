@@ -5,10 +5,11 @@ import os
 from functools import partial
 from http.server import ThreadingHTTPServer
 from threading import Thread
+from urllib.parse import urlsplit
 import json
 import re
 import yaml
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, expect
 from build_maintenance_control import is_public
 from smoke_fr_navigation import ROOT, SITE, BASE, ARTIFACTS, Handler, fits
 
@@ -16,7 +17,11 @@ PUBLIC_ROLES = {
     'financiamiento-reembolsable': [('promotores',33,6),('inversores',37,7),('colaboradores',29,8)],
     'donacion': [('promotores',18,7),('donantes',14,5),('colaboradores',8,4)],
     'recompensa': [('promotores',30,9),('contribuyentes',14,5),('colaboradores',9,4)],
+    'precompra': [('promotores',36,9),('precompradores',21,6),('colaboradores',9,4)],
 }
+EXPECTED_TOPICS = sum(count for roles in PUBLIC_ROLES.values() for _, count, _ in roles)
+EXPECTED_ROLES = sum(len(roles) for roles in PUBLIC_ROLES.values())
+EXPECTED_SECTIONS = sum(sections for roles in PUBLIC_ROLES.values() for _, _, sections in roles)
 
 
 def report_fixture():
@@ -41,16 +46,88 @@ def report_fixture():
             'tiktok_inventory':{'videos':[]}}
 
 
+def check_precompra_precompradores(browser, local_origin, fixture):
+    """Recorre el nuevo rol público con URLs canónicas servidas desde _site."""
+    config = yaml.safe_load((ROOT / '_config.yml').read_text())
+    public_origin = config['url'].rstrip('/')
+    home = public_origin + BASE + '/'
+    first = next(item for item in fixture['items'] if item['code'] == 'CF-PRE-PRC-001')
+    last = next(item for item in fixture['items'] if item['code'] == 'CF-PRE-PRC-021')
+    first_url = public_origin + BASE + first['canonical_url']
+    last_url = public_origin + BASE + last['canonical_url']
+
+    def local_only(route):
+        requested = urlsplit(route.request.url)
+        if requested.netloc != urlsplit(public_origin).netloc:
+            return route.abort()
+        target = local_origin + requested.path + ('?' + requested.query if requested.query else '')
+        route.fulfill(response=route.fetch(url=target))
+
+    context = browser.new_context(viewport={'width':390, 'height':900}, reduced_motion='reduce')
+    context.route('**/*', local_only)
+    page = context.new_page()
+    errors = []
+    page.on('pageerror', lambda error: errors.append(str(error)))
+    try:
+        page.goto(home)
+        page.locator('.category-card[data-category="precompra"] h3 a').click()
+        role = page.locator(f'.fr-role-grid .fr-role-card[href="{BASE}/precompra/precompradores/"]')
+        expect(role.locator('.fr-card-meta')).to_have_text('21 fichas · 6 etapas')
+        role.click()
+        expect(page.locator('h1')).to_have_text('Precompradores')
+        expect(page.locator('[data-fr-topic]')).to_have_count(21)
+        expect(page.locator('.fr-section')).to_have_count(6)
+        section = page.locator('.fr-section').first
+        if not section.evaluate('(node) => node.open'):
+            section.locator(':scope > summary').click()
+        section.locator('[data-fr-code="CF-PRE-PRC-001"]').click()
+        expect(page).to_have_url(first_url)
+        expect(page.locator('h1')).to_have_text(first['title'])
+        expect(page.locator('.test-note')).to_contain_text('Pendiente de revisión editorial.')
+        fits(page)
+
+        page.goto(home + '#orientacion')
+        page.locator('#guidance-start').click()
+        choices = page.locator('#guidance-options')
+        choices.locator('.guidance-choice').filter(has_text='Explorar las explicaciones disponibles').click()
+        choices.get_by_role('button', name='Precompra', exact=True).click()
+        choices.get_by_role('button', name='Precompradores', exact=True).click()
+        choices.get_by_role('button', name=first['stage'], exact=True).click()
+        choices.get_by_role('button', name=first['title'], exact=True).click()
+        expect(page.locator('.guidance-context')).to_have_text('Precompra · Precompradores · ' + first['stage'])
+        expect(page.locator('.guidance-canonical-link')).to_have_attribute('href', first_url)
+        page.locator('.guidance-canonical-link').click()
+        expect(page).to_have_url(first_url)
+        expect(page.locator('h1')).to_have_text(first['title'])
+
+        page.goto(home + '#buscar')
+        expect(page.locator('#public-search-query')).to_be_enabled()
+        page.locator('#public-search-query').fill(last['code'])
+        result = page.locator('.public-search-result')
+        expect(result).to_have_count(1)
+        expect(result).to_have_attribute('href', last_url)
+        expect(result.locator('.public-search-result-context')).to_contain_text('Precompradores')
+        result.click()
+        expect(page).to_have_url(last_url)
+        expect(page.locator('h1')).to_have_text(last['title'])
+        expect(page.locator('.test-note')).to_contain_text('Pendiente de revisión editorial.')
+        fits(page)
+        assert not errors, errors
+    finally:
+        context.close()
+
+
 def main():
     server = ThreadingHTTPServer(('127.0.0.1', 0), partial(Handler, directory=str(SITE)))
     Thread(target=server.serve_forever, daemon=True).start()
     origin = f'http://127.0.0.1:{server.server_port}'
     home = origin + BASE + '/'
     fixture = report_fixture()
-    assert len(fixture['items']) == 192
+    assert len(fixture['items']) == EXPECTED_TOPICS == 258
     assert sum(i['category'] == 'Financiamiento Reembolsable' for i in fixture['items']) == 99
     assert sum(i['category'] == 'Donación' for i in fixture['items']) == 40
     assert sum(i['category'] == 'Recompensa' for i in fixture['items']) == 53
+    assert sum(i['category'] == 'Precompra' for i in fixture['items']) == 66
     tested = []
     try:
         with sync_playwright() as pw:
@@ -63,12 +140,13 @@ def main():
                 page.on('pageerror', lambda error: errors.append(str(error)))
                 page.goto(home)
                 assert page.locator('.category-card').count() == 5
-                assert page.locator('.category-card[data-availability="available"]').count() == 3
+                assert page.locator('.category-card[data-availability="available"]').count() == len(PUBLIC_ROLES)
                 assert page.locator('.category-card[data-category="financiamiento-reembolsable"]').get_attribute('data-availability') == 'available'
                 assert page.locator('.category-card[data-category="donacion"]').get_attribute('data-availability') == 'available'
                 assert page.locator('.category-card[data-category="recompensa"]').get_attribute('data-availability') == 'available'
+                assert page.locator('.category-card[data-category="precompra"]').get_attribute('data-availability') == 'available'
                 assert page.locator('.category-card-pending a').count() == 0
-                assert page.locator('.category-role-link').count() == 9
+                assert page.locator('.category-role-link').count() == EXPECTED_ROLES
                 assert page.evaluate('(document.querySelector("#buscar").compareDocumentPosition(document.querySelector("#categorias")) & 4) !== 0')
                 assert page.evaluate('(document.querySelector("#orientacion").compareDocumentPosition(document.querySelector("#categorias")) & 4) !== 0')
                 assert page.locator('h1').inner_text() == 'Aprende a usar iskay.app'
@@ -82,8 +160,8 @@ def main():
                 page.screenshot(path=str(ARTIFACTS / f'category-home-{width}.png'), full_page=True)
                 page.goto(home + 'mantenimiento/')
                 assert page.locator('[data-maint-category]').count() == 5
-                assert page.locator('[data-maint-role]').count() == 9
-                assert page.locator('[data-maint-topic]').count() == 192
+                assert page.locator('[data-maint-role]').count() == EXPECTED_ROLES
+                assert page.locator('[data-maint-topic]').count() == EXPECTED_TOPICS
                 for category, roles in PUBLIC_ROLES.items():
                     category_group = page.locator(f'[data-maint-category="{category}"]')
                     assert category_group.locator('[data-maint-topic]').count() == sum(r[1] for r in roles)
@@ -94,10 +172,10 @@ def main():
                 page.locator('[data-maint-view-link="m-publicacion"]').click()
                 page.wait_for_selector('[data-technical-section]', state='attached')
                 page.locator('[data-technical-section]').evaluate_all('(nodes)=>nodes.forEach(node=>node.open=true)')
-                page.wait_for_function('document.querySelectorAll("[data-technical-topic]").length === 192')
-                assert page.locator('[data-technical-category]').count() == 3
-                assert page.locator('[data-technical-role]').count() == 9
-                assert page.locator('[data-technical-section]').count() == 55
+                page.wait_for_function(f'document.querySelectorAll("[data-technical-topic]").length === {EXPECTED_TOPICS}')
+                assert page.locator('[data-technical-category]').count() == len(PUBLIC_ROLES)
+                assert page.locator('[data-technical-role]').count() == EXPECTED_ROLES
+                assert page.locator('[data-technical-section]').count() == EXPECTED_SECTIONS
                 for category, roles in PUBLIC_ROLES.items():
                     group = page.locator(f'[data-technical-category="{category}"]')
                     assert group.locator('[data-technical-topic]').count() == sum(r[1] for r in roles)
@@ -111,12 +189,14 @@ def main():
                 fits(page)
                 page.screenshot(path=str(ARTIFACTS / f'category-maintenance-{width}.png'))
                 assert not errors, errors
-                tested.append(f'{width}px: five categories, three available, nine roles, 192 topics (99 FR + 40 DON + 53 REC), 55 isolated sections')
+                tested.append(f'{width}px: five categories, {len(PUBLIC_ROLES)} available, {EXPECTED_ROLES} roles, {EXPECTED_TOPICS} topics (99 FR + 40 DON + 53 REC + 66 PRE), {EXPECTED_SECTIONS} isolated sections')
                 context.close()
+            check_precompra_precompradores(browser, origin, fixture)
+            tested.append('390px: Precompra -> Precompradores; 21 fichas, 6 etapas, aviso editorial, orientación y búsqueda canónica de CF-PRE-PRC-021')
             context = browser.new_context(java_script_enabled=False, viewport={'width':320,'height':900})
             page = context.new_page()
             page.goto(home)
-            assert page.locator('.category-role-link').count() == 9
+            assert page.locator('.category-role-link').count() == EXPECTED_ROLES
             page.locator(f'.category-role-link[href="{BASE}/donacion/colaboradores/"]').click()
             assert '/donacion/colaboradores/' in page.url
             for category in PUBLIC_ROLES:
@@ -134,7 +214,7 @@ def main():
             page = context.new_page()
             page.goto(home + 'mantenimiento/')
             page.wait_for_function('document.querySelector("#maintenance-dashboard").textContent.includes("No se pudo cargar")')
-            assert page.locator('[data-maint-topic]').count() == 192
+            assert page.locator('[data-maint-topic]').count() == EXPECTED_TOPICS
             tested.append('Technical report failure does not remove native hierarchy')
             context.close()
             browser.close()

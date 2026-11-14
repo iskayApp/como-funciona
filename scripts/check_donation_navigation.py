@@ -125,9 +125,11 @@ def verify(site: Path, source: Path):
     assert built == set(pages), "El render debe contener exactamente las 60 rutas de Donación"
     sharing = json.loads((site / "mantenimiento/share_catalog.json").read_text(encoding="utf-8"))
     items = sharing["items"]
-    assert sharing["total_fichas"] == len(items) == 192
-    assert len({item["code"] for item in items}) == 192
-    assert Counter(item["category"] for item in items) == {"Donación": 40, "Financiamiento Reembolsable": 99, "Recompensa": 53}
+    expected_categories = {"Donación": 40, "Financiamiento Reembolsable": 99, "Recompensa": 53, "Precompra": 66}
+    expected_total = sum(expected_categories.values())
+    assert sharing["total_fichas"] == len(items) == expected_total
+    assert len({item["code"] for item in items}) == expected_total
+    assert Counter(item["category"] for item in items) == expected_categories
     donation = {item["code"]: item for item in items if item["category"] == "Donación"}
     assert set(donation) == set(topics) and all(item["public_searchable"] is True for item in items)
     all_topic_links = {urlsplit(item["canonical_url"]).path for item in items}
@@ -196,10 +198,10 @@ def verify(site: Path, source: Path):
     integrity = audit_integrity(site, root=source.resolve())
     save_report("donation-navigation.json", {"scope": "rendered_public_site", "donation_routes": len(built),
                 "donation_topics": len(topics), "catalog_topics": len(items), "routes": routes, "integrity": integrity})
-    assert routes["checked"] == routes["reachable"] == 192 and not routes["missing_routes"] and not routes["unreachable_topics"], routes
+    assert routes["checked"] == routes["reachable"] == expected_total and not routes["missing_routes"] and not routes["unreachable_topics"], routes
     assert routes["unique_codes"] and routes["unique_routes"], routes
     assert integrity["pages"] and not integrity["errors"], integrity
-    print("PASS: 60 rutas Donación; títulos, roles, etapas y secuencia; catálogo 192 = 40 Donación + 99 FR + 53 Recompensa; enlaces íntegros")
+    print("PASS: 60 rutas Donación; títulos, roles, etapas y secuencia; catálogo 258 = 40 Donación + 99 FR + 53 Recompensa + 66 Precompra; enlaces íntegros")
 
 
 def smoke(site: Path, source: Path):

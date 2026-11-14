@@ -1,14 +1,14 @@
 # Precompra · Control de observaciones, multimedia y verificación funcional
 
-**Control inicial:** 11 de noviembre de 2026. **Actualización documental:** 14 de noviembre de 2026. **Estado:** revisión funcional completada; aprobación editorial y publicación pendientes.
+**Control inicial:** 11 de noviembre de 2026. **Actualización documental y autorización de publicación:** 14 de noviembre de 2026. **Estado:** revisión funcional completada; publicación autorizada con aprobación editorial posterior.
 
 ## Situación documentada
 
-- Las 66 fichas permanecen en `.github/staging/precompra/ideas/precompra/`, fuera del catálogo compartido y de la navegación pública.
+- Las 66 fichas pasan a `ideas/precompra/` por autorización expresa del propietario, con tres roles, 19 etapas e incorporación al catálogo compartido, buscador, orientación y navegación pública.
 - La [guía vigente](https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit) ya incorpora los ajustes indispensables cerrados por el propietario el 14 de noviembre de 2026. Esta sincronización no modifica la guía.
 - La revisión comprende 116 reglas, 19 etapas y 66 fichas. Se actualizan 42 fichas a versión 2; 24 conservan la versión 1.
 - Las ocho observaciones se conservan como resoluciones o criterios aplicados; las nueve comprobaciones operativas mantienen evidencia no verificada.
-- La aprobación editorial de las fichas permanece pendiente: `editorial_status: pending_review`, `reviewed: false` y `publication_status: not_published`.
+- La aprobación editorial de las fichas permanece pendiente: `editorial_status: pending_review` y `reviewed: false`. La publicación técnica utiliza `status: published`, `published: true`, `visibility: public` y `publication_status: published`.
 
 ## Observaciones revisadas
 
@@ -166,14 +166,14 @@ La guía define el funcionamiento esperado. Las siguientes comprobaciones siguen
 - **FUNC-PRE-08 — Registro y derivación de reclamaciones** (`no_verificada`): Comprobar registro de la incidencia y derivación al canal correspondiente, sin atribuir representación jurídica, ejecución de garantías ni seguimiento jurídico a iskay.app.
 - **FUNC-PRE-09 — Reversión y comunicación a las partes** (`no_verificada`): Comprobar causales, revisión, notificación y devolución procedente, incluida la falta de información o documentación en cualquiera de las etapas.
 
-## Controles de publicación pendientes
+## Seguimiento tras la autorización de publicación
 
 1. Mantener la guía cerrada como fuente y las fichas pendientes de aprobación editorial.
 2. Separar la revisión documental completada de la comprobación operativa pendiente.
 3. Conservar los estados de calendario como antecedentes, sin certificar publicaciones sociales no verificadas.
 4. Mantener `media`, `distribution` y `marketing_pieces` vacíos mientras no exista vinculación aprobada con URLs originales verificadas.
-5. Conservar los borradores fuera del catálogo, buscador, orientación y navegación pública.
-6. Obtener la autorización correspondiente antes de mover fichas al árbol publicable o cambiar las salvaguardas de categorías y configuración.
+5. Verificar las 66 fichas y sus tres recorridos en el catálogo, buscador, orientación, navegación pública y centro de mantenimiento.
+6. Mantener la aprobación editorial pendiente después de publicar, conforme a la instrucción expresa del propietario. La validación del sitio no acredita la implementación operativa en Avatar.
 
 ## Archivos de control
 
@@ -181,4 +181,4 @@ La guía define el funcionamiento esperado. Las siguientes comprobaciones siguen
 - `.github/staging/precompra/observaciones.json`: ocho observaciones, decisiones vigentes y fichas vinculadas.
 - `.github/staging/precompra/marketing_candidatos.json`: tres correspondencias conceptuales sin publicación verificada.
 - `.github/staging/precompra/funciones_pendientes.json`: nueve comprobaciones operativas sin evidencia de implementación.
-- `tests/test_precompra_staging.py` y `tests/test_precompra_control.py`: controles del inventario y de las salvaguardas.
+- `tests/test_precompra_publication.py` y `tests/test_precompra_control.py`: controles del inventario y de las salvaguardas.

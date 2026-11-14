@@ -43,6 +43,18 @@ class PublicControlTests(unittest.TestCase):
             for private in ['NEVER EXPORT NOTE','BODY MUST NOT BE EXPORTED','private.example.test','editorial_document_url']:
                 self.assertNotIn(private,payload)
 
+    def test_unstated_guide_version_is_preserved_but_not_identified(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)
+            self.fixture(root, {'guide_version':'No indicada expresamente',
+                                'editorial_status':'pending_review', 'reviewed':False})
+            item=build_control(root,'a'*40)['items'][0]
+            self.assertEqual(item['source']['version'],'No indicada expresamente')
+            self.assertFalse(item['source']['version_identified'])
+            self.assertIn('guide_version',item['metadata_gaps'])
+            self.assertEqual(item['editorial_status'],'pending_review')
+            self.assertEqual(item['reviewed_at'],'')
+
     def test_private_and_unpublished_topics_never_enter_public_control(self):
         for flags in [{'published':False},{'visibility':'private'},{'status':'draft'},{'status':'review'},{'status':'archived'}]:
             with self.subTest(flags=flags), tempfile.TemporaryDirectory() as td:

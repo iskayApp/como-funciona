@@ -5,7 +5,7 @@
   "record_status": "functional_review_completed_editorial_pending",
   "guide_source": "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit",
   "fichas_master": "https://docs.google.com/document/d/16SG6hjAa2TXkppRTC4nFiEJ3WcTKYMtJfr0ZVH1ORBc/edit",
-  "status_note": "Los ajustes indispensables de la guía están cerrados. Las observaciones se conservan como resoluciones o criterios aplicados al revisar las fichas; su aprobación editorial y publicación permanecen pendientes.",
+  "status_note": "Los ajustes indispensables de la guía están cerrados. Las observaciones se conservan como resoluciones o criterios aplicados. El propietario autoriza publicar las 66 fichas y realizar después la aprobación editorial.",
   "observations": [
     {
       "id": "OBS-PRE-01",
@@ -174,5 +174,13 @@
   "guide_review_closed_on": "2026-11-14",
   "source_checked_on": "2026-11-14",
   "functional_reviewed_on": "2026-11-14",
-  "guide_modification_scope": "guide_modified se refiere solo a esta sincronización de fichas: no se modifica la guía. La fuente vigente ya incorpora los ajustes cerrados por el propietario el 2026-11-14."
+  "guide_modification_scope": "guide_modified se refiere solo a esta sincronización de fichas: no se modifica la guía. La fuente vigente ya incorpora los ajustes cerrados por el propietario el 2026-11-14.",
+  "publication_authorization": {
+    "status": "authorized",
+    "authorized_on": "2026-11-14",
+    "scope": "66 fichas, tres roles y 19 etapas de Precompra en Cómo funciona",
+    "editorial_review_deferred": true,
+    "source": "Instrucción expresa del propietario en la conversación del proyecto",
+    "canonical_source_path": "ideas/precompra/"
+  }
 }

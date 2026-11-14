@@ -9,6 +9,9 @@ editorial_controls:
   - category_id: donacion
     title: Donación · revisión editorial pendiente tras publicación autorizada
     url: https://github.com/iskayApp/como-funciona/blob/main/.github/planificacion/DONACION_DESARROLLO_2026-11-06.md#revisión-editorial-posterior
+  - category_id: precompra
+    title: Precompra · revisión editorial pendiente tras publicación autorizada
+    url: https://github.com/iskayApp/como-funciona/blob/main/.github/planificacion/PRECOMPRA_PREPARACION_2026-11-11.md#revisión-editorial-posterior
 # Solo referencias expresamente publicables, nunca el texto del borrador.
 # Campos: public, code, title (solo para nuevas fichas), category_id, role_id,
 # phase (classified|organized|identified|developed), version, content_sha256,
