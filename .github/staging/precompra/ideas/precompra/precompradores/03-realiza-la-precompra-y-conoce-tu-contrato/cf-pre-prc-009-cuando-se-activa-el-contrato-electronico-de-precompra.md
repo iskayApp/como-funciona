@@ -9,22 +9,27 @@ stage: "Realiza la precompra y conoce tu contrato"
 stage_id: "PRE-PRC-E03"
 stage_url: "/precompra/precompradores/03-realiza-la-precompra-y-conoce-tu-contrato/"
 code: "CF-PRE-PRC-009"
-content_version: 1
+content_version: 2
 guide_version: "No indicada expresamente"
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
 source: "1 Precompra.docx — Procedimiento para reclamaciones y riesgo de pérdida."
-classification_refs: 
+classification_refs:
   - "CL-PRE-047"
   - "CL-PRE-048"
-classification_secondary_refs:  []
-observation_refs:  []
+classification_secondary_refs: []
+observation_refs: []
 status: "draft"
 publication_status: "not_published"
 editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-PRC-009 · ¿Cuándo se activa el contrato electrónico de Precompra? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/1XTR8mtoGVpoMcsfvhz8HrM4IeKGsjCJ4qQqlckLXP80/edit?usp=drivesdk"
 permalink: /precompra/precompradores/03-realiza-la-precompra-y-conoce-tu-contrato/cf-pre-prc-009-cuando-se-activa-el-contrato-electronico-de-precompra/
@@ -47,7 +52,7 @@ El contrato electrónico entre promotor y precomprador se activa en el momento d
 
 ## Explicación
 
-El contrato establece las condiciones bajo las cuales deberá entregarse el bien o servicio al terminar la campaña. Sirve de referencia para comprobar lo acordado y para una eventual reclamación si no se cumple.
+El contrato recoge las condiciones y los plazos de entrega del bien o servicio después de la campaña. Sirve de referencia para comprobar lo acordado y para una eventual reclamación si no se cumple.
 
 ## Qué debes hacer
 
@@ -55,7 +60,7 @@ Lee las condiciones de entrega y conserva la información relativa a tu operaci�
 
 ## Importante
 
-No equiparar la activación del contrato a que se hayan transferido ya los fondos al promotor.
+La activación del contrato no significa que los fondos ya se hayan transferido al promotor.
 
 ## Siguiente paso
 

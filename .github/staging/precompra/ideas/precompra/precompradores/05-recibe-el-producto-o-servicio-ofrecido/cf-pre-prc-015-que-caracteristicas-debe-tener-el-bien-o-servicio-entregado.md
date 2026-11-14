@@ -11,21 +11,26 @@ stage_url: "/precompra/precompradores/05-recibe-el-producto-o-servicio-ofrecido/
 code: "CF-PRE-PRC-015"
 content_version: 1
 guide_version: "No indicada expresamente"
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
 source: "1 Precompra.docx — Definición.; Procedimiento para reclamaciones y riesgo de pérdida.; Inicio de campaña > Descripción completa."
-classification_refs: 
+classification_refs:
   - "CL-PRE-002"
   - "CL-PRE-048"
   - "CL-PRE-068"
-classification_secondary_refs:  []
-observation_refs:  []
+classification_secondary_refs: []
+observation_refs: []
 status: "draft"
 publication_status: "not_published"
 editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-PRC-015 · ¿Qué características debe tener el bien o servicio entregado? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/10oKqu4Rz0dx19QFYtajmIubblbeHV45qHSnM8ILuY0I/edit?usp=drivesdk"
 permalink: /precompra/precompradores/05-recibe-el-producto-o-servicio-ofrecido/cf-pre-prc-015-que-caracteristicas-debe-tener-el-bien-o-servicio-entregado/

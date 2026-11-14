@@ -11,21 +11,26 @@ stage_url: "/precompra/promotores/05-incorpora-colaboradores-y-aplica-descuentos
 code: "CF-PRE-PRO-023"
 content_version: 1
 guide_version: "No indicada expresamente"
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
 source: "1 Precompra.docx — Colaboradores.; Descuentos al agregar Colaboradores > Nota."
-classification_refs: 
+classification_refs:
   - "CL-PRE-012"
   - "CL-PRE-013"
   - "CL-PRE-033"
-classification_secondary_refs:  []
-observation_refs:  []
+classification_secondary_refs: []
+observation_refs: []
 status: "draft"
 publication_status: "not_published"
 editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-PRO-023 · ¿Puedo acordar una retribución independiente con mis colaboradores? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/1SL_8Q3Om975UoEaju3CoUG8MuOQnL1Ye6k3bo9RiNI8/edit?usp=drivesdk"
 permalink: /precompra/promotores/05-incorpora-colaboradores-y-aplica-descuentos/cf-pre-pro-023-puedo-acordar-una-retribucion-independiente-con-mis-colaboradores/

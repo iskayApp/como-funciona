@@ -11,20 +11,25 @@ stage_url: "/precompra/promotores/08-ejecuta-informa-y-entrega-lo-ofrecido/"
 code: "CF-PRE-PRO-030"
 content_version: 1
 guide_version: "No indicada expresamente"
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
 source: "1 Precompra.docx — Procedimiento para reclamaciones y riesgo de pérdida."
-classification_refs: 
+classification_refs:
   - "CL-PRE-045"
   - "CL-PRE-046"
-classification_secondary_refs:  []
-observation_refs:  []
+classification_secondary_refs: []
+observation_refs: []
 status: "draft"
 publication_status: "not_published"
 editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-PRO-030 · ¿Cómo debo utilizar los fondos y comunicar los avances? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/1CRgkwqMLvZitdV0qssZGFh0Ee_TaVZxKcjmL_93eTTs/edit?usp=drivesdk"
 permalink: /precompra/promotores/08-ejecuta-informa-y-entrega-lo-ofrecido/cf-pre-pro-030-como-debo-utilizar-los-fondos-y-comunicar-los-avances/

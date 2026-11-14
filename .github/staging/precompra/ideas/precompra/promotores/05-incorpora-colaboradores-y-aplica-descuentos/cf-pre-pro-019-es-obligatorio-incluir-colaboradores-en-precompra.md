@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "¿Es obligatorio incluir colaboradores en Precompra?"
-description: "La incorporación de colaboradores aparece como opcional en los apartados operativos de la guía."
+description: "No. Incorporar colaboradores en Precompra es opcional."
 eyebrow: "Incorpora colaboradores y aplica descuentos"
 category: "Precompra"
 role: "Promotores"
@@ -9,15 +9,17 @@ stage: "Incorpora colaboradores y aplica descuentos"
 stage_id: "PRE-PRO-E05"
 stage_url: "/precompra/promotores/05-incorpora-colaboradores-y-aplica-descuentos/"
 code: "CF-PRE-PRO-019"
-content_version: 1
+content_version: 2
 guide_version: "No indicada expresamente"
-source: "1 Precompra.docx — Descuentos aplicables (Precompra).; Inicio de campaña > Colaboradores (opcional)."
-classification_refs: 
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
+source: "1 Precompra.docx — Colaboradores.; Descuentos aplicables (Precompra) > Importante.; Inicio de campaña > Colaboradores (opcional)."
+classification_refs:
   - "CL-PRE-023"
   - "CL-PRE-077"
   - "CL-PRE-082"
-classification_secondary_refs:  []
-observation_refs: 
+classification_secondary_refs: []
+observation_refs:
   - "OBS-PRE-01"
 status: "draft"
 publication_status: "not_published"
@@ -25,8 +27,11 @@ editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-PRO-019 · ¿Es obligatorio incluir colaboradores en Precompra? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/1zEYIX-TndFcgq5d_lX01be_9Y40mLcIARVEHz_uV95Q/edit?usp=drivesdk"
 permalink: /precompra/promotores/05-incorpora-colaboradores-y-aplica-descuentos/cf-pre-pro-019-es-obligatorio-incluir-colaboradores-en-precompra/
@@ -45,11 +50,11 @@ marketing_pieces: []
 
 ## Respuesta breve
 
-La incorporación de colaboradores aparece como opcional en los apartados operativos de la guía.
+No. Incorporar colaboradores en Precompra es opcional.
 
 ## Explicación
 
-La guía recomienda integrar un equipo para fortalecer producción, atención, calidad y logística y vincula los colaboradores identificados con descuentos sobre la comisión. Otro apartado usa formulaciones más fuertes sobre su necesidad; esa diferencia requiere revisión editorial.
+Los colaboradores pueden reforzar la producción, la atención al cliente, la calidad y la logística. Si los incorporas antes del inicio de la campaña, puedes acceder a los descuentos previstos sobre la comisión.
 
 ## Qué debes hacer
 
@@ -57,7 +62,7 @@ Valora qué funciones necesitas cubrir y si incorporarás colaboradores identifi
 
 ## Importante
 
-OBS-PRE-01: no convertir en requisito universal una opción identificada como «Colaboradores (opcional)».
+Incorporar colaboradores no sustituye tu responsabilidad de cumplir lo ofrecido a los precompradores.
 
 ## Siguiente paso
 

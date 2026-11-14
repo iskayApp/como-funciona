@@ -9,24 +9,29 @@ stage: "Reclama y conoce las posibles reversiones"
 stage_id: "PRE-PRC-E06"
 stage_url: "/precompra/precompradores/06-reclama-y-conoce-las-posibles-reversiones/"
 code: "CF-PRE-PRC-020"
-content_version: 1
+content_version: 2
 guide_version: "No indicada expresamente"
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
 source: "1 Precompra.docx — Criterios para la Reversión de Fondos."
-classification_refs: 
+classification_refs:
   - "CL-PRE-096"
   - "CL-PRE-097"
   - "CL-PRE-098"
   - "CL-PRE-099"
-classification_secondary_refs:  []
-observation_refs:  []
+classification_secondary_refs: []
+observation_refs: []
 status: "draft"
 publication_status: "not_published"
 editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-PRC-020 · ¿Cómo y dónde me devuelven los fondos si procede una reversión? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/1mSypBGR3PxHT24BzcUd_YjsVhIpMwK8ujC5eBoMDIT4/edit?usp=drivesdk"
 permalink: /precompra/precompradores/06-reclama-y-conoce-las-posibles-reversiones/cf-pre-prc-020-como-y-donde-me-devuelven-los-fondos-si-procede-una-reversion/
@@ -49,7 +54,7 @@ Si se decide una reversión, la guía indica que los fondos regresan a la misma 
 
 ## Explicación
 
-La plataforma no aplica comisión por esa reversión; los cargos que determine la entidad bancaria pueden quedar a cargo del precomprador. El procedimiento se comunica a las partes tras la revisión correspondiente.
+iskay.app no cobra comisión por la reversión. Si la entidad bancaria aplica cargos a esa transacción, corresponden al precomprador. La decisión y los pasos a seguir se comunican a las partes tras la revisión.
 
 ## Qué debes hacer
 

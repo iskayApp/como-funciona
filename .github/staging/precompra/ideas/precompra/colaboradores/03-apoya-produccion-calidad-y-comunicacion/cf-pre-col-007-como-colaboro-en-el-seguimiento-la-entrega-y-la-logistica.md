@@ -11,22 +11,27 @@ stage_url: "/precompra/colaboradores/03-apoya-produccion-calidad-y-comunicacion/
 code: "CF-PRE-COL-007"
 content_version: 1
 guide_version: "No indicada expresamente"
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
 source: "1 Precompra.docx — Procedimiento para reclamaciones y riesgo de pérdida.; Inicio de campaña > Colaboradores (opcional) > Servicio al cliente.; Inicio de campaña > Colaboradores (opcional) > Logística."
-classification_refs: 
+classification_refs:
   - "CL-PRE-045"
   - "CL-PRE-046"
   - "CL-PRE-079"
   - "CL-PRE-081"
-classification_secondary_refs:  []
-observation_refs:  []
+classification_secondary_refs: []
+observation_refs: []
 status: "draft"
 publication_status: "not_published"
 editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-COL-007 · ¿Cómo colaboro en el seguimiento, la entrega y la logística? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/1dnX9NL-o70rJX2fa7wEBsGkv2Hsv2B47zHEpL9YfzRQ/edit?usp=drivesdk"
 permalink: /precompra/colaboradores/03-apoya-produccion-calidad-y-comunicacion/cf-pre-col-007-como-colaboro-en-el-seguimiento-la-entrega-y-la-logistica/

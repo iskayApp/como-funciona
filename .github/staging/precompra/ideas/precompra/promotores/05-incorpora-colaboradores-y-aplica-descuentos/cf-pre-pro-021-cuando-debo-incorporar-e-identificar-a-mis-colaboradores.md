@@ -9,23 +9,28 @@ stage: "Incorpora colaboradores y aplica descuentos"
 stage_id: "PRE-PRO-E05"
 stage_url: "/precompra/promotores/05-incorpora-colaboradores-y-aplica-descuentos/"
 code: "CF-PRE-PRO-021"
-content_version: 1
+content_version: 2
 guide_version: "No indicada expresamente"
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
 source: "1 Precompra.docx — Sé un colaborador en Precompra de iskay.app.; Descuentos aplicables (Precompra) > Importante."
-classification_refs: 
+classification_refs:
   - "CL-PRE-014"
   - "CL-PRE-024"
   - "CL-PRE-025"
-classification_secondary_refs:  []
-observation_refs:  []
+classification_secondary_refs: []
+observation_refs: []
 status: "draft"
 publication_status: "not_published"
 editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-PRO-021 · ¿Cuándo debo incorporar e identificar a mis colaboradores? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/1c8buimBUUyHXtGb0FA8AqPl_iDPe-Ca-dgdmDvW8qjI/edit?usp=drivesdk"
 permalink: /precompra/promotores/05-incorpora-colaboradores-y-aplica-descuentos/cf-pre-pro-021-cuando-debo-incorporar-e-identificar-a-mis-colaboradores/
@@ -48,7 +53,7 @@ Para acceder a descuentos, los colaboradores deben incorporarse antes del inicio
 
 ## Explicación
 
-La guía exige roles y responsabilidades claros y señala que el nombre y la función del colaborador pueden aparecer visibles en la iniciativa. La incorporación tardía no se presenta como mecanismo habilitado para generar el descuento.
+La guía exige roles y responsabilidades claros y señala que el nombre y el rol del colaborador aparecerán visibles en la campaña. Para acceder al descuento, debe incorporarse antes del inicio.
 
 ## Qué debes hacer
 
@@ -56,7 +61,7 @@ Define responsables, roles y participación antes de publicar el inicio de la ca
 
 ## Importante
 
-No afirmar que cualquier alta posterior otorga automáticamente un descuento; la condición temporal está expresamente indicada.
+La incorporación posterior al inicio no cumple la condición temporal prevista para acceder al descuento.
 
 ## Siguiente paso
 

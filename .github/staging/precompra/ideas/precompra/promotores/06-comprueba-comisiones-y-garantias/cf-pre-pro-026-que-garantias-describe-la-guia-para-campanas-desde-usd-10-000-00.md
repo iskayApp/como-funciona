@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "¿Qué garantías describe la guía para campañas desde USD 10.000,00?"
-description: "La guía enumera garantías mínimas para campañas entre USD 10.000,00 y USD 470.000,00: seguro de cumplimiento, prenda y carta de compromiso."
+description: "Para campañas de USD 10.000,00 a USD 470.000,00 debes elegir una garantía: seguro de cumplimiento o garantía real mediante prenda sobre activos."
 eyebrow: "Comprueba comisiones y garantías"
 category: "Precompra"
 role: "Promotores"
@@ -9,16 +9,26 @@ stage: "Comprueba comisiones y garantías"
 stage_id: "PRE-PRO-E06"
 stage_url: "/precompra/promotores/06-comprueba-comisiones-y-garantias/"
 code: "CF-PRE-PRO-026"
-content_version: 1
+content_version: 2
 guide_version: "No indicada expresamente"
-source: "1 Precompra.docx — Transferencia de fondos > Campañas de USD 10.000,00 a USD 470.000,00.; Transferencia de fondos > Seguro de Cumplimiento.; Transferencia de fondos > Garantía Real.; Transferencia de fondos > Carta de compromiso."
-classification_refs: 
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
+source: "1 Precompra.docx — Transferencia de fondos > Garantías aplicables (campañas de USD 10.000,00 a USD 470.000,00).; Transferencia de fondos > Seguro de Cumplimiento.; Transferencia de fondos > Garantía Real.; Transferencia de fondos > Carta de compromiso con el representante legal de los precompradores.; Procedimiento para reclamaciones y riesgo de pérdida."
+classification_refs:
   - "CL-PRE-089"
   - "CL-PRE-090"
   - "CL-PRE-091"
   - "CL-PRE-092"
-classification_secondary_refs:  []
-observation_refs: 
+  - "CL-PRE-109"
+  - "CL-PRE-110"
+  - "CL-PRE-111"
+  - "CL-PRE-112"
+  - "CL-PRE-113"
+  - "CL-PRE-114"
+  - "CL-PRE-115"
+  - "CL-PRE-116"
+classification_secondary_refs: []
+observation_refs:
   - "OBS-PRE-03"
 status: "draft"
 publication_status: "not_published"
@@ -26,8 +36,11 @@ editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-PRO-026 · ¿Qué garantías describe la guía para campañas desde USD 10.000,00? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/1ISilqOkguNOnG5_lPS43albZB9I19Q-sPncW49LY5lI/edit?usp=drivesdk"
 permalink: /precompra/promotores/06-comprueba-comisiones-y-garantias/cf-pre-pro-026-que-garantias-describe-la-guia-para-campanas-desde-usd-10-000-00/
@@ -46,19 +59,19 @@ marketing_pieces: []
 
 ## Respuesta breve
 
-La guía enumera garantías mínimas para campañas entre USD 10.000,00 y USD 470.000,00: seguro de cumplimiento, prenda y carta de compromiso.
+Para campañas de USD 10.000,00 a USD 470.000,00 debes elegir una garantía: seguro de cumplimiento o garantía real mediante prenda sobre activos.
 
 ## Explicación
 
-El seguro cubriría el riesgo de no entrega o entrega defectuosa; la garantía real se describe como prenda sobre activos; también se menciona una carta con representación legal de los precompradores. El texto no aclara expresamente si deben presentarse simultáneamente o como opciones.
+La póliza debe cubrir el riesgo de no entrega o entrega defectuosa e identificar a los precompradores protegidos, el importe asegurado y el procedimiento de reclamación. Puedes elegir una aseguradora autorizada para operar en Ecuador. Si optas por la prenda sobre activos, debes suscribir la carta de compromiso con el representante legal de los precompradores.
 
 ## Qué debes hacer
 
-Identifica las garantías mencionadas y solicita aclaración del régimen aplicable antes de describir una obligación concreta.
+Elige la garantía que mejor se adecue a tu situación y preséntala dentro de los 15 días hábiles posteriores al cierre de la campaña.
 
 ## Importante
 
-OBS-PRE-03: no afirmar que las tres son acumulativas ni alternativas; tampoco extender este régimen a importes inferiores sin respaldo.
+Los fondos no se transferirán hasta que se valide la garantía exigible. Las garantías no aseguran por sí solas la entrega ni la recuperación íntegra de lo pagado.
 
 ## Siguiente paso
 

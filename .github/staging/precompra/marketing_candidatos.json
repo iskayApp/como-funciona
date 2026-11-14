@@ -63,5 +63,7 @@
       "rationale": "La pieza presenta los elementos iniciales para definir una oferta: producto/servicio, unidades, precio, entrega y multimedia."
     }
   ],
-  "publication_gate": "No crear marketing_pieces, media, distribution ni enlaces públicos en ninguna ficha sin URL oficial comprobada, categoría y rol confirmados y autorización correspondiente."
+  "publication_gate": "No crear marketing_pieces, media, distribution ni enlaces públicos en ninguna ficha sin URL oficial comprobada, categoría y rol confirmados y autorización correspondiente.",
+  "reconciled_on": "2026-11-14",
+  "review_scope": "Se conservan los tres candidatos y la evidencia histórica de sus documentos y calendario. Esta revisión de fichas no verifica nuevas publicaciones sociales ni autoriza vincular piezas."
 }

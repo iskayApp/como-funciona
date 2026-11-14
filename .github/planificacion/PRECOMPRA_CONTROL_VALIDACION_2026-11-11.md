@@ -1,150 +1,184 @@
 # Precompra · Control de observaciones, multimedia y verificación funcional
 
-**Fecha:** 11 de noviembre de 2026 · **Estado:** preparación técnica, sin publicar.
+**Control inicial:** 11 de noviembre de 2026. **Actualización documental:** 14 de noviembre de 2026. **Estado:** revisión funcional completada; aprobación editorial y publicación pendientes.
 
-## Situación verificada
+## Situación documentada
 
-- Las 66 fichas permanecen aisladas en `.github/staging/precompra/ideas/precompra/` y no se añaden al catálogo compartido.
-- La validación integral de GitHub Actions de la rama aprobó estructura, pruebas, catálogo, Jekyll y navegación. [Ejecución](https://github.com/iskayApp/como-funciona/actions/runs/42997409485).
-- La guía original `1 Precompra.docx` permanece intacta. [Guía](https://docs.google.com/document/d/1byJkrnBQb14cghOFYyt7J-b_ZPt3jxYr/edit).
-- Se mantienen **ocho observaciones abiertas** y se identifican sus fichas afectadas a partir de los metadatos existentes.
+- Las 66 fichas permanecen en `.github/staging/precompra/ideas/precompra/`, fuera del catálogo compartido y de la navegación pública.
+- La [guía vigente](https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit) ya incorpora los ajustes indispensables cerrados por el propietario el 14 de noviembre de 2026. Esta sincronización no modifica la guía.
+- La revisión comprende 116 reglas, 19 etapas y 66 fichas. Se actualizan 42 fichas a versión 2; 24 conservan la versión 1.
+- Las ocho observaciones se conservan como resoluciones o criterios aplicados; las nueve comprobaciones operativas mantienen evidencia no verificada.
+- La aprobación editorial de las fichas permanece pendiente: `editorial_status: pending_review`, `reviewed: false` y `publication_status: not_published`.
 
-## Control de observaciones abiertas
+## Observaciones revisadas
 
-### OBS-PRE-01 · Carácter opcional de colaboradores frente a expresiones que parecen exigir su presencia
+El campo `guide_modified` indica si esta sincronización modificó la guía y permanece en `false`. `authorized_resolution` y la fuente/fecha de cierre registran el respaldo de las decisiones ya incorporadas en la guía vigente.
+
+### OBS-PRE-01 · Resuelta en la guía vigente
+
+**Observación de origen:** Carácter opcional de colaboradores frente a expresiones que parecen exigir su presencia.
 
 **Apartados fuente:** Precompra en iskay.app — Confianza y acompañamiento; Descuentos aplicables (Precompra); Inicio de campaña — Colaboradores (opcional).
 
-**Fichas:** CF-PRE-PRO-019.
+**Fichas vinculadas:** CF-PRE-PRO-019.
 
-**Decisión pendiente:** Confirmar redacción y alcance del carácter opcional sin imponer condiciones nuevas.
+**Decisión vigente:** Resuelta en la guía vigente: la incorporación de colaboradores es opcional y no sustituye la responsabilidad del promotor sobre el cumplimiento de lo ofrecido.
 
-**Estado:** pendiente de revisión/confirmación del propietario; sin resolución automática.
+**Fuente:** [guía vigente](https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit); contraste del 14 de noviembre de 2026.
 
-### OBS-PRE-02 · Listas diferentes de perfiles de colaboradores en los apartados de descuentos y de inicio de campaña
+### OBS-PRE-02 · Resuelta en la guía vigente
+
+**Observación de origen:** Listas diferentes de perfiles de colaboradores en los apartados de descuentos y de inicio de campaña.
 
 **Apartados fuente:** Descuentos aplicables (Precompra); Inicio de campaña — Colaboradores (opcional).
 
-**Fichas:** CF-PRE-PRO-020, CF-PRE-PRO-022, CF-PRE-COL-004.
+**Fichas vinculadas:** CF-PRE-PRO-020, CF-PRE-PRO-022, CF-PRE-COL-004.
 
-**Decisión pendiente:** Definir si son listados distintos según su finalidad o si necesitan armonización editorial autorizada.
+**Decisión vigente:** Resuelta en la guía vigente: descuentos y formulario coinciden en producción, atención al cliente, calidad y logística. Pueden acordarse otros roles; no deben presentarse como perfiles expresamente enumerados para el descuento.
 
-**Estado:** pendiente de revisión/confirmación del propietario; sin resolución automática.
+**Fuente:** [guía vigente](https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit); contraste del 14 de noviembre de 2026.
 
-### OBS-PRE-03 · No se precisa de modo inequívoco cómo combinar seguro de cumplimiento, prenda y carta de compromiso
+### OBS-PRE-03 · Resuelta en la guía vigente
+
+**Observación de origen:** No se precisa de modo inequívoco cómo combinar seguro de cumplimiento, prenda y carta de compromiso.
 
 **Apartados fuente:** Transferencia de fondos (Precompra) — campañas USD 10.000–470.000; Seguro de Cumplimiento; Garantía Real; Carta de compromiso.
 
-**Fichas:** CF-PRE-PRO-026, CF-PRE-PRO-027, CF-PRE-PRC-021.
+**Fichas vinculadas:** CF-PRE-PRO-026, CF-PRE-PRO-027, CF-PRE-PRC-021.
 
-**Decisión pendiente:** Confirmar si cada garantía es alternativa, acumulativa o condicional; no completar por inferencia.
+**Decisión vigente:** Resuelta en la guía vigente: en campañas de USD 10.000,00 a USD 470.000,00 se elige seguro de cumplimiento o prenda; la carta con el representante acompaña a la prenda. La garantía se presenta dentro de los 15 días hábiles posteriores al cierre y debe validarse antes de transferir los fondos.
 
-**Estado:** pendiente de revisión/confirmación del propietario; sin resolución automática.
+**Fuente:** [guía vigente](https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit); contraste del 14 de noviembre de 2026.
 
-### OBS-PRE-04 · La modalidad flexible no acredita una facultad de modificar unilateralmente prestaciones contratadas
+### OBS-PRE-04 · Criterio aplicado
+
+**Observación de origen:** La modalidad flexible no acredita una facultad de modificar unilateralmente prestaciones contratadas.
 
 **Apartados fuente:** Promotores — Modalidad flexible; Inicio de campaña — Modalidad; Procedimiento para reclamaciones y riesgo de pérdida.
 
-**Fichas:** CF-PRE-PRO-004, CF-PRE-PRO-006, CF-PRE-PRO-031, CF-PRE-PRC-013.
+**Fichas vinculadas:** CF-PRE-PRO-004, CF-PRE-PRO-006, CF-PRE-PRO-031, CF-PRE-PRC-013.
 
-**Decisión pendiente:** Distinguir planificación de producción según fondos y preservación de condiciones ya contratadas.
+**Decisión vigente:** Criterio aplicado: la modalidad flexible exige ejecutar con los recursos disponibles y no autoriza a alterar unilateralmente las unidades, características, plazos o condiciones contratadas.
 
-**Estado:** pendiente de revisión/confirmación del propietario; sin resolución automática.
+**Fuente:** [guía vigente](https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit); contraste del 14 de noviembre de 2026.
 
-### OBS-PRE-05 · Diferencia entre regla de modalidad fija y procedimiento de revisión para reversión
+### OBS-PRE-05 · Criterio aplicado
+
+**Observación de origen:** Diferencia entre regla de modalidad fija y procedimiento de revisión para reversión.
 
 **Apartados fuente:** Promotores — Modalidad fija; Criterios para la Reversión de Fondos (Precompra).
 
-**Fichas:** CF-PRE-PRO-007, CF-PRE-PRO-034, CF-PRE-PRO-036, CF-PRE-PRC-012, CF-PRE-PRC-019.
+**Fichas vinculadas:** CF-PRE-PRO-007, CF-PRE-PRO-034, CF-PRE-PRO-036, CF-PRE-PRC-012, CF-PRE-PRC-019.
 
-**Decisión pendiente:** Precisar cuándo aplica la reversión por meta y qué revisión/notificación corresponde sin anticipar un resultado.
+**Decisión vigente:** Criterio aplicado: la meta no alcanzada en modalidad fija es causal de reversión; deben distinguirse las causales, el proceso de revisión, la decisión y la devolución procedente.
 
-**Estado:** pendiente de revisión/confirmación del propietario; sin resolución automática.
+**Fuente:** [guía vigente](https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit); contraste del 14 de noviembre de 2026.
 
-### OBS-PRE-06 · La notificación en Transferencia de fondos no prueba confirmación bancaria individual de la precompra
+### OBS-PRE-06 · Criterio aplicado
+
+**Observación de origen:** La notificación en Transferencia de fondos no prueba confirmación bancaria individual de la precompra.
 
 **Apartados fuente:** Transferencia de fondos (Precompra) — Envío de notificación; Transferencia de fondos (Precompra) — Modalidad elegida.
 
-**Fichas:** CF-PRE-PRO-029, CF-PRE-PRC-011.
+**Fichas vinculadas:** CF-PRE-PRO-029, CF-PRE-PRC-011.
 
-**Decisión pendiente:** Identificar con precisión el evento notificado y distinguirlo del pago individual.
+**Decisión vigente:** Criterio aplicado: la notificación descrita corresponde al apartado de transferencia de fondos; no se equipara a una confirmación bancaria individual de cada precompra.
 
-**Estado:** pendiente de revisión/confirmación del propietario; sin resolución automática.
+**Fuente:** [guía vigente](https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit); contraste del 14 de noviembre de 2026.
 
-### OBS-PRE-07 · Alcance de los siete tramos, la comisión mínima de USD 20 y el límite documentado de USD 470.000
+### OBS-PRE-07 · Criterio aplicado
+
+**Observación de origen:** Alcance de los siete tramos, la comisión mínima de USD 20 y el límite documentado de USD 470.000.
 
 **Apartados fuente:** Tarifas (Precompra); Comisión al Financiamiento — tabla de tramos; Nota — Comisión mínima.
 
-**Fichas:** CF-PRE-PRO-024.
+**Fichas vinculadas:** CF-PRE-PRO-024.
 
-**Decisión pendiente:** Mantener exactamente los siete tramos de la guía y no extrapolar precios, topes ni requisitos fuera del rango documentado.
+**Decisión vigente:** Criterio aplicado: se conservan los siete tramos de comisión y el mínimo de USD 20,00, sin extender las tasas fuera del intervalo documentado.
 
-**Estado:** pendiente de revisión/confirmación del propietario; sin resolución automática.
+**Fuente:** [guía vigente](https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit); contraste del 14 de noviembre de 2026.
 
-### OBS-PRE-08 · El mecanismo de reclamación no asegura resolución favorable ni reembolso automático
+### OBS-PRE-08 · Resuelta en la guía vigente
+
+**Observación de origen:** El mecanismo de reclamación no asegura resolución favorable ni reembolso automático.
 
 **Apartados fuente:** Procedimiento para reclamaciones y riesgo de pérdida (Precompra); Criterios para la Reversión de Fondos (Precompra).
 
-**Fichas:** CF-PRE-PRO-033, CF-PRE-PRC-002, CF-PRE-PRC-017.
+**Fichas vinculadas:** CF-PRE-PRO-033, CF-PRE-PRC-002, CF-PRE-PRC-017.
 
-**Decisión pendiente:** Diferenciar mecanismo disponible, resolución y resultado; comprobar disponibilidad operativa antes de anunciarlo.
+**Decisión vigente:** Actualizada con la guía vigente: iskay.app registra y deriva las reclamaciones; no asume representación jurídica, ejecución de garantías ni seguimiento jurídico. Las garantías no aseguran por sí solas la entrega ni la recuperación íntegra de lo pagado.
 
-**Estado:** pendiente de revisión/confirmación del propietario; sin resolución automática.
+**Fuente:** [guía vigente](https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit); contraste del 14 de noviembre de 2026.
 
-## Multimedia y marketing: evidencia frente a publicación real
+## Multimedia y marketing
 
-El calendario operativo marca `Publicada` para PRE-EDU-01 y PRO-VEN-04, pero sus documentos de producción conservan instrucciones para efectuar la publicación y registrar el cierre. Esto no acredita por sí solo un enlace real verificable. Para PRO-ENT-01, el calendario indica `En producción` y la versión TikTok todavía requiere aprobación. No se han insertado enlaces ni piezas publicitarias en fichas.
+Se mantienen los tres candidatos sin vincular a las fichas. Los estados de calendario y producción proceden del control del 11 de noviembre de 2026; no constituyen comprobación de una publicación social. Esta revisión no añade URLs públicas verificadas ni autoriza piezas.
 
 ### PRE-EDU-01 · Qué es Precompra y cómo funciona en iskay.app
 
-**Rol:** Precompradores. **Calendario:** Publicada.
+**Rol:** Precompradores. **Estado histórico del calendario:** Publicada.
+
 **Documento:** [Producción](https://docs.google.com/document/d/1KHemLMrMHtPmeITJmVSvwk0zDaX0kKTfGSuaAMDyDE4/edit).
-**Situación:** Facebook y TikTok aprobados para publicación; documento de producción exige registrar la publicación efectiva.
-**Fichas candidatas, SIN VINCULAR:** CF-PRE-PRC-001, CF-PRE-PRC-002.
-**Pendiente:** enlaces originales oficiales por plataforma, verificación y autorización editorial.
+
+**Situación documentada:** Facebook y TikTok aprobados para publicación; documento de producción exige registrar la publicación efectiva.
+
+**Fichas candidatas, sin vincular:** CF-PRE-PRC-001, CF-PRE-PRC-002.
+
+**Pendiente:** URLs originales oficiales, verificación de correspondencia y autorización editorial.
 
 ### PRO-VEN-04 · Vender no es prometer: presenta valor con evidencia
 
-**Rol:** Promotores. **Calendario:** Publicada.
+**Rol:** Promotores. **Estado histórico del calendario:** Publicada.
+
 **Documento:** [Producción](https://docs.google.com/document/d/1zNnpeSGdtUZBotK4aJbxPowCeLPdbZ3kbwxu3FBKHvs/edit).
-**Situación:** Producción lista para publicación; documento aún solicita publicar y registrar el cierre tras la publicación efectiva.
-**Fichas candidatas, SIN VINCULAR:** CF-PRE-PRO-015, CF-PRE-PRO-017, CF-PRE-PRO-018.
-**Pendiente:** enlaces originales oficiales por plataforma, verificación y autorización editorial.
+
+**Situación documentada:** Producción lista para publicación; documento aún solicita publicar y registrar el cierre tras la publicación efectiva.
+
+**Fichas candidatas, sin vincular:** CF-PRE-PRO-015, CF-PRE-PRO-017, CF-PRE-PRO-018.
+
+**Pendiente:** URLs originales oficiales, verificación de correspondencia y autorización editorial.
 
 ### PRO-ENT-01 · ¿Qué te falta para convertir tu idea en una oferta de Precompra?
 
-**Rol:** Promotores. **Calendario:** En producción.
+**Rol:** Promotores. **Estado histórico del calendario:** En producción.
+
 **Documento:** [Producción](https://docs.google.com/document/d/1d--0vr6iGx_GL6GxM9bAfRMBU9ptLepxos6EtjwyhN0/edit).
-**Situación:** Historia de Facebook aprobada/lista; montaje TikTok corregido, pendiente de revisión, aprobación y publicación.
-**Fichas candidatas, SIN VINCULAR:** CF-PRE-PRO-008, CF-PRE-PRO-009, CF-PRE-PRO-016, CF-PRE-PRO-018.
-**Pendiente:** enlaces originales oficiales por plataforma, verificación y autorización editorial.
+
+**Situación documentada:** Historia de Facebook aprobada/lista; montaje TikTok corregido, pendiente de revisión, aprobación y publicación.
+
+**Fichas candidatas, sin vincular:** CF-PRE-PRO-008, CF-PRE-PRO-009, CF-PRE-PRO-016, CF-PRE-PRO-018.
+
+**Pendiente:** URLs originales oficiales, verificación de correspondencia y autorización editorial.
 
 ## Comprobación de funcionalidades
 
-La guía describe operaciones esperadas, pero no prueba que estén implementadas y accesibles. La conexión GitHub actual no permite consultar el repositorio `maximo-alvarez/avatar` (404/Repository not found), por lo que los controles siguientes quedan como **no verificados**:
+Antecedente del 2026-11-11: la conexión GitHub disponible devolvió 404/Repository not found para maximo-alvarez/avatar. Esta revisión documental no aporta nueva evidencia de implementación.
 
-- **FUNC-PRE-01 — Precampaña con fecha futura:** Comprobar control de fecha y estado de publicación.
-- **FUNC-PRE-02 — Campañas fija y flexible y condiciones de transferencia:** Comprobar regla del 100 % y liberación al cierre según modalidad.
-- **FUNC-PRE-03 — Cálculo de monto solicitado (unidades, precio, descuentos):** Comprobar cálculo real y redondeos.
-- **FUNC-PRE-04 — Contrato electrónico de precompra:** Comprobar activación y disponibilidad de condiciones contractuales.
-- **FUNC-PRE-05 — Notificación del proceso de transferencia:** Identificar el evento real notificado y su destinatario.
-- **FUNC-PRE-06 — Colaboradores y descuentos en comisión:** Comprobar admisión opcional, registro anterior al inicio y cálculo de 0,50 % acumulado hasta 2,00 %.
-- **FUNC-PRE-07 — Garantías de campañas USD 10.000–470.000:** Confirmar alcance funcional y combinación tras resolver OBS-PRE-03.
-- **FUNC-PRE-08 — Reclamaciones y seguimiento:** Comprobar canal, evidencia y seguimiento sin prometer resultado favorable.
-- **FUNC-PRE-09 — Reversión y comunicación a las partes:** Comprobar condiciones, revisión y devolución bancaria.
+La guía define el funcionamiento esperado. Las siguientes comprobaciones siguen sin evidencia de implementación:
 
-## Controles para la siguiente etapa
+- **FUNC-PRE-01 — Precampaña con fecha futura** (`no_verificada`): Comprobar control de fecha y estado de publicación.
+- **FUNC-PRE-02 — Campañas fija y flexible y condiciones de transferencia** (`no_verificada`): Comprobar la regla del 100 % en fija, el monto recaudado en flexible y el bloqueo de transferencia hasta validar la garantía exigible.
+- **FUNC-PRE-03 — Cálculo de monto solicitado (unidades, precio, descuentos)** (`no_verificada`): Comprobar cálculo real y redondeos.
+- **FUNC-PRE-04 — Contrato electrónico de precompra** (`no_verificada`): Comprobar activación y disponibilidad de las condiciones contractuales, y que la oferta o el contrato identifique la fecha o el hito desde el que corre el plazo de entrega.
+- **FUNC-PRE-05 — Notificación del proceso de transferencia** (`no_verificada`): Identificar el evento real notificado y su destinatario.
+- **FUNC-PRE-06 — Colaboradores y descuentos en comisión** (`no_verificada`): Comprobar incorporación opcional antes del inicio, los cuatro perfiles expresos y el cálculo de 0,50 % acumulado hasta 2,00 %, distinguiendo otros roles permitidos.
+- **FUNC-PRE-07 — Garantías de campañas USD 10.000–470.000** (`no_verificada`): Comprobar elección entre seguro y prenda para USD 10.000–470.000, presentación dentro de 15 días hábiles después del cierre y validación antes de transferir. Verificar los datos requeridos de la póliza y la carta con representante cuando se elija prenda.
+- **FUNC-PRE-08 — Registro y derivación de reclamaciones** (`no_verificada`): Comprobar registro de la incidencia y derivación al canal correspondiente, sin atribuir representación jurídica, ejecución de garantías ni seguimiento jurídico a iskay.app.
+- **FUNC-PRE-09 — Reversión y comunicación a las partes** (`no_verificada`): Comprobar causales, revisión, notificación y devolución procedente, incluida la falta de información o documentación en cualquiera de las etapas.
 
-1. No modificar la guía sin autorización.
-2. No resolver por inferencia OBS-PRE-01…08.
-3. No confundir estado de calendario con verificación de publicación social.
-4. No insertar multimedia o `marketing_pieces` sin enlace original y correspondencia comprobados.
-5. Mantener todas las fichas en borrador, fuera del catálogo, buscador, orientación y navegación pública.
-6. Solicitar autorización expresa antes de mover las fichas al árbol publicable o cambiar estados en `categories.yml` y `_config.yml`.
+## Controles de publicación pendientes
 
-## Archivos de control de esta rama
+1. Mantener la guía cerrada como fuente y las fichas pendientes de aprobación editorial.
+2. Separar la revisión documental completada de la comprobación operativa pendiente.
+3. Conservar los estados de calendario como antecedentes, sin certificar publicaciones sociales no verificadas.
+4. Mantener `media`, `distribution` y `marketing_pieces` vacíos mientras no exista vinculación aprobada con URLs originales verificadas.
+5. Conservar los borradores fuera del catálogo, buscador, orientación y navegación pública.
+6. Obtener la autorización correspondiente antes de mover fichas al árbol publicable o cambiar las salvaguardas de categorías y configuración.
 
-- `.github/staging/precompra/observaciones.json`: 8 observaciones, fuentes y códigos afectados.
-- `.github/staging/precompra/marketing_candidatos.json`: 3 piezas y correspondencias conceptuales no aprobadas.
-- `.github/staging/precompra/funciones_pendientes.json`: 9 verificaciones operativas sin evidencia de implementación.
-- `tests/test_precompra_control.py`: cobertura automatizada de las salvaguardas.
+## Archivos de control
+
+- `.github/staging/precompra/clasificacion.json`: 116 reglas con texto y fuente.
+- `.github/staging/precompra/observaciones.json`: ocho observaciones, decisiones vigentes y fichas vinculadas.
+- `.github/staging/precompra/marketing_candidatos.json`: tres correspondencias conceptuales sin publicación verificada.
+- `.github/staging/precompra/funciones_pendientes.json`: nueve comprobaciones operativas sin evidencia de implementación.
+- `tests/test_precompra_staging.py` y `tests/test_precompra_control.py`: controles del inventario y de las salvaguardas.

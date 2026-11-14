@@ -9,16 +9,18 @@ stage: "Incorpora colaboradores y aplica descuentos"
 stage_id: "PRE-PRO-E05"
 stage_url: "/precompra/promotores/05-incorpora-colaboradores-y-aplica-descuentos/"
 code: "CF-PRE-PRO-022"
-content_version: 1
+content_version: 2
 guide_version: "No indicada expresamente"
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
 source: "1 Precompra.docx — Descuentos aplicables (Precompra).; Descuentos aplicables (Precompra) > Importante.; Descuentos al agregar Colaboradores > Nota."
-classification_refs: 
+classification_refs:
   - "CL-PRE-026"
   - "CL-PRE-027"
   - "CL-PRE-028"
   - "CL-PRE-033"
-classification_secondary_refs:  []
-observation_refs: 
+classification_secondary_refs: []
+observation_refs:
   - "OBS-PRE-02"
 status: "draft"
 publication_status: "not_published"
@@ -26,8 +28,11 @@ editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-PRO-022 · ¿Cuánto descuento genera cada colaborador y hasta qué máximo? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/1RPVZ9sVt1qSgRwPPXuL88xHrSnwFoElU0t7VX6sTqFs/edit?usp=drivesdk"
 permalink: /precompra/promotores/05-incorpora-colaboradores-y-aplica-descuentos/cf-pre-pro-022-cuanto-descuento-genera-cada-colaborador-y-hasta-que-maximo/
@@ -58,7 +63,7 @@ Calcula el efecto de los colaboradores sobre la tasa aplicable y verifica la tab
 
 ## Importante
 
-OBS-PRE-02: las listas de perfiles asociadas a descuentos requieren conciliación; el máximo acumulado permanece en 2,00 %.
+Con cuatro colaboradores, la reducción acumulada es del 2,00 %; incorporar más no aumenta ese máximo.
 
 ## Siguiente paso
 

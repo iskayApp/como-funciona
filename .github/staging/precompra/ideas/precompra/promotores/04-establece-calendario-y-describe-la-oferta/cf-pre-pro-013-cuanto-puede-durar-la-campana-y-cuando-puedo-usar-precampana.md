@@ -9,22 +9,27 @@ stage: "Establece calendario y describe la oferta"
 stage_id: "PRE-PRO-E04"
 stage_url: "/precompra/promotores/04-establece-calendario-y-describe-la-oferta/"
 code: "CF-PRE-PRO-013"
-content_version: 1
+content_version: 2
 guide_version: "No indicada expresamente"
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
 source: "1 Precompra.docx — Inicio de campaña > Datos generales > Período de campaña."
-classification_refs: 
+classification_refs:
   - "CL-PRE-064"
   - "CL-PRE-065"
-classification_secondary_refs:  []
-observation_refs:  []
+classification_secondary_refs: []
+observation_refs: []
 status: "draft"
 publication_status: "not_published"
 editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-PRO-013 · ¿Cuánto puede durar la campaña y cuándo puedo usar Precampaña? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/1DZ-taEija4EeB_zTry6YRhW7ob5dTzqNXObyDFCD7w0/edit?usp=drivesdk"
 permalink: /precompra/promotores/04-establece-calendario-y-describe-la-oferta/cf-pre-pro-013-cuanto-puede-durar-la-campana-y-cuando-puedo-usar-precampana/
@@ -47,7 +52,7 @@ La recepción de fondos durante la campaña tiene una duración máxima de seis 
 
 ## Explicación
 
-El período de campaña define cuándo pueden recibirse los pagos anticipados. La guía menciona publicar como Precampaña con fecha futura, pero no especifica allí todos los automatismos o botones del proceso.
+El período de campaña define cuándo se reciben los pagos anticipados y no puede superar seis meses. Si eliges una fecha futura, puedes publicar la iniciativa en modo Precampaña.
 
 ## Qué debes hacer
 
@@ -55,7 +60,7 @@ Selecciona las fechas del período y decide si publicarás la iniciativa anticip
 
 ## Importante
 
-No afirmes que durante la Precampaña se aceptan pagos ni detalles de activación no acreditados en esta guía.
+Distingue el período de campaña del plazo que ofreces para entregar el bien o servicio.
 
 ## Siguiente paso
 

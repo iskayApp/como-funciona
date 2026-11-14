@@ -4,7 +4,7 @@
   "prepared_on": "2026-11-11",
   "status": "operational_verification_pending",
   "external_repo": "maximo-alvarez/avatar",
-  "access_evidence": "La conexión GitHub disponible devuelve 404/Repository not found; no demuestra ausencia ni presencia de implementación.",
+  "access_evidence": "Antecedente del 2026-11-11: la conexión GitHub disponible devolvió 404/Repository not found para maximo-alvarez/avatar. Esta revisión documental no aporta nueva evidencia de implementación.",
   "items": [
     {
       "id": "FUNC-PRE-01",
@@ -18,7 +18,7 @@
       "topic": "Campañas fija y flexible y condiciones de transferencia",
       "source_section": "Promotores — Modalidad; Transferencia de fondos",
       "evidence": "no_verificada",
-      "followup": "Comprobar regla del 100 % y liberación al cierre según modalidad."
+      "followup": "Comprobar la regla del 100 % en fija, el monto recaudado en flexible y el bloqueo de transferencia hasta validar la garantía exigible."
     },
     {
       "id": "FUNC-PRE-03",
@@ -32,7 +32,7 @@
       "topic": "Contrato electrónico de precompra",
       "source_section": "Procedimiento para reclamaciones y riesgo de pérdida",
       "evidence": "no_verificada",
-      "followup": "Comprobar activación y disponibilidad de condiciones contractuales."
+      "followup": "Comprobar activación y disponibilidad de las condiciones contractuales, y que la oferta o el contrato identifique la fecha o el hito desde el que corre el plazo de entrega."
     },
     {
       "id": "FUNC-PRE-05",
@@ -46,28 +46,31 @@
       "topic": "Colaboradores y descuentos en comisión",
       "source_section": "Descuentos aplicables (Precompra)",
       "evidence": "no_verificada",
-      "followup": "Comprobar admisión opcional, registro anterior al inicio y cálculo de 0,50 % acumulado hasta 2,00 %."
+      "followup": "Comprobar incorporación opcional antes del inicio, los cuatro perfiles expresos y el cálculo de 0,50 % acumulado hasta 2,00 %, distinguiendo otros roles permitidos."
     },
     {
       "id": "FUNC-PRE-07",
       "topic": "Garantías de campañas USD 10.000–470.000",
       "source_section": "Transferencia de fondos — Garantías",
       "evidence": "no_verificada",
-      "followup": "Confirmar alcance funcional y combinación tras resolver OBS-PRE-03."
+      "followup": "Comprobar elección entre seguro y prenda para USD 10.000–470.000, presentación dentro de 15 días hábiles después del cierre y validación antes de transferir. Verificar los datos requeridos de la póliza y la carta con representante cuando se elija prenda."
     },
     {
       "id": "FUNC-PRE-08",
-      "topic": "Reclamaciones y seguimiento",
+      "topic": "Registro y derivación de reclamaciones",
       "source_section": "Procedimiento para reclamaciones y riesgo de pérdida",
       "evidence": "no_verificada",
-      "followup": "Comprobar canal, evidencia y seguimiento sin prometer resultado favorable."
+      "followup": "Comprobar registro de la incidencia y derivación al canal correspondiente, sin atribuir representación jurídica, ejecución de garantías ni seguimiento jurídico a iskay.app."
     },
     {
       "id": "FUNC-PRE-09",
       "topic": "Reversión y comunicación a las partes",
       "source_section": "Criterios para la Reversión de Fondos (Precompra)",
       "evidence": "no_verificada",
-      "followup": "Comprobar condiciones, revisión y devolución bancaria."
+      "followup": "Comprobar causales, revisión, notificación y devolución procedente, incluida la falta de información o documentación en cualquiera de las etapas."
     }
-  ]
+  ],
+  "documentation_checked_on": "2026-11-14",
+  "guide_source": "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit",
+  "review_scope": "El contraste con la guía actualiza las comprobaciones pendientes; no verifica funcionalidades operativas."
 }

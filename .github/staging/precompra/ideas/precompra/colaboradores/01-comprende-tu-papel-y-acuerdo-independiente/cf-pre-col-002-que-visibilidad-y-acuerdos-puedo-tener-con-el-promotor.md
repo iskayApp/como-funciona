@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "¿Qué visibilidad y acuerdos puedo tener con el promotor?"
-description: "Tu nombre y rol pueden mostrarse públicamente en la campaña, y puedes pactar directamente con el promotor las condiciones de colaboración."
+description: "Tu nombre y rol aparecen en la campaña, y puedes pactar directamente con el promotor las condiciones de colaboración."
 eyebrow: "Comprende tu papel y acuerdo independiente"
 category: "Precompra"
 role: "Colaboradores"
@@ -9,23 +9,28 @@ stage: "Comprende tu papel y acuerdo independiente"
 stage_id: "PRE-COL-E01"
 stage_url: "/precompra/colaboradores/01-comprende-tu-papel-y-acuerdo-independiente/"
 code: "CF-PRE-COL-002"
-content_version: 1
+content_version: 2
 guide_version: "No indicada expresamente"
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
 source: "1 Precompra.docx — Colaboradores.; Sé un colaborador en Precompra de iskay.app."
-classification_refs: 
+classification_refs:
   - "CL-PRE-012"
   - "CL-PRE-013"
   - "CL-PRE-014"
-classification_secondary_refs:  []
-observation_refs:  []
+classification_secondary_refs: []
+observation_refs: []
 status: "draft"
 publication_status: "not_published"
 editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-COL-002 · ¿Qué visibilidad y acuerdos puedo tener con el promotor? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/1OH4qt7CTRluJm-uutvFklunXaaANnuRHybZxeCwadfU/edit?usp=drivesdk"
 permalink: /precompra/colaboradores/01-comprende-tu-papel-y-acuerdo-independiente/cf-pre-col-002-que-visibilidad-y-acuerdos-puedo-tener-con-el-promotor/
@@ -44,7 +49,7 @@ marketing_pieces: []
 
 ## Respuesta breve
 
-Tu nombre y rol pueden mostrarse públicamente en la campaña, y puedes pactar directamente con el promotor las condiciones de colaboración.
+Tu nombre y rol aparecen en la campaña, y puedes pactar directamente con el promotor las condiciones de colaboración.
 
 ## Explicación
 

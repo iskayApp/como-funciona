@@ -11,22 +11,27 @@ stage_url: "/precompra/colaboradores/02-incorporate-y-define-responsabilidades/"
 code: "CF-PRE-COL-005"
 content_version: 1
 guide_version: "No indicada expresamente"
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
 source: "1 Precompra.docx — Descuentos aplicables (Precompra).; Descuentos aplicables (Precompra) > Importante.; Descuentos al agregar Colaboradores > Nota."
-classification_refs: 
+classification_refs:
   - "CL-PRE-026"
   - "CL-PRE-027"
   - "CL-PRE-028"
   - "CL-PRE-033"
-classification_secondary_refs:  []
-observation_refs:  []
+classification_secondary_refs: []
+observation_refs: []
 status: "draft"
 publication_status: "not_published"
 editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-COL-005 · ¿Cómo influye mi colaboración en la comisión del promotor? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/1wf4Nq26-nRByjFHpQGJqgljt1aEaGbCpDHJuIOKTFqs/edit?usp=drivesdk"
 permalink: /precompra/colaboradores/02-incorporate-y-define-responsabilidades/cf-pre-col-005-como-influye-mi-colaboracion-en-la-comision-del-promotor/

@@ -11,20 +11,25 @@ stage_url: "/precompra/promotores/03-configura-producto-precio-y-pedidos/"
 code: "CF-PRE-PRO-008"
 content_version: 1
 guide_version: "No indicada expresamente"
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
 source: "1 Precompra.docx — Inicio de campaña > Datos generales > Nombre.; Inicio de campaña > Datos generales > Descripción corta."
-classification_refs: 
+classification_refs:
   - "CL-PRE-056"
   - "CL-PRE-057"
-classification_secondary_refs:  []
-observation_refs:  []
+classification_secondary_refs: []
+observation_refs: []
 status: "draft"
 publication_status: "not_published"
 editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-PRO-008 · ¿Qué datos generales necesita mi campaña? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/1rNccTCRpibTRbN5_1KCsNCW76wyzBfwJuiOt-bzpYR4/edit?usp=drivesdk"
 permalink: /precompra/promotores/03-configura-producto-precio-y-pedidos/cf-pre-pro-008-que-datos-generales-necesita-mi-campana/

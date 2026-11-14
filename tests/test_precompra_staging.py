@@ -1,6 +1,7 @@
 """Garantiza que las 66 fichas de Precompra sigan en borrador fuera del sitio."""
 from collections import Counter
 from pathlib import Path
+import re
 import unittest
 import yaml
 
@@ -8,6 +9,8 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / ".github" / "staging" / "precompra" / "ideas" / "precompra"
 ROLES = {"Promotores": 36, "Precompradores": 21, "Colaboradores": 9}
 STAGES = {"Promotores": 9, "Precompradores": 6, "Colaboradores": 4}
+REVIEW_DATE = "2026-11-14"
+GUIDE_SOURCE = "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
 
 def metadata(path):
     text = path.read_text(encoding="utf-8")
@@ -29,8 +32,39 @@ class PrecompraStagingTests(unittest.TestCase):
         self.assertEqual(Counter({role: len({x["stage_id"] for x in items if x["role"] == role}) for role in ROLES}), Counter(STAGES))
         self.assertEqual(len({x["code"] for x in items}), 66)
         self.assertEqual(len({x["permalink"] for x in items}), 66)
-        refs = {ref for x in items for ref in x["classification_refs"]}
-        self.assertEqual(refs, {f"CL-PRE-{i:03}" for i in range(1, 109)})
+        self.assertEqual(len({x["editorial_source_url"] for x in items}), 66)
+
+    def test_content_version_snapshot_after_2026_11_14_review(self):
+        # Instantánea de esta revisión: solo 42 fichas cambiaron funcionalmente.
+        # El contraste de metadatos de las otras 24 no incrementa su versión.
+        versions = []
+        for path, data, _ in self.cards:
+            with self.subTest(path=str(path)):
+                self.assertIs(type(data["content_version"]), int)
+                self.assertGreater(data["content_version"], 0)
+                versions.append(data["content_version"])
+        self.assertEqual(Counter(versions), {1: 24, 2: 42})
+
+    def test_functional_review_is_separate_from_editorial_approval(self):
+        for path, data, _ in self.cards:
+            with self.subTest(path=str(path)):
+                self.assertEqual(data["functional_review_status"], "completed")
+                self.assertEqual(data["functional_reviewed_on"], REVIEW_DATE)
+                self.assertEqual(data["source_checked_on"], REVIEW_DATE)
+                self.assertEqual(data["guide_review_closed_on"], REVIEW_DATE)
+                self.assertEqual(data["guide_source_url"], GUIDE_SOURCE)
+                self.assertEqual(data["guide_version"], "No indicada expresamente")
+                self.assertEqual(data["editorial_status"], "pending_review")
+                self.assertIs(data["reviewed"], False)
+                self.assertNotEqual(data["editorial_source_url"], data["guide_source_url"])
+
+    def test_description_matches_the_brief_answer(self):
+        for path, data, body in self.cards:
+            with self.subTest(path=str(path)):
+                brief = re.search(r"^## Respuesta breve\n+(.*?)(?=\n## |\Z)", body, re.M | re.S)
+                self.assertIsNotNone(brief)
+                self.assertTrue(brief.group(1).strip())
+                self.assertEqual(data["description"], brief.group(1).strip())
 
     def test_all_fichas_are_review_pending_and_unpublished(self):
         for path, data, body in self.cards:
@@ -42,8 +76,6 @@ class PrecompraStagingTests(unittest.TestCase):
                 self.assertIs(data["published"], False)
                 self.assertIs(data["reviewed"], False)
                 self.assertEqual(data["visibility"], "private")
-                self.assertEqual(data["content_version"], 1)
-                self.assertEqual(data["guide_version"], "No indicada expresamente")
                 self.assertTrue(data["source"].startswith("1 Precompra.docx"))
                 self.assertTrue(data["editorial_source_url"].startswith("https://docs.google.com/document/d/"))
                 self.assertEqual(data["media"], [])
@@ -63,19 +95,26 @@ class PrecompraStagingTests(unittest.TestCase):
         precompra = next(item for item in categories if item["id"] == "precompra")
         self.assertEqual(precompra["status"], "preparation")
         self.assertEqual(precompra["roles"], [])
-        for p in [BASE / "index.md", *(BASE / slug / "index.md" for slug in ("promotores", "precompradores", "colaboradores"))]:
-            data, _ = metadata(p)
-            self.assertIs(data["published"], False)
-            self.assertEqual(data["status"], "draft")
-            self.assertEqual(data["visibility"], "private")
+        indexes = list(BASE.rglob("index.md"))
+        self.assertEqual(len(indexes), 23)
+        self.assertEqual(len(list(BASE.glob("*/index.md"))), 3)
         self.assertEqual(len(list(BASE.glob("*/*/index.md"))), 19)
-        for p in BASE.glob("*/*/index.md"):
+        for p in indexes:
             data, _ = metadata(p)
-            self.assertIs(data["published"], False)
-            self.assertEqual(data["status"], "draft")
+            with self.subTest(index=str(p)):
+                self.assertEqual(data["category"], "Precompra")
+                self.assertIs(data["published"], False)
+                self.assertEqual(data["status"], "draft")
+                self.assertEqual(data["visibility"], "private")
+                self.assertEqual(data["publication_status"], "not_published")
+                self.assertEqual(data["editorial_status"], "pending_review")
+                self.assertIs(data["reviewed"], False)
 
     def test_navigation_is_contiguous_and_role_specific(self):
         items = [data for _, data, _ in self.cards]
+        stages = {data["stage_id"]: data for data, _ in
+                  (metadata(path) for path in BASE.glob("*/*/index.md"))}
+        self.assertEqual(len(stages), 19)
         for role in ROLES:
             ordered = sorted((x for x in items if x["role"] == role), key=lambda x:x["code"])
             for i, entry in enumerate(ordered):
@@ -83,9 +122,16 @@ class PrecompraStagingTests(unittest.TestCase):
                 following = ordered[i+1] if i+1 < len(ordered) else None
                 self.assertEqual(entry["prev_code"], previous["code"] if previous else None)
                 self.assertEqual(entry["prev_url"], previous["permalink"] if previous else None)
+                self.assertEqual(entry["prev_title"], previous["title"] if previous else None)
                 self.assertEqual(entry["next_code"], following["code"] if following else None)
                 self.assertEqual(entry["next_url"], following["permalink"] if following else None)
+                self.assertEqual(entry["next_title"], following["title"] if following else None)
                 self.assertEqual(entry["stage_url"].startswith(f"/precompra/{entry['role'].lower()}/"), True)
+                self.assertIn(entry["stage_id"], stages)
+                stage = stages[entry["stage_id"]]
+                self.assertEqual(entry["stage_url"], stage["permalink"])
+                self.assertEqual(entry["role"], stage["role"])
+                self.assertEqual(entry["stage"], stage["stage"])
 
 if __name__ == "__main__":
     unittest.main()

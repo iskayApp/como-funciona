@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "¿Cómo organizo la producción, calidad, logística y postventa?"
-description: "Puedes organizar un equipo para producción, control de calidad, logística, comunicación, atención al cliente y postventa."
+description: "Puedes organizar un equipo para producción o fabricación, calidad y control técnico, entregas y logística, atención al cliente y postventa."
 eyebrow: "Ejecuta, informa y entrega lo ofrecido"
 category: "Precompra"
 role: "Promotores"
@@ -9,10 +9,12 @@ stage: "Ejecuta, informa y entrega lo ofrecido"
 stage_id: "PRE-PRO-E08"
 stage_url: "/precompra/promotores/08-ejecuta-informa-y-entrega-lo-ofrecido/"
 code: "CF-PRE-PRO-032"
-content_version: 1
+content_version: 2
 guide_version: "No indicada expresamente"
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
 source: "1 Precompra.docx — Colaboradores.; Sé un colaborador en Precompra de iskay.app.; Procedimiento para reclamaciones y riesgo de pérdida.; Inicio de campaña > Colaboradores (opcional) > Producción.; Inicio de campaña > Colaboradores (opcional) > Servicio al cliente.; Inicio de campaña > Colaboradores (opcional) > Calidad.; Inicio de campaña > Colaboradores (opcional) > Logística."
-classification_refs: 
+classification_refs:
   - "CL-PRE-011"
   - "CL-PRE-015"
   - "CL-PRE-055"
@@ -20,16 +22,19 @@ classification_refs:
   - "CL-PRE-079"
   - "CL-PRE-080"
   - "CL-PRE-081"
-classification_secondary_refs:  []
-observation_refs:  []
+classification_secondary_refs: []
+observation_refs: []
 status: "draft"
 publication_status: "not_published"
 editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-PRO-032 · ¿Cómo organizo la producción, calidad, logística y postventa? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/1ifH1WYImP2sbhCwDpnTKi9iarrNyPuhUCnOR53o4mQc/edit?usp=drivesdk"
 permalink: /precompra/promotores/08-ejecuta-informa-y-entrega-lo-ofrecido/cf-pre-pro-032-como-organizo-la-produccion-calidad-logistica-y-postventa/
@@ -48,7 +53,7 @@ marketing_pieces: []
 
 ## Respuesta breve
 
-Puedes organizar un equipo para producción, control de calidad, logística, comunicación, atención al cliente y postventa.
+Puedes organizar un equipo para producción o fabricación, calidad y control técnico, entregas y logística, atención al cliente y postventa.
 
 ## Explicación
 

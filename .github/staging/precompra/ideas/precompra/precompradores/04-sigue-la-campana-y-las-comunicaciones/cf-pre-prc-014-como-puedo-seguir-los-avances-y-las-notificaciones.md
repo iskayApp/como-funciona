@@ -9,23 +9,28 @@ stage: "Sigue la campaña y las comunicaciones"
 stage_id: "PRE-PRC-E04"
 stage_url: "/precompra/precompradores/04-sigue-la-campana-y-las-comunicaciones/"
 code: "CF-PRE-PRC-014"
-content_version: 1
+content_version: 2
 guide_version: "No indicada expresamente"
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
 source: "1 Precompra.docx — Procedimiento para reclamaciones y riesgo de pérdida.; Transferencia de fondos > Envío de notificación."
-classification_refs: 
+classification_refs:
   - "CL-PRE-045"
   - "CL-PRE-046"
   - "CL-PRE-086"
-classification_secondary_refs:  []
-observation_refs:  []
+classification_secondary_refs: []
+observation_refs: []
 status: "draft"
 publication_status: "not_published"
 editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-PRC-014 · ¿Cómo puedo seguir los avances y las notificaciones? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/1cMLwy-GfGDu8iZdXt3-gh8Ra1ghgexwqOgevCQa-wl8/edit?usp=drivesdk"
 permalink: /precompra/precompradores/04-sigue-la-campana-y-las-comunicaciones/cf-pre-prc-014-como-puedo-seguir-los-avances-y-las-notificaciones/
@@ -48,7 +53,7 @@ Puedes seguir las actualizaciones publicadas por el promotor sobre la ejecución
 
 ## Explicación
 
-Se espera que el promotor informe avances, logros y dificultades mediante la plataforma. El apartado de transferencia también contempla una notificación de operación, cuya función no debe confundirse con un comprobante individual de pago.
+El promotor se compromete a realizar al menos una publicación informativa y se espera que comunique avances, logros y dificultades mediante la plataforma. La transferencia de fondos también contempla una notificación que confirma la operación.
 
 ## Qué debes hacer
 

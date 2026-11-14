@@ -16,7 +16,7 @@ reviewed: false
 
 Conoce el funcionamiento de las campañas de Precompra desde el recorrido que corresponda a tu participación.
 
-> En preparación: las 66 fichas están pendientes de revisión editorial y no se han autorizado para publicación.
+> Las 66 fichas han sido contrastadas con la guía vigente. La revisión editorial del propietario y la autorización de publicación permanecen pendientes.
 
 {% include fr-context.html %}
 {% include fr-role-cards.html %}

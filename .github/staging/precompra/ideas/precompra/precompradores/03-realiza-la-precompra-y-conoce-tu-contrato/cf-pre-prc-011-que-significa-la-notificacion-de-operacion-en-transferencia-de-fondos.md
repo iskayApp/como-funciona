@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "¿Qué significa la notificación de operación en transferencia de fondos?"
-description: "La guía contempla que los precompradores recibirán una notificación de confirmación de operación dentro del apartado «Transferencia de fondos»."
+description: "En la etapa de transferencia de fondos, recibirás una notificación que confirma la operación."
 eyebrow: "Realiza la precompra y conoce tu contrato"
 category: "Precompra"
 role: "Precompradores"
@@ -9,13 +9,15 @@ stage: "Realiza la precompra y conoce tu contrato"
 stage_id: "PRE-PRC-E03"
 stage_url: "/precompra/precompradores/03-realiza-la-precompra-y-conoce-tu-contrato/"
 code: "CF-PRE-PRC-011"
-content_version: 1
+content_version: 2
 guide_version: "No indicada expresamente"
+guide_source_url: "https://docs.google.com/document/d/1_wX6OGVxUrs3I9WF-hDgWiB8MWv9Ysfy/edit"
+guide_review_closed_on: "2026-11-14"
 source: "1 Precompra.docx — Transferencia de fondos > Envío de notificación."
-classification_refs: 
+classification_refs:
   - "CL-PRE-086"
-classification_secondary_refs:  []
-observation_refs: 
+classification_secondary_refs: []
+observation_refs:
   - "OBS-PRE-06"
 status: "draft"
 publication_status: "not_published"
@@ -23,8 +25,11 @@ editorial_status: "pending_review"
 published: false
 visibility: "private"
 reviewed: false
-source_checked_on: "2026-11-10"
+source_checked_on: "2026-11-14"
+functional_review_status: "completed"
+functional_reviewed_on: "2026-11-14"
 technical_prepared_on: "2026-11-11"
+technical_synced_on: "2026-11-14"
 editorial_source: "CF-PRE-PRC-011 · ¿Qué significa la notificación de operación en transferencia de fondos? · Borrador"
 editorial_source_url: "https://docs.google.com/document/d/1FhNqjzjMlwDxW5xKnnY1-5sWOocgQNE0PgH_NC91on8/edit?usp=drivesdk"
 permalink: /precompra/precompradores/03-realiza-la-precompra-y-conoce-tu-contrato/cf-pre-prc-011-que-significa-la-notificacion-de-operacion-en-transferencia-de-fondos/
@@ -43,19 +48,19 @@ marketing_pieces: []
 
 ## Respuesta breve
 
-La guía contempla que los precompradores recibirán una notificación de confirmación de operación dentro del apartado «Transferencia de fondos».
+En la etapa de transferencia de fondos, recibirás una notificación que confirma la operación.
 
 ## Explicación
 
-Como ese aviso aparece en la sección relativa al procesamiento de fondos, no debe darse por demostrado que equivalga a la confirmación bancaria individual de cada pago anticipado. Son acontecimientos que pueden requerir explicaciones separadas.
+La notificación informa sobre esa operación; la entrega del producto o servicio sigue sujeta a los plazos y condiciones del promotor.
 
 ## Qué debes hacer
 
-Revisa el aviso recibido y su contexto operativo en relación con la transferencia de fondos.
+Lee el aviso y conserva la información de tu precompra.
 
 ## Importante
 
-OBS-PRE-06: no describir esta notificación como recibo bancario individual o comprobante automático de cada precompra.
+La confirmación de la operación no acredita que hayas recibido el producto o servicio.
 
 ## Siguiente paso
 
